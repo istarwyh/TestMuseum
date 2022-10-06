@@ -1,0 +1,94 @@
+plugins {
+    id 'java'
+}
+
+group 'istarwyh'
+version '1.0-SNAPSHOT'
+
+compileJava {
+    sourceCompatibility = 17
+    targetCompatibility = 17
+    options.encoding = 'UTF-8'
+//    options.compilerArgs << "-Xlint:unchecked" << "-Werror"
+}
+
+compileTestJava {
+    sourceCompatibility = 17
+    targetCompatibility = 17
+    options.encoding = 'UTF-8'
+}
+
+
+repositories {
+    mavenLocal()
+    maven { url "https://maven.aliyun.com/repository/public" }
+    maven { url "https://repo.huaweicloud.com/repository/maven" }
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.9.0'
+    junitPlatformVersion = '1.0.0'
+    lombokVersion = '1.18.24'
+    slf4jVersion = '1.7.36'
+    logbackClassicVersion = '1.4.1'
+    jetbrainsAnnotationVersion = '23.0.0'
+    javassistVersion = '3.29.2-GA'
+    istarwyhInitialVersion = '0.2.7'
+    mockitoJunit5Version = '4.8.0'
+}
+
+
+dependencies {
+
+/**************************************************  SRC  ************************************************************/
+
+    compileOnly(
+            "org.projectlombok:lombok:${lombokVersion}"
+    )
+
+    implementation(
+            // 	logback-classic includes logback-core , slf4j-api
+            "org.jetbrains:annotations:${jetbrainsAnnotationVersion}",
+            "ch.qos.logback:logback-classic:${logbackClassicVersion}",
+            "org.javassist:javassist:${javassistVersion}",
+            "com.github.istarwyh:Initial:${istarwyhInitialVersion}",
+            "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
+
+    )
+
+    annotationProcessor(
+            "org.projectlombok:lombok:${lombokVersion}"
+    )
+
+/**************************************************  TEST  ************************************************************/
+
+    testCompileOnly(
+            "org.projectlombok:lombok:${lombokVersion}"
+    )
+
+    testImplementation(
+
+            // JUnit Jupiter API and TestEngine and ParameterizedTest
+            "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
+            "org.junit.jupiter:junit-jupiter-engine:${junitVersion}",
+            "org.junit.vintage:junit-vintage-engine:${junitVersion}",
+
+            "org.junit.jupiter:junit-jupiter-params:${junitVersion}",
+            "org.mockito:mockito-junit-jupiter:${mockitoJunit5Version}",
+
+            "ch.qos.logback:logback-classic:${logbackClassicVersion}",
+            "org.javassist:javassist:${javassistVersion}",
+            "com.github.istarwyh:Initial:${istarwyhInitialVersion}"
+    )
+
+    testAnnotationProcessor(
+            "org.projectlombok:lombok:${lombokVersion}"
+    )
+}
+
+defaultTasks 'clean', 'test'
+
+test {
+    useJUnitPlatform()
+}

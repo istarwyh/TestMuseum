@@ -1,0 +1,8 @@
+plugins {
+    id 'java'
+}
+
+group 'istarwyh'
+version '1.0-SNAPSHOT'
+
+

@@ -1,0 +1,2 @@
+istarwyh.classloader.modifier.impl.CannotInitialByLoadingClassErrorModifier
+istarwyh.classloader.modifier.impl.CannotInitialDueToPrivateConstructorModifier
