@@ -1,3 +1,14 @@
+// 项目依赖仓库与插件依赖仓库独立,需要对插件依赖仓库进行单独配置且放在最开始
+
+pluginManagement {
+    repositories {
+        maven { url "https://maven.aliyun.com/repository/gradle-plugin" }
+        mavenLocal()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
 rootProject.name = "TestMuseum"
 include 'tdd.java.args'
 include 'tdd.java.di'
