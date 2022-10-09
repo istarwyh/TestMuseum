@@ -9,6 +9,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/tdd.java.algorithm" />
             <option value="$PROJECT_DIR$/tdd.java.args" />
             <option value="$PROJECT_DIR$/tdd.java.common" />
             <option value="$PROJECT_DIR$/tdd.java.di" />
