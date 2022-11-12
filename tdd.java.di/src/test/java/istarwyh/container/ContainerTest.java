@@ -1,5 +1,6 @@
 package istarwyh.container;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -8,11 +9,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ContainerTest {
 
-    interface Component{}
+    private Context context;
 
-    static class ComponentWithNoArgsConstructor implements Component{
-        public ComponentWithNoArgsConstructor() {
-        }
+    @BeforeEach
+    void setUp() {
+        context = new Context();
     }
 
     @Nested
@@ -20,10 +21,9 @@ public class ContainerTest {
         // TODO instance
         @Test
         void should_bind_type_to_a_specific_instance(){
-            Context context = new Context();
             Component instance = new Component() {};
             context.bind(Component.class,instance);
-            assertSame(instance,context.get(Component.class));
+            assertSame(instance, context.get(Component.class));
         }
 
         // TODO abstract class
@@ -34,7 +34,6 @@ public class ContainerTest {
             // TODO No args
             @Test
             void should_bind_type_to_a_instance_with_default_constructor(){
-                Context context = new Context();
                 context.bind(Component.class,ComponentWithNoArgsConstructor.class);
                 Component instance = context.get(Component.class);
                 assertNotNull(instance);
@@ -55,5 +54,11 @@ public class ContainerTest {
         }
     }
 
+}
 
+interface Component{}
+
+class ComponentWithNoArgsConstructor implements Component{
+    public ComponentWithNoArgsConstructor() {
+    }
 }
