@@ -1,5 +1,6 @@
 package istarwyh.container;
 
+import istarwyh.exception.IllegalComponentException;
 import jakarta.inject.Inject;
 import lombok.SneakyThrows;
 
