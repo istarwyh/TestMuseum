@@ -1,13 +1,11 @@
 package istarwyh.container;
 
 import jakarta.inject.Inject;
-import org.jetbrains.annotations.NotNull;
+import lombok.SneakyThrows;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.Parameter;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 import java.util.function.Supplier;
 
 import static java.util.Arrays.stream;
@@ -19,11 +17,31 @@ public class Context {
         suppliers.put(typeClass, () -> instance);
     }
 
+    @SneakyThrows
     public <Type, Implementation extends Type>
     void bind(Class<Type> type, Class<Implementation> implementation) {
+        Constructor<?>[] injectConstructors = stream(implementation.getConstructors())
+                .filter(c -> c.isAnnotationPresent(Inject.class))
+                .toArray(Constructor[]::new);
+        if(injectConstructors.length > 1){
+            throw new IllegalComponentException();
+        }
+        if(injectConstructors.length == 0 && hasDefaultConstructor(implementation)){
+            throw new IllegalComponentException();
+        }
         suppliers.put(type, (Supplier<Type>) () -> {
             try {
-                Constructor<Implementation> constructor = getInjectOrDefaultConstructor(implementation);
+                Constructor<Implementation> constructor = (Constructor<Implementation>) stream(injectConstructors)
+                        .filter(c -> c.isAnnotationPresent(Inject.class))
+                        .findFirst()
+                        .orElseGet(() -> {
+                            try {
+                                return implementation.getConstructor();
+                            } catch (NoSuchMethodException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+                );
                 Object[] dependencies = stream(constructor.getParameters())
                         .map(p -> this.get(p.getType()))
                         .toArray(Object[]::new);
@@ -34,21 +52,8 @@ public class Context {
         });
     }
 
-    @NotNull
-    private static <Type, Implementation extends Type> Constructor<Implementation>
-    getInjectOrDefaultConstructor(Class<Implementation> implementation) {
-        Optional<Constructor<?>> firstInjectConstructor = stream(implementation.getConstructors())
-                .filter(c -> c.isAnnotationPresent(Inject.class))
-                .findFirst();
-
-        return (Constructor<Implementation>) firstInjectConstructor.orElseGet(() -> {
-                    try {
-                        return implementation.getConstructor();
-                    } catch (NoSuchMethodException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-        );
+    private static <Type, Implementation extends Type> boolean hasDefaultConstructor(Class<Implementation> implementation) {
+        return stream(implementation.getConstructors()).noneMatch(c -> c.getParameters().length == 0);
     }
 
     public <Type> Type get(Class<Type> typeClass) {

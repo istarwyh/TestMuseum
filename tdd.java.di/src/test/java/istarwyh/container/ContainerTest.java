@@ -32,6 +32,7 @@ public class ContainerTest {
 
         @Nested
         class ConstructorInjection{
+
             @Test
             void should_bind_type_to_a_class_with_default_constructor(){
                 context.bind(Component.class,ComponentWithNoArgsConstructor.class);
@@ -64,6 +65,24 @@ public class ContainerTest {
                 assertNotNull(dependency);
                 assertEquals(indirectDependency,((DependencyWithInjectConstructor)dependency).indirectDependency());
             }
+
+            @Test
+            void should_throw_exception_if_multi_inject_constructors_provided(){
+                assertThrows(
+                        IllegalComponentException.class,
+                        () -> context.bind(Component.class,ComponentWithMultiConstructor.class)
+                );
+            }
+
+            @Test
+            void should_throw_exception_if_no_inject_nor_default_constructor_provided(){
+                assertThrows(
+                        IllegalComponentException.class,
+                        () -> context.bind(Component.class, ComponentWithNoInjectNorDefaultConstructor.class)
+                );
+            }
+            // todo dependency not exist
+
         }
 
         @Nested
@@ -89,11 +108,24 @@ class ComponentWithNoArgsConstructor implements Component{
 record ComponentWithInjectConstructor(Dependency dependency) implements Component {
 
     @Inject
-    public ComponentWithInjectConstructor {}
+    public ComponentWithInjectConstructor{}
 }
 
 record DependencyWithInjectConstructor(String indirectDependency) implements Dependency{
 
     @Inject
     public DependencyWithInjectConstructor{}
+}
+
+class ComponentWithMultiConstructor implements Component{
+
+    @Inject
+    public ComponentWithMultiConstructor(String name){}
+
+    @Inject
+    public ComponentWithMultiConstructor(String name,Double value){}
+}
+
+class ComponentWithNoInjectNorDefaultConstructor implements Component{
+    public ComponentWithNoInjectNorDefaultConstructor(String name) {}
 }
