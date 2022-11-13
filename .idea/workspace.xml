@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="Add: common module">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.di/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.di/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.di/src/main/java/istarwyh/container/Context.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.di/src/main/java/istarwyh/container/Context.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdd.java.di/src/test/java/istarwyh/container/ContainerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.di/src/test/java/istarwyh/container/ContainerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -120,7 +118,7 @@
       <recent name="istarwyh.junit5.extension" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ContainerTest">
+  <component name="RunManager" selected="Gradle.ConstructorInjection.should_bind_type_to_a_class_with_injected_constructor">
     <configuration name="ComponentConstruction.should_bind_type_to_a_specific_instance" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -190,6 +188,29 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="ConstructorInjection.should_bing_type_a_class_with_transitive_dependencies" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":tdd.java.di:test" />
+            <option value="--tests" />
+            <option value="&quot;istarwyh.container.ContainerTest$ComponentConstruction$ConstructorInjection.should_bing_type_a_class_with_transitive_dependencies&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="ContainerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -213,36 +234,13 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ParallelTest.testAsyncWithSameMethod" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":tdd.java.common:test" />
-            <option value="--tests" />
-            <option value="&quot;istarwyh.util.ParallelTest.testAsyncWithSameMethod&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.ContainerTest" />
         <item itemvalue="Gradle.ConstructorInjection.should_bind_type_to_a_class_with_injected_constructor" />
+        <item itemvalue="Gradle.ContainerTest" />
+        <item itemvalue="Gradle.ConstructorInjection.should_bing_type_a_class_with_transitive_dependencies" />
         <item itemvalue="Gradle.ConstructorInjection.should_bind_type_to_a_instance_with_default_constructor" />
         <item itemvalue="Gradle.ComponentConstruction.should_bind_type_to_a_specific_instance" />
-        <item itemvalue="Gradle.ParallelTest.testAsyncWithSameMethod" />
       </list>
     </recent_temporary>
   </component>
@@ -259,7 +257,7 @@
       <workItem from="1665062518000" duration="237000" />
       <workItem from="1665062765380" duration="664000" />
       <workItem from="1665063494223" duration="104000" />
-      <workItem from="1668144024081" duration="6460000" />
+      <workItem from="1668144024081" duration="8580000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>
@@ -297,6 +295,16 @@
           <url>file://$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/classloader/modifier/impl/CannotInitialByLoadingClassErrorModifier.java</url>
           <line>14</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tdd.java.di/src/main/java/istarwyh/container/Context.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tdd.java.di/src/main/java/istarwyh/container/Context.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,7 +1,6 @@
 package istarwyh.container;
 
 import jakarta.inject.Inject;
-import lombok.Getter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -39,10 +38,12 @@ public class ContainerTest {
                 Component instance = context.get(Component.class);
                 assertNotNull(instance);
             }
+
             @Test
             void should_bind_type_to_a_class_with_injected_constructor(){
-                context.bind(Component.class,ComponentWithInjectConstructor.class);
                 Dependency dependency = new Dependency() {};
+
+                context.bind(Component.class,ComponentWithInjectConstructor.class);
                 context.bind(Dependency.class, dependency);
 
                 Component instance = context.get(Component.class);
@@ -50,8 +51,19 @@ public class ContainerTest {
                 assertSame(dependency,((ComponentWithInjectConstructor)instance).dependency());
             }
 
-            // TODO A->B->C
+            @Test
+            void should_bing_type_a_class_with_transitive_dependencies(){
+                context.bind(Component.class,ComponentWithInjectConstructor.class);
+                context.bind(Dependency.class, DependencyWithInjectConstructor.class);
+                String indirectDependency = "indirect indirectDependency";
+                context.bind(String.class, indirectDependency);
 
+                Component instance = context.get(Component.class);
+                assertNotNull(instance);
+                Dependency dependency = ((ComponentWithInjectConstructor) instance).dependency();
+                assertNotNull(dependency);
+                assertEquals(indirectDependency,((DependencyWithInjectConstructor)dependency).indirectDependency());
+            }
         }
 
         @Nested
@@ -71,13 +83,17 @@ interface Component{}
 interface Dependency{}
 
 class ComponentWithNoArgsConstructor implements Component{
-    public ComponentWithNoArgsConstructor() {
-    }
+    public ComponentWithNoArgsConstructor() {}
 }
 
-record ComponentWithInjectConstructor(@Getter Dependency dependency) implements Component {
+record ComponentWithInjectConstructor(Dependency dependency) implements Component {
 
     @Inject
-    ComponentWithInjectConstructor {
-    }
+    public ComponentWithInjectConstructor {}
+}
+
+record DependencyWithInjectConstructor(String indirectDependency) implements Dependency{
+
+    @Inject
+    public DependencyWithInjectConstructor{}
 }
