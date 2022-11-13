@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="Add: common module">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.algorithm/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.algorithm/src/main/java/istarwyh/leetcode/LinkedList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.algorithm/src/main/java/istarwyh/leetcode/LinkedList.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.algorithm/src/main/java/istarwyh/leetcode/replenishment.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.algorithm/src/test/java/istarwyh/leetcode/LinkedListTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +50,6 @@
       <list>
         <option value="Class" />
         <option value="JUnit5 Test Class" />
-        <option value="editable-svg" />
       </list>
     </option>
   </component>
@@ -79,32 +70,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "jdk.selected.JAVA_MODULE": "jbr-17",
-    "last_opened_file_path": "/Users/mac/Desktop/code-open/will-deleted/TestMuseum/tdd.java.algorithm/src/main/java/istarwyh/leetcode",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.31724137",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;jbr-17&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/mac/Desktop/code-open/will-deleted/TestMuseum&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.31724137&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/tdd.java.algorithm/src/main/java/istarwyh/leetcode" />
-      <recent name="$PROJECT_DIR$/tdd.java.args/src/test/java" />
-      <recent name="$PROJECT_DIR$/tdd.java.args/src/main/java/istarwyh/service" />
-      <recent name="$PROJECT_DIR$/tdd.java.args/src/main/java/istarwyh" />
       <recent name="$PROJECT_DIR$/tdd.java.common/src/test/resources" />
+      <recent name="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/junit5/extension" />
+      <recent name="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/classloader/modifier" />
+      <recent name="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/classloader" />
+      <recent name="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -114,20 +104,16 @@
       <recent name="$PROJECT_DIR$/tdd.java.common/src/main/resources" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="istarwyh.leetcode" />
-      <recent name="istarwyh" />
-      <recent name="istarwyh.handler" />
       <recent name="istarwyh.util" />
       <recent name="istarwyh.junit5.extension" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="istarwyh.leetcode" />
       <recent name="istarwyh.classloader" />
       <recent name="istarwyh.junit5.extension" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.LinkedListTest">
-    <configuration name="LinkedListTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.Tests in 'TestMuseum.tdd.java.common.test'">
+    <configuration name="ParallelTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -138,9 +124,9 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":tdd.java.algorithm:test" />
+            <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.leetcode.LinkedListTest&quot;" />
+            <option value="&quot;istarwyh.util.ParallelTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -150,25 +136,44 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="OptionParserFactoryTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="TestMuseum [compileJava]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
+        <option name="scriptParameters" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value=":tdd.java.args:test" />
-            <option value="--tests" />
-            <option value="&quot;OptionParserFactoryTest&quot;" />
+            <option value="compileJava" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="TestMuseum [compileTestJava]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="compileTestJava" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
@@ -215,36 +220,13 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="Tests in 'istarwyh'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":tdd.java.args:test" />
-            <option value="--tests" />
-            <option value="&quot;istarwyh.*&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.LinkedListTest" />
-        <item itemvalue="Gradle.Tests in 'istarwyh'" />
-        <item itemvalue="Gradle.OptionParserFactoryTest" />
         <item itemvalue="Gradle.Tests in 'TestMuseum.tdd.java.common.test'" />
         <item itemvalue="Gradle.TestMuseum [dependencies]" />
+        <item itemvalue="Gradle.TestMuseum [compileJava]" />
+        <item itemvalue="Gradle.TestMuseum [compileTestJava]" />
+        <item itemvalue="Gradle.ParallelTest" />
       </list>
     </recent_temporary>
   </component>
@@ -260,8 +242,7 @@
       <workItem from="1665044512936" duration="7506000" />
       <workItem from="1665062518000" duration="237000" />
       <workItem from="1665062765380" duration="664000" />
-      <workItem from="1665063494223" duration="104000" />
-      <workItem from="1665133225768" duration="8047000" />
+      <workItem from="1668356718644" duration="756000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>
@@ -281,14 +262,25 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Add: common module" />
     <option name="LAST_COMMIT_MESSAGE" value="Add: common module" />
   </component>
