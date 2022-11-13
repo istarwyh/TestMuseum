@@ -9,9 +9,51 @@ repositories {
     mavenCentral()
 }
 
+ext {
+    junitVersion = '5.9.0'
+    junitPlatformVersion = '1.0.0'
+    lombokVersion = '1.18.24'
+    slf4jVersion = '1.7.36'
+    logbackClassicVersion = '1.4.1'
+    jetbrainsAnnotationVersion = '23.0.0'
+    javassistVersion = '3.29.2-GA'
+    mockitoJunit5Version = '4.8.0'
+    jakartaInjectVersion = '2.0.1'
+}
+
+
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    compileOnly(
+            "org.projectlombok:lombok:${lombokVersion}"
+    )
+
+    implementation(
+            "org.jetbrains:annotations:${jetbrainsAnnotationVersion}",
+            "jakarta.inject:jakarta.inject-api:${jakartaInjectVersion}"
+    )
+
+    annotationProcessor(
+            "org.projectlombok:lombok:${lombokVersion}"
+    )
+
+/**************************************************  TEST  ************************************************************/
+
+    testCompileOnly(
+            "org.projectlombok:lombok:${lombokVersion}"
+    )
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+
+    testImplementation(
+            "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
+            "jakarta.inject:jakarta.inject-tck:${jakartaInjectVersion}"
+    )
+
+    testAnnotationProcessor(
+            "org.projectlombok:lombok:${lombokVersion}"
+    )
+
+
 }
 
 test {

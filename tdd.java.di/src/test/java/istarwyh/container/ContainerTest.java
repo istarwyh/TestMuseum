@@ -1,5 +1,7 @@
 package istarwyh.container;
 
+import jakarta.inject.Inject;
+import lombok.Getter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -31,14 +33,23 @@ public class ContainerTest {
 
         @Nested
         class ConstructorInjection{
-            // TODO No args
             @Test
-            void should_bind_type_to_a_instance_with_default_constructor(){
+            void should_bind_type_to_a_class_with_default_constructor(){
                 context.bind(Component.class,ComponentWithNoArgsConstructor.class);
                 Component instance = context.get(Component.class);
                 assertNotNull(instance);
             }
-            // TODO args
+            @Test
+            void should_bind_type_to_a_class_with_injected_constructor(){
+                context.bind(Component.class,ComponentWithInjectConstructor.class);
+                Dependency dependency = new Dependency() {};
+                context.bind(Dependency.class, dependency);
+
+                Component instance = context.get(Component.class);
+                assertNotNull(instance);
+                assertSame(dependency,((ComponentWithInjectConstructor)instance).dependency());
+            }
+
             // TODO A->B->C
 
         }
@@ -57,8 +68,16 @@ public class ContainerTest {
 }
 
 interface Component{}
+interface Dependency{}
 
 class ComponentWithNoArgsConstructor implements Component{
     public ComponentWithNoArgsConstructor() {
+    }
+}
+
+record ComponentWithInjectConstructor(@Getter Dependency dependency) implements Component {
+
+    @Inject
+    ComponentWithInjectConstructor {
     }
 }
