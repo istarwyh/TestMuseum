@@ -10,10 +10,20 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class JsonFileArgumentsProviderTest {
+
+    @ParameterizedTest
+    @CsvSource(value = {
+            "1,2",
+            "3,4"
+    })
+    void should_show_how_to_parse_multi_args_with_csv(Integer in,Integer out){
+        assertEquals(out,in + 1);
+    }
 
     @ParameterizedTest
     @JsonFileSource(type = TestCase.class,resources = {"/list.json"})
@@ -22,34 +32,19 @@ class JsonFileArgumentsProviderTest {
         assertEquals("[3,4,5]",testCase.output.toString());
     }
 
-    @Test
-    void should_1(){
-        TypeReference<TestCase<List<Integer>, List<Integer>>> typeReference = new TypeReference<>() {};
-        var testCase = typeReference.parseObject("{\"in\":[1,2,3],'out':[3,4,5]}");
-        System.out.println(testCase.input.toString());
-        System.out.println(testCase.output.toString());
-        String s = JSON.toJSONString(typeReference);
-        System.out.println(s);
-        JSONObject newType = JSON.parseObject(s);
-        
+    @ParameterizedTest
+    @JsonFileSource(type = TestCase.class,resources = {"/list.json","/list.json"})
+    void should_parse_multi_List_with_Integer_type_test_case(TestCase<List<Integer>,List<Integer>> testCase){
+        assertEquals(1,testCase.input.get(0));
+        assertEquals(5,testCase.output.get(2));
     }
 
     @ParameterizedTest
-    @CsvSource(value = {
-            "1,2",
-            "3,4"
-    })
-    void should_csv(Integer in,Integer out){
-        System.out.println(in.toString());
-        System.out.println(out.toString());
+    @JsonFileSource(type = TestCase.class,resources = {"/map.json"})
+    void should_parse_Map_type_test_case(TestCase<Map<String,Integer>,Map<String,Integer>> testCase){
+        assertEquals(1,testCase.input.get("key1"));
+        assertEquals(2,testCase.output.get("key2"));
     }
 
-    @ParameterizedTest
-    @CsvSource(value = {
-            "1,2",
-            "3,4"
-    })
-    void should_csv2(Integer in){
-        System.out.println(in.toString());
-    }
+
 }
