@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="Add: common module">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/provider/JsonFileArgumentsProviderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/provider/JsonFileArgumentsProviderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/resources/list.json" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/resources/list.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,8 +127,8 @@
       <recent name="istarwyh.junit5.extension" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.JsonFileArgumentsProviderTest.should_show_hot_parse_multi_args_with_csv">
-    <configuration name="JsonFileArgumentsProviderTest.should_" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.JsonFileArgumentsProviderTest">
+    <configuration name="JsonFileArgumentsProviderTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -141,7 +141,7 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.provider.JsonFileArgumentsProviderTest.should_&quot;" />
+            <option value="&quot;istarwyh.provider.JsonFileArgumentsProviderTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -151,7 +151,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="JsonFileArgumentsProviderTest.should_parse_List_type_test_case" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="JsonFileArgumentsProviderTest.should_parse_Map_type_test_case" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -164,7 +164,7 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.provider.JsonFileArgumentsProviderTest.should_parse_List_type_test_case&quot;" />
+            <option value="&quot;istarwyh.provider.JsonFileArgumentsProviderTest.should_parse_Map_type_test_case&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -174,7 +174,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="JsonFileArgumentsProviderTest.should_parse_multi_List_type_test_case" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="JsonFileArgumentsProviderTest.should_parse_Map_type_test_case_with_direct_address" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -187,7 +187,7 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.provider.JsonFileArgumentsProviderTest.should_parse_multi_List_type_test_case&quot;" />
+            <option value="&quot;istarwyh.provider.JsonFileArgumentsProviderTest.should_parse_Map_type_test_case_with_direct_address&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -197,7 +197,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="JsonFileArgumentsProviderTest.should_parse_multi_List_with_String_type_test_case" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="JsonFileArgumentsProviderTest.should_parse_multi_List_with_Integer_type_test_case" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -210,7 +210,7 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.provider.JsonFileArgumentsProviderTest.should_parse_multi_List_with_String_type_test_case&quot;" />
+            <option value="&quot;istarwyh.provider.JsonFileArgumentsProviderTest.should_parse_multi_List_with_Integer_type_test_case&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -245,11 +245,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.JsonFileArgumentsProviderTest" />
+        <item itemvalue="Gradle.JsonFileArgumentsProviderTest.should_parse_Map_type_test_case_with_direct_address" />
+        <item itemvalue="Gradle.JsonFileArgumentsProviderTest.should_parse_Map_type_test_case" />
+        <item itemvalue="Gradle.JsonFileArgumentsProviderTest.should_parse_multi_List_with_Integer_type_test_case" />
         <item itemvalue="Gradle.JsonFileArgumentsProviderTest.should_show_hot_parse_multi_args_with_csv" />
-        <item itemvalue="Gradle.JsonFileArgumentsProviderTest.should_parse_multi_List_with_String_type_test_case" />
-        <item itemvalue="Gradle.JsonFileArgumentsProviderTest.should_parse_multi_List_type_test_case" />
-        <item itemvalue="Gradle.JsonFileArgumentsProviderTest.should_parse_List_type_test_case" />
-        <item itemvalue="Gradle.JsonFileArgumentsProviderTest.should_" />
       </list>
     </recent_temporary>
   </component>
@@ -266,7 +266,7 @@
       <workItem from="1665062518000" duration="237000" />
       <workItem from="1665062765380" duration="664000" />
       <workItem from="1668444987283" duration="12461000" />
-      <workItem from="1670062033021" duration="1814000" />
+      <workItem from="1670062033021" duration="3557000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>

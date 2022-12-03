@@ -5,6 +5,7 @@ import istarwyh.provider.JsonFileArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 
 import java.lang.annotation.*;
+import java.util.List;
 
 @Target({ElementType.ANNOTATION_TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
@@ -14,5 +15,5 @@ public @interface JsonFileSource {
 
     String[] resources();
 
-    Class<?> type();
+    Class<?> type() default String.class;
 }
