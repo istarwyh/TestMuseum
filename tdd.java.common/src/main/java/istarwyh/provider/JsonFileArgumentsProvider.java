@@ -18,10 +18,13 @@ import java.util.stream.Stream;
 
 import static java.util.Arrays.stream;
 
+/**
+ * @see <a href="https://github.com/joshka/junit-json-params">junit-json-params</a>
+ */
 public class JsonFileArgumentsProvider implements
-        AnnotationConsumer<JsonFileSource>,
-        ArgumentsProvider
-    , ParameterResolver
+        AnnotationConsumer<JsonFileSource>
+        ,ArgumentsProvider
+        ,ParameterResolver
 {
 
     public static final String ADDRESS_DASH = "/";
