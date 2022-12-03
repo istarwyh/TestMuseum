@@ -55,7 +55,9 @@ class JsonFileArgumentsProviderTest {
     @JsonFileSource(type = TestCase.class,resources = {"istarwyh.provider/people_list_testCase.json"})
     void should_parse_People_type_test_case_with_direct_address(TestCase<People,People> testCase){
         assertEquals("lele",testCase.getInput(People.class).name);
+        assertEquals("lele",testCase.getInput(new TypeReference<>() {}).name);
         assertEquals("02",testCase.getOutput(People.class).id);
+        assertEquals("02",testCase.getOutput(new TypeReference<>() {}).id);
     }
 
     @Nested

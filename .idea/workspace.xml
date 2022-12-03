@@ -8,6 +8,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/provider/JsonFileArgumentsProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/provider/JsonFileArgumentsProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/provider/JsonFileArgumentsProviderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/provider/JsonFileArgumentsProviderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/resources/list.json" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh.provider/list.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/resources/list_testCase.json" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh.provider/list_testCase.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/resources/map_testCase.json" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh.provider/map_testCase.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,6 +115,7 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh.provider" />
       <recent name="$PROJECT_DIR$/tdd.java.common/src/main/resources/META-INF/services" />
       <recent name="$PROJECT_DIR$/tdd.java.common/src/main/resources" />
     </key>
@@ -267,7 +271,7 @@
       <workItem from="1665062518000" duration="237000" />
       <workItem from="1665062765380" duration="664000" />
       <workItem from="1668444987283" duration="12461000" />
-      <workItem from="1670062033021" duration="8536000" />
+      <workItem from="1670062033021" duration="8824000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>
