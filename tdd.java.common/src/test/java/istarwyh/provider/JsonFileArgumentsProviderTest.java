@@ -1,18 +1,14 @@
 package istarwyh.provider;
 
-import com.alibaba.fastjson2.JSON;
-import com.alibaba.fastjson2.JSONObject;
-import com.alibaba.fastjson2.TypeReference;
 import istarwyh.junit5.annotation.JsonFileSource;
 import istarwyh.provider.model.TestCase;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class JsonFileArgumentsProviderTest {
 
@@ -46,5 +42,10 @@ class JsonFileArgumentsProviderTest {
         assertEquals(2,testCase.output.get("key2"));
     }
 
-
+    @ParameterizedTest
+    @JsonFileSource(type = TestCase.class,resources = {"map.json"})
+    void should_parse_Map_type_test_case_with_direct_address(TestCase<Map<String,Integer>,Map<String,Integer>> testCase){
+        assertEquals(1,testCase.input.get("key1"));
+        assertEquals(2,testCase.output.get("key2"));
+    }
 }

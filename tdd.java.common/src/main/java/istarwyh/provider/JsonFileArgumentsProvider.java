@@ -24,6 +24,7 @@ public class JsonFileArgumentsProvider implements
     , ParameterResolver
 {
 
+    public static final String ADDRESS_DASH = "/";
     private final BiFunction<Class<?>, String, InputStream> inputStreamProvider;
 
     private String[] resources;
@@ -46,8 +47,18 @@ public class JsonFileArgumentsProvider implements
 
     @Override
     public void accept(JsonFileSource jsonFileSource) {
-        resources = jsonFileSource.resources();
+        resources = getResources(jsonFileSource);
         type = jsonFileSource.type();
+    }
+
+    private static String[] getResources(JsonFileSource jsonFileSource) {
+        String[] resources = jsonFileSource.resources();
+        for(int i =0; i < resources.length; i++){
+            if(!resources[i].startsWith(ADDRESS_DASH)){
+                resources[i] = ADDRESS_DASH + resources[i];
+            }
+        }
+        return resources;
     }
 
     @Override
