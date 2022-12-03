@@ -1,7 +1,7 @@
 package istarwyh.junit5.extension;
 
 import istarwyh.classloader.model.CannotInitialDueToLoadingClassError;
-import istarwyh.classloader.model.CannotInitialDueToPrivateConstructor;
+import istarwyh.classloader.model.CannotInitialLackMatchedConstructor;
 import istarwyh.classloader.model.CannotInitialFromConstructor;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
@@ -15,9 +15,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.*;
 
-@ExtendWith(InitialExtension.class)
-@ExtendWith(MockitoExtension.class)
-public class GeekTest {
+@ExtendWith({InitialExtension.class,MockitoExtension.class})
+public class InitialExtensionTest {
 
     @Test
     @SneakyThrows
@@ -34,7 +33,7 @@ public class GeekTest {
         // The following statement cannot show what happen using no args constructor what is absent originally,
         // because the compiler will prevent this.
         var cannotInitialDueToPrivateConstructor =
-                spy(unsafe().allocateInstance(CannotInitialDueToPrivateConstructor.class));
+                spy(unsafe().allocateInstance(CannotInitialLackMatchedConstructor.class));
         doReturn("I am mock").when(cannotInitialDueToPrivateConstructor).toString();
         assertEquals("I am mock",cannotInitialDueToPrivateConstructor.toString());
     }

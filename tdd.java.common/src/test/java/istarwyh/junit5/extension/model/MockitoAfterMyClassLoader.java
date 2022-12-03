@@ -1,4 +1,4 @@
-package istarwyh.classloader.model;
+package istarwyh.junit5.extension.model;
 
 public class MockitoAfterMyClassLoader {
 

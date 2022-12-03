@@ -31,11 +31,12 @@ ext {
     junitPlatformVersion = '1.0.0'
     lombokVersion = '1.18.24'
     slf4jVersion = '1.7.36'
-    logbackClassicVersion = '1.4.1'
+    logbackClassicVersion = '1.4.4'
     jetbrainsAnnotationVersion = '23.0.0'
     javassistVersion = '3.29.2-GA'
     istarwyhInitialVersion = '0.2.7'
     mockitoJunit5Version = '4.8.0'
+    fastjson2Version = '2.0.20'
 }
 
 
@@ -54,7 +55,8 @@ dependencies {
             "org.javassist:javassist:${javassistVersion}",
             "com.github.istarwyh:Initial:${istarwyhInitialVersion}",
             "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
-
+            "org.junit.jupiter:junit-jupiter-params:${junitVersion}",
+            "com.alibaba.fastjson2:fastjson2:${fastjson2Version}"
     )
 
     annotationProcessor(
