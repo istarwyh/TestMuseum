@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="Add: common module">
-      <change afterPath="$PROJECT_DIR$/tdd.java.algorithm/src/main/java/istarwyh/data_structure/MyStack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.java.algorithm/src/main/java/istarwyh/data_structure/UnderFlowException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.java.algorithm/src/test/java/istarwyh/data_structure/Stack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.algorithm/src/main/java/istarwyh/data_structure/Stack.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/tdd.java.algorithm/src/test/java/istarwyh/data_structure/StackTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.algorithm/src/test/java/istarwyh/data_structure/StackTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,6 +90,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "jdk.selected.JAVA_MODULE": "jbr-17",
+    "last_directory_selection": "/Users/mac/Desktop/code-open/TestMuseum/tdd.java.algorithm/src/test/java/istarwyh/data_structure",
     "last_opened_file_path": "/Users/mac/Desktop/code-open/TestMuseum/tdd.java.common/src/test/resources/istarwyh.provider",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Project",
@@ -179,7 +180,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ThenPop.after_pushing_x_and_y_will_pop_y_then_x" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ThenPopping.after_pushing_x_then_y_will_pop_y_then_x" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -192,7 +193,7 @@
           <list>
             <option value=":tdd.java.algorithm:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.data_structure.StackTest$whenNew$AfterPushing$ThenPop.after_pushing_x_and_y_will_pop_y_then_x&quot;" />
+            <option value="&quot;istarwyh.data_structure.StackTest$whenNew$AfterPushing$ThenPopping.after_pushing_x_then_y_will_pop_y_then_x&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -202,7 +203,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ThenPop.after_pushing_x_will_pop_x" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ThenPopping.after_pushing_x_will_pop_x" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -215,7 +216,7 @@
           <list>
             <option value=":tdd.java.algorithm:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.data_structure.StackTest$whenNew$AfterPushing$ThenPop.after_pushing_x_will_pop_x&quot;" />
+            <option value="&quot;istarwyh.data_structure.StackTest$whenNew$AfterPushing$ThenPopping.after_pushing_x_will_pop_x&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -225,7 +226,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ThenPop.return_the_same_when_popped_after_pushing" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ThenPopping.should_be_empty_if_pushing_x_then_popping" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -238,7 +239,7 @@
           <list>
             <option value=":tdd.java.algorithm:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.data_structure.StackTest$whenNew$AfterPushing$ThenPop.return_the_same_when_popped_after_pushing&quot;" />
+            <option value="&quot;istarwyh.data_structure.StackTest$whenNew$AfterPushing$ThenPopping.should_be_empty_if_pushing_x_then_popping&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -251,10 +252,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.StackTest" />
-        <item itemvalue="Gradle.ThenPop.after_pushing_x_and_y_will_pop_y_then_x" />
-        <item itemvalue="Gradle.ThenPop.after_pushing_x_will_pop_x" />
         <item itemvalue="Gradle.AfterPushing" />
-        <item itemvalue="Gradle.ThenPop.return_the_same_when_popped_after_pushing" />
+        <item itemvalue="Gradle.ThenPopping.after_pushing_x_then_y_will_pop_y_then_x" />
+        <item itemvalue="Gradle.ThenPopping.after_pushing_x_will_pop_x" />
+        <item itemvalue="Gradle.ThenPopping.should_be_empty_if_pushing_x_then_popping" />
       </list>
     </recent_temporary>
   </component>
@@ -271,7 +272,7 @@
       <workItem from="1665062518000" duration="237000" />
       <workItem from="1665062765380" duration="664000" />
       <workItem from="1668444987283" duration="12461000" />
-      <workItem from="1670062033021" duration="20964000" />
+      <workItem from="1670062033021" duration="23780000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>
