@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="Add: common module">
+      <change afterPath="$PROJECT_DIR$/tdd.java.algorithm/src/main/java/istarwyh/data_structure/Stack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.java.algorithm/src/test/java/istarwyh/data_structure/StackTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/provider/JsonFileArgumentsProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/provider/JsonFileArgumentsProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/provider/JsonFileArgumentsProviderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/provider/JsonFileArgumentsProviderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/resources/list.json" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh.provider/list.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/resources/list_testCase.json" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh.provider/list_testCase.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/resources/map_testCase.json" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh.provider/map_testCase.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,6 +99,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="istarwyh.data_structure" />
+      <recent name="istarwyh.leetcode.data_structure" />
       <recent name="istarwyh.container" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -132,8 +131,8 @@
       <recent name="istarwyh.junit5.extension" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.JsonFileArgumentsProviderTest">
-    <configuration name="JsonFileArgumentsProviderTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.StackTest">
+    <configuration name="AfterPushing" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -144,9 +143,9 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":tdd.java.common:test" />
+            <option value=":tdd.java.algorithm:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.provider.JsonFileArgumentsProviderTest&quot;" />
+            <option value="&quot;istarwyh.data_structure.StackTest$whenNew$AfterPushing&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -156,7 +155,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="JsonFileArgumentsProviderTest.should_parse_Map_type_test_case" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="StackTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -167,9 +166,9 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":tdd.java.common:test" />
+            <option value=":tdd.java.algorithm:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.provider.JsonFileArgumentsProviderTest.should_parse_Map_type_test_case&quot;" />
+            <option value="&quot;istarwyh.data_structure.StackTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -179,7 +178,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="JsonFileArgumentsProviderTest.should_parse_Map_type_test_case_with_direct_address" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ThenPop.after_pushing_x_and_y_will_pop_y_then_x" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -190,9 +189,9 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":tdd.java.common:test" />
+            <option value=":tdd.java.algorithm:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.provider.JsonFileArgumentsProviderTest.should_parse_Map_type_test_case_with_direct_address&quot;" />
+            <option value="&quot;istarwyh.data_structure.StackTest$whenNew$AfterPushing$ThenPop.after_pushing_x_and_y_will_pop_y_then_x&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -202,7 +201,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="JsonFileArgumentsProviderTest.should_parse_People_type_test_case_with_direct_address" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ThenPop.after_pushing_x_will_pop_x" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -213,9 +212,9 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":tdd.java.common:test" />
+            <option value=":tdd.java.algorithm:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.provider.JsonFileArgumentsProviderTest.should_parse_People_type_test_case_with_direct_address&quot;" />
+            <option value="&quot;istarwyh.data_structure.StackTest$whenNew$AfterPushing$ThenPop.after_pushing_x_will_pop_x&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -225,7 +224,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="defaultParseLackType.should_parse_default_test_case" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ThenPop.return_the_same_when_popped_after_pushing" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -236,9 +235,9 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":tdd.java.common:test" />
+            <option value=":tdd.java.algorithm:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.provider.JsonFileArgumentsProviderTest$defaultParseLackType.should_parse_default_test_case&quot;" />
+            <option value="&quot;istarwyh.data_structure.StackTest$whenNew$AfterPushing$ThenPop.return_the_same_when_popped_after_pushing&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -250,11 +249,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.JsonFileArgumentsProviderTest" />
-        <item itemvalue="Gradle.JsonFileArgumentsProviderTest.should_parse_People_type_test_case_with_direct_address" />
-        <item itemvalue="Gradle.defaultParseLackType.should_parse_default_test_case" />
-        <item itemvalue="Gradle.JsonFileArgumentsProviderTest.should_parse_Map_type_test_case_with_direct_address" />
-        <item itemvalue="Gradle.JsonFileArgumentsProviderTest.should_parse_Map_type_test_case" />
+        <item itemvalue="Gradle.StackTest" />
+        <item itemvalue="Gradle.ThenPop.after_pushing_x_and_y_will_pop_y_then_x" />
+        <item itemvalue="Gradle.ThenPop.after_pushing_x_will_pop_x" />
+        <item itemvalue="Gradle.AfterPushing" />
+        <item itemvalue="Gradle.ThenPop.return_the_same_when_popped_after_pushing" />
       </list>
     </recent_temporary>
   </component>
@@ -271,7 +270,7 @@
       <workItem from="1665062518000" duration="237000" />
       <workItem from="1665062765380" duration="664000" />
       <workItem from="1668444987283" duration="12461000" />
-      <workItem from="1670062033021" duration="8824000" />
+      <workItem from="1670062033021" duration="19560000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>
