@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="Add: common module">
-      <change afterPath="$PROJECT_DIR$/tdd.java.algorithm/src/main/java/istarwyh/data_structure/Stack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.algorithm/src/test/java/istarwyh/data_structure/StackTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.java.algorithm/src/main/java/istarwyh/data_structure/MyStack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.algorithm/src/main/java/istarwyh/data_structure/Stack.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.algorithm/src/test/java/istarwyh/data_structure/StackTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.algorithm/src/test/java/istarwyh/data_structure/StackTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -270,7 +271,7 @@
       <workItem from="1665062518000" duration="237000" />
       <workItem from="1665062765380" duration="664000" />
       <workItem from="1668444987283" duration="12461000" />
-      <workItem from="1670062033021" duration="19560000" />
+      <workItem from="1670062033021" duration="20964000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>
