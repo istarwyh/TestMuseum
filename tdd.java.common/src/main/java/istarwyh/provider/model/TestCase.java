@@ -17,6 +17,12 @@ public class TestCase<IN, OUT> {
      */
     private OUT output;
 
+    public TestCase() {}
+
+    public TestCase(IN input, OUT output) {
+        this.input = input;
+        this.output = output;
+    }
 
     /**
      *
