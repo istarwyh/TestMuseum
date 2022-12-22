@@ -6,11 +6,12 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.concurrent.ExecutionException;
 
+import static java.time.Instant.*;
 import static java.util.concurrent.CompletableFuture.allOf;
 import static java.util.concurrent.CompletableFuture.runAsync;
 
 @Slf4j
-public class Parallel {
+public class ParallelShowWithSleep {
 
     void sleep200() {
         run(sleep(200));
@@ -34,10 +35,10 @@ public class Parallel {
         };
     }
 
-    private void run(Runnable runnable) {
-        Instant start = Instant.now();
+    public static void run(Runnable runnable) {
+        Instant start = now();
         runnable.run();
-        Instant end = Instant.now();
+        Instant end = now();
         log.info(Thread.currentThread().getName() + " ------------------------ " +
                 "I have run "+ Duration.between(start,end).toMillis() + " ms");
     }

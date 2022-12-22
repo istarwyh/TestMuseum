@@ -8,25 +8,25 @@ import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
 
 @Slf4j
-class ParallelTest {
+class ParallelShowWithSleepTest {
 
-    private Parallel parallel;
+    private ParallelShowWithSleep parallelShowWithSleep;
 
     @BeforeEach
     void setUp() {
-        parallel = new Parallel();
+        parallelShowWithSleep = new ParallelShowWithSleep();
     }
 
     @RepeatedTest(5) @Execution(ExecutionMode.CONCURRENT)
     void testAsyncConcurrently(TestInfo testInfo){
         testInfo.getTestMethod().ifPresent(it -> log.info(it.getName()));
-        parallel.async();
+        parallelShowWithSleep.async();
     }
 
     @RepeatedTest(5) @Execution(ExecutionMode.SAME_THREAD)
     void testAsyncWithSameMethod(TestInfo testInfo){
         testInfo.getTestMethod().ifPresent(it -> log.info(it.getName()));
-        parallel.async();
+        parallelShowWithSleep.async();
     }
 
 }

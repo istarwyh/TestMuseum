@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="Add: common module">
+    <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="Add: should_generate_test_case_json_lack_of_it">
+      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ThreadLocalMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/ThreadLocalMapTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/annotation/JsonFileSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/annotation/JsonFileSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/provider/JsonFileArgumentsProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/provider/JsonFileArgumentsProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/provider/model/TestCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/provider/model/TestCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/provider/JsonFileArgumentsProviderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/provider/JsonFileArgumentsProviderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh.provider/list.json" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh/provider/list.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh.provider/list_testCase.json" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh/provider/list_testCase.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh.provider/map_testCase.json" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh/provider/map_testCase.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh.provider/people_list_testCase.json" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh/provider/people_list_testCase.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/Parallel.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ParallelShowWithSleep.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/ParallelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/ParallelShowWithSleepTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,8 +53,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="AnnotationType" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -130,8 +126,8 @@
       <recent name="istarwyh.provider" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="istarwyh.provider" />
       <recent name="istarwyh.util" />
+      <recent name="istarwyh.provider" />
       <recent name="istarwyh.junit5.extension" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -139,31 +135,8 @@
       <recent name="istarwyh.junit5.extension" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.JsonFileArgumentsProviderTest.should_parse_List_type_test_case">
-    <configuration name="AfterPushing" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":tdd.java.algorithm:test" />
-            <option value="--tests" />
-            <option value="&quot;istarwyh.data_structure.StackTest$whenNew$AfterPushing&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="JsonFileArgumentsProviderTest.openInputStream" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.ThreadLocalMapTest.should__share_thread_local_map_in_the_same_thread">
+    <configuration name="ThreadLocalMapTest.should__share_thread_local_map_in_the_same_thread" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -176,7 +149,7 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.provider.JsonFileArgumentsProviderTest.openInputStream&quot;" />
+            <option value="&quot;istarwyh.util.ThreadLocalMapTest.should__share_thread_local_map_in_the_same_thread&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -186,7 +159,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="JsonFileArgumentsProviderTest.should_parse_List_type_test_case" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ThreadLocalMapTest.should_not_share_thread_local_map_in_different_threads" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -199,7 +172,7 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.provider.JsonFileArgumentsProviderTest.should_parse_List_type_test_case&quot;" />
+            <option value="&quot;istarwyh.util.ThreadLocalMapTest.should_not_share_thread_local_map_in_different_threads&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -209,7 +182,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="StackTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ThreadLocalMapTest.should_not_share_thread_local_map_in_multi_times_same_thread" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -220,9 +193,9 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":tdd.java.algorithm:test" />
+            <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.data_structure.StackTest&quot;" />
+            <option value="&quot;istarwyh.util.ThreadLocalMapTest.should_not_share_thread_local_map_in_multi_times_same_thread&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -232,7 +205,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ThenPopping.after_pushing_x_then_y_will_pop_y_then_x" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ThreadLocalMapTest.should_not_share_thread_local_map_in_same_thread" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -243,9 +216,32 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":tdd.java.algorithm:test" />
+            <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.data_structure.StackTest$whenNew$AfterPushing$ThenPopping.after_pushing_x_then_y_will_pop_y_then_x&quot;" />
+            <option value="&quot;istarwyh.util.ThreadLocalMapTest.should_not_share_thread_local_map_in_same_thread&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="ThreadLocalMapTest.should_share_static_map_in_different_threads" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":tdd.java.common:test" />
+            <option value="--tests" />
+            <option value="&quot;istarwyh.util.ThreadLocalMapTest.should_share_static_map_in_different_threads&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -257,11 +253,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.JsonFileArgumentsProviderTest.should_parse_List_type_test_case" />
-        <item itemvalue="Gradle.JsonFileArgumentsProviderTest.openInputStream" />
-        <item itemvalue="Gradle.StackTest" />
-        <item itemvalue="Gradle.AfterPushing" />
-        <item itemvalue="Gradle.ThenPopping.after_pushing_x_then_y_will_pop_y_then_x" />
+        <item itemvalue="Gradle.ThreadLocalMapTest.should__share_thread_local_map_in_the_same_thread" />
+        <item itemvalue="Gradle.ThreadLocalMapTest.should_not_share_thread_local_map_in_same_thread" />
+        <item itemvalue="Gradle.ThreadLocalMapTest.should_not_share_thread_local_map_in_multi_times_same_thread" />
+        <item itemvalue="Gradle.ThreadLocalMapTest.should_not_share_thread_local_map_in_different_threads" />
+        <item itemvalue="Gradle.ThreadLocalMapTest.should_share_static_map_in_different_threads" />
       </list>
     </recent_temporary>
   </component>
@@ -279,7 +275,7 @@
       <workItem from="1665062765380" duration="664000" />
       <workItem from="1668444987283" duration="12461000" />
       <workItem from="1670062033021" duration="24545000" />
-      <workItem from="1671207092067" duration="7267000" />
+      <workItem from="1671207092067" duration="14655000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>
@@ -288,7 +284,21 @@
       <option name="project" value="LOCAL" />
       <updated>1665063158890</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add: common module">
+      <created>1671339546263</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1671339546263</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add: should_generate_test_case_json_lack_of_it">
+      <created>1671339604767</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1671339604767</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,7 +329,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add: common module" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add: common module" />
+    <MESSAGE value="Add: should_generate_test_case_json_lack_of_it" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add: should_generate_test_case_json_lack_of_it" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -328,16 +339,6 @@
           <url>file://$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/classloader/modifier/impl/CannotInitialByLoadingClassErrorModifier.java</url>
           <line>14</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-params/5.9.0/90177afa01c4b718dd91c27bdc91cb1062e640af/junit-jupiter-params-5.9.0-sources.jar!/org/junit/jupiter/params/provider/CsvArgumentsProvider.java</url>
-          <line>57</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-params/5.9.0/90177afa01c4b718dd91c27bdc91cb1062e640af/junit-jupiter-params-5.9.0-sources.jar!/org/junit/jupiter/params/provider/CsvArgumentsProvider.java</url>
-          <line>85</line>
-          <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>jrt:///Applications/IntelliJ IDEA.app/Contents/jbr/Contents/Home!/java.base/java/io/File.class</url>
