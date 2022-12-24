@@ -1,9 +1,9 @@
-package istarwyh.provider;
+package istarwyh.junit5.provider;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONReader;
 import istarwyh.junit5.annotation.JsonFileSource;
-import istarwyh.provider.model.TestCase;
+import istarwyh.junit5.provider.model.TestCase;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ParameterContext;
