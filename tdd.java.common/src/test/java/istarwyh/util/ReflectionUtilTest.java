@@ -22,7 +22,7 @@ class ReflectionUtilTest {
     void should_throw_exception_if_setting_static_field() {
         String value = "island";
         assertThrows(NoSuchFieldException.class,
-                () -> ReflectionUtil.setField(whoIAm,"address", value)
+                () -> ReflectionUtil.setField(whoIAm,"country", value)
         );
     }
 
@@ -43,11 +43,17 @@ class ReflectionUtilTest {
         assertEquals(value,heart);
     }
 
+    @Test
+    void should_get_static_field_value(){
+        String country = ReflectionUtil.getField(whereIGo, "country");
+        assertEquals("wuwei",country);
+    }
+
     public static class WhoIAm{
 
         private String name;
 
-        private static String country;
+        private static String country = "wuwei";
 
         private final String heart = "died";
     }

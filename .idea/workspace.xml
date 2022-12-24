@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="Add: should_generate_test_case_json_lack_of_it">
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/system/MySystemPropertyTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/ReflectionUtilTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ReflectionUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ReflectionUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/ReflectionUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/ReflectionUtilTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,8 +133,8 @@
       <recent name="istarwyh.junit5.extension" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ReflectionUtilTest.should_set_static_field_and_get_it">
-    <configuration name="MySystemPropertyTest.test" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.ReflectionUtilTest">
+    <configuration name="ReflectionUtilTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -149,7 +147,7 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.system.MySystemPropertyTest.test&quot;" />
+            <option value="&quot;istarwyh.util.ReflectionUtilTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -159,7 +157,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ReflectionUtilTest.setField" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ReflectionUtilTest.should_set_final_field_and_get_it" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -172,7 +170,30 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.util.ReflectionUtilTest.setField&quot;" />
+            <option value="&quot;istarwyh.util.ReflectionUtilTest.should_set_final_field_and_get_it&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="ReflectionUtilTest.should_set_parent_final_field_and_get_it" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":tdd.java.common:test" />
+            <option value="--tests" />
+            <option value="&quot;istarwyh.util.ReflectionUtilTest.should_set_parent_final_field_and_get_it&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -205,7 +226,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ThreadLocalMapTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ReflectionUtilTest.should_throw_exception_if_setting_static_field" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -218,30 +239,7 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.util.ThreadLocalMapTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="ThreadLocalMapTest.should_share_static_map_in_different_threads" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":tdd.java.common:test" />
-            <option value="--tests" />
-            <option value="&quot;istarwyh.util.ThreadLocalMapTest.should_share_static_map_in_different_threads&quot;" />
+            <option value="&quot;istarwyh.util.ReflectionUtilTest.should_throw_exception_if_setting_static_field&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -253,11 +251,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.ReflectionUtilTest" />
+        <item itemvalue="Gradle.ReflectionUtilTest.should_set_parent_final_field_and_get_it" />
+        <item itemvalue="Gradle.ReflectionUtilTest.should_set_final_field_and_get_it" />
+        <item itemvalue="Gradle.ReflectionUtilTest.should_throw_exception_if_setting_static_field" />
         <item itemvalue="Gradle.ReflectionUtilTest.should_set_static_field_and_get_it" />
-        <item itemvalue="Gradle.ReflectionUtilTest.setField" />
-        <item itemvalue="Gradle.MySystemPropertyTest.test" />
-        <item itemvalue="Gradle.ThreadLocalMapTest" />
-        <item itemvalue="Gradle.ThreadLocalMapTest.should_share_static_map_in_different_threads" />
       </list>
     </recent_temporary>
   </component>
@@ -275,7 +273,7 @@
       <workItem from="1665062765380" duration="664000" />
       <workItem from="1668444987283" duration="12461000" />
       <workItem from="1670062033021" duration="24545000" />
-      <workItem from="1671207092067" duration="19144000" />
+      <workItem from="1671207092067" duration="21051000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>

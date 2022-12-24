@@ -8,8 +8,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
-import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 import static istarwyh.util.UnsafeUntil.unsafe;
 
@@ -23,41 +23,43 @@ public class ReflectionUtil {
 
     /**
      *
-     * @param object object
+     * @param modifiedObj modifiedObj
      * @param fieldName including final field, not null or static field
      * @param value value
      */
-    public static void setField(Object object,String fieldName,Object value) throws NoSuchFieldException {
-        Field foundField = findFieldInHierarchy(object,fieldName);
-        setField(object,foundField,value);
+    public static void setField(Object modifiedObj,String fieldName,Object value) throws NoSuchFieldException {
+        Field foundField = findFieldInHierarchy(modifiedObj,fieldName, field -> hasFieldProperModifier(modifiedObj, field));
+        setField(modifiedObj,foundField,value);
     }
 
     @SneakyThrows
     public static <T> T getField(Object object,String fieldName){
-        Field foundField = findFieldInHierarchy(object,fieldName);
+        Field foundField = findFieldInHierarchy(object,fieldName,anyField -> true);
         return (T)foundField.get(object);
     }
 
-    private static Field findFieldInHierarchy(Object object, String fieldName) throws NoSuchFieldException {
-        if(object == null){
-            throw new IllegalArgumentException("The object containing the field cannot be null!");
+    private static Field findFieldInHierarchy(Object modifiedObj, String fieldName,
+                                              @NotNull Predicate<Field> fieldPredicate) throws NoSuchFieldException {
+        if(modifiedObj == null){
+            throw new IllegalArgumentException("The modifiedObj containing the field cannot be null!");
         }
-        Class<?> startClass = getClassOf(object);
-        Field foundField = findField(object,fieldName,startClass)
+        Class<?> startClass = getClassOf(modifiedObj);
+        Field foundField = findField(fieldName,startClass)
+                .filter(fieldPredicate)
                 .orElseThrow(() -> new NoSuchFieldException(String.format(
                         "No %s field named \"%s\" could be found in the \"%s\" class hierarchy",
-                        isClass(object) ? "static" : "instance",fieldName,startClass.getName()
+                        isClass(modifiedObj) ? "static" : "instance",fieldName,startClass.getName()
                 )));
         foundField.setAccessible(true);
         return foundField;
     }
 
-    private static Optional<Field> findField(Object object, String fieldName, Class<?> startClass) {
+    private static Optional<Field> findField(String fieldName, Class<?> startClass) {
         Field foundField = null;
         while (startClass != null){
             Field[] declaredFields = startClass.getDeclaredFields();
             for(var field : declaredFields){
-                if(fieldName.equals(field.getName()) && hasFieldProperModifier(object,field)){
+                if(fieldName.equals(field.getName())){
                     if(foundField != null){
                         throw new IllegalStateException("Two or more field matching " + fieldName + ".");
                     }
