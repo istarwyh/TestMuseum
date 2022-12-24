@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="Add: should_generate_test_case_json_lack_of_it">
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ThreadLocalMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/ThreadLocalMapTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/system/MySystemPropertyTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/ReflectionUtilTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/Parallel.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ParallelShowWithSleep.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/ParallelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/ParallelShowWithSleepTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ReflectionUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ReflectionUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,6 +126,7 @@
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="istarwyh.util" />
+      <recent name="istarwyh.system" />
       <recent name="istarwyh.provider" />
       <recent name="istarwyh.junit5.extension" />
     </key>
@@ -135,8 +135,8 @@
       <recent name="istarwyh.junit5.extension" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ThreadLocalMapTest.should__share_thread_local_map_in_the_same_thread">
-    <configuration name="ThreadLocalMapTest.should__share_thread_local_map_in_the_same_thread" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.ReflectionUtilTest.should_set_static_field_and_get_it">
+    <configuration name="MySystemPropertyTest.test" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -149,7 +149,7 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.util.ThreadLocalMapTest.should__share_thread_local_map_in_the_same_thread&quot;" />
+            <option value="&quot;istarwyh.system.MySystemPropertyTest.test&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -159,7 +159,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ThreadLocalMapTest.should_not_share_thread_local_map_in_different_threads" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ReflectionUtilTest.setField" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -172,7 +172,7 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.util.ThreadLocalMapTest.should_not_share_thread_local_map_in_different_threads&quot;" />
+            <option value="&quot;istarwyh.util.ReflectionUtilTest.setField&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -182,7 +182,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ThreadLocalMapTest.should_not_share_thread_local_map_in_multi_times_same_thread" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ReflectionUtilTest.should_set_static_field_and_get_it" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -195,7 +195,7 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.util.ThreadLocalMapTest.should_not_share_thread_local_map_in_multi_times_same_thread&quot;" />
+            <option value="&quot;istarwyh.util.ReflectionUtilTest.should_set_static_field_and_get_it&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -205,7 +205,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ThreadLocalMapTest.should_not_share_thread_local_map_in_same_thread" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ThreadLocalMapTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -218,7 +218,7 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.util.ThreadLocalMapTest.should_not_share_thread_local_map_in_same_thread&quot;" />
+            <option value="&quot;istarwyh.util.ThreadLocalMapTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -253,10 +253,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.ThreadLocalMapTest.should__share_thread_local_map_in_the_same_thread" />
-        <item itemvalue="Gradle.ThreadLocalMapTest.should_not_share_thread_local_map_in_same_thread" />
-        <item itemvalue="Gradle.ThreadLocalMapTest.should_not_share_thread_local_map_in_multi_times_same_thread" />
-        <item itemvalue="Gradle.ThreadLocalMapTest.should_not_share_thread_local_map_in_different_threads" />
+        <item itemvalue="Gradle.ReflectionUtilTest.should_set_static_field_and_get_it" />
+        <item itemvalue="Gradle.ReflectionUtilTest.setField" />
+        <item itemvalue="Gradle.MySystemPropertyTest.test" />
+        <item itemvalue="Gradle.ThreadLocalMapTest" />
         <item itemvalue="Gradle.ThreadLocalMapTest.should_share_static_map_in_different_threads" />
       </list>
     </recent_temporary>
@@ -275,7 +275,7 @@
       <workItem from="1665062765380" duration="664000" />
       <workItem from="1668444987283" duration="12461000" />
       <workItem from="1670062033021" duration="24545000" />
-      <workItem from="1671207092067" duration="14655000" />
+      <workItem from="1671207092067" duration="19144000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>
@@ -344,6 +344,16 @@
           <url>jrt:///Applications/IntelliJ IDEA.app/Contents/jbr/Contents/Home!/java.base/java/io/File.class</url>
           <line>460</line>
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ReflectionUtil.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ReflectionUtil.java</url>
+          <line>78</line>
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

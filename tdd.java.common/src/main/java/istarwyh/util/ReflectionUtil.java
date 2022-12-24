@@ -8,6 +8,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static istarwyh.util.UnsafeUntil.unsafe;
@@ -15,27 +16,35 @@ import static istarwyh.util.UnsafeUntil.unsafe;
 
 /**
  * This class is changed from WhileBox in PowerMock.
+ * The class can set instance field,including final field, not null or static field
+ * @see <a href=https://www.baeldung.com/mockito-mock-static-methods>Mockito#mockStatic</a>
  */
 public class ReflectionUtil {
 
     /**
      *
      * @param object object
-     * @param fieldName including static or final field, not null
+     * @param fieldName including final field, not null or static field
      * @param value value
      */
-    public static void setField(Object object,String fieldName,Object value){
+    public static void setField(Object object,String fieldName,Object value) throws NoSuchFieldException {
         Field foundField = findFieldInHierarchy(object,fieldName);
         setField(object,foundField,value);
     }
 
-    private static Field findFieldInHierarchy(Object object, String fieldName) {
+    @SneakyThrows
+    public static <T> T getField(Object object,String fieldName){
+        Field foundField = findFieldInHierarchy(object,fieldName);
+        return (T)foundField.get(object);
+    }
+
+    private static Field findFieldInHierarchy(Object object, String fieldName) throws NoSuchFieldException {
         if(object == null){
             throw new IllegalArgumentException("The object containing the field cannot be null!");
         }
         Class<?> startClass = getClassOf(object);
         Field foundField = findField(object,fieldName,startClass)
-                .orElseThrow(() -> new RuntimeException(String.format(
+                .orElseThrow(() -> new NoSuchFieldException(String.format(
                         "No %s field named \"%s\" could be found in the \"%s\" class hierarchy",
                         isClass(object) ? "static" : "instance",fieldName,startClass.getName()
                 )));
