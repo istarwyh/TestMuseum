@@ -39,6 +39,8 @@ public class JsonFileArgumentsProvider implements
     private String[] resources;
 
     private Class<?> type;
+    private Class<?> ownClass;
+
 
     JsonFileArgumentsProvider() {
         this(Class::getResourceAsStream);
@@ -56,12 +58,19 @@ public class JsonFileArgumentsProvider implements
 
     @Override
     public void accept(JsonFileSource jsonFileSource) {
+        ownClass = jsonFileSource.of();
         resources = getResources(jsonFileSource);
         type = jsonFileSource.type();
     }
 
-    private static String[] getResources(JsonFileSource jsonFileSource) {
+    private String[] getResources(JsonFileSource jsonFileSource) {
         String[] resources = jsonFileSource.resources();
+        if(!(ownClass == Object.class)){
+            String packageName = ownClass.getPackageName();
+            for(int i = 0; i < resources.length; i++){
+                resources[i] = packageName.replaceAll("\\.",ADDRESS_DASH) + ADDRESS_DASH + resources[i];
+            }
+        }
         for(int i = 0; i < resources.length; i++){
             if(!resources[i].startsWith(ADDRESS_DASH)){
                 resources[i] = ADDRESS_DASH + resources[i];
@@ -84,6 +93,7 @@ public class JsonFileArgumentsProvider implements
         inputStream = inputStreamProvider.apply(testClass, resource);
         if(inputStream == null){
             CompletableFuture<String> resourceFuture = CompletableFuture.supplyAsync(() -> createTestReSource(resource));
+            // avoid too long to end this process by io error
             inputStream = inputStreamProvider.apply(testClass, resourceFuture.get(2, TimeUnit.SECONDS));
         }
         return Preconditions.notNull(inputStream,

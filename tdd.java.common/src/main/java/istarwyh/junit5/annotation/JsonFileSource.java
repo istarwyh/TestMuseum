@@ -14,7 +14,19 @@ import java.lang.annotation.*;
 @ParameterizedTest
 public @interface JsonFileSource {
 
+    /**
+     * The Class of Current Annotation {@link JsonFileSource}
+     */
+    Class<?> of() default Object.class;
+
+    /**
+     * The JsonFile Resource Path in the test/resources
+     */
     String[] resources();
 
+    /**
+     * The parameter class type that jsonFile matches
+     */
     Class<?> type() default TestCase.class;
+
 }

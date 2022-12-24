@@ -29,25 +29,31 @@ class JsonFileArgumentsProviderTest {
         assertEquals("This is your expected output", testCase.getOutput());
     }
 
-    @JsonFileSource(resources = {"/istarwyh/provider/list_testCase.json", "/istarwyh/provider/list_testCase.json"})
+    @JsonFileSource(of = JsonFileArgumentsProviderTest.class,resources = {"absent_test_case.json"})
+    void should_generate_test_case_json_given_ownClass(TestCase<String,String> testCase){
+        assertEquals("This is your input", testCase.getInput());
+        assertEquals("This is your expected output", testCase.getOutput());
+    }
+
+    @JsonFileSource(of = JsonFileArgumentsProviderTest.class, resources = {"list_testCase.json", "list_testCase.json"})
     void should_parse_multi_List_with_Integer_type_test_case(TestCase<List<Integer>,List<Integer>> testCase){
         assertEquals(1,testCase.getInput().get(0));
         assertEquals(5,testCase.getOutput().get(2));
     }
 
-    @JsonFileSource(resources = {"/istarwyh/provider/map_testCase.json"})
+    @JsonFileSource(resources = {"/istarwyh/junit5/provider/map_testCase.json"})
     void should_parse_Map_type_test_case(TestCase<Map<String,Integer>,Map<String,Integer>> testCase){
         assertEquals(1,testCase.getInput().get("key1"));
         assertEquals(2,testCase.getOutput().get("key2"));
     }
 
-    @JsonFileSource(resources = {"istarwyh/provider/map_testCase.json"})
+    @JsonFileSource(resources = {"istarwyh/junit5/provider/map_testCase.json"})
     void should_parse_Map_type_test_case_with_direct_address(TestCase<Map<String,Integer>,Map<String,Integer>> testCase){
         assertEquals(1,testCase.getInput().get("key1"));
         assertEquals(2,testCase.getOutput().get("key2"));
     }
 
-    @JsonFileSource(resources = {"istarwyh/provider/people_list_testCase.json"})
+    @JsonFileSource(resources = {"istarwyh/junit5/provider/people_list_testCase.json"})
     void should_parse_People_type_test_case_with_direct_address(TestCase<People,People> testCase){
         assertEquals("lele",testCase.getInput(People.class).name);
         assertEquals("lele",testCase.getInput(new TypeReference<>() {}).name);
@@ -55,7 +61,7 @@ class JsonFileArgumentsProviderTest {
         assertEquals("02",testCase.getOutput(new TypeReference<>() {}).id);
     }
 
-    @JsonFileSource(type = String.class,resources = {"istarwyh/provider/list.json"})
+    @JsonFileSource(type = String.class,resources = {"istarwyh/junit5/provider/list.json"})
     void should_parse_String_input(String testCase){
         List<People> peopleList = new TypeReference<List<People>>() {}.parseObject(testCase);
         assertEquals("lele",peopleList.get(0).name);
