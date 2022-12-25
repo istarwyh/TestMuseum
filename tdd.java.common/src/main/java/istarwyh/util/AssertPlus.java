@@ -11,35 +11,38 @@ import static org.junit.jupiter.api.Assertions.*;
 public class AssertPlus {
 
     public static void compareFields(Object a, Object b){
-        if(a == null || b == null){
-            assertNull(b);
-            assertNull(a);
-            return;
-        }
-        Field[] fields = a.getClass().getDeclaredFields();
-        for (Field field : fields) {
-            try {
-                Object valueA = ReflectionUtil.getField(a,field.getName());
-                Object valueB = ReflectionUtil.getField(b,field.getName());
-                if (valueA == null || valueB == null){
-                    assertNull(valueB);
-                    assertNull(valueA);
-                }else {
-                    assertSame(valueA.getClass(), valueB.getClass());
-                    if(TypeUtils.isBuiltInType(valueA)){
-                        assertEquals(valueA,valueB);
-                    }else {
-                        AssertPlus.compareFields(valueA,valueB);
-                    }
+        if (eitherNull(a, b)){return;}
+        Class<?> aClass = a.getClass();
+        assertSame(aClass, b.getClass());
+        if(TypeUtil.isBuiltInType(a)) {
+            assertEquals(a, b);
+        }else {
+            Field[] fields = aClass.getDeclaredFields();
+            for (Field field : fields) {
+                try {
+                    String fieldName = field.getName();
+                    Object valueA = ReflectionUtil.getField(a, fieldName);
+                    Object valueB = ReflectionUtil.getField(b, fieldName);
+                    compareFields(valueA,valueB);
+                } catch (NoSuchElementException e) {
+                    throw new RuntimeException(e);
                 }
-            } catch (NoSuchElementException e) {
-               throw new RuntimeException(e);
             }
         }
     }
 
+    private static boolean eitherNull(Object a, Object b) {
+        if(a == null || b == null){
+            assertNull(b);
+            assertNull(a);
+            return true;
+        }else {
+            return false;
+        }
+    }
 
-    public static class TypeUtils {
+
+    public static class TypeUtil {
         private static final Set<Class<?>> BUILT_IN_TYPES = new HashSet<>(
                 Arrays.asList(
                         Boolean.class, Byte.class, Character.class, Short.class,
