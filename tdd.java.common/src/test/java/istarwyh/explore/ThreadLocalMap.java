@@ -1,4 +1,4 @@
-package istarwyh.util;
+package istarwyh.explore;
 
 import lombok.Getter;
 

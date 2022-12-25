@@ -1,4 +1,4 @@
-package istarwyh.util;
+package istarwyh.explore;
 
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.Nullable;
@@ -14,8 +14,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import static istarwyh.util.ThreadLocalMap.getMap;
-import static istarwyh.util.ThreadLocalMap.getThreadLocalMap;
+import static istarwyh.explore.ThreadLocalMap.getThreadLocalMap;
 import static java.util.Optional.ofNullable;
 import static java.util.concurrent.CompletableFuture.supplyAsync;
 import static org.junit.jupiter.api.Assertions.*;
@@ -63,15 +62,15 @@ class ThreadLocalMapTest {
     }
 
     public Map<String,String> changeMap1(){
-        return changeMap1(getMap());
+        return changeMap1(ThreadLocalMap.getMap());
     }
 
     public Map<String,String> changeMap2(){
-        return changeMap2(getMap());
+        return changeMap2(ThreadLocalMap.getMap());
     }
 
     public Map<String,String> changeMap3(){
-        return changeMap3(getMap());
+        return changeMap3(ThreadLocalMap.getMap());
     }
 
     @Nullable

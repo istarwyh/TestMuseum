@@ -49,6 +49,7 @@ class ReflectionUtilTest {
         assertEquals("wuwei",country);
     }
 
+
     public static class WhoIAm{
 
         private String name;

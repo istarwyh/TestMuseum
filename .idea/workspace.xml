@@ -4,8 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="Add: should_generate_test_case_json_lack_of_it">
+    <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="Add: should_generate_test_case_json_given_ownClass json file">
+      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/AssertPlus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/AssertPlusTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ParallelShowWithSleep.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/explore/ParallelShowWithSleep.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ThreadLocalMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/explore/ThreadLocalMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/ParallelShowWithSleepTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/explore/ParallelShowWithSleepTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/ReflectionUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/ReflectionUtilTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/ThreadLocalMapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/explore/ThreadLocalMapTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,6 +120,7 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh/junit5/provider" />
       <recent name="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh/provider" />
       <recent name="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh.provider" />
       <recent name="$PROJECT_DIR$/tdd.java.common/src/main/resources/META-INF/services" />
@@ -132,7 +140,30 @@
       <recent name="istarwyh.junit5.extension" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.JsonFileArgumentsProviderTest">
+  <component name="RunManager" selected="Gradle.AssertPlusTest.should_compare_two_object_just_with_their_field_value">
+    <configuration name="AssertPlusTest.should_compare_two_object_just_with_their_field_value" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":tdd.java.common:test" />
+            <option value="--tests" />
+            <option value="&quot;istarwyh.util.AssertPlusTest.should_compare_two_object_just_with_their_field_value&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="JsonFileArgumentsProviderTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -156,7 +187,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="JsonFileArgumentsProviderTest.should_generate_test_case_json_lack_of_it" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="JsonFileArgumentsProviderTest.should_parse_multi_List_with_Integer_type_test_case" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -169,30 +200,7 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.junit5.provider.JsonFileArgumentsProviderTest.should_generate_test_case_json_lack_of_it&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="ReflectionUtilTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":tdd.java.common:test" />
-            <option value="--tests" />
-            <option value="&quot;istarwyh.util.ReflectionUtilTest&quot;" />
+            <option value="&quot;istarwyh.junit5.provider.JsonFileArgumentsProviderTest.should_parse_multi_List_with_Integer_type_test_case&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -225,7 +233,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="defaultParseLackType.should_parse_default_test_case" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ThreadLocalMapTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -238,7 +246,7 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.junit5.provider.JsonFileArgumentsProviderTest$defaultParseLackType.should_parse_default_test_case&quot;" />
+            <option value="&quot;istarwyh.explore.ThreadLocalMapTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -250,11 +258,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.JsonFileArgumentsProviderTest" />
-        <item itemvalue="Gradle.defaultParseLackType.should_parse_default_test_case" />
+        <item itemvalue="Gradle.AssertPlusTest.should_compare_two_object_just_with_their_field_value" />
+        <item itemvalue="Gradle.ThreadLocalMapTest" />
         <item itemvalue="Gradle.Tests in 'istarwyh'" />
-        <item itemvalue="Gradle.JsonFileArgumentsProviderTest.should_generate_test_case_json_lack_of_it" />
-        <item itemvalue="Gradle.ReflectionUtilTest" />
+        <item itemvalue="Gradle.JsonFileArgumentsProviderTest.should_parse_multi_List_with_Integer_type_test_case" />
+        <item itemvalue="Gradle.JsonFileArgumentsProviderTest" />
       </list>
     </recent_temporary>
   </component>
@@ -272,7 +280,7 @@
       <workItem from="1665062765380" duration="664000" />
       <workItem from="1668444987283" duration="12461000" />
       <workItem from="1670062033021" duration="24545000" />
-      <workItem from="1671207092067" duration="23965000" />
+      <workItem from="1671207092067" duration="28483000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>
@@ -295,7 +303,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671339604767</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add: should_generate_test_case_json_given_ownClass json file">
+      <created>1671890436126</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1671890436126</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -327,7 +342,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add: common module" />
     <MESSAGE value="Add: should_generate_test_case_json_lack_of_it" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add: should_generate_test_case_json_lack_of_it" />
+    <MESSAGE value="Add: should_generate_test_case_json_given_ownClass json file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add: should_generate_test_case_json_given_ownClass json file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -351,6 +367,11 @@
           <url>file://$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/provider/model/TestCase.java</url>
           <line>48</line>
           <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/provider/JsonFileArgumentsProvider.java</url>
+          <line>66</line>
+          <option name="timeStamp" value="38" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
