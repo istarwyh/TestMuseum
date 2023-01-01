@@ -14,31 +14,27 @@ public class AssertPlus {
     /**
      * 递归遍历json对象所有的key-value，将其封装成path:value格式进行比较
      */
-    public static void compareJson(Object expected,Object actual){
+    private static void compareJson(Object expected, Object actual, boolean considerOrder) {
         Map<String, Object> oldMap = new LinkedHashMap<>();
         Map<String, Object> newMap = new LinkedHashMap<>();
         convertJsonToMap(expected, "", oldMap);
         convertJsonToMap(actual, "", newMap);
-        assertEquals(oldMap,newMap);
+        if (considerOrder) {
+            compareLinkedHashMapWithOrder(oldMap, newMap);
+        } else {
+            assertEquals(oldMap, newMap);
+        }
     }
 
-    public static void compareJsonWithOrder(Object expected,Object actual){
-        Map<String, Object> oldMap = new LinkedHashMap<>();
-        Map<String, Object> newMap = new LinkedHashMap<>();
-        convertJsonToMap(expected, "", oldMap);
-        convertJsonToMap(actual, "", newMap);
-        compareLinkedHashMapWithOrder(oldMap,newMap);
-    }
-
-    public static void compareLinkedHashMapWithOrder(Map<String, Object> expected,Map<String, Object> actual){
+    public static void compareLinkedHashMapWithOrder(Map<String, Object> expected, Map<String, Object> actual) {
         Iterator<Map.Entry<String, Object>> iterator1 = expected.entrySet().iterator();
         Iterator<Map.Entry<String, Object>> iterator2 = actual.entrySet().iterator();
 
         while (iterator1.hasNext()) {
-            Map.Entry<?, ?> entry1 = iterator1.next();
-            Map.Entry<?, ?> entry2 = iterator2.next();
-            compareFields(entry1.getKey(),entry2.getKey());
-            compareFields(entry1.getValue(),entry2.getValue());
+            Map.Entry<String, Object> entry1 = iterator1.next();
+            Map.Entry<String, Object> entry2 = iterator2.next();
+            compareFields(entry1.getKey(), entry2.getKey());
+            compareFields(entry1.getValue(), entry2.getValue());
         }
     }
 
@@ -65,28 +61,47 @@ public class AssertPlus {
                 Object value = jsonArray.get(i);
                 String newRoot = "".equals(root) ? "[" + i + "]" : root + ".[" + i + "]";
                 if (isJsonType(value)) {
-                    convertJsonToMap( value, newRoot, resultMap);
+                    convertJsonToMap(value, newRoot, resultMap);
                 } else {
-                    resultMap.put(newRoot,  value);
+                    resultMap.put(newRoot, value);
                 }
             }
         }
     }
 
-    public static void compareFields(Object expected, Object actual){
-        if (eitherNullThenPass(expected, actual)){return;}
+    public static void compareFields(Object expected, Object actual) {
+        if (eitherNullThenPass(expected, actual)) {
+            return;
+        }
+        if (eitherJsonThenPass(expected, actual, false)) {
+            return;
+        }
+        directCompareFields(expected, actual);
+    }
+
+    public static void compareFieldsWithOrder(Object expected, Object actual) {
+        if (eitherNullThenPass(expected, actual)) {
+            return;
+        }
+        if (eitherJsonThenPass(expected, actual, true)) {
+            return;
+        }
+        directCompareFields(expected, actual);
+    }
+
+    private static void directCompareFields(Object expected, Object actual) {
         Class<?> aClass = expected.getClass();
         assertSame(aClass, actual.getClass());
-        if(TypeUtil.isBuiltInType(expected)) {
+        if (TypeUtil.isBuiltInType(expected)) {
             assertEquals(expected, actual);
-        }else {
+        } else {
             Field[] fields = aClass.getDeclaredFields();
             for (Field field : fields) {
                 try {
                     String fieldName = field.getName();
                     Object valueA = ReflectionUtil.getField(expected, fieldName);
                     Object valueB = ReflectionUtil.getField(actual, fieldName);
-                    compareFields(valueA,valueB);
+                    compareFields(valueA, valueB);
                 } catch (NoSuchElementException e) {
                     throw new RuntimeException(e);
                 }
@@ -95,11 +110,20 @@ public class AssertPlus {
     }
 
     private static boolean eitherNullThenPass(Object a, Object b) {
-        if(a == null || b == null){
+        if (a == null || b == null) {
             assertNull(b);
             assertNull(a);
             return true;
-        }else {
+        } else {
+            return false;
+        }
+    }
+
+    private static boolean eitherJsonThenPass(Object a, Object b, boolean considerOrder) {
+        if (isJsonType(a) || isJsonType(b)) {
+            compareJson(a, b, considerOrder);
+            return true;
+        } else {
             return false;
         }
     }

@@ -34,9 +34,9 @@ class AssertPlusTest {
         jsonObject3.put("key3","value3");
         jsonObject1.put("key3",jsonObject3);
         jsonObject2.put("key3",jsonObject3);
-        assertDoesNotThrow(() -> AssertPlus.compareJson(jsonObject1, jsonObject2));
+        assertDoesNotThrow(() -> AssertPlus.compareFields(jsonObject1, jsonObject2));
         assertThrows(Throwable.class,
-                () -> AssertPlus.compareJsonWithOrder(jsonObject1, jsonObject2)
+                () -> AssertPlus.compareFieldsWithOrder(jsonObject1, jsonObject2)
         );
     }
 }
