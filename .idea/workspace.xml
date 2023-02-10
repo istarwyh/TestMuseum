@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="Add: should_generate_test_case_json_given_ownClass json file">
+      <change afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/CommonUtil.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.javascript.util/src/test/CommonUtil.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/AssertPlus.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/AssertPlus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/AssertPlusTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/AssertPlusTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,25 +79,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;jbr-17&quot;,
-    &quot;last_directory_selection&quot;: &quot;/Users/mac/Desktop/code-open/TestMuseum/tdd.java.algorithm/src/test/java/istarwyh/data_structure&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/mac/Desktop/code-open/TestMuseum/tdd.java.common/src/test/resources/istarwyh.provider&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.31724137&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "javascript.nodejs.core.library.configured.version": "16.17.0",
+    "javascript.nodejs.core.library.typings.version": "16.18.12",
+    "jdk.selected.JAVA_MODULE": "jbr-17",
+    "js.last.introduce.type": "CONST",
+    "last_directory_selection": "/Users/mac/Desktop/code-open/TestMuseum/tdd.java.algorithm/src/test/java/istarwyh/data_structure",
+    "last_opened_file_path": "/Users/mac/Desktop/code-open/TestMuseum/tdd.java.common/src/test/resources/istarwyh.provider",
+    "nodejs.jest.jest_package": "/Users/mac/Desktop/code-open/TestMuseum/node_modules/jest",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.31724137",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="istarwyh.data_structure" />
@@ -115,11 +120,11 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tdd.javascript.util/src/test" />
+      <recent name="$PROJECT_DIR$/tdd.javascript.util/src/main" />
       <recent name="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh/junit5/provider" />
       <recent name="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh/provider" />
       <recent name="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh.provider" />
-      <recent name="$PROJECT_DIR$/tdd.java.common/src/main/resources/META-INF/services" />
-      <recent name="$PROJECT_DIR$/tdd.java.common/src/main/resources" />
     </key>
     <key name="MoveInnerDialog.RECENTS_KEY">
       <recent name="istarwyh.provider" />
@@ -135,129 +140,79 @@
       <recent name="istarwyh.junit5.extension" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.AssertPlusTest.should_compare_json">
-    <configuration name="AssertPlusTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":tdd.java.common:test" />
-            <option value="--tests" />
-            <option value="&quot;istarwyh.util.AssertPlusTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
+  <component name="RunManager" selected="Jest.data format happy case">
+    <configuration name="data format happy case" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/tdd.javascript.util" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/tdd.javascript.util/src/test/CommonUtil.test.js" />
+      <test-names>
+        <test-name value="data format happy case" />
+      </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="AssertPlusTest.should_compare_json" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":tdd.java.common:test" />
-            <option value="--tests" />
-            <option value="&quot;istarwyh.util.AssertPlusTest.should_compare_json&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
+    <configuration name="filter empty value" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/tdd.javascript.util" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/tdd.javascript.util/src/test/CommonUtil.test.js" />
+      <test-names>
+        <test-name value="filter empty value" />
+      </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="AssertPlusTest.should_compare_two_object_just_with_their_field_value" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":tdd.java.common:test" />
-            <option value="--tests" />
-            <option value="&quot;istarwyh.util.AssertPlusTest.should_compare_two_object_just_with_their_field_value&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
+    <configuration name="parse cookie happy case 1" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/tdd.javascript.util" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/tdd.javascript.util/src/test/CommonUtil.test.js" />
+      <test-names>
+        <test-name value="parse cookie happy case 1" />
+      </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="AssertPlusTest.should_compare_two_object_just_with_their_field_value_origin" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":tdd.java.common:test" />
-            <option value="--tests" />
-            <option value="&quot;istarwyh.util.AssertPlusTest.should_compare_two_object_just_with_their_field_value_origin&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
+    <configuration name="pick matching object keys" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/tdd.javascript.util" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/tdd.javascript.util/src/test/CommonUtil.test.js" />
+      <test-names>
+        <test-name value="pick matching object keys" />
+      </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="AssertPlusTest.should_point_with_diff_just_with_their_field_value" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":tdd.java.common:test" />
-            <option value="--tests" />
-            <option value="&quot;istarwyh.util.AssertPlusTest.should_point_with_diff_just_with_their_field_value&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
+    <configuration name="should set value with paths and value" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/tdd.javascript.util" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/tdd.javascript.util/src/test/CommonUtil.test.js" />
+      <test-names>
+        <test-name value="should set value with paths and value" />
+      </test-names>
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.AssertPlusTest.should_compare_json" />
-        <item itemvalue="Gradle.AssertPlusTest.should_compare_two_object_just_with_their_field_value_origin" />
-        <item itemvalue="Gradle.AssertPlusTest.should_compare_two_object_just_with_their_field_value" />
-        <item itemvalue="Gradle.AssertPlusTest" />
-        <item itemvalue="Gradle.AssertPlusTest.should_point_with_diff_just_with_their_field_value" />
+        <item itemvalue="Jest.data format happy case" />
+        <item itemvalue="Jest.parse cookie happy case 1" />
+        <item itemvalue="Jest.filter empty value" />
+        <item itemvalue="Jest.pick matching object keys" />
+        <item itemvalue="Jest.should set value with paths and value" />
       </list>
     </recent_temporary>
   </component>
