@@ -90,14 +90,14 @@ test("filter empty value", () => {
 });
 
 
-test("data format happy case", () => {
+test("data format happy case 1", () => {
     expect(
         CommonUtil.dataFormat(new Date(2023, 1, 1,8,18,28), 'YYYY-MM-DD HH:mm:ss')
     ).toBe('2023-02-01 08:18:28');
 });
 
-// test("parse cookie happy case 1", () => {
-//     expect(
-//         parseCookie('foo=bar; equation=E%3Dmc%5E2')
-//     ).toBe({foo: 'bar', equation: 'E=mc^2'});
-// });
+test("parse cookie happy case 1", () => {
+    expect(
+        parseCookie('foo=bar; equation=E%3Dmc%5E2')
+    ).toMatchObject({foo: 'bar', equation: 'E=mc^2'});
+});

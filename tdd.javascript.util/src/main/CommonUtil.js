@@ -104,7 +104,6 @@ class CommonUtil {
         return res;
     }
 
-    // 通用版本不会。。。
     static dataFormat(date, format) {
         const char = "-";
         const colon = ":";
@@ -125,9 +124,39 @@ class CommonUtil {
         return value < 10 ? "0" + value : value;
     }
 
-    static parseCookie(cname) {
-        const name = cname + "=";
-        return document.cookie.split(';');
+
+    static formatDate(date, fmt) {
+        if (/(y+)/.test(fmt)) {
+            fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
+        }
+        let o = {
+            'M+': date.getMonth() + 1,
+            'd+': date.getDate(),
+            'h+': date.getHours(),
+            'm+': date.getMinutes(),
+            's+': date.getSeconds()
+        };
+        for (let k in o) {
+            if (new RegExp(`(${k})`).test(fmt)) {
+                let str = o[k] + '';
+                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? str : this.padLeftZero(str));
+            }
+        }
+        return fmt;
+    };
+
+    static padLeftZero(str) {
+        return ('00' + str).substr(str.length);
+    };
+
+    static parseCookie(cookie) {
+        let res= {};
+        const split = cookie.split(';');
+        for (const item of split) {
+            const encodedURI = item.trim().split("=");
+            res[unescape(encodedURI[0])] = unescape(encodedURI[1]);
+        }
+        return res;
     }
 }
 

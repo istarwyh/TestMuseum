@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="Add: should_generate_test_case_json_given_ownClass json file">
-      <change afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/CommonUtil.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.javascript.util/src/test/CommonUtil.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/CommonUtil.js" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/CommonUtil.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/test/CommonUtil.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/test/CommonUtil.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +140,7 @@
       <recent name="istarwyh.junit5.extension" />
     </key>
   </component>
-  <component name="RunManager" selected="Jest.data format happy case">
+  <component name="RunManager" selected="Jest.parse cookie happy case 1">
     <configuration name="data format happy case" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -208,8 +208,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Jest.data format happy case" />
         <item itemvalue="Jest.parse cookie happy case 1" />
+        <item itemvalue="Jest.data format happy case" />
         <item itemvalue="Jest.filter empty value" />
         <item itemvalue="Jest.pick matching object keys" />
         <item itemvalue="Jest.should set value with paths and value" />
