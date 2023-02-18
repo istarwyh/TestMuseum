@@ -17,7 +17,7 @@ public @interface JsonFileSource {
     /**
      * The Class of Current Annotation {@link JsonFileSource}
      */
-    Class<?> of() default Object.class;
+    Class<?> in() default Object.class;
 
     /**
      * The JsonFile Resource Path in the test/resources

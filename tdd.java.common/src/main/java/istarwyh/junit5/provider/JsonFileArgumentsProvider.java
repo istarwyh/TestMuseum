@@ -58,7 +58,7 @@ public class JsonFileArgumentsProvider implements
 
     @Override
     public void accept(JsonFileSource jsonFileSource) {
-        ownClass = jsonFileSource.of();
+        ownClass = jsonFileSource.in();
         resources = getResources(jsonFileSource);
         type = jsonFileSource.type();
     }

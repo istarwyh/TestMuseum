@@ -1,0 +1,38 @@
+{
+  "input": {
+    "data": [
+      {
+        "data": [
+          {
+            "moduleTypeCode": "MAP_BUSINESS",
+            "subjectCode": "ABusiness"
+          }
+        ],
+        "moduleTypeCode": "BLOCK",
+        "subjectCode": "NULL"
+      }
+    ],
+    "moduleTypeCode": "MODULE",
+    "subjectCode": "NULL"
+  },
+  "output": {
+    "data": [
+      {
+        "data": [
+          {
+            "data": {
+              "key1": "value1",
+              "key2": "value2"
+            },
+            "moduleTypeCode": "MAP_BUSINESS",
+            "subjectCode": "ABusiness"
+          }
+        ],
+        "moduleTypeCode": "BLOCK",
+        "subjectCode": "NULL"
+      }
+    ],
+    "moduleTypeCode": "MODULE",
+    "subjectCode": "NULL"
+  }
+}

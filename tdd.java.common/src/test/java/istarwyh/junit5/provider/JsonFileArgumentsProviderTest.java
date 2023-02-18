@@ -29,13 +29,13 @@ class JsonFileArgumentsProviderTest {
         assertEquals("This is your expected output", testCase.getOutput());
     }
 
-    @JsonFileSource(of = JsonFileArgumentsProviderTest.class,resources = {"absent_test_case.json"})
+    @JsonFileSource(in = JsonFileArgumentsProviderTest.class,resources = {"absent_test_case.json"})
     void should_generate_test_case_json_given_ownClass(TestCase<String,String> testCase){
         assertEquals("This is your input", testCase.getInput());
         assertEquals("This is your expected output", testCase.getOutput());
     }
 
-    @JsonFileSource(of = JsonFileArgumentsProviderTest.class, resources = {"list_testCase.json", "list_testCase.json"})
+    @JsonFileSource(in = JsonFileArgumentsProviderTest.class, resources = {"list_testCase.json", "list_testCase.json"})
     void should_parse_multi_List_with_Integer_type_test_case(TestCase<List<Integer>,List<Integer>> testCase){
         assertEquals(1,testCase.getInput().get(0));
         assertEquals(5,testCase.getOutput().get(2));
