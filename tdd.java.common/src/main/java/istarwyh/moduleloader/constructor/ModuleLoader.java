@@ -7,6 +7,7 @@ import istarwyh.moduleloader.component.Module;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -33,7 +34,7 @@ public class ModuleLoader {
                     BlockConstructor.createBlockConstructor(viewStructure)
             );
             moduleTypeMap.put(
-                    CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, MapBusinessConstructor.class.getSimpleName()),
+                    CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, MapBusiness.class.getSimpleName()),
                     MapBusinessConstructor.createComponentConverterConstructor(viewStructure,queryDTO)
             );
         }
@@ -44,41 +45,49 @@ public class ModuleLoader {
     }
 
     public BoardModule<?> parse() {
-        ViewStructure structure;
-        String nodeData;
-        String moduleTypeCode;
-        nodeData = viewStructure.getStructureStr();
+        BoardModule<?> boardModule = parseBoardModule(viewStructure,queryDTO);
+        return setBoardModuleData(boardModule);
+    }
+
+    private BoardModule<?> setBoardModuleData(BoardModule<?> boardModule) {
+        // 存储子元素的data
+        String childData = Optional.ofNullable(boardModule.getData())
+                .map(JSON::toJSONString)
+                // 确保是模块
+                .filter(it -> it.contains("moduleTypeCode"))
+                .orElse(null);
+        if(childData == null){
+            return boardModule;
+        }
+        boardModule.setData(getChild(childData, queryDTO));
+        if(boardModule.getData() instanceof List){
+            ((List<BoardModule<?>>)boardModule.getData()).forEach(this::setBoardModuleData);
+            return boardModule;
+        }else {
+            return setBoardModuleData(boardModule);
+        }
+    }
+
+
+    private Object getChild(String nodeData, Object queryDTO1) {
+        Object child;
         if(nodeData.startsWith("[")){
-            throw new IllegalArgumentException("board or module data must be a object instead of array");
+            child = JSON.<String>parseArray(nodeData, String.class)
+                    .stream()
+                    .map(ViewStructure::of)
+                    .toList()
+                    .stream()
+                    .map(it -> parseBoardModule(it, queryDTO1))
+                    .toList();
+
+        }else {
+            child = parseBoardModule(ViewStructure.of(nodeData), queryDTO1);
         }
-        Node node = JSON.parseObject(nodeData, Node.class);
-        moduleTypeCode = node.getModuleTypeCode();
-        structure = ViewStructure.builder().structureStr(nodeData).build();
-        BoardModule<?> boardModule = moduleTypeMap.get(moduleTypeCode).build(structure,queryDTO);
-        BoardModule<?> headModule = boardModule;
+        return child;
+    }
 
-        while(true){
-            nodeData = Optional.ofNullable(boardModule.getData())
-                    .map(Object::toString)
-                    // 确保是模块
-                    .filter(it -> it.contains("moduleTypeCode"))
-                    .orElse(null);
-            if(nodeData == null){
-                return headModule;
-            }
-            // todo 处理子节点为数组的情况
-            if(nodeData.startsWith("[")){
-
-            }
-            node = JSON.parseObject(nodeData, Node.class);
-            moduleTypeCode = node.getModuleTypeCode();
-            nodeData = node.getData();
-
-            structure = ViewStructure.builder().structureStr(nodeData).build();
-            BoardModule<?> childBoardModule = moduleTypeMap.get(moduleTypeCode).build(structure, queryDTO);
-            boardModule.setData(childBoardModule);
-            boardModule = (BoardModule<?>) boardModule.getData();
-        }
+    private BoardModule<?> parseBoardModule(ViewStructure viewStructure, Object queryDTO) {
+        return moduleTypeMap.get(viewStructure.getModuleTypeCode()).build(viewStructure, queryDTO);
     }
 
 }

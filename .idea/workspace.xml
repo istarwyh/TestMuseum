@@ -5,28 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="Add: should_generate_test_case_json_given_ownClass json file">
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/BaseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/Block.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/Board.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/BoardModule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/MapBusiness.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/Module.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/Node.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/BlockConstructor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/BoardConstructor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/MapBusinessConstructor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/ModuleConstructor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/ModuleLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/ViewStructure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/convert/ComponentConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/display/SubjectCodeEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/moduleloader/constructor/MapBusinessConstructorTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh/moduleloader/constructor/map-business-constructor.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/annotation/JsonFileSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/annotation/JsonFileSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/provider/JsonFileArgumentsProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/provider/JsonFileArgumentsProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/junit5/provider/JsonFileArgumentsProviderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/junit5/provider/JsonFileArgumentsProviderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/ModuleLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/ModuleLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/ViewStructure.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/ViewStructure.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -361,6 +342,11 @@
           <url>file://$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/provider/model/TestCase.java</url>
           <line>48</line>
           <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/ModuleLoader.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="51" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
