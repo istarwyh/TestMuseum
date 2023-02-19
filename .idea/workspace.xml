@@ -5,18 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="Add: should_generate_test_case_json_given_ownClass json file">
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/MainPoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/MainPointConstructor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/Module.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/Module.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/BlockConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/BlockConstructor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/BoardConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/ComponentConstructor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/MapBusinessConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/MapBusinessConstructor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/ModuleConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/ModuleConstructor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/ModuleLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/display/ModuleLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/moduleloader/constructor/MapBusinessConstructorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/moduleloader/constructor/MapBusinessConstructorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh/moduleloader/constructor/map-business-constructor.json" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh/moduleloader/constructor/map-business-constructor.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/Node.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/ViewStructure.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/ViewStructure.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -354,23 +345,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/display/ModuleLoader.java</url>
-          <line>64</line>
-          <option name="timeStamp" value="60" />
+          <line>54</line>
+          <option name="timeStamp" value="63" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/MainPoint.java</url>
           <line>37</line>
-          <option name="timeStamp" value="61" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/Block.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="62" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/display/ModuleLoader.java</url>
-          <line>54</line>
-          <option name="timeStamp" value="63" />
+          <option name="timeStamp" value="64" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

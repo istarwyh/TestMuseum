@@ -1,30 +1,42 @@
 package istarwyh.moduleloader.constructor;
 
 import com.alibaba.fastjson2.JSON;
-import istarwyh.moduleloader.component.Node;
+import istarwyh.moduleloader.component.BaseDTO;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Data
 public class ViewStructure {
 
     private String structureStr;
 
-    private Node node;
+    private Structure structure;
 
-    public ViewStructure(String structureStr) {
+    private ViewStructure(String structureStr) {
         if(structureStr.startsWith("[")){
             throw new IllegalArgumentException("board or module data must be a object instead of array");
         }
         this.structureStr = structureStr;
-        this.node = JSON.parseObject(structureStr, Node.class);
+        this.structure = JSON.parseObject(structureStr, Structure.class);
     }
 
-    public static ViewStructure of(String nodeData) {
-        return new ViewStructure(nodeData);
+    public static ViewStructure of(String structureStr) {
+        return new ViewStructure(structureStr);
     }
 
     public String getModuleTypeCode() {
-        return node.getModuleTypeCode();
+        return structure.getModuleTypeCode();
+    }
+
+
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    public static class Structure extends BaseDTO {
+
+        private String data;
     }
 
 }

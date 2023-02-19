@@ -14,7 +14,7 @@ class MapBusinessConstructorTest {
     @JsonFileSource(in = MapBusinessConstructorTest.class,resources = "map-business-constructor.json")
     void build(TestCase<String,String> testCase) {
         String input = testCase.getInput(String.class);
-        ViewStructure viewStructure = new ViewStructure(input);
+        ViewStructure viewStructure = ViewStructure.of(input);
         String output = testCase.getOutput(String.class);
 
         BoardModule<?> build =  ModuleLoader.createModuleLoader(viewStructure, SubjectCodeEnum.ABusiness.name()).parse();
