@@ -5,10 +5,7 @@ import istarwyh.moduleloader.component.Block;
 
 public class BlockConstructor implements BoardConstructor<Block> {
 
-    private final ViewStructure viewStructure;
-
     private BlockConstructor(ViewStructure viewStructure) {
-        this.viewStructure = viewStructure;
     }
 
     public static BlockConstructor createBlockConstructor(ViewStructure viewStructure) {

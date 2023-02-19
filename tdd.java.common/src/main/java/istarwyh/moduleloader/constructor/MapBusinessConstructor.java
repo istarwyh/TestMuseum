@@ -23,10 +23,13 @@ public class MapBusinessConstructor implements BoardConstructor<MapBusiness>{
     }
 
     public MapBusiness build(ViewStructure viewStructure, Object queryDTO){
-        HashMap<String, String> data = Maps.newHashMap();
-        data.put("key1", "value1");
-        data.put("key2", "value2");
-        return createMapBusiness(SubjectCodeEnum.ABusiness.name(), data);
+        if(SubjectCodeEnum.ABusiness.name().equals (queryDTO.toString())){
+            HashMap<String, String> data = Maps.newHashMap();
+            data.put("key1", "value1");
+            data.put("key2", "value2");
+            return createMapBusiness(SubjectCodeEnum.ABusiness.name(), data);
+        }
+        return null;
     }
 
 

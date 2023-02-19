@@ -15,14 +15,14 @@ public class ModuleLoader {
 
     @NotNull
     private final ViewStructure viewStructure;
-    private final Object queryDTO;
+    private final Object context;
 
     public final Map<String, BoardConstructor<?>> moduleTypeMap = new HashMap<>(8);
 
 
-    private ModuleLoader(@NotNull ViewStructure viewStructure, Object queryDTO) {
+    private ModuleLoader(@NotNull ViewStructure viewStructure, Object context) {
         this.viewStructure = viewStructure;
-        this.queryDTO = queryDTO;
+        this.context = context;
 
         {
             moduleTypeMap.put(
@@ -35,17 +35,17 @@ public class ModuleLoader {
             );
             moduleTypeMap.put(
                     CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, MapBusiness.class.getSimpleName()),
-                    MapBusinessConstructor.createComponentConverterConstructor(viewStructure,queryDTO)
+                    MapBusinessConstructor.createComponentConverterConstructor(viewStructure, context)
             );
         }
     }
 
-    public static ModuleLoader createModuleLoader(ViewStructure viewStructure, Object queryDTO) {
-        return new ModuleLoader(viewStructure, queryDTO);
+    public static ModuleLoader createModuleLoader(ViewStructure viewStructure, Object context) {
+        return new ModuleLoader(viewStructure, context);
     }
 
     public BoardModule<?> parse() {
-        BoardModule<?> boardModule = parseBoardModule(viewStructure,queryDTO);
+        BoardModule<?> boardModule = parseBoardModule(viewStructure, context);
         return setBoardModuleData(boardModule);
     }
 
@@ -59,7 +59,7 @@ public class ModuleLoader {
         if(childData == null){
             return boardModule;
         }
-        boardModule.setData(getChild(childData, queryDTO));
+        boardModule.setData(getChild(childData, context));
         if(boardModule.getData() instanceof List){
             ((List<BoardModule<?>>)boardModule.getData()).forEach(this::setBoardModuleData);
             return boardModule;
