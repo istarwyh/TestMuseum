@@ -1,9 +1,10 @@
-package istarwyh.moduleloader.constructor;
+package istarwyh.moduleloader.display;
 
 import com.alibaba.fastjson2.JSON;
 import com.google.common.base.CaseFormat;
 import istarwyh.moduleloader.component.*;
 import istarwyh.moduleloader.component.Module;
+import istarwyh.moduleloader.constructor.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -17,7 +18,7 @@ public class ModuleLoader {
     private final ViewStructure viewStructure;
     private final Object context;
 
-    public final Map<String, BoardConstructor<?>> moduleTypeMap = new HashMap<>(8);
+    public final Map<String, ComponentConstructor<?>> moduleTypeMap = new HashMap<>(8);
 
 
     private ModuleLoader(@NotNull ViewStructure viewStructure, Object context) {
@@ -27,7 +28,7 @@ public class ModuleLoader {
         {
             moduleTypeMap.put(
                     CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, Module.class.getSimpleName()),
-                    ModuleConstructor.createModuleConstructor(viewStructure)
+                    ModuleConstructor.empty(viewStructure)
             );
             moduleTypeMap.put(
                     CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, Block.class.getSimpleName()),
@@ -35,7 +36,11 @@ public class ModuleLoader {
             );
             moduleTypeMap.put(
                     CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, MapBusiness.class.getSimpleName()),
-                    MapBusinessConstructor.createComponentConverterConstructor(viewStructure, context)
+                    MapBusinessConstructor.createMapBusinessConstructor(viewStructure, context)
+            );
+            moduleTypeMap.put(
+                    CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, MainPoint.class.getSimpleName()),
+                    MainPointConstructor.createMainPointConstructor(viewStructure)
             );
         }
     }
@@ -46,13 +51,14 @@ public class ModuleLoader {
 
     public BoardModule<?> parse() {
         BoardModule<?> boardModule = parseBoardModule(viewStructure, context);
-        return setBoardModuleData(boardModule);
+        BoardModule<?> res = setBoardModuleData(boardModule);
+        return res;
     }
 
     private BoardModule<?> setBoardModuleData(BoardModule<?> boardModule) {
-        // 存储子元素的data
         String childData = Optional.ofNullable(boardModule.getData())
-                .map(JSON::toJSONString)
+                // todo 这里如果使用JSON::toJSONString会导致subjectCode直接丢失，不能理解为什么？？
+                .map(Object::toString)
                 // 确保是模块
                 .filter(it -> it.contains("moduleTypeCode"))
                 .orElse(null);
@@ -69,25 +75,29 @@ public class ModuleLoader {
     }
 
 
-    private Object getChild(String nodeData, Object queryDTO1) {
+    private Object getChild(String childData, Object context) {
         Object child;
-        if(nodeData.startsWith("[")){
-            child = JSON.<String>parseArray(nodeData, String.class)
+        if(childData.startsWith("[")){
+            child = JSON.<String>parseArray(childData, String.class)
                     .stream()
                     .map(ViewStructure::of)
                     .toList()
                     .stream()
-                    .map(it -> parseBoardModule(it, queryDTO1))
+                    .map(it -> parseBoardModule(it, context))
                     .toList();
 
         }else {
-            child = parseBoardModule(ViewStructure.of(nodeData), queryDTO1);
+            child = parseBoardModule(ViewStructure.of(childData), context);
         }
         return child;
     }
 
     private BoardModule<?> parseBoardModule(ViewStructure viewStructure, Object queryDTO) {
-        return moduleTypeMap.get(viewStructure.getModuleTypeCode()).build(viewStructure, queryDTO);
+        ComponentConstructor<?> componentConstructor = moduleTypeMap.get(viewStructure.getModuleTypeCode());
+        if(componentConstructor == null){
+            throw new IllegalArgumentException("should define a component constructor");
+        }
+        return componentConstructor.build(viewStructure, queryDTO);
     }
 
 }

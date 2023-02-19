@@ -1,13 +1,17 @@
 package istarwyh.moduleloader.component;
 
+import com.alibaba.fastjson2.JSON;
 import com.google.common.base.CaseFormat;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Objects;
 
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class BaseDTO {
 
@@ -39,5 +43,10 @@ public class BaseDTO {
     public String getModuleTypeCode() {
         return Objects.requireNonNullElseGet(moduleTypeCode,
                 () -> CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, this.getClass().getSimpleName()));
+    }
+
+    @Override
+    public String toString(){
+        return JSON.toJSONString(this);
     }
 }

@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 import static istarwyh.moduleloader.component.MapBusiness.createMapBusiness;
 
-public class MapBusinessConstructor implements BoardConstructor<MapBusiness>{
+public class MapBusinessConstructor implements ComponentConstructor<MapBusiness> {
 
     private final ViewStructure viewStructure;
     private final Object queryDTO;
@@ -18,7 +18,7 @@ public class MapBusinessConstructor implements BoardConstructor<MapBusiness>{
         this.queryDTO = queryDTO;
     }
 
-    public static BoardConstructor<?> createComponentConverterConstructor(ViewStructure viewStructure,Object queryDTO ) {
+    public static ComponentConstructor<?> createMapBusinessConstructor(ViewStructure viewStructure, Object queryDTO ) {
         return new MapBusinessConstructor(viewStructure, queryDTO);
     }
 

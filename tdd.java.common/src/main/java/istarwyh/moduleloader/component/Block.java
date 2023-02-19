@@ -1,7 +1,6 @@
 package istarwyh.moduleloader.component;
 
 import istarwyh.moduleloader.display.SubjectCodeEnum;
-import lombok.Setter;
 
 import java.util.Arrays;
 import java.util.List;

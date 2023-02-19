@@ -2,37 +2,50 @@
   "input": {
     "data": [
       {
+        "moduleTypeCode": "MAIN_POINT",
+        "subjectCode": "TEST",
         "data": [
           {
-            "moduleTypeCode": "MAP_BUSINESS",
-            "subjectCode": "ABusiness"
+            "data": [
+              {
+                "moduleTypeCode": "MAP_BUSINESS",
+                "subjectCode": "ABusiness"
+              }
+            ],
+            "moduleTypeCode": "BLOCK",
+            "subjectCode": "TEST"
           }
-        ],
-        "moduleTypeCode": "BLOCK",
-        "subjectCode": "NULL"
+        ]
       }
     ],
     "moduleTypeCode": "MODULE",
-    "subjectCode": "NULL"
+    "subjectCode": "TEST"
   },
   "output": {
     "data": [
       {
         "data": [
           {
-            "data": {
-              "key1": "value1",
-              "key2": "value2"
-            },
-            "moduleTypeCode": "MAP_BUSINESS",
-            "subjectCode": "ABusiness"
+            "data": [
+              {
+                "data": {
+                  "key1": "value1",
+                  "key2": "value2"
+                },
+                "moduleTypeCode": "MAP_BUSINESS",
+                "subjectCode": "ABusiness"
+              }
+            ],
+            "moduleTypeCode": "BLOCK",
+            "subjectCode": "TEST"
           }
         ],
-        "moduleTypeCode": "BLOCK",
-        "subjectCode": "NULL"
+        "moduleTypeCode": "MAIN_POINT",
+        "number": "1",
+        "subjectCode": "TEST"
       }
     ],
     "moduleTypeCode": "MODULE",
-    "subjectCode": "NULL"
+    "subjectCode": "TEST"
   }
 }

@@ -1,37 +1,34 @@
 package istarwyh.moduleloader.component;
 
-import lombok.Data;
-import lombok.Setter;
-
 import java.util.List;
 
 
-public class Board extends BaseDTO implements BoardModule<List<Module>> {
+public class Board extends BaseDTO implements BoardModule<List<BoardModule<?>>> {
 
-    private List<Module> data;
+    private List<BoardModule<?>> data;
 
-    private Board(String subjectCode, List<Module> data) {
+    private Board(String subjectCode, List<BoardModule<?>> data) {
         super(subjectCode);
         this.data = data;
     }
 
-    public static Board createBoard(String subjectCode, List<Module> data) {
+    public static Board createBoard(String subjectCode, List<BoardModule<?>> data) {
         return new Board(subjectCode, data);
     }
 
     @Override
-    public List<Module> getData() {
+    public List<BoardModule<?>> getData() {
         return data;
     }
 
     @Override
     public void setData(Object data) {
         if(data instanceof List) {
-            this.setData((List<Module>) data);
+            this.setData(data);
         }
     }
 
-    public void setData(List<Module> data) {
+    public void setData(List<BoardModule<?>> data) {
         this.data = data;
     }
 }

@@ -3,6 +3,7 @@ package istarwyh.moduleloader.constructor;
 import istarwyh.junit5.annotation.JsonFileSource;
 import istarwyh.junit5.provider.model.TestCase;
 import istarwyh.moduleloader.component.BoardModule;
+import istarwyh.moduleloader.display.ModuleLoader;
 import istarwyh.moduleloader.display.SubjectCodeEnum;
 
 import static com.alibaba.fastjson2.JSON.toJSONString;
