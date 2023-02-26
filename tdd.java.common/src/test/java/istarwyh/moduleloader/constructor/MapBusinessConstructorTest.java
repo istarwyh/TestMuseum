@@ -7,6 +7,7 @@ import istarwyh.moduleloader.display.ModuleLoader;
 import istarwyh.moduleloader.display.SubjectCodeEnum;
 
 import static com.alibaba.fastjson2.JSON.toJSONString;
+import static istarwyh.moduleloader.display.ModuleLoader.createModuleLoader;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MapBusinessConstructorTest {
@@ -17,7 +18,7 @@ class MapBusinessConstructorTest {
         ViewStructure viewStructure = ViewStructure.of(input);
         String output = testCase.getOutput(String.class);
 
-        BoardModule<?> build =  ModuleLoader.createModuleLoader(viewStructure, SubjectCodeEnum.ABusiness.name()).parse();
+        BoardModule<?> build =  createModuleLoader(viewStructure, SubjectCodeEnum.ABusiness.name()).parse();
 
         assertEquals(output, toJSONString(build));
     }

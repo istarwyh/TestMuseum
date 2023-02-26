@@ -10,16 +10,8 @@ import static istarwyh.moduleloader.component.MapBusiness.createMapBusiness;
 
 public class MapBusinessConstructor implements ComponentConstructor<MapBusiness> {
 
-    private final ViewStructure viewStructure;
-    private final Object queryDTO;
-
-    private MapBusinessConstructor(ViewStructure viewStructure, Object queryDTO) {
-        this.viewStructure = viewStructure;
-        this.queryDTO = queryDTO;
-    }
-
-    public static ComponentConstructor<?> createMapBusinessConstructor(ViewStructure viewStructure, Object queryDTO ) {
-        return new MapBusinessConstructor(viewStructure, queryDTO);
+    public static ComponentConstructor<?> empty() {
+        return new MapBusinessConstructor();
     }
 
     public MapBusiness build(ViewStructure viewStructure, Object queryDTO){

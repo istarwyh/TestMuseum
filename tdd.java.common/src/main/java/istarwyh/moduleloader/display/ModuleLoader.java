@@ -18,7 +18,7 @@ public class ModuleLoader {
     private final ViewStructure viewStructure;
     private final Object context;
 
-    public final Map<String, ComponentConstructor<?>> moduleTypeMap = new HashMap<>(8);
+    public final Map<String, ComponentConstructor<?>> componentConstructorMap = new HashMap<>(8);
 
 
     private ModuleLoader(@NotNull ViewStructure viewStructure, Object context) {
@@ -26,21 +26,21 @@ public class ModuleLoader {
         this.context = context;
 
         {
-            moduleTypeMap.put(
+            componentConstructorMap.put(
                     CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, Module.class.getSimpleName()),
-                    ModuleConstructor.empty(viewStructure)
+                    ModuleConstructor.empty()
             );
-            moduleTypeMap.put(
+            componentConstructorMap.put(
                     CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, Block.class.getSimpleName()),
-                    BlockConstructor.createBlockConstructor(viewStructure)
+                    BlockConstructor.empty()
             );
-            moduleTypeMap.put(
+            componentConstructorMap.put(
                     CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, MapBusiness.class.getSimpleName()),
-                    MapBusinessConstructor.createMapBusinessConstructor(viewStructure, context)
+                    MapBusinessConstructor.empty()
             );
-            moduleTypeMap.put(
+            componentConstructorMap.put(
                     CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, MainPoint.class.getSimpleName()),
-                    MainPointConstructor.createMainPointConstructor(viewStructure)
+                    MainPointConstructor.empty()
             );
         }
     }
@@ -51,13 +51,12 @@ public class ModuleLoader {
 
     public BoardModule<?> parse() {
         BoardModule<?> boardModule = parseBoardModule(viewStructure, context);
-        BoardModule<?> res = setBoardModuleData(boardModule);
-        return res;
+        return setBoardModuleData(boardModule);
     }
 
     private BoardModule<?> setBoardModuleData(BoardModule<?> boardModule) {
         String childData = Optional.ofNullable(boardModule.getData())
-                // todo 这里如果使用JSON::toJSONString会导致subjectCode直接丢失，不能理解为什么？？
+                // todo  这里如果使用JSON::toJSONString会导致subjectCode直接丢失，不能理解为什么？？
                 .map(Object::toString)
                 // 确保是模块
                 .filter(it -> it.contains("moduleTypeCode"))
@@ -93,7 +92,7 @@ public class ModuleLoader {
     }
 
     private BoardModule<?> parseBoardModule(ViewStructure viewStructure, Object queryDTO) {
-        ComponentConstructor<?> componentConstructor = moduleTypeMap.get(viewStructure.getModuleTypeCode());
+        ComponentConstructor<?> componentConstructor = componentConstructorMap.get(viewStructure.getModuleTypeCode());
         if(componentConstructor == null){
             throw new IllegalArgumentException("should define a component constructor");
         }
