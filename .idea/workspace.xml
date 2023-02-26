@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="Add: should_generate_test_case_json_given_ownClass json file">
-      <change afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/todo/images/cursor-down-2.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/todo/images/knife-left.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/todo/todos.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/todo/todos.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/todo/todos.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/todo-react/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/todo-react/hello-world/src/HelloWorld.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,6 +55,7 @@
         <option value="Interface" />
         <option value="Class" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -261,7 +259,7 @@
       <workItem from="1668444987283" duration="12461000" />
       <workItem from="1670062033021" duration="24545000" />
       <workItem from="1671207092067" duration="34255000" />
-      <workItem from="1677408182495" duration="13432000" />
+      <workItem from="1677408182495" duration="14396000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>
