@@ -1,0 +1,141 @@
+body {
+    background-color: whitesmoke;
+    color: darkgray;
+    padding: 0;
+    margin: 0;
+}
+
+.todos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.todos .title {
+    font-size: 80px;
+    font-weight: lighter;
+    color: orangered;
+}
+
+.todos .input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 500px;
+    background-color: white;
+}
+
+.todos .input .select-all {
+    position: absolute;
+    float: left;
+    width: 4%;
+    cursor: pointer;
+    padding-left: 10px;
+}
+
+.todos .input .select-all img {
+    height: 35px
+}
+
+.todos label {
+    width: 100%;
+}
+
+/* must set property for input instead of a class?! */
+.todos .input label input {
+    width: 100%;
+    outline: none;
+    border: 0;
+    height: 60px;
+    font-size: 25px;
+    font-weight: lighter;
+    margin-left: 2px;
+    padding: 2px 0 2px 10%;
+}
+
+.todos .input label input::placeholder {
+    font-style: italic;
+    font-weight: lighter;
+    color: lightgray;
+}
+
+.todos .input label input:focus {
+    border: 2px solid salmon;
+    padding: 0 0 0 10%;
+    margin-left: 0;
+}
+
+.divider {
+    border: 1px solid white;
+}
+
+.items {
+    width: 500px;
+    padding: 0 0 0 4%;
+
+}
+
+.items .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 60px;
+    height: auto;
+}
+
+.checkbox {
+    width: 10%;
+    cursor: pointer;
+    padding-left: 10px;
+}
+
+.footer .decoration{
+    background-color:whitesmoke;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+}
+.footer .decoration div{
+    border: solid gray;
+    border-width: 0 1px 1px 1px;
+}
+.footer .decoration .first{
+    height: 3px;
+    width: 98%;
+    background-color: white;
+}
+
+.footer .decoration .second{
+    height: 3px;
+    width: 96%;
+    background-color: white;
+}
+
+.items .item i{
+    display: block;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    border:2px solid darkgray;
+}
+
+.completed i{
+    background-color:greenyellow;
+}
+
+.completed .text{
+    text-decoration:line-through;
+    color:darkgray;
+}
+
+.deleted{
+    font-style: normal;
+    text-align: center;
+    line-height:16px;
+    cursor:pointer;
+    color:gray;
+    width:30px;
+    height:30px;
+}

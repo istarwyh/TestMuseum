@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="Add: should_generate_test_case_json_given_ownClass json file">
+      <change afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/todo/images/cursor-down-2.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/todo/images/knife-left.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/todo/todos.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/todo/todos.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/todo/todos.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/BlockConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/BlockConstructor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/MainPointConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/MainPointConstructor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/MapBusinessConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/MapBusinessConstructor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/ModuleConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/ModuleConstructor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/display/ModuleLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/display/ModuleLoader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +57,7 @@
         <option value="JUnit5 Test Class" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -83,30 +84,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.17.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.12&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;jbr-17&quot;,
-    &quot;js.last.introduce.type&quot;: &quot;CONST&quot;,
-    &quot;last_directory_selection&quot;: &quot;/Users/mac/Desktop/code-open/TestMuseum/tdd.java.algorithm/src/test/java/istarwyh/data_structure&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/mac/Desktop/code-open/TestMuseum/tdd.java.common/src/test/resources/istarwyh.provider&quot;,
-    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/mac/Desktop/code-open/TestMuseum/node_modules/jest&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.31724137&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Applications/IntelliJ IDEA.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "javascript.nodejs.core.library.configured.version": "16.17.0",
+    "javascript.nodejs.core.library.typings.version": "16.18.12",
+    "jdk.selected.JAVA_MODULE": "jbr-17",
+    "js.last.introduce.type": "CONST",
+    "last_directory_selection": "/Users/mac/Desktop/code-open/TestMuseum/tdd.java.algorithm/src/test/java/istarwyh/data_structure",
+    "last_opened_file_path": "/Users/mac/Desktop/code-open/TestMuseum/tdd.javascript.util/src/main/todo/images",
+    "nodejs.jest.jest_package": "/Users/mac/Desktop/code-open/TestMuseum/node_modules/jest",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.31724137",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.web.browsers",
+    "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="istarwyh.moduleloader.constructor" />
@@ -115,11 +117,11 @@
       <recent name="istarwyh.container" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tdd.javascript.util/src/main/todo/images" />
       <recent name="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh.provider" />
       <recent name="$PROJECT_DIR$/tdd.java.common/src/test/resources" />
       <recent name="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/junit5/extension" />
       <recent name="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/classloader/modifier" />
-      <recent name="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/classloader" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -259,6 +261,7 @@
       <workItem from="1668444987283" duration="12461000" />
       <workItem from="1670062033021" duration="24545000" />
       <workItem from="1671207092067" duration="34255000" />
+      <workItem from="1677408182495" duration="13432000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>
@@ -345,11 +348,6 @@
           <url>file://$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/provider/model/TestCase.java</url>
           <line>48</line>
           <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/display/ModuleLoader.java</url>
-          <line>54</line>
-          <option name="timeStamp" value="63" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/MainPoint.java</url>
