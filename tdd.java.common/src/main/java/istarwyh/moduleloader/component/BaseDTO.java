@@ -2,6 +2,7 @@ package istarwyh.moduleloader.component;
 
 import com.alibaba.fastjson2.JSON;
 import com.google.common.base.CaseFormat;
+import istarwyh.moduleloader.display.SubjectCodeEnum;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -43,6 +44,14 @@ public class BaseDTO {
     public String getModuleTypeCode() {
         return Objects.requireNonNullElseGet(moduleTypeCode,
                 () -> CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, this.getClass().getSimpleName()));
+    }
+
+
+    public static BaseDTO of(SubjectCodeEnum subjectCode, String amount, String number) {
+        BaseDTO baseDTO = new Point(subjectCode.name());
+        baseDTO.setAmount(amount);
+        baseDTO.setNumber(number);
+        return baseDTO;
     }
 
     @Override

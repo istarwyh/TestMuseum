@@ -3,7 +3,7 @@ package istarwyh.moduleloader.component;
 import java.util.Map;
 
 
-public class MapBusiness extends BaseDTO implements BoardModule<Map<String,String>> {
+public class MapBusiness extends BaseDTO implements PageModule<Map<String,String>> {
 
     private Map<String,String> data;
 

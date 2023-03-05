@@ -1,0 +1,135 @@
+{
+  "input": {
+    "data": [
+      {
+        "moduleTypeCode": "MAIN_POINT",
+        "subjectCode": "TEST",
+        "data": [
+          {
+            "data": [
+              {
+                "moduleTypeCode": "MAP_BUSINESS",
+                "subjectCode": "ABusiness"
+              },
+              {
+                "moduleTypeCode": "ANNULAR_CHART",
+                "subjectCode": "CURRENT_SALE_ANNULAR_CHART",
+                "data": [
+                  {
+                    "moduleTypeCode": "GRAPH_LEVEL",
+                    "code": "DIRECTION",
+                    "data": [
+                      {
+                        "subjectCode": "___ALL_SETTLE_SALE",
+                        "moduleTypeCode": "POINT"
+                      },
+                      {
+                        "subjectCode": "___ALL_SETTLE_REFUND",
+                        "moduleTypeCode": "POINT"
+                      }
+                    ]
+                  },
+                  {
+                    "moduleTypeCode": "GRAPH_LEVEL",
+                    "code": "MODE",
+                    "data": [
+                      {
+                        "subjectCode": "___NEW_ACTUAL_SALE",
+                        "moduleTypeCode": "POINT"
+                      },
+                      {
+                        "subjectCode": "___OLD_ACTUAL_REFUND",
+                        "moduleTypeCode": "POINT"
+                      },
+                      {
+                        "subjectCode": "___CONSIGNMENT_ACTUAL_SALE",
+                        "moduleTypeCode": "POINT"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "moduleTypeCode": "BLOCK",
+            "subjectCode": "TEST"
+          }
+        ]
+      }
+    ],
+    "moduleTypeCode": "MODULE",
+    "subjectCode": "TEST"
+  },
+  "output": {
+    "data": [
+      {
+        "data": [
+          {
+            "data": [
+              {
+                "data": {
+                  "key1": "value1",
+                  "key2": "value2"
+                },
+                "moduleTypeCode": "MAP_BUSINESS",
+                "subjectCode": "ABusiness"
+              },
+              {
+                "data": [
+                  {
+                    "data": [
+                      {
+                        "amount": "1.00",
+                        "moduleTypeCode": "POINT",
+                        "number": "2",
+                        "subjectCode": "___ALL_SETTLE_SALE"
+                      },
+                      {
+                        "amount": "2.00",
+                        "moduleTypeCode": "POINT",
+                        "number": "3",
+                        "subjectCode": "___ALL_SETTLE_REFUND"
+                      }
+                    ],
+                    "moduleTypeCode": "GRAPH_LEVEL"
+                  },
+                  {
+                    "data": [
+                      {
+                        "amount": "3.00",
+                        "moduleTypeCode": "POINT",
+                        "number": "4",
+                        "subjectCode": "___NEW_ACTUAL_SALE"
+                      },
+                      {
+                        "amount": "4.00",
+                        "moduleTypeCode": "POINT",
+                        "number": "5",
+                        "subjectCode": "___OLD_ACTUAL_REFUND"
+                      },
+                      {
+                        "amount": "5.00",
+                        "moduleTypeCode": "POINT",
+                        "number": "6",
+                        "subjectCode": "___CONSIGNMENT_ACTUAL_SALE"
+                      }
+                    ],
+                    "moduleTypeCode": "GRAPH_LEVEL"
+                  }
+                ],
+                "moduleTypeCode": "ANNULAR_CHART",
+                "subjectCode": "CURRENT_SALE_ANNULAR_CHART"
+              }
+            ],
+            "moduleTypeCode": "BLOCK",
+            "subjectCode": "TEST"
+          }
+        ],
+        "moduleTypeCode": "MAIN_POINT",
+        "number": "1",
+        "subjectCode": "TEST"
+      }
+    ],
+    "moduleTypeCode": "MODULE",
+    "subjectCode": "TEST"
+  }
+}

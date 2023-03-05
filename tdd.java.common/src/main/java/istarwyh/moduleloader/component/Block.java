@@ -6,32 +6,32 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class Block extends BaseDTO implements BoardModule<List<BoardModule<?>>>{
+public class Block extends BaseDTO implements PageModule<List<PageModule<?>>> {
 
-    private  List<BoardModule<?>> data;
+    private  List<PageModule<?>> data;
 
-    private Block(String subjectCode, List<BoardModule<?>> data) {
+    private Block(String subjectCode, List<PageModule<?>> data) {
         super(subjectCode);
         this.data = data;
     }
 
-    public static Block createBlock(SubjectCodeEnum subjectCode, BoardModule<?>... data) {
+    public static Block createBlock(SubjectCodeEnum subjectCode, PageModule<?>... data) {
         return new Block(subjectCode.name(), Arrays.stream(data).toList());
     }
 
     @Override
-    public List<BoardModule<?>> getData() {
+    public List<PageModule<?>> getData() {
         return data;
     }
 
     @Override
     public void setData(Object data) {
         if(data instanceof List) {
-            this.setData((List<BoardModule<?>>) data);
+            this.setData((List<PageModule<?>>) data);
         }
     }
 
-    public void setData(List<BoardModule<?>> data) {
+    public void setData(List<PageModule<?>> data) {
         this.data = data;
     }
 }

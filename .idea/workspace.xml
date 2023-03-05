@@ -5,7 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="??">
-      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/todos-react/src/Todos.js" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/todos-react/src/Todos.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/AnnularChart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/GraphLevel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/Point.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/AnnularChartConstructor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/GraphLevelConstructor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/PointConstructor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh/moduleloader/constructor/component-business-constructor.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/BaseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/BaseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/Page.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/BoardModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/PageModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/MainPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/MainPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/MapBusiness.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/MapBusiness.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/Module.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/Module.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/ComponentConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/ComponentConstructor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/MapBusinessConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/MapBusinessConstructor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/display/ModuleLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/display/ModuleLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/display/SubjectCodeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/display/SubjectCodeEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/moduleloader/constructor/MapBusinessConstructorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/moduleloader/constructor/ComponentConstructorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh/moduleloader/constructor/map-business-constructor.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,14 +71,15 @@
         <option value="AnnotationType" />
         <option value="JUnit5 Test Class" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="Class" />
+        <option value="Record" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/tdd.javascript.util/src/main/todos-react" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-params/5.9.0/90177afa01c4b718dd91c27bdc91cb1062e640af/junit-jupiter-params-5.9.0-sources.jar!/org/junit/jupiter/params/provider/CsvArgumentsProvider.java" root0="FORCE_HIGHLIGHTING" />
@@ -107,6 +128,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="istarwyh.moduleloader.display" />
       <recent name="istarwyh.moduleloader.constructor" />
       <recent name="istarwyh.data_structure" />
       <recent name="istarwyh.leetcode.data_structure" />
@@ -140,13 +162,59 @@
       <recent name="istarwyh.junit5.extension" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="istarwyh.moduleloader.component" />
       <recent name="istarwyh.moduleloader.constructor" />
+      <recent name="istarwyh.moduleloader.component" />
       <recent name="istarwyh.classloader" />
       <recent name="istarwyh.junit5.extension" />
     </key>
   </component>
-  <component name="RunManager" selected="Jest.renders should have cursor_down_2.svg (1)">
+  <component name="RunManager" selected="Gradle.ComponentConstructorTest.build">
+    <configuration name="ComponentConstructorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":tdd.java.common:test" />
+            <option value="--tests" />
+            <option value="&quot;istarwyh.moduleloader.constructor.ComponentConstructorTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="ComponentConstructorTest.build" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":tdd.java.common:test" />
+            <option value="--tests" />
+            <option value="&quot;istarwyh.moduleloader.constructor.ComponentConstructorTest.build&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="MapBusinessConstructorTest.build" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -170,19 +238,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="renders learn react link" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/tdd.javascript.util/src/main/todo-react/hello-world/node_modules/react-scripts" />
-      <working-dir value="$PROJECT_DIR$/tdd.javascript.util/src/main/todo-react/hello-world" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/tdd.javascript.util/src/main/todo-react/hello-world/src/App.test.js" />
-      <test-names>
-        <test-name value="renders learn react link" />
-      </test-names>
-      <method v="2" />
-    </configuration>
     <configuration name="renders should have cursor_down_2.svg (1)" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -196,24 +251,11 @@
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="renders should have cursor_down_2.svg" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/tdd.javascript.util/src/main/todo-react/hello-world/node_modules/react-scripts" />
-      <working-dir value="$PROJECT_DIR$/tdd.javascript.util/src/main/todos-react" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/tdd.javascript.util/src/main/todos-react/src/App.test.js" />
-      <test-names>
-        <test-name value="renders should have cursor_down_2.svg" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/tdd.javascript.util/src/main/todo-react/package.json" />
+    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/tdd.javascript.util/package.json" />
       <command value="run" />
       <scripts>
-        <script value="start" />
+        <script value="test" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -221,11 +263,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Jest.renders should have cursor_down_2.svg (1)" />
-        <item itemvalue="Jest.renders should have cursor_down_2.svg" />
-        <item itemvalue="npm.start" />
-        <item itemvalue="Jest.renders learn react link" />
+        <item itemvalue="Gradle.ComponentConstructorTest.build" />
+        <item itemvalue="Gradle.ComponentConstructorTest" />
         <item itemvalue="Gradle.MapBusinessConstructorTest.build" />
+        <item itemvalue="npm.test" />
+        <item itemvalue="Jest.renders should have cursor_down_2.svg (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -244,7 +286,7 @@
       <workItem from="1668444987283" duration="12461000" />
       <workItem from="1670062033021" duration="24545000" />
       <workItem from="1671207092067" duration="34255000" />
-      <workItem from="1677408182495" duration="23555000" />
+      <workItem from="1677408182495" duration="30783000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>
@@ -281,7 +323,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677926799847</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="??">
+      <created>1678000723424</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1678000723424</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,7 +394,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/component/MainPoint.java</url>
-          <line>37</line>
+          <line>36</line>
           <option name="timeStamp" value="64" />
         </line-breakpoint>
       </breakpoints>

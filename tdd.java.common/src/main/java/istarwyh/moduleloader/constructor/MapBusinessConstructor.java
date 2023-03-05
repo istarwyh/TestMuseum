@@ -2,6 +2,7 @@ package istarwyh.moduleloader.constructor;
 
 import com.google.common.collect.Maps;
 import istarwyh.moduleloader.component.MapBusiness;
+import istarwyh.moduleloader.display.ModuleLoader;
 import istarwyh.moduleloader.display.SubjectCodeEnum;
 
 import java.util.HashMap;
@@ -14,8 +15,8 @@ public class MapBusinessConstructor implements ComponentConstructor<MapBusiness>
         return new MapBusinessConstructor();
     }
 
-    public MapBusiness build(ViewStructure viewStructure, Object queryDTO){
-        if(SubjectCodeEnum.ABusiness.name().equals (queryDTO.toString())){
+    public MapBusiness build(ViewStructure viewStructure, ModuleLoader.DataContext queryDTO){
+        if(SubjectCodeEnum.ABusiness.name().equals(queryDTO.getBizCode())){
             HashMap<String, String> data = Maps.newHashMap();
             data.put("key1", "value1");
             data.put("key2", "value2");

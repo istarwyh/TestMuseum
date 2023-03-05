@@ -5,6 +5,7 @@ import com.google.common.base.CaseFormat;
 import istarwyh.moduleloader.component.*;
 import istarwyh.moduleloader.component.Module;
 import istarwyh.moduleloader.constructor.*;
+import lombok.Data;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -16,65 +17,93 @@ public class ModuleLoader {
 
     @NotNull
     private final ViewStructure viewStructure;
-    private final Object context;
+    private final DataContext context;
 
     public final Map<String, ComponentConstructor<?>> componentConstructorMap = new HashMap<>(8);
 
 
-    private ModuleLoader(@NotNull ViewStructure viewStructure, Object context) {
+    private ModuleLoader(@NotNull ViewStructure viewStructure, DataContext context) {
         this.viewStructure = viewStructure;
         this.context = context;
 
         {
             componentConstructorMap.put(
-                    CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, Module.class.getSimpleName()),
+                    toUpperUnderScoreName(Module.class.getSimpleName()),
                     ModuleConstructor.empty()
             );
             componentConstructorMap.put(
-                    CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, Block.class.getSimpleName()),
+                    toUpperUnderScoreName(AnnularChart.class.getSimpleName()),
+                    AnnularChartConstructor.empty()
+            );
+            componentConstructorMap.put(
+                    toUpperUnderScoreName(GraphLevel.class.getSimpleName()),
+                    GraphLevelConstructor.empty()
+            );
+            componentConstructorMap.put(
+                    toUpperUnderScoreName(Block.class.getSimpleName()),
                     BlockConstructor.empty()
             );
             componentConstructorMap.put(
-                    CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, MapBusiness.class.getSimpleName()),
+                    toUpperUnderScoreName(MapBusiness.class.getSimpleName()),
                     MapBusinessConstructor.empty()
             );
             componentConstructorMap.put(
-                    CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, MainPoint.class.getSimpleName()),
+                    toUpperUnderScoreName(MainPoint.class.getSimpleName()),
                     MainPointConstructor.empty()
+            );
+            componentConstructorMap.put(
+                    toUpperUnderScoreName(Point.class.getSimpleName()),
+                    PointConstructor.empty()
             );
         }
     }
 
-    public static ModuleLoader createModuleLoader(ViewStructure viewStructure, Object context) {
+    @NotNull
+    private static String toUpperUnderScoreName(String moduleClass) {
+        return CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, moduleClass);
+    }
+
+
+    public static ModuleLoader createModuleLoader(ViewStructure viewStructure, DataContext context) {
         return new ModuleLoader(viewStructure, context);
     }
 
-    public BoardModule<?> parse() {
-        BoardModule<?> boardModule = parseBoardModule(viewStructure, context);
-        return setBoardModuleData(boardModule);
+    @Data
+    public static class DataContext{
+
+        private Map<String,Point> pointMap;
+
+        private Map<String,BaseDTO> elementMap;
+
+        private String bizCode;
     }
 
-    private BoardModule<?> setBoardModuleData(BoardModule<?> boardModule) {
-        String childData = Optional.ofNullable(boardModule.getData())
+    public PageModule<?> parse() {
+        PageModule<?> pageModule = parseBoardModule(viewStructure, context);
+        return setBoardModuleData(pageModule);
+    }
+
+    private PageModule<?> setBoardModuleData(PageModule<?> pageModule) {
+        String childData = Optional.ofNullable(pageModule.getData())
                 // todo  这里如果使用JSON::toJSONString会导致subjectCode直接丢失，不能理解为什么？？
                 .map(Object::toString)
                 // 确保是模块
                 .filter(it -> it.contains("moduleTypeCode"))
                 .orElse(null);
         if(childData == null){
-            return boardModule;
+            return pageModule;
         }
-        boardModule.setData(getChild(childData, context));
-        if(boardModule.getData() instanceof List){
-            ((List<BoardModule<?>>)boardModule.getData()).forEach(this::setBoardModuleData);
-            return boardModule;
+        pageModule.setData(getChild(childData, context));
+        if(pageModule.getData() instanceof List){
+            ((List<PageModule<?>>) pageModule.getData()).forEach(this::setBoardModuleData);
+            return pageModule;
         }else {
-            return setBoardModuleData(boardModule);
+            return setBoardModuleData(pageModule);
         }
     }
 
 
-    private Object getChild(String childData, Object context) {
+    private Object getChild(String childData, DataContext context) {
         Object child;
         if(childData.startsWith("[")){
             child = JSON.<String>parseArray(childData, String.class)
@@ -91,12 +120,13 @@ public class ModuleLoader {
         return child;
     }
 
-    private BoardModule<?> parseBoardModule(ViewStructure viewStructure, Object queryDTO) {
-        ComponentConstructor<?> componentConstructor = componentConstructorMap.get(viewStructure.getModuleTypeCode());
+    private PageModule<?> parseBoardModule(ViewStructure viewStructure, DataContext context) {
+        String moduleTypeCode = viewStructure.getModuleTypeCode();
+        ComponentConstructor<?> componentConstructor = componentConstructorMap.get(moduleTypeCode);
         if(componentConstructor == null){
-            throw new IllegalArgumentException("should define a component constructor");
+            throw new IllegalArgumentException("should define a component constructor of " + moduleTypeCode);
         }
-        return componentConstructor.build(viewStructure, queryDTO);
+        return componentConstructor.build(viewStructure, context);
     }
 
 }

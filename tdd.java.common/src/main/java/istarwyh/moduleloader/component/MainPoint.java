@@ -4,20 +4,19 @@ import istarwyh.moduleloader.display.SubjectCodeEnum;
 import org.apache.commons.collections.CollectionUtils;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 
-public class MainPoint extends BaseDTO implements BoardModule<List<BoardModule<?>>>{
+public class MainPoint extends BaseDTO implements PageModule<List<PageModule<?>>> {
 
-    private  List<BoardModule<?>> data;
+    private  List<PageModule<?>> data;
 
-    private MainPoint(String subjectCode, List<BoardModule<?>> data) {
+    private MainPoint(String subjectCode, List<PageModule<?>> data) {
         super(subjectCode);
         this.data = data;
     }
 
-    public static MainPoint createMainPoint(SubjectCodeEnum subjectCode, BoardModule<?>... data) {
+    public static MainPoint createMainPoint(SubjectCodeEnum subjectCode, PageModule<?>... data) {
         return new MainPoint(subjectCode.name(), Arrays.stream(data).toList());
     }
 
@@ -39,18 +38,18 @@ public class MainPoint extends BaseDTO implements BoardModule<List<BoardModule<?
     }
 
     @Override
-    public List<BoardModule<?>> getData() {
+    public List<PageModule<?>> getData() {
         return data;
     }
 
     @Override
     public void setData(Object data) {
         if(data instanceof List) {
-            this.setData((List<BoardModule<?>>) data);
+            this.setData((List<PageModule<?>>) data);
         }
     }
 
-    public void setData(List<BoardModule<?>> data) {
+    public void setData(List<PageModule<?>> data) {
         this.data = data;
     }
 }
