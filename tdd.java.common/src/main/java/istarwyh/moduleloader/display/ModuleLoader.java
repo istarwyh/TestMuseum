@@ -19,43 +19,43 @@ public class ModuleLoader {
     private final ViewStructure viewStructure;
     private final DataContext context;
 
-    public final Map<String, PageModuleConstructor<?>> componentConstructorMap = new HashMap<>(8);
+    public static final Map<String, PageModuleConstructor<?>> componentConstructorMap = new HashMap<>(8);
 
+    // todo 放入bean
+    static  {
+        componentConstructorMap.put(
+                toUpperUnderScoreName(Module.class.getSimpleName()),
+                ModuleConstructor.empty()
+        );
+        componentConstructorMap.put(
+                toUpperUnderScoreName(AnnularChart.class.getSimpleName()),
+                AnnularChartConstructor.empty()
+        );
+        componentConstructorMap.put(
+                toUpperUnderScoreName(GraphLevel.class.getSimpleName()),
+                GraphLevelConstructor.empty()
+        );
+        componentConstructorMap.put(
+                toUpperUnderScoreName(Block.class.getSimpleName()),
+                BlockConstructor.empty()
+        );
+        componentConstructorMap.put(
+                toUpperUnderScoreName(MapBusiness.class.getSimpleName()),
+                MapBusinessConstructor.empty()
+        );
+        componentConstructorMap.put(
+                toUpperUnderScoreName(MainPoint.class.getSimpleName()),
+                MainPointConstructor.empty()
+        );
+        componentConstructorMap.put(
+                toUpperUnderScoreName(Point.class.getSimpleName()),
+                PointConstructor.empty()
+        );
+    }
 
     private ModuleLoader(@NotNull ViewStructure viewStructure, DataContext context) {
         this.viewStructure = viewStructure;
         this.context = context;
-
-        {
-            componentConstructorMap.put(
-                    toUpperUnderScoreName(Module.class.getSimpleName()),
-                    ModuleConstructor.empty()
-            );
-            componentConstructorMap.put(
-                    toUpperUnderScoreName(AnnularChart.class.getSimpleName()),
-                    AnnularChartConstructor.empty()
-            );
-            componentConstructorMap.put(
-                    toUpperUnderScoreName(GraphLevel.class.getSimpleName()),
-                    GraphLevelConstructor.empty()
-            );
-            componentConstructorMap.put(
-                    toUpperUnderScoreName(Block.class.getSimpleName()),
-                    BlockConstructor.empty()
-            );
-            componentConstructorMap.put(
-                    toUpperUnderScoreName(MapBusiness.class.getSimpleName()),
-                    MapBusinessConstructor.empty()
-            );
-            componentConstructorMap.put(
-                    toUpperUnderScoreName(MainPoint.class.getSimpleName()),
-                    MainPointConstructor.empty()
-            );
-            componentConstructorMap.put(
-                    toUpperUnderScoreName(Point.class.getSimpleName()),
-                    PointConstructor.empty()
-            );
-        }
     }
 
     @NotNull
