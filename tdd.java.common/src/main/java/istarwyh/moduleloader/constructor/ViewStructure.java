@@ -1,7 +1,7 @@
 package istarwyh.moduleloader.constructor;
 
 import com.alibaba.fastjson2.JSON;
-import istarwyh.moduleloader.component.BaseDTO;
+import istarwyh.moduleloader.component.BaseElement;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,7 +34,18 @@ public class ViewStructure {
     @Getter
     @Setter
     @NoArgsConstructor
-    public static class Structure extends BaseDTO {
+    public static class Structure {
+
+        /**
+         * 标志数据的Code
+         */
+        private String theCode;
+
+        /**
+         * 标志模块类型的Code
+         */
+        private String moduleTypeCode;
+
 
         private String data;
     }

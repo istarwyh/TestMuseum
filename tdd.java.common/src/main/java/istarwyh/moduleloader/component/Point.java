@@ -3,11 +3,7 @@ package istarwyh.moduleloader.component;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-public class Point extends BaseDTO implements PageModule<Void>{
-
-    public Point(String subjectCode) {
-        super(subjectCode);
-    }
+public class Point extends BaseElement implements PageModule<Void>{
 
 
     @Override

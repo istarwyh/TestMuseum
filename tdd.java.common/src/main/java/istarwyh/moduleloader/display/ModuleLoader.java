@@ -2,8 +2,8 @@ package istarwyh.moduleloader.display;
 
 import com.alibaba.fastjson2.JSON;
 import com.google.common.base.CaseFormat;
-import istarwyh.moduleloader.component.*;
 import istarwyh.moduleloader.component.Module;
+import istarwyh.moduleloader.component.*;
 import istarwyh.moduleloader.constructor.*;
 import lombok.Data;
 import org.jetbrains.annotations.NotNull;
@@ -71,22 +71,18 @@ public class ModuleLoader {
     @Data
     public static class DataContext{
 
-        private Map<String,Point> pointMap;
-
-        private Map<String,BaseDTO> elementMap;
+        private Map<String, BaseElement> elementMap;
 
         private String bizCode;
     }
 
     public PageModule<?> parse() {
-        PageModule<?> pageModule = parseBoardModule(viewStructure, context);
-        return setBoardModuleData(pageModule);
+        return setBoardModuleData(parseBoardModule(viewStructure, context));
     }
 
     private PageModule<?> setBoardModuleData(PageModule<?> pageModule) {
         String childData = Optional.ofNullable(pageModule.getData())
-                // todo  这里如果使用JSON::toJSONString会导致subjectCode直接丢失，不能理解为什么？？
-                .map(Object::toString)
+                .map(JSON::toJSONString)
                 // 确保是模块
                 .filter(it -> it.contains("moduleTypeCode"))
                 .orElse(null);
@@ -101,7 +97,6 @@ public class ModuleLoader {
             return setBoardModuleData(pageModule);
         }
     }
-
 
     private Object getChild(String childData, DataContext context) {
         Object child;

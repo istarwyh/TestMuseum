@@ -3,12 +3,13 @@ package istarwyh.moduleloader.component;
 import java.util.Map;
 
 
-public class MapBusiness extends BaseDTO implements PageModule<Map<String,String>> {
+public class MapBusiness extends BaseElement implements PageModule<Map<String,String>> {
 
     private Map<String,String> data;
 
     private MapBusiness(String subjectCode, Map<String, String> data) {
-        super(subjectCode);
+        super();
+        super.setTheCode(subjectCode);
         this.data = data;
     }
 
@@ -31,4 +32,6 @@ public class MapBusiness extends BaseDTO implements PageModule<Map<String,String
     public void setData(Map<String, String> data) {
         this.data = data;
     }
+
+
 }

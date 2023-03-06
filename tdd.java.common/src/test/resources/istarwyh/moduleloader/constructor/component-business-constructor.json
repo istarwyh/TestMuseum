@@ -1,63 +1,129 @@
 {
   "input": {
-    "data": [
-      {
-        "moduleTypeCode": "MAIN_POINT",
-        "subjectCode": "TEST",
-        "data": [
+    "viewStructureStr": {
+      "data": [
+        {
+          "moduleTypeCode": "MAIN_POINT",
+          "theCode": "TEST",
+          "data": [
+            {
+              "data": [
+                {
+                  "moduleTypeCode": "MAP_BUSINESS",
+                  "theCode": "ABusiness"
+                },
+                {
+                  "moduleTypeCode": "ANNULAR_CHART",
+                  "theCode": "CURRENT_SALE_ANNULAR_CHART",
+                  "data": [
+                    {
+                      "moduleTypeCode": "GRAPH_LEVEL",
+                      "code": "DIRECTION",
+                      "data": [
+                        {
+                          "theCode": "___ALL_SETTLE_SALE",
+                          "moduleTypeCode": "POINT"
+                        },
+                        {
+                          "theCode": "___ALL_SETTLE_REFUND",
+                          "moduleTypeCode": "POINT"
+                        }
+                      ]
+                    },
+                    {
+                      "moduleTypeCode": "GRAPH_LEVEL",
+                      "code": "MODE",
+                      "data": [
+                        {
+                          "theCode": "___NEW_ACTUAL_SALE",
+                          "moduleTypeCode": "POINT"
+                        },
+                        {
+                          "theCode": "___OLD_ACTUAL_REFUND",
+                          "moduleTypeCode": "POINT"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "moduleTypeCode": "BLOCK",
+              "theCode": "TEST"
+            },
+            {
+              "data": [
+                {
+                  "theCode": "___ALL_SETTLE_SALE_LIST",
+                  "moduleTypeCode": "GRAPH_LEVEL"
+                },
+                {
+                  "theCode": "___ALL_SETTLE_REFUND_LIST",
+                  "moduleTypeCode": "GRAPH_LEVEL"
+                }
+              ],
+              "moduleTypeCode": "BLOCK",
+              "theCode": "TEST_BLOCK_2"
+            }
+          ]
+        }
+      ],
+      "moduleTypeCode": "MODULE",
+      "theCode": "TEST"
+    },
+    "elementMap": {
+      "___ALL_SETTLE_SALE": {
+        "amount": "1.00",
+        "moduleTypeCode": "POINT",
+        "number": "2",
+        "theCode": "___ALL_SETTLE_SALE"
+      },
+      "___ALL_SETTLE_REFUND": {
+        "amount": "2.00",
+        "moduleTypeCode": "POINT",
+        "number": "3",
+        "theCode": "___ALL_SETTLE_REFUND"
+      },
+      "___NEW_ACTUAL_SALE": {
+        "amount": "3.00",
+        "moduleTypeCode": "POINT",
+        "number": "4",
+        "theCode": "___NEW_ACTUAL_SALE"
+      },
+      "___OLD_ACTUAL_REFUND": {
+        "amount": "4.00",
+        "moduleTypeCode": "POINT",
+        "number": "5",
+        "theCode": "___CONSIGNMENT_ACTUAL_SALE"
+      },
+      "___ALL_SETTLE_SALE_LIST": {
+        "details": [
           {
-            "data": [
-              {
-                "moduleTypeCode": "MAP_BUSINESS",
-                "subjectCode": "ABusiness"
-              },
-              {
-                "moduleTypeCode": "ANNULAR_CHART",
-                "subjectCode": "CURRENT_SALE_ANNULAR_CHART",
-                "data": [
-                  {
-                    "moduleTypeCode": "GRAPH_LEVEL",
-                    "code": "DIRECTION",
-                    "data": [
-                      {
-                        "subjectCode": "___ALL_SETTLE_SALE",
-                        "moduleTypeCode": "POINT"
-                      },
-                      {
-                        "subjectCode": "___ALL_SETTLE_REFUND",
-                        "moduleTypeCode": "POINT"
-                      }
-                    ]
-                  },
-                  {
-                    "moduleTypeCode": "GRAPH_LEVEL",
-                    "code": "MODE",
-                    "data": [
-                      {
-                        "subjectCode": "___NEW_ACTUAL_SALE",
-                        "moduleTypeCode": "POINT"
-                      },
-                      {
-                        "subjectCode": "___OLD_ACTUAL_REFUND",
-                        "moduleTypeCode": "POINT"
-                      },
-                      {
-                        "subjectCode": "___CONSIGNMENT_ACTUAL_SALE",
-                        "moduleTypeCode": "POINT"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "moduleTypeCode": "BLOCK",
-            "subjectCode": "TEST"
+            "amount": "1.00",
+            "number": "2",
+            "time": "2019-01-02"
+          },
+          {
+            "amount": "2.00",
+            "number": "3",
+            "time": "2019-01-02"
+          }
+        ]
+      },
+      "___ALL_SETTLE_REFUND_LIST": {
+        "details": [
+          {
+            "amount": "3.00",
+            "number": "4",
+            "time": "2019-01-01"
+          },
+          {
+            "amount": "4.00",
+            "number": "5",
+            "time": "2019-01-02"
           }
         ]
       }
-    ],
-    "moduleTypeCode": "MODULE",
-    "subjectCode": "TEST"
+    }
   },
   "output": {
     "data": [
@@ -71,65 +137,105 @@
                   "key2": "value2"
                 },
                 "moduleTypeCode": "MAP_BUSINESS",
-                "subjectCode": "ABusiness"
+                "theCode": "ABusiness"
               },
               {
                 "data": [
                   {
+                    "amount": "3.00",
                     "data": [
                       {
                         "amount": "1.00",
                         "moduleTypeCode": "POINT",
                         "number": "2",
-                        "subjectCode": "___ALL_SETTLE_SALE"
+                        "theCode": "___ALL_SETTLE_SALE"
                       },
                       {
                         "amount": "2.00",
                         "moduleTypeCode": "POINT",
                         "number": "3",
-                        "subjectCode": "___ALL_SETTLE_REFUND"
+                        "theCode": "___ALL_SETTLE_REFUND"
                       }
                     ],
-                    "moduleTypeCode": "GRAPH_LEVEL"
+                    "moduleTypeCode": "GRAPH_LEVEL",
+                    "number": "5"
                   },
                   {
+                    "amount": "7.00",
                     "data": [
                       {
                         "amount": "3.00",
                         "moduleTypeCode": "POINT",
                         "number": "4",
-                        "subjectCode": "___NEW_ACTUAL_SALE"
+                        "theCode": "___NEW_ACTUAL_SALE"
                       },
                       {
                         "amount": "4.00",
                         "moduleTypeCode": "POINT",
                         "number": "5",
-                        "subjectCode": "___OLD_ACTUAL_REFUND"
-                      },
-                      {
-                        "amount": "5.00",
-                        "moduleTypeCode": "POINT",
-                        "number": "6",
-                        "subjectCode": "___CONSIGNMENT_ACTUAL_SALE"
+                        "theCode": "___OLD_ACTUAL_REFUND"
                       }
                     ],
-                    "moduleTypeCode": "GRAPH_LEVEL"
+                    "moduleTypeCode": "GRAPH_LEVEL",
+                    "number": "9"
                   }
                 ],
                 "moduleTypeCode": "ANNULAR_CHART",
-                "subjectCode": "CURRENT_SALE_ANNULAR_CHART"
+                "theCode": "CURRENT_SALE_ANNULAR_CHART"
               }
             ],
             "moduleTypeCode": "BLOCK",
-            "subjectCode": "TEST"
+            "theCode": "TEST"
+          },
+          {
+            "data": [
+              {
+                "amount": "3.00",
+                "data": [
+                  {
+                    "amount": "1.00",
+                    "number": "2",
+                    "time": "2019-01-02"
+                  },
+                  {
+                    "amount": "2.00",
+                    "number": "3",
+                    "time": "2019-01-02"
+                  }
+                ],
+                "moduleTypeCode": "GRAPH_LEVEL",
+                "number": "5",
+                "theCode": "___ALL_SETTLE_SALE_LIST"
+              },
+              {
+                "amount": "7.00",
+                "data": [
+                  {
+                    "amount": "3.00",
+                    "number": "4",
+                    "time": "2019-01-01"
+                  },
+                  {
+                    "amount": "4.00",
+                    "number": "5",
+                    "time": "2019-01-02"
+                  }
+                ],
+                "moduleTypeCode": "GRAPH_LEVEL",
+                "number": "9",
+                "theCode": "___ALL_SETTLE_REFUND_LIST"
+              }
+            ],
+            "moduleTypeCode": "BLOCK",
+            "theCode": "TEST_BLOCK_2"
           }
         ],
         "moduleTypeCode": "MAIN_POINT",
-        "number": "1",
-        "subjectCode": "TEST"
+        "number": "2",
+        "theCode": "TEST"
       }
     ],
     "moduleTypeCode": "MODULE",
-    "subjectCode": "TEST"
+    "theCode": "TEST"
   }
 }

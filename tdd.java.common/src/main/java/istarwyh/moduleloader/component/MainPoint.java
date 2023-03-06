@@ -7,12 +7,13 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class MainPoint extends BaseDTO implements PageModule<List<PageModule<?>>> {
+public class MainPoint extends BaseElement implements PageModule<List<PageModule<?>>> {
 
     private  List<PageModule<?>> data;
 
     private MainPoint(String subjectCode, List<PageModule<?>> data) {
-        super(subjectCode);
+        super();
+        super.setTheCode(subjectCode);
         this.data = data;
     }
 
@@ -33,8 +34,8 @@ public class MainPoint extends BaseDTO implements PageModule<List<PageModule<?>>
     }
 
     @Override
-    public String getSubjectCode() {
-        return super.getSubjectCode();
+    public String getTheCode() {
+        return super.getTheCode();
     }
 
     @Override

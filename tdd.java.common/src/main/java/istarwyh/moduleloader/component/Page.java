@@ -3,12 +3,13 @@ package istarwyh.moduleloader.component;
 import java.util.List;
 
 
-public class Page extends BaseDTO implements PageModule<List<PageModule<?>>> {
+public class Page extends BaseElement implements PageModule<List<PageModule<?>>> {
 
     private List<PageModule<?>> data;
 
     private Page(String subjectCode, List<PageModule<?>> data) {
-        super(subjectCode);
+        super();
+        this.setTheCode(subjectCode);
         this.data = data;
     }
 

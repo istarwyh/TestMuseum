@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @NoArgsConstructor
-public class AnnularChart extends BaseDTO implements PageModule<List<GraphLevel<Point>>>{
+public class AnnularChart extends BaseElement implements PageModule<List<GraphLevel<Point>>>{
 
     private List<GraphLevel<Point>> data;
 

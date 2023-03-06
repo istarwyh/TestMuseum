@@ -9,6 +9,12 @@ public interface PageModule<T> {
      */
     String getModuleTypeCode();
 
+    /**
+     *
+     * @return 标志元素信息的Code
+     */
+    String getTheCode();
+
     T getData();
 
     void setData(Object data);

@@ -6,12 +6,13 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class Block extends BaseDTO implements PageModule<List<PageModule<?>>> {
+public class Block extends BaseElement implements PageModule<List<PageModule<?>>> {
 
     private  List<PageModule<?>> data;
 
     private Block(String subjectCode, List<PageModule<?>> data) {
-        super(subjectCode);
+        super();
+        super.setTheCode(subjectCode);
         this.data = data;
     }
 

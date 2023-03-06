@@ -2,24 +2,28 @@ package istarwyh.moduleloader.component;
 
 import istarwyh.moduleloader.display.SubjectCodeEnum;
 import lombok.NoArgsConstructor;
+import org.apache.commons.collections.CollectionUtils;
 
-import javax.annotation.Nonnull;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 @NoArgsConstructor
-public class GraphLevel<T> extends BaseDTO implements PageModule<List<T>> {
+public class GraphLevel<T extends BaseElement> extends BaseElement implements PageModule<List<T>> {
 
 
     private List<T> data;
 
     public GraphLevel(String subjectCode, List<T> data) {
-        super(subjectCode);
+        super();
+        super.setTheCode(subjectCode);
         this.data = data;
     }
 
     @SafeVarargs
-    public static <T> GraphLevel<T> createModule(SubjectCodeEnum subjectCode, T... data) {
+    public static <T extends BaseElement> GraphLevel<T> createModule(SubjectCodeEnum subjectCode, T... data) {
         return new GraphLevel<>(subjectCode.name(), Arrays.stream(data).toList());
     }
 
@@ -37,5 +41,40 @@ public class GraphLevel<T> extends BaseDTO implements PageModule<List<T>> {
     @Override
     public List<T> getData() {
         return data;
+    }
+
+    @Override
+    public String getAmount() {
+        String amount = super.getAmount();
+        if(amount != null || CollectionUtils.isEmpty(this.data)){
+            return amount;
+        }
+        return this.data.stream()
+                .map(T::getAmount)
+                .filter(Objects::nonNull)
+                .map(BigDecimal::new)
+                .toList()
+                .stream()
+                .reduce(BigDecimal::add)
+                .orElse(BigDecimal.ZERO)
+                .setScale(2, RoundingMode.HALF_EVEN)
+                .toString();
+    }
+
+    @Override
+    public String getNumber() {
+        String number = super.getNumber();
+        if(number != null || CollectionUtils.isEmpty(this.data)){
+            return number;
+        }
+        return this.data.stream()
+                .map(T::getNumber)
+                .filter(Objects::nonNull)
+                .map(Long::valueOf)
+                .toList()
+                .stream()
+                .reduce(Long::sum)
+                .orElse(0L)
+                .toString();
     }
 }
