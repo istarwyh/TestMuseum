@@ -14,7 +14,7 @@ public class PointConstructor implements ComponentConstructor<Point> {
     @Override
     public Point build(ViewStructure viewStructure, ModuleLoader.DataContext context) {
         Point point = JSON.parseObject(viewStructure.getStructureStr(), Point.class);
-        BaseElement baseElement = context.getElementMap().get(point.getTheCode());
+        BaseElement baseElement = context.getElementMap().get(point.getSubjectCode());
         if(baseElement == null) {
             return point;
         }

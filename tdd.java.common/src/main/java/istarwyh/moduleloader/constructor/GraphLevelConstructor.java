@@ -14,7 +14,7 @@ public class GraphLevelConstructor implements ComponentConstructor<GraphLevel<?>
     @Override
     public GraphLevel<?> build(ViewStructure viewStructure, ModuleLoader.DataContext context) {
         GraphLevel<?> graphLevel = ComponentConstructor.super.build(viewStructure, context);
-        BaseElement baseElement = context.getElementMap().get(graphLevel.getTheCode());
+        BaseElement baseElement = context.getElementMap().get(graphLevel.getSubjectCode());
         if(baseElement == null){
             return graphLevel;
         }

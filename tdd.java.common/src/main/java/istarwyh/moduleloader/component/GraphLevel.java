@@ -18,7 +18,7 @@ public class GraphLevel<T extends BaseElement> extends BaseElement implements Pa
 
     public GraphLevel(String subjectCode, List<T> data) {
         super();
-        super.setTheCode(subjectCode);
+        super.setSubjectCode(subjectCode);
         this.data = data;
     }
 

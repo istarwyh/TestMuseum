@@ -9,7 +9,7 @@ public class Page extends BaseElement implements PageModule<List<PageModule<?>>>
 
     private Page(String subjectCode, List<PageModule<?>> data) {
         super();
-        this.setTheCode(subjectCode);
+        this.setSubjectCode(subjectCode);
         this.data = data;
     }
 

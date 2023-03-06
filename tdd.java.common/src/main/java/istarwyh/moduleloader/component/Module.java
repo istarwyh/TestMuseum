@@ -13,7 +13,7 @@ public class Module extends BaseElement implements PageModule<List<PageModule<?>
 
     public Module(String subjectCode, List<PageModule<?>> data) {
         super();
-        super.setTheCode(subjectCode);
+        super.setSubjectCode(subjectCode);
         this.data = data;
     }
 

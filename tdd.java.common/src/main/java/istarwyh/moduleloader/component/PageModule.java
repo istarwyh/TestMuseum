@@ -13,7 +13,7 @@ public interface PageModule<T> {
      *
      * @return 标志元素信息的Code
      */
-    String getTheCode();
+    String getSubjectCode();
 
     T getData();
 

@@ -12,7 +12,7 @@ public class Block extends BaseElement implements PageModule<List<PageModule<?>>
 
     private Block(String subjectCode, List<PageModule<?>> data) {
         super();
-        super.setTheCode(subjectCode);
+        super.setSubjectCode(subjectCode);
         this.data = data;
     }
 

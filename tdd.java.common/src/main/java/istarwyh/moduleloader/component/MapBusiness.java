@@ -9,7 +9,7 @@ public class MapBusiness extends BaseElement implements PageModule<Map<String,St
 
     private MapBusiness(String subjectCode, Map<String, String> data) {
         super();
-        super.setTheCode(subjectCode);
+        super.setSubjectCode(subjectCode);
         this.data = data;
     }
 

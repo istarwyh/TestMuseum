@@ -16,7 +16,7 @@ public class BaseElement {
     /**
      * 标志数据的Code
      */
-    private String theCode;
+    private String subjectCode;
 
     /**
      * 金额

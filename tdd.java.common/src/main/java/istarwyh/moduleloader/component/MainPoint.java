@@ -13,7 +13,7 @@ public class MainPoint extends BaseElement implements PageModule<List<PageModule
 
     private MainPoint(String subjectCode, List<PageModule<?>> data) {
         super();
-        super.setTheCode(subjectCode);
+        super.setSubjectCode(subjectCode);
         this.data = data;
     }
 
@@ -34,8 +34,8 @@ public class MainPoint extends BaseElement implements PageModule<List<PageModule
     }
 
     @Override
-    public String getTheCode() {
-        return super.getTheCode();
+    public String getSubjectCode() {
+        return super.getSubjectCode();
     }
 
     @Override
