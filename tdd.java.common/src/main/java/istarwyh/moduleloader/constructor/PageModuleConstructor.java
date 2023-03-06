@@ -9,14 +9,14 @@ import org.jetbrains.annotations.Nullable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-public interface ComponentConstructor<T extends PageModule<?>> {
+public interface PageModuleConstructor<T extends PageModule<?>> {
 
     @NotNull
     default Class<T> support(){
         Type[] genericInterfaces = this.getClass().getGenericInterfaces();
         for(Type type : genericInterfaces){
             if(type instanceof ParameterizedType &&
-                    ((ParameterizedType) type).getRawType().getTypeName().equals(ComponentConstructor.class.getName())){
+                    ((ParameterizedType) type).getRawType().getTypeName().equals(PageModuleConstructor.class.getName())){
                 Type actualTypeArgument = ((ParameterizedType) type).getActualTypeArguments()[0];
                 if(actualTypeArgument != null){
                     return getClassFromParameterizedType(actualTypeArgument);

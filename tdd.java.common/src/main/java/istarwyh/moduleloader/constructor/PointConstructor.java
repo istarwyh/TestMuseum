@@ -5,7 +5,7 @@ import istarwyh.moduleloader.component.BaseElement;
 import istarwyh.moduleloader.component.Point;
 import istarwyh.moduleloader.display.ModuleLoader;
 
-public class PointConstructor implements ComponentConstructor<Point> {
+public class PointConstructor implements PageModuleConstructor<Point> {
 
     public static PointConstructor empty() {
         return new PointConstructor();

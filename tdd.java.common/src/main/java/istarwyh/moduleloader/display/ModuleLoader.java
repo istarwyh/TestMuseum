@@ -19,7 +19,7 @@ public class ModuleLoader {
     private final ViewStructure viewStructure;
     private final DataContext context;
 
-    public final Map<String, ComponentConstructor<?>> componentConstructorMap = new HashMap<>(8);
+    public final Map<String, PageModuleConstructor<?>> componentConstructorMap = new HashMap<>(8);
 
 
     private ModuleLoader(@NotNull ViewStructure viewStructure, DataContext context) {
@@ -117,11 +117,11 @@ public class ModuleLoader {
 
     private PageModule<?> parseBoardModule(ViewStructure viewStructure, DataContext context) {
         String moduleTypeCode = viewStructure.getModuleTypeCode();
-        ComponentConstructor<?> componentConstructor = componentConstructorMap.get(moduleTypeCode);
-        if(componentConstructor == null){
+        PageModuleConstructor<?> pageModuleConstructor = componentConstructorMap.get(moduleTypeCode);
+        if(pageModuleConstructor == null){
             throw new IllegalArgumentException("should define a component constructor of " + moduleTypeCode);
         }
-        return componentConstructor.build(viewStructure, context);
+        return pageModuleConstructor.build(viewStructure, context);
     }
 
 }

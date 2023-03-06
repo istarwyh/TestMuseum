@@ -9,9 +9,9 @@ import java.util.HashMap;
 
 import static istarwyh.moduleloader.component.MapBusiness.createMapBusiness;
 
-public class MapBusinessConstructor implements ComponentConstructor<MapBusiness> {
+public class MapBusinessConstructor implements PageModuleConstructor<MapBusiness> {
 
-    public static ComponentConstructor<?> empty() {
+    public static PageModuleConstructor<?> empty() {
         return new MapBusinessConstructor();
     }
 

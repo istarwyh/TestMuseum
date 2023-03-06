@@ -1,6 +1,5 @@
 package istarwyh.moduleloader.constructor;
 
-import com.alibaba.fastjson2.JSON;
 import istarwyh.junit5.annotation.JsonFileSource;
 import istarwyh.junit5.provider.model.TestCase;
 import istarwyh.moduleloader.component.BaseElement;
@@ -8,7 +7,6 @@ import istarwyh.moduleloader.component.PageModule;
 import lombok.Data;
 import org.junit.jupiter.api.BeforeEach;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import static com.alibaba.fastjson2.JSON.toJSONString;
@@ -17,7 +15,7 @@ import static istarwyh.moduleloader.display.ModuleLoader.createModuleLoader;
 import static istarwyh.moduleloader.display.SubjectCodeEnum.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class ComponentConstructorTest {
+class PageModuleConstructorTest {
 
     private DataContext context;
 
@@ -27,7 +25,7 @@ class ComponentConstructorTest {
         context.setBizCode(ABusiness.name());
     }
 
-    @JsonFileSource(in = ComponentConstructorTest.class,resources = "component-business-constructor.json")
+    @JsonFileSource(in = PageModuleConstructorTest.class,resources = "component-business-constructor.json")
     void build(TestCase<Input,String> testCase) {
         Input input = testCase.getInput(Input.class);
         ViewStructure viewStructure = ViewStructure.of(input.getViewStructureStr());

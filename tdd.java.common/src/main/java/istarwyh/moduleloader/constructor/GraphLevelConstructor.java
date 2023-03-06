@@ -5,7 +5,7 @@ import istarwyh.moduleloader.component.BaseElement;
 import istarwyh.moduleloader.component.GraphLevel;
 import istarwyh.moduleloader.display.ModuleLoader;
 
-public class GraphLevelConstructor implements ComponentConstructor<GraphLevel<?>> {
+public class GraphLevelConstructor implements PageModuleConstructor<GraphLevel<?>> {
 
     public static GraphLevelConstructor empty() {
         return new GraphLevelConstructor();
@@ -13,7 +13,7 @@ public class GraphLevelConstructor implements ComponentConstructor<GraphLevel<?>
 
     @Override
     public GraphLevel<?> build(ViewStructure viewStructure, ModuleLoader.DataContext context) {
-        GraphLevel<?> graphLevel = ComponentConstructor.super.build(viewStructure, context);
+        GraphLevel<?> graphLevel = PageModuleConstructor.super.build(viewStructure, context);
         BaseElement baseElement = context.getElementMap().get(graphLevel.getSubjectCode());
         if(baseElement == null){
             return graphLevel;
