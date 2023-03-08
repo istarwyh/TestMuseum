@@ -32,6 +32,10 @@ public class ModuleLoader {
                 AnnularChartConstructor.empty()
         );
         componentConstructorMap.put(
+                toUpperUnderScoreName(BarChart.class.getSimpleName()),
+                BarChartConstructor.empty()
+        );
+        componentConstructorMap.put(
                 toUpperUnderScoreName(GraphLevel.class.getSimpleName()),
                 GraphLevelConstructor.empty()
         );
