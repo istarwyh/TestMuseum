@@ -4,17 +4,12 @@
       "data": [
         {
           "moduleTypeCode": "MAIN_POINT",
-          "subjectCode": "TEST",
+          "subjectCode": "CURRENT_MAIN_POINT",
           "data": [
             {
               "data": [
                 {
-                  "moduleTypeCode": "MAP_BUSINESS",
-                  "subjectCode": "ABusiness"
-                },
-                {
                   "moduleTypeCode": "ANNULAR_CHART",
-                  "subjectCode": "CURRENT_SALE_ANNULAR_CHART",
                   "data": [
                     {
                       "moduleTypeCode": "GRAPH_LEVEL",
@@ -43,13 +38,7 @@
                       ]
                     }
                   ]
-                }
-              ],
-              "moduleTypeCode": "BLOCK",
-              "subjectCode": "TEST"
-            },
-            {
-              "data": [
+                },
                 {
                   "moduleTypeCode": "BAR_CHART",
                   "subjectCode": "CURRENT_SALE_TREND",
@@ -65,14 +54,22 @@
                   ]
                 }
               ],
-              "moduleTypeCode": "BLOCK",
-              "subjectCode": "TEST_BLOCK_2"
+              "moduleTypeCode": "BLOCK"
+            },
+            {
+              "data": [
+                {
+                  "moduleTypeCode": "MAP_BUSINESS",
+                  "subjectCode": "LOGISTICS_REBATE_PRE"
+                }
+              ],
+              "moduleTypeCode": "BLOCK"
             }
           ]
         }
       ],
       "moduleTypeCode": "MODULE",
-      "subjectCode": "TEST"
+      "subjectCode": "CURRENT_MODULE"
     },
     "elementMap": {
       "___ALL_SETTLE_SALE": {
@@ -136,14 +133,6 @@
           {
             "data": [
               {
-                "data": {
-                  "key1": "value1",
-                  "key2": "value2"
-                },
-                "moduleTypeCode": "MAP_BUSINESS",
-                "subjectCode": "ABusiness"
-              },
-              {
                 "data": [
                   {
                     "amount": "3.00",
@@ -184,15 +173,8 @@
                     "number": "9"
                   }
                 ],
-                "moduleTypeCode": "ANNULAR_CHART",
-                "subjectCode": "CURRENT_SALE_ANNULAR_CHART"
-              }
-            ],
-            "moduleTypeCode": "BLOCK",
-            "subjectCode": "TEST"
-          },
-          {
-            "data": [
+                "moduleTypeCode": "ANNULAR_CHART"
+              },
               {
                 "data": [
                   {
@@ -236,16 +218,28 @@
                 "subjectCode": "CURRENT_SALE_TREND"
               }
             ],
-            "moduleTypeCode": "BLOCK",
-            "subjectCode": "TEST_BLOCK_2"
+            "moduleTypeCode": "BLOCK"
+          },
+          {
+            "data": [
+              {
+                "data": {
+                  "key1": "value1",
+                  "key2": "value2"
+                },
+                "moduleTypeCode": "MAP_BUSINESS",
+                "subjectCode": "ABusiness"
+              }
+            ],
+            "moduleTypeCode": "BLOCK"
           }
         ],
         "moduleTypeCode": "MAIN_POINT",
         "number": "2",
-        "subjectCode": "TEST"
+        "subjectCode": "CURRENT_MAIN_POINT"
       }
     ],
     "moduleTypeCode": "MODULE",
-    "subjectCode": "TEST"
+    "subjectCode": "CURRENT_MODULE"
   }
 }
