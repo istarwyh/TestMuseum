@@ -1,5 +1,7 @@
 package istarwyh.moduleloader.component;
 
+import istarwyh.moduleloader.PageModule;
+
 import java.util.List;
 
 

@@ -3,26 +3,26 @@ package istarwyh.moduleloader.constructor;
 import istarwyh.junit5.annotation.JsonFileSource;
 import istarwyh.junit5.provider.model.TestCase;
 import istarwyh.moduleloader.component.BaseElement;
-import istarwyh.moduleloader.component.PageModule;
+import istarwyh.moduleloader.PageModule;
 import lombok.Data;
 import org.junit.jupiter.api.BeforeEach;
 
 import java.util.Map;
 
 import static com.alibaba.fastjson2.JSON.toJSONString;
-import static istarwyh.moduleloader.display.ModuleLoader.DataContext;
-import static istarwyh.moduleloader.display.ModuleLoader.createModuleLoader;
-import static istarwyh.moduleloader.display.SubjectCodeEnum.*;
+import static istarwyh.moduleloader.ModuleLoader.DataContext;
+import static istarwyh.moduleloader.ModuleLoader.createModuleLoader;
+import static istarwyh.moduleloader.SubjectCodeEnum.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PageModuleConstructorTest {
 
-    private DataContext context;
+    private DataContext<MapBusinessConstructor.QueryDTO> context;
 
     @BeforeEach
     void setUp() {
-        context = new DataContext();
-        context.setBizCode(ABusiness.name());
+        context = new DataContext<>();
+        context.setQueryDTO(MapBusinessConstructor.QueryDTO.builder().bizCode(ABusiness.name()).build());
     }
 
     @JsonFileSource(in = PageModuleConstructorTest.class,resources = "component-business-constructor.json")

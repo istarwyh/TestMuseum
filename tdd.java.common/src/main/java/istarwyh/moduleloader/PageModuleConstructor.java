@@ -1,15 +1,14 @@
-package istarwyh.moduleloader.constructor;
+package istarwyh.moduleloader;
 
 import com.alibaba.fastjson2.JSON;
-import istarwyh.moduleloader.component.PageModule;
-import istarwyh.moduleloader.display.ModuleLoader;
+import istarwyh.moduleloader.constructor.ViewStructure;
 import jakarta.validation.constraints.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-public interface PageModuleConstructor<T extends PageModule<?>> {
+public interface PageModuleConstructor<T extends PageModule<?>,Q> {
 
     @NotNull
     default Class<T> support(){
@@ -35,7 +34,8 @@ public interface PageModuleConstructor<T extends PageModule<?>> {
         }
     }
 
-    default T build(ViewStructure viewStructure, ModuleLoader.DataContext context){
+    default T build(ViewStructure viewStructure, ModuleLoader.DataContext<Q> context){
         return JSON.parseObject(viewStructure.getStructureStr(), this.support());
     }
+
 }

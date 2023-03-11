@@ -1,4 +1,4 @@
-package istarwyh.moduleloader.component;
+package istarwyh.moduleloader;
 
 public interface PageModule<T> {
 

@@ -1,6 +1,7 @@
 package istarwyh.moduleloader.component;
 
-import istarwyh.moduleloader.display.SubjectCodeEnum;
+import istarwyh.moduleloader.PageModule;
+import istarwyh.moduleloader.SubjectCodeEnum;
 import org.apache.commons.collections.CollectionUtils;
 
 import java.util.Arrays;

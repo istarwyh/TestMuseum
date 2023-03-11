@@ -1,11 +1,12 @@
 package istarwyh.moduleloader.component;
 
+import istarwyh.moduleloader.PageModule;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @NoArgsConstructor
-public class BarChart extends BaseElement implements PageModule<List<GraphLevel<Point>>>{
+public class BarChart extends BaseElement implements PageModule<List<GraphLevel<Point>>> {
 
     private List<GraphLevel<Point>> data;
 

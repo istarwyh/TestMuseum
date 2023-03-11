@@ -1,4 +1,4 @@
-package istarwyh.moduleloader.display;
+package istarwyh.moduleloader;
 
 import com.alibaba.fastjson2.JSON;
 import com.google.common.base.CaseFormat;
@@ -19,7 +19,7 @@ public class ModuleLoader {
     private final ViewStructure viewStructure;
     private final DataContext context;
 
-    public static final Map<String, PageModuleConstructor<?>> componentConstructorMap = new HashMap<>(8);
+    public static final Map<String, PageModuleConstructor<?,?>> componentConstructorMap = new HashMap<>(8);
 
     // todo 放入bean
     static  {
@@ -73,11 +73,11 @@ public class ModuleLoader {
     }
 
     @Data
-    public static class DataContext{
+    public static class DataContext<QueryDTO>{
 
         private Map<String, BaseElement> elementMap;
 
-        private String bizCode;
+        private QueryDTO queryDTO;
     }
 
     public PageModule<?> parse() {
@@ -119,9 +119,11 @@ public class ModuleLoader {
         return child;
     }
 
-    private PageModule<?> parseBoardModule(ViewStructure viewStructure, DataContext context) {
+    @SuppressWarnings("all")
+    private PageModule<?> parseBoardModule(ViewStructure viewStructure, DataContext<Object> context) {
         String moduleTypeCode = viewStructure.getModuleTypeCode();
-        PageModuleConstructor<?> pageModuleConstructor = componentConstructorMap.get(moduleTypeCode);
+        PageModuleConstructor<?,Object> pageModuleConstructor =
+                (PageModuleConstructor<?, Object>) componentConstructorMap.get(moduleTypeCode);
         if(pageModuleConstructor == null){
             throw new IllegalArgumentException("should define a component constructor of " + moduleTypeCode);
         }
