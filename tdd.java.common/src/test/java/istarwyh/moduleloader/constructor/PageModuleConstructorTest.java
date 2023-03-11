@@ -30,11 +30,10 @@ class PageModuleConstructorTest {
         Input input = testCase.getInput(Input.class);
         ViewStructure viewStructure = ViewStructure.of(input.getViewStructureStr());
         context.setElementMap(input.getElementMap());
-        String output = testCase.getOutput(String.class);
 
         PageModule<?> build =  createModuleLoader(viewStructure, context).parse();
 
-        assertEquals(output, toJSONString(build));
+        assertEquals(testCase.getOutput(String.class), toJSONString(build));
     }
 
 

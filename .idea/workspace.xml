@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="??">
+      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/util/NameConverter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/GraphLevelConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/GraphLevelConstructor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/MapBusinessConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/MapBusinessConstructor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/PageModuleConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/PageModuleConstructor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/PointConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/constructor/PointConstructor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/display/ModuleLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/display/ModuleLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/classloader/modifier/Modifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/classloader/modifier/Modifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/ModuleLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/moduleloader/ModuleLoader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/moduleloader/constructor/PageModuleConstructorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/moduleloader/constructor/PageModuleConstructorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,8 +57,8 @@
         <option value="Interface" />
         <option value="HTML File" />
         <option value="JavaScript File" />
-        <option value="Class" />
         <option value="Record" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -154,7 +152,7 @@
       <recent name="istarwyh.junit5.extension" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.PageModuleConstructorTest.build">
+  <component name="RunManager" selected="Gradle.Tests in 'istarwyh'">
     <configuration name="ComponentConstructorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -192,29 +190,6 @@
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
             <option value="&quot;istarwyh.moduleloader.constructor.ComponentConstructorTest.build&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="MapBusinessConstructorTest.build" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":tdd.java.common:test" />
-            <option value="--tests" />
-            <option value="&quot;istarwyh.moduleloader.constructor.MapBusinessConstructorTest.build&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -270,13 +245,36 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="Tests in 'istarwyh'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":tdd.java.common:test" />
+            <option value="--tests" />
+            <option value="&quot;istarwyh.*&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.Tests in 'istarwyh'" />
         <item itemvalue="Gradle.PageModuleConstructorTest.build" />
         <item itemvalue="Gradle.PageModuleConstructorTest" />
         <item itemvalue="Gradle.ComponentConstructorTest.build" />
         <item itemvalue="Gradle.ComponentConstructorTest" />
-        <item itemvalue="Gradle.MapBusinessConstructorTest.build" />
       </list>
     </recent_temporary>
   </component>

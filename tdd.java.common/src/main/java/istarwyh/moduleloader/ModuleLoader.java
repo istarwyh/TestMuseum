@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import static istarwyh.moduleloader.util.NameConverter.toUpperUnderScoreName;
+
 public class ModuleLoader {
 
     @NotNull
@@ -61,12 +63,6 @@ public class ModuleLoader {
         this.viewStructure = viewStructure;
         this.context = context;
     }
-
-    @NotNull
-    private static String toUpperUnderScoreName(String moduleClass) {
-        return CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, moduleClass);
-    }
-
 
     public static ModuleLoader createModuleLoader(ViewStructure viewStructure, DataContext context) {
         return new ModuleLoader(viewStructure, context);

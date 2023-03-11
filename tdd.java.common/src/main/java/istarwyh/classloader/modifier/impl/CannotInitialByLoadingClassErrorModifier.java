@@ -7,17 +7,4 @@ import lombok.SneakyThrows;
 
 import static istarwyh.util.JavassistUtil.wipeOriginalByteCode;
 
-public class CannotInitialByLoadingClassErrorModifier implements Modifier {
-
-    @Override
-    @SneakyThrows
-    public void afterLoadClass(String className, CtClass ctClass) {
-        Class<?> startClass = CannotInitialDueToLoadingClassError.class;
-        if(startClass.getName().equals(className)){
-            while (startClass != Object.class){
-                wipeOriginalByteCode(ctClass);
-                startClass = startClass.getSuperclass();
-            }
-        }
-    }
-}
+public class CannotInitialByLoadingClassErrorModifier implements Modifier<CannotInitialDueToLoadingClassError> {}
