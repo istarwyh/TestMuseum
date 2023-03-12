@@ -1,6 +1,6 @@
-package istarwyh.moduleloader.component;
+package istarwyh.moduleloader;
 
-import com.google.common.base.CaseFormat;
+import istarwyh.moduleloader.util.NameConverter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -47,7 +47,7 @@ public class BaseElement {
         if(this.getClass() == BaseElement.class || moduleTypeCode != null){
             return moduleTypeCode;
         }
-        return CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, this.getClass().getSimpleName());
+        return NameConverter.toUpperUnderScoreName(this.getClass().getSimpleName());
     }
 
 }

@@ -1,5 +1,6 @@
 package istarwyh.moduleloader.component;
 
+import istarwyh.moduleloader.BaseElement;
 import istarwyh.moduleloader.PageModule;
 import istarwyh.moduleloader.SubjectCodeEnum;
 
@@ -11,16 +12,6 @@ public class Module extends BaseElement implements PageModule<List<PageModule<?>
 
 
     private List<PageModule<?>> data;
-
-    public Module(String subjectCode, List<PageModule<?>> data) {
-        super();
-        super.setSubjectCode(subjectCode);
-        this.data = data;
-    }
-
-    public static Module createModule(SubjectCodeEnum subjectCode, PageModule<?>... data) {
-        return new Module(subjectCode.name(), Arrays.stream(data).toList());
-    }
 
     @Override
     public void setData(Object data) {

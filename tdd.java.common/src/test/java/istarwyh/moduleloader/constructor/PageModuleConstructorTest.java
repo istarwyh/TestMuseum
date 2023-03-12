@@ -3,7 +3,7 @@ package istarwyh.moduleloader.constructor;
 import istarwyh.junit5.annotation.JsonFileSource;
 import istarwyh.junit5.provider.model.TestCase;
 import istarwyh.moduleloader.ViewStructure;
-import istarwyh.moduleloader.component.BaseElement;
+import istarwyh.moduleloader.BaseElement;
 import istarwyh.moduleloader.PageModule;
 import lombok.Data;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,7 +11,8 @@ import org.junit.jupiter.api.BeforeEach;
 import java.util.Map;
 
 import static com.alibaba.fastjson2.JSON.toJSONString;
-import static istarwyh.moduleloader.ModuleLoader.DataContext;
+
+import istarwyh.moduleloader.DataContext;
 import static istarwyh.moduleloader.ModuleLoader.createModuleLoader;
 import static istarwyh.moduleloader.SubjectCodeEnum.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;

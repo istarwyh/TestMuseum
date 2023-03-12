@@ -1,11 +1,8 @@
 package istarwyh.moduleloader.constructor;
 
 import com.google.common.collect.Maps;
-import istarwyh.moduleloader.PageModuleConstructor;
-import istarwyh.moduleloader.ViewStructure;
+import istarwyh.moduleloader.*;
 import istarwyh.moduleloader.component.MapBusiness;
-import istarwyh.moduleloader.ModuleLoader;
-import istarwyh.moduleloader.SubjectCodeEnum;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -15,11 +12,7 @@ import static istarwyh.moduleloader.component.MapBusiness.createMapBusiness;
 
 public class MapBusinessConstructor implements PageModuleConstructor<MapBusiness, MapBusinessConstructor.QueryDTO> {
 
-    public static PageModuleConstructor<?,QueryDTO> empty() {
-        return new MapBusinessConstructor();
-    }
-
-    public MapBusiness build(ViewStructure viewStructure, ModuleLoader.DataContext<QueryDTO> dataContext){
+    public MapBusiness build(ViewStructure viewStructure, DataContext<QueryDTO> dataContext){
         if(SubjectCodeEnum.ABusiness.name().equals(dataContext.getQueryDTO().getBizCode())) {
             Map<String, String> data = Maps.newHashMap();
             data.put("key1", "value1");

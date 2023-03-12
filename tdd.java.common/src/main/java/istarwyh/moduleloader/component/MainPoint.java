@@ -1,5 +1,6 @@
 package istarwyh.moduleloader.component;
 
+import istarwyh.moduleloader.BaseElement;
 import istarwyh.moduleloader.PageModule;
 import istarwyh.moduleloader.SubjectCodeEnum;
 import org.apache.commons.collections.CollectionUtils;
@@ -11,16 +12,6 @@ import java.util.List;
 public class MainPoint extends BaseElement implements PageModule<List<PageModule<?>>> {
 
     private  List<PageModule<?>> data;
-
-    private MainPoint(String subjectCode, List<PageModule<?>> data) {
-        super();
-        super.setSubjectCode(subjectCode);
-        this.data = data;
-    }
-
-    public static MainPoint createMainPoint(SubjectCodeEnum subjectCode, PageModule<?>... data) {
-        return new MainPoint(subjectCode.name(), Arrays.stream(data).toList());
-    }
 
     /**
      * 演示组件内的值会随着子元素的不同而动态变化

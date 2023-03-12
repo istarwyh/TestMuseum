@@ -1,8 +1,6 @@
 package istarwyh.moduleloader;
 
 import com.alibaba.fastjson2.JSON;
-import istarwyh.moduleloader.component.BaseElement;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 
@@ -32,14 +30,6 @@ public class ModuleLoader {
 
     public static ModuleLoader createModuleLoader(ViewStructure viewStructure, DataContext context) {
         return new ModuleLoader(viewStructure, context);
-    }
-
-    @Data
-    public static class DataContext<QueryDTO>{
-
-        private Map<String, BaseElement> elementMap;
-
-        private QueryDTO queryDTO;
     }
 
     public PageModule<?> parse() {
@@ -81,7 +71,6 @@ public class ModuleLoader {
         return child;
     }
 
-    @SuppressWarnings("all")
     private PageModule<?> parseBoardModule(ViewStructure viewStructure, DataContext<Object> context) {
         String moduleTypeCode = viewStructure.getModuleTypeCode();
         PageModuleConstructor<?,Object> pageModuleConstructor =

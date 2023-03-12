@@ -1,11 +1,11 @@
 package istarwyh.moduleloader.component;
 
+import istarwyh.moduleloader.BaseElement;
 import istarwyh.moduleloader.PageModule;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 public class Point extends BaseElement implements PageModule<Void> {
-
 
     @Override
     public Void getData() {
@@ -13,7 +13,5 @@ public class Point extends BaseElement implements PageModule<Void> {
     }
 
     @Override
-    public void setData(Object data) {
-
-    }
+    public void setData(Object data) {}
 }

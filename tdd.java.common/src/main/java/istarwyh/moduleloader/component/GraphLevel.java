@@ -1,5 +1,6 @@
 package istarwyh.moduleloader.component;
 
+import istarwyh.moduleloader.BaseElement;
 import istarwyh.moduleloader.PageModule;
 import istarwyh.moduleloader.SubjectCodeEnum;
 import lombok.NoArgsConstructor;
@@ -14,19 +15,7 @@ import java.util.Objects;
 @NoArgsConstructor
 public class GraphLevel<T extends BaseElement> extends BaseElement implements PageModule<List<T>> {
 
-
     private List<T> data;
-
-    public GraphLevel(String subjectCode, List<T> data) {
-        super();
-        super.setSubjectCode(subjectCode);
-        this.data = data;
-    }
-
-    @SafeVarargs
-    public static <T extends BaseElement> GraphLevel<T> createModule(SubjectCodeEnum subjectCode, T... data) {
-        return new GraphLevel<>(subjectCode.name(), Arrays.stream(data).toList());
-    }
 
     @Override
     public void setData(Object data) {

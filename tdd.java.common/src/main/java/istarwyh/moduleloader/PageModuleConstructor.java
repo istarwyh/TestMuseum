@@ -40,10 +40,10 @@ public interface PageModuleConstructor<T extends PageModule<?>,Q> {
     /**
      *
      * @param viewStructure {@link ViewStructure}
-     * @param context {@link ModuleLoader.DataContext}
+     * @param context {@link DataContext}
      * @return {@link PageModule}
      */
-    default T build(ViewStructure viewStructure, ModuleLoader.DataContext<Q> context){
+    default T build(ViewStructure viewStructure, DataContext<Q> context){
         return JSON.parseObject(viewStructure.getStructureStr(), this.support());
     }
 
