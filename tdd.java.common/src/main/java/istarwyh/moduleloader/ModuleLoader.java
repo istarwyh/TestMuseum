@@ -33,24 +33,26 @@ public class ModuleLoader {
     }
 
     public PageModule<?> parse() {
-        return setBoardModuleData(parseBoardModule(viewStructure, context));
+        PageModule<?> root = constructPageModule(viewStructure, context);
+        return fillData(root);
     }
 
-    private PageModule<?> setBoardModuleData(PageModule<?> pageModule) {
-        String childData = Optional.ofNullable(pageModule.getData())
+    private PageModule<?> fillData(@NotNull PageModule<?> pageModule) {
+        String childDataStr = Optional.ofNullable(pageModule.getData())
                 .map(JSON::toJSONString)
                 // 确保是模块
                 .filter(it -> it.contains("moduleTypeCode"))
                 .orElse(null);
-        if(childData == null){
+        if(childDataStr == null){
             return pageModule;
         }
-        pageModule.setData(getChild(childData, context));
-        if(pageModule.getData() instanceof List){
-            ((List<PageModule<?>>) pageModule.getData()).forEach(this::setBoardModuleData);
+        Object childData = getChild(childDataStr, context);
+        pageModule.setData(childData);
+        if(childData instanceof List){
+            ((List<PageModule<?>>) pageModule.getData()).forEach(this::fillData);
             return pageModule;
         }else {
-            return setBoardModuleData(pageModule);
+            return fillData(pageModule);
         }
     }
 
@@ -62,23 +64,23 @@ public class ModuleLoader {
                     .map(ViewStructure::of)
                     .toList()
                     .stream()
-                    .map(it -> parseBoardModule(it, context))
+                    .map(it -> constructPageModule(it, context))
                     .toList();
 
         }else {
-            child = parseBoardModule(ViewStructure.of(childData), context);
+            child = constructPageModule(ViewStructure.of(childData), context);
         }
         return child;
     }
 
-    private PageModule<?> parseBoardModule(ViewStructure viewStructure, DataContext<Object> context) {
+    private PageModule<?> constructPageModule(ViewStructure viewStructure, DataContext<Object> context) {
         String moduleTypeCode = viewStructure.getModuleTypeCode();
         PageModuleConstructor<?,Object> pageModuleConstructor =
                 (PageModuleConstructor<?, Object>) PAGE_MODULE_CONSTRUCTOR_MAP.get(moduleTypeCode);
         if(pageModuleConstructor == null){
             throw new IllegalArgumentException("should define a component constructor of " + moduleTypeCode);
         }
-        return pageModuleConstructor.build(viewStructure, context);
+        return pageModuleConstructor.construct(viewStructure, context);
     }
 
 }

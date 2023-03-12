@@ -12,7 +12,7 @@ import static istarwyh.moduleloader.component.MapBusiness.createMapBusiness;
 
 public class MapBusinessConstructor implements PageModuleConstructor<MapBusiness, MapBusinessConstructor.QueryDTO> {
 
-    public MapBusiness build(ViewStructure viewStructure, DataContext<QueryDTO> dataContext){
+    public MapBusiness construct(ViewStructure viewStructure, DataContext<QueryDTO> dataContext){
         if("ABusiness".equals(dataContext.getQueryDTO().getBizCode())) {
             Map<String, String> data = Maps.newHashMap();
             data.put("key1", "value1");

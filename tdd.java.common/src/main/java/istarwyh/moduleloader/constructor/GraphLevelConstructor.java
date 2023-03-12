@@ -6,8 +6,8 @@ import istarwyh.moduleloader.component.GraphLevel;
 
 public class GraphLevelConstructor implements PageModuleConstructor<GraphLevel<?>,Void> {
     @Override
-    public GraphLevel<?> build(ViewStructure viewStructure, DataContext<Void> context) {
-        GraphLevel<?> graphLevel = PageModuleConstructor.super.build(viewStructure, context);
+    public GraphLevel<?> construct(ViewStructure viewStructure, DataContext<Void> context) {
+        GraphLevel<?> graphLevel = PageModuleConstructor.super.construct(viewStructure, context);
         ElementDTO baseElement = context.getElementMap().get(graphLevel.getSubjectCode());
         if(baseElement == null){
             return graphLevel;

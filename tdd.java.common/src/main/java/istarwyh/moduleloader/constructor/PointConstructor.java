@@ -7,7 +7,7 @@ import istarwyh.moduleloader.component.Point;
 public class PointConstructor implements PageModuleConstructor<Point,Void> {
 
     @Override
-    public Point build(ViewStructure viewStructure, DataContext<Void> context) {
+    public Point construct(ViewStructure viewStructure, DataContext<Void> context) {
         Point point = JSON.parseObject(viewStructure.getStructureStr(), Point.class);
         ElementDTO baseElement = context.getElementMap().get(point.getSubjectCode());
         if(baseElement == null) {
