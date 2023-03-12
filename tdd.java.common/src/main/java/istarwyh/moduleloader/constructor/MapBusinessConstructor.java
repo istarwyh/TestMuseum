@@ -13,11 +13,11 @@ import static istarwyh.moduleloader.component.MapBusiness.createMapBusiness;
 public class MapBusinessConstructor implements PageModuleConstructor<MapBusiness, MapBusinessConstructor.QueryDTO> {
 
     public MapBusiness build(ViewStructure viewStructure, DataContext<QueryDTO> dataContext){
-        if(SubjectCodeEnum.ABusiness.name().equals(dataContext.getQueryDTO().getBizCode())) {
+        if("ABusiness".equals(dataContext.getQueryDTO().getBizCode())) {
             Map<String, String> data = Maps.newHashMap();
             data.put("key1", "value1");
             data.put("key2", "value2");
-            return createMapBusiness(SubjectCodeEnum.ABusiness.name(), data);
+            return createMapBusiness("ABusiness", data);
         }
         throw new IllegalStateException("Invalid QueryDTO: " + dataContext);
     }

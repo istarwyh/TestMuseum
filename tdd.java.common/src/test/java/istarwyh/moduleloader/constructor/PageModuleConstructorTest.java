@@ -11,7 +11,7 @@ import java.util.Map;
 import static com.alibaba.fastjson2.JSON.toJSONString;
 
 import static istarwyh.moduleloader.ModuleLoader.createModuleLoader;
-import static istarwyh.moduleloader.SubjectCodeEnum.*;
+import static istarwyh.moduleloader.constructor.SubjectCodeEnum.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PageModuleConstructorTest {

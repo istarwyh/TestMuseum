@@ -1,4 +1,4 @@
-package istarwyh.moduleloader;
+package istarwyh.moduleloader.constructor;
 
 public enum SubjectCodeEnum {
 

@@ -13,6 +13,10 @@ import java.util.Objects;
 @NoArgsConstructor
 public class GraphLevel<T extends ElementDTO> extends AbstractElement<List<T>> {
 
+    /**
+     * 演示组件内的值会随着子元素的不同而动态变化,这里为子元素之和
+     * @return amount
+     */
     @Override
     public String getAmount() {
         String amount = super.getAmount();
@@ -31,6 +35,10 @@ public class GraphLevel<T extends ElementDTO> extends AbstractElement<List<T>> {
                 .toString();
     }
 
+    /**
+     * 演示组件内的值会随着子元素的不同而动态变化,这里为子元素之和
+     * @return number
+     */
     @Override
     public String getNumber() {
         String number = super.getNumber();
