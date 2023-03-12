@@ -13,31 +13,13 @@ import java.util.Objects;
 @NoArgsConstructor
 public class GraphLevel<T extends ElementDTO> extends AbstractElement<List<T>> {
 
-    private List<T> data;
-
-    @Override
-    public void setData(Object data) {
-        if(data instanceof List) {
-            this.setData((List<T>) data);
-        }
-    }
-
-    public void setData(List<T> data) {
-        this.data = data;
-    }
-
-    @Override
-    public List<T> getData() {
-        return data;
-    }
-
     @Override
     public String getAmount() {
         String amount = super.getAmount();
-        if(amount != null || CollectionUtils.isEmpty(this.data)){
+        if(amount != null || CollectionUtils.isEmpty(super.getData())){
             return amount;
         }
-        return this.data.stream()
+        return super.getData().stream()
                 .map(T::getAmount)
                 .filter(Objects::nonNull)
                 .map(BigDecimal::new)
@@ -52,10 +34,10 @@ public class GraphLevel<T extends ElementDTO> extends AbstractElement<List<T>> {
     @Override
     public String getNumber() {
         String number = super.getNumber();
-        if(number != null || CollectionUtils.isEmpty(this.data)){
+        if(number != null || CollectionUtils.isEmpty(super.getData())){
             return number;
         }
-        return this.data.stream()
+        return super.getData().stream()
                 .map(T::getNumber)
                 .filter(Objects::nonNull)
                 .map(Long::valueOf)
