@@ -1,67 +1,33 @@
 package istarwyh.moduleloader;
 
 import com.alibaba.fastjson2.JSON;
-import com.google.common.base.CaseFormat;
-import istarwyh.moduleloader.component.Module;
-import istarwyh.moduleloader.component.*;
-import istarwyh.moduleloader.constructor.*;
+import istarwyh.moduleloader.component.BaseElement;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 import static istarwyh.moduleloader.util.NameConverter.toUpperUnderScoreName;
 
+@RequiredArgsConstructor
 public class ModuleLoader {
 
     @NotNull
     private final ViewStructure viewStructure;
     private final DataContext context;
 
-    public static final Map<String, PageModuleConstructor<?,?>> componentConstructorMap = new HashMap<>(8);
+    public static final Map<String, PageModuleConstructor<?,?>> PAGE_MODULE_CONSTRUCTOR_MAP = new HashMap<>(8);
 
-    // todo 放入bean
-    static  {
-        componentConstructorMap.put(
-                toUpperUnderScoreName(Module.class.getSimpleName()),
-                ModuleConstructor.empty()
-        );
-        componentConstructorMap.put(
-                toUpperUnderScoreName(AnnularChart.class.getSimpleName()),
-                AnnularChartConstructor.empty()
-        );
-        componentConstructorMap.put(
-                toUpperUnderScoreName(BarChart.class.getSimpleName()),
-                BarChartConstructor.empty()
-        );
-        componentConstructorMap.put(
-                toUpperUnderScoreName(GraphLevel.class.getSimpleName()),
-                GraphLevelConstructor.empty()
-        );
-        componentConstructorMap.put(
-                toUpperUnderScoreName(Block.class.getSimpleName()),
-                BlockConstructor.empty()
-        );
-        componentConstructorMap.put(
-                toUpperUnderScoreName(MapBusiness.class.getSimpleName()),
-                MapBusinessConstructor.empty()
-        );
-        componentConstructorMap.put(
-                toUpperUnderScoreName(MainPoint.class.getSimpleName()),
-                MainPointConstructor.empty()
-        );
-        componentConstructorMap.put(
-                toUpperUnderScoreName(Point.class.getSimpleName()),
-                PointConstructor.empty()
-        );
+    static {
+        // JDK SPI load from META-INF.services/
+        ServiceLoader.load(PageModuleConstructor.class).forEach(PageModuleConstructor::register);
     }
 
-    private ModuleLoader(@NotNull ViewStructure viewStructure, DataContext context) {
-        this.viewStructure = viewStructure;
-        this.context = context;
+    public static void registerPageModuleConstructor(@NotNull PageModuleConstructor<?,?> pageModuleConstructor) {
+        PAGE_MODULE_CONSTRUCTOR_MAP.put(
+                toUpperUnderScoreName(pageModuleConstructor.support().getSimpleName()),
+                pageModuleConstructor);
     }
 
     public static ModuleLoader createModuleLoader(ViewStructure viewStructure, DataContext context) {
@@ -119,7 +85,7 @@ public class ModuleLoader {
     private PageModule<?> parseBoardModule(ViewStructure viewStructure, DataContext<Object> context) {
         String moduleTypeCode = viewStructure.getModuleTypeCode();
         PageModuleConstructor<?,Object> pageModuleConstructor =
-                (PageModuleConstructor<?, Object>) componentConstructorMap.get(moduleTypeCode);
+                (PageModuleConstructor<?, Object>) PAGE_MODULE_CONSTRUCTOR_MAP.get(moduleTypeCode);
         if(pageModuleConstructor == null){
             throw new IllegalArgumentException("should define a component constructor of " + moduleTypeCode);
         }

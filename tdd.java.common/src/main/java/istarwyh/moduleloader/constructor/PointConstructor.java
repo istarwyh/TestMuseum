@@ -2,6 +2,7 @@ package istarwyh.moduleloader.constructor;
 
 import com.alibaba.fastjson2.JSON;
 import istarwyh.moduleloader.PageModuleConstructor;
+import istarwyh.moduleloader.ViewStructure;
 import istarwyh.moduleloader.component.BaseElement;
 import istarwyh.moduleloader.component.Point;
 import istarwyh.moduleloader.ModuleLoader;

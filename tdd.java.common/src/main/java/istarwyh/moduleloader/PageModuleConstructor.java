@@ -1,7 +1,6 @@
 package istarwyh.moduleloader;
 
 import com.alibaba.fastjson2.JSON;
-import istarwyh.moduleloader.constructor.ViewStructure;
 import jakarta.validation.constraints.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -10,6 +9,10 @@ import java.lang.reflect.Type;
 
 public interface PageModuleConstructor<T extends PageModule<?>,Q> {
 
+    /**
+     *
+     * @return supported page module
+     */
     @NotNull
     default Class<T> support(){
         Type[] genericInterfaces = this.getClass().getGenericInterfaces();
@@ -34,8 +37,20 @@ public interface PageModuleConstructor<T extends PageModule<?>,Q> {
         }
     }
 
+    /**
+     *
+     * @param viewStructure {@link ViewStructure}
+     * @param context {@link ModuleLoader.DataContext}
+     * @return {@link PageModule}
+     */
     default T build(ViewStructure viewStructure, ModuleLoader.DataContext<Q> context){
         return JSON.parseObject(viewStructure.getStructureStr(), this.support());
     }
 
+    /**
+     * register the page module constructor in a map by SPI
+     */
+    default void register(){
+        ModuleLoader.registerPageModuleConstructor(this);
+    }
 }

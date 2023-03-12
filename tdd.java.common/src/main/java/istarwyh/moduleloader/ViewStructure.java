@@ -1,4 +1,4 @@
-package istarwyh.moduleloader.constructor;
+package istarwyh.moduleloader;
 
 import com.alibaba.fastjson2.JSON;
 import lombok.Data;

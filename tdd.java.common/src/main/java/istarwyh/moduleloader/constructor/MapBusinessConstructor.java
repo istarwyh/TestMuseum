@@ -2,6 +2,7 @@ package istarwyh.moduleloader.constructor;
 
 import com.google.common.collect.Maps;
 import istarwyh.moduleloader.PageModuleConstructor;
+import istarwyh.moduleloader.ViewStructure;
 import istarwyh.moduleloader.component.MapBusiness;
 import istarwyh.moduleloader.ModuleLoader;
 import istarwyh.moduleloader.SubjectCodeEnum;

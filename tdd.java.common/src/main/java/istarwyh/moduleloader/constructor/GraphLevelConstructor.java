@@ -2,6 +2,7 @@ package istarwyh.moduleloader.constructor;
 
 
 import istarwyh.moduleloader.PageModuleConstructor;
+import istarwyh.moduleloader.ViewStructure;
 import istarwyh.moduleloader.component.BaseElement;
 import istarwyh.moduleloader.component.GraphLevel;
 import istarwyh.moduleloader.ModuleLoader;
