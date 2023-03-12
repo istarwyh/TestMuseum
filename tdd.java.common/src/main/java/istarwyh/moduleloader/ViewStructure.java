@@ -10,14 +10,26 @@ public class ViewStructure {
 
     private ViewStructure(String structureStr) {
         if(structureStr.startsWith("[")){
-            throw new IllegalArgumentException("board or module data must be a object instead of array");
+            throw new IllegalArgumentException("module data must be a object instead of array");
         }
         this.structureStr = structureStr;
-        this.moduleTypeCode = JSON.parseObject(structureStr).get("moduleTypeCode").toString();;
+        this.moduleTypeCode = JSON.parseObject(structureStr).get("moduleTypeCode").toString();
     }
 
     public static ViewStructure of(String structureStr) {
         return new ViewStructure(structureStr);
+    }
+
+    /**
+     *
+     * @param str {@link String}
+     * @return if {@link PageModule}
+     */
+    public static boolean isPageModuleStr(String str) {
+        if(str == null) {
+            return false;
+        }
+        return str.contains("moduleTypeCode");
     }
 
     public String getModuleTypeCode() {

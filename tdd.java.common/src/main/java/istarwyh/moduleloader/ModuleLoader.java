@@ -2,12 +2,17 @@ package istarwyh.moduleloader;
 
 import com.alibaba.fastjson2.JSON;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections.CollectionUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static istarwyh.moduleloader.util.NameConverter.toUpperUnderScoreName;
 
+@Slf4j
 @RequiredArgsConstructor
 public class ModuleLoader {
 
@@ -15,14 +20,14 @@ public class ModuleLoader {
     private final ViewStructure viewStructure;
     private final DataContext context;
 
-    public static final Map<String, PageModuleConstructor<?,?>> PAGE_MODULE_CONSTRUCTOR_MAP = new HashMap<>(8);
+    public static final Map<String, PageModuleConstructor<?, ?>> PAGE_MODULE_CONSTRUCTOR_MAP = new HashMap<>(8);
 
     static {
         // JDK SPI load from META-INF.services/
         ServiceLoader.load(PageModuleConstructor.class).forEach(PageModuleConstructor::register);
     }
 
-    public static void registerPageModuleConstructor(@NotNull PageModuleConstructor<?,?> pageModuleConstructor) {
+    public static void registerPageModuleConstructor(@NotNull PageModuleConstructor<?, ?> pageModuleConstructor) {
         PAGE_MODULE_CONSTRUCTOR_MAP.put(
                 toUpperUnderScoreName(pageModuleConstructor.support().getSimpleName()),
                 pageModuleConstructor);
@@ -38,46 +43,37 @@ public class ModuleLoader {
     }
 
     private PageModule<?> fillData(@NotNull PageModule<?> pageModule) {
-        String childDataStr = Optional.ofNullable(pageModule.getData())
-                .map(JSON::toJSONString)
-                // 确保是模块
-                .filter(it -> it.contains("moduleTypeCode"))
-                .orElse(null);
-        if(childDataStr == null){
-            return pageModule;
-        }
-        Object childData = getChild(childDataStr, context);
-        pageModule.setData(childData);
-        if(childData instanceof List){
-            ((List<PageModule<?>>) pageModule.getData()).forEach(this::fillData);
-            return pageModule;
-        }else {
-            return fillData(pageModule);
-        }
-    }
-
-    private Object getChild(String childData, DataContext context) {
-        Object child;
-        if(childData.startsWith("[")){
-            child = JSON.<String>parseArray(childData, String.class)
-                    .stream()
-                    .map(ViewStructure::of)
-                    .toList()
-                    .stream()
-                    .map(it -> constructPageModule(it, context))
+        Object data = pageModule.getData();
+        if (data instanceof List) {
+            // child of same level should be the same element
+            List<PageModule> children = ((List) data).stream()
+                    .map(JSON::toJSONString)
+                    .filter(it -> ViewStructure.isPageModuleStr((String)it))
+                    .map(it -> ViewStructure.of((String)it))
+                    .map(it -> constructPageModule((ViewStructure) it, context))
                     .toList();
-
+            if(CollectionUtils.isEmpty(children)) {
+                return pageModule;
+            }
+            pageModule.setData(children);
+            children.forEach(this::fillData);
+            return pageModule;
+        }else if (data instanceof PageModule) {
+            ViewStructure structure = ViewStructure.of(JSON.toJSONString(data));
+            PageModule<?> child = constructPageModule(structure, context);
+            pageModule.setData(child);
+            return fillData(pageModule);
         }else {
-            child = constructPageModule(ViewStructure.of(childData), context);
+            log.debug("pageModule:{}", JSON.toJSONString(pageModule));
+            return pageModule;
         }
-        return child;
     }
 
     private PageModule<?> constructPageModule(ViewStructure viewStructure, DataContext<Object> context) {
         String moduleTypeCode = viewStructure.getModuleTypeCode();
-        PageModuleConstructor<?,Object> pageModuleConstructor =
+        PageModuleConstructor<?, Object> pageModuleConstructor =
                 (PageModuleConstructor<?, Object>) PAGE_MODULE_CONSTRUCTOR_MAP.get(moduleTypeCode);
-        if(pageModuleConstructor == null){
+        if (pageModuleConstructor == null) {
             throw new IllegalArgumentException("should define a component constructor of " + moduleTypeCode);
         }
         return pageModuleConstructor.construct(viewStructure, context);
