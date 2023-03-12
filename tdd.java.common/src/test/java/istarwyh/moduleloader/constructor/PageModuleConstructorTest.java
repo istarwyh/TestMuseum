@@ -2,9 +2,7 @@ package istarwyh.moduleloader.constructor;
 
 import istarwyh.junit5.annotation.JsonFileSource;
 import istarwyh.junit5.provider.model.TestCase;
-import istarwyh.moduleloader.ViewStructure;
-import istarwyh.moduleloader.BaseElement;
-import istarwyh.moduleloader.PageModule;
+import istarwyh.moduleloader.*;
 import lombok.Data;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -12,7 +10,6 @@ import java.util.Map;
 
 import static com.alibaba.fastjson2.JSON.toJSONString;
 
-import istarwyh.moduleloader.DataContext;
 import static istarwyh.moduleloader.ModuleLoader.createModuleLoader;
 import static istarwyh.moduleloader.SubjectCodeEnum.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -44,7 +41,7 @@ class PageModuleConstructorTest {
 
         private String viewStructureStr;
 
-        private Map<String, BaseElement> elementMap;
+        private Map<String, ElementDTO> elementMap;
     }
 
 }

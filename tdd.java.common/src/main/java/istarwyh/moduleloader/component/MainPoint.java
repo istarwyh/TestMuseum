@@ -1,15 +1,13 @@
 package istarwyh.moduleloader.component;
 
-import istarwyh.moduleloader.BaseElement;
+import istarwyh.moduleloader.AbstractElement;
 import istarwyh.moduleloader.PageModule;
-import istarwyh.moduleloader.SubjectCodeEnum;
 import org.apache.commons.collections.CollectionUtils;
 
-import java.util.Arrays;
 import java.util.List;
 
 
-public class MainPoint extends BaseElement implements PageModule<List<PageModule<?>>> {
+public class MainPoint extends AbstractElement<List<PageModule<?>>> {
 
     private  List<PageModule<?>> data;
 
@@ -23,11 +21,6 @@ public class MainPoint extends BaseElement implements PageModule<List<PageModule
             return super.getNumber();
         }
         return String.valueOf(data.size());
-    }
-
-    @Override
-    public String getSubjectCode() {
-        return super.getSubjectCode();
     }
 
     @Override

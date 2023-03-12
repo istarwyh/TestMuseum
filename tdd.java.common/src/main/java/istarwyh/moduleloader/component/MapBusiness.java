@@ -1,12 +1,11 @@
 package istarwyh.moduleloader.component;
 
-import istarwyh.moduleloader.BaseElement;
-import istarwyh.moduleloader.PageModule;
+import istarwyh.moduleloader.AbstractElement;
 
 import java.util.Map;
 
 
-public class MapBusiness extends BaseElement implements PageModule<Map<String,String>> {
+public class MapBusiness extends AbstractElement<Map<String,String>> {
 
     private Map<String,String> data;
 

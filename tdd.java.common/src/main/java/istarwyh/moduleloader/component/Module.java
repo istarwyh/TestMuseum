@@ -1,14 +1,12 @@
 package istarwyh.moduleloader.component;
 
-import istarwyh.moduleloader.BaseElement;
+import istarwyh.moduleloader.AbstractElement;
 import istarwyh.moduleloader.PageModule;
-import istarwyh.moduleloader.SubjectCodeEnum;
 
-import java.util.Arrays;
 import java.util.List;
 
 
-public class Module extends BaseElement implements PageModule<List<PageModule<?>>> {
+public class Module extends AbstractElement<List<PageModule<?>>> {
 
 
     private List<PageModule<?>> data;

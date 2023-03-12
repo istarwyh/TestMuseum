@@ -1,19 +1,17 @@
 package istarwyh.moduleloader.component;
 
-import istarwyh.moduleloader.BaseElement;
-import istarwyh.moduleloader.PageModule;
-import istarwyh.moduleloader.SubjectCodeEnum;
+import istarwyh.moduleloader.AbstractElement;
+import istarwyh.moduleloader.ElementDTO;
 import lombok.NoArgsConstructor;
 import org.apache.commons.collections.CollectionUtils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
 @NoArgsConstructor
-public class GraphLevel<T extends BaseElement> extends BaseElement implements PageModule<List<T>> {
+public class GraphLevel<T extends ElementDTO> extends AbstractElement<List<T>> {
 
     private List<T> data;
 

@@ -7,7 +7,7 @@ import java.util.Map;
 @Data
 public class DataContext<QueryDTO> {
 
-    private Map<String, BaseElement> elementMap;
+    private Map<String, ElementDTO> elementMap;
 
     private QueryDTO queryDTO;
 }

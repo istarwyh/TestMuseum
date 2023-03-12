@@ -1,11 +1,10 @@
 package istarwyh.moduleloader.component;
 
-import istarwyh.moduleloader.BaseElement;
-import istarwyh.moduleloader.PageModule;
+import istarwyh.moduleloader.AbstractElement;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-public class Point extends BaseElement implements PageModule<Void> {
+public class Point extends AbstractElement<Void> {
 
     @Override
     public Void getData() {
