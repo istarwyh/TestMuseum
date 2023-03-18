@@ -1,6 +1,6 @@
 package istarwyh.moduleloader;
 
-import istarwyh.moduleloader.util.NameConverter;
+import com.google.common.base.CaseFormat;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,10 +14,7 @@ public abstract class AbstractElement<T> extends ElementDTO implements PageModul
     private T data;
 
     public String getModuleTypeCode(){
-        if(super.getModuleTypeCode() != null){
-            return super.getModuleTypeCode();
-        }
-        return NameConverter.toUpperUnderScoreName(this.getClass().getSimpleName());
+        return CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, this.getClass().getSimpleName());
     }
 
     @Override

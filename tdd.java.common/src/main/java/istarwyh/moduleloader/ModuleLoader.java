@@ -2,15 +2,16 @@ package istarwyh.moduleloader;
 
 import com.alibaba.fastjson2.JSON;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import static istarwyh.moduleloader.util.NameConverter.toUpperUnderScoreName;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.ServiceLoader;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -27,10 +28,12 @@ public class ModuleLoader {
         ServiceLoader.load(PageModuleConstructor.class).forEach(PageModuleConstructor::register);
     }
 
+    @SneakyThrows
     public static void registerPageModuleConstructor(@NotNull PageModuleConstructor<?, ?> pageModuleConstructor) {
-        PAGE_MODULE_CONSTRUCTOR_MAP.put(
-                toUpperUnderScoreName(pageModuleConstructor.support().getSimpleName()),
-                pageModuleConstructor);
+        Class<? extends AbstractElement<?>> supportedClass = pageModuleConstructor.supportedClass();
+        Method getModuleTypeCode = supportedClass.getMethod("getModuleTypeCode");
+        Object moduleTypeCode = getModuleTypeCode.invoke(supportedClass.newInstance());
+        PAGE_MODULE_CONSTRUCTOR_MAP.put((String) moduleTypeCode, pageModuleConstructor);
     }
 
     public static ModuleLoader createModuleLoader(ViewStructure viewStructure, DataContext context) {

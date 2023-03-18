@@ -14,7 +14,7 @@ import static istarwyh.moduleloader.ModuleLoader.createModuleLoader;
 import static istarwyh.moduleloader.constructor.SubjectCodeEnum.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class PageModuleConstructorTest {
+class ModuleLoaderTest {
 
     private DataContext<MapBusinessConstructor.QueryDTO> context;
 
@@ -24,7 +24,7 @@ class PageModuleConstructorTest {
         context.setQueryDTO(MapBusinessConstructor.QueryDTO.builder().bizCode(ABusiness.name()).build());
     }
 
-    @JsonFileSource(in = PageModuleConstructorTest.class,resources = "component-business-constructor.json")
+    @JsonFileSource(in = ModuleLoaderTest.class,resources = "component-business-constructor.json")
     void build(TestCase<Input,String> testCase) {
         Input input = testCase.getInput(Input.class);
         ViewStructure viewStructure = ViewStructure.of(input.getViewStructureStr());

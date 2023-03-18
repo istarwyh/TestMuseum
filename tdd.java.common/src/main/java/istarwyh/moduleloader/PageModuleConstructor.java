@@ -2,19 +2,21 @@ package istarwyh.moduleloader;
 
 import com.alibaba.fastjson2.JSON;
 import jakarta.validation.constraints.NotNull;
+import org.apache.commons.collections.CollectionUtils;
 import org.jetbrains.annotations.Nullable;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.List;
 
-public interface PageModuleConstructor<T extends PageModule<?>,Q> {
+public interface PageModuleConstructor<T extends AbstractElement<?>,Q> {
 
     /**
      *
      * @return supported page module
      */
     @NotNull
-    default Class<T> support(){
+    default Class<T> supportedClass(){
         Type[] genericInterfaces = this.getClass().getGenericInterfaces();
         for(Type type : genericInterfaces){
             if(type instanceof ParameterizedType &&
@@ -44,7 +46,19 @@ public interface PageModuleConstructor<T extends PageModule<?>,Q> {
      * @return {@link PageModule}
      */
     default T construct(ViewStructure viewStructure, DataContext<Q> context){
-        return JSON.parseObject(viewStructure.getStructureStr(), this.support());
+        T t = JSON.parseObject(viewStructure.getStructureStr(), this.supportedClass());
+        ElementDTO baseElement = context.getElement(t.getSubjectCode());
+        if(baseElement == null){
+            return t;
+        }
+        List<ElementDTO> details = baseElement.getDetails();
+        if(CollectionUtils.isNotEmpty(details)){
+            t.setData(details);
+        }
+        t.setAmount(baseElement.getAmount());
+        t.setNumber(baseElement.getNumber());
+        t.setTime(baseElement.getTime());
+        return t;
     }
 
     /**

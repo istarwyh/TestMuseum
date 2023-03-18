@@ -1,6 +1,5 @@
 package istarwyh.moduleloader.component;
 
-import com.alibaba.fastjson2.JSON;
 import istarwyh.moduleloader.AbstractElement;
 import istarwyh.moduleloader.ElementDTO;
 import lombok.NoArgsConstructor;
@@ -25,7 +24,7 @@ public class GraphLevel<T extends ElementDTO> extends AbstractElement<List<T>> {
             return amount;
         }
         return super.getData().stream()
-                .map(T::getAmount)
+                .map(ElementDTO::getAmount)
                 .filter(Objects::nonNull)
                 .map(BigDecimal::new)
                 .toList()
@@ -47,7 +46,7 @@ public class GraphLevel<T extends ElementDTO> extends AbstractElement<List<T>> {
             return number;
         }
         return super.getData().stream()
-                .map(T::getNumber)
+                .map(ElementDTO::getNumber)
                 .filter(Objects::nonNull)
                 .map(Long::valueOf)
                 .toList()
@@ -55,14 +54,5 @@ public class GraphLevel<T extends ElementDTO> extends AbstractElement<List<T>> {
                 .reduce(Long::sum)
                 .orElse(0L)
                 .toString();
-    }
-
-    @Override
-    public void setData(Object data) {
-        List<ElementDTO> list = ((List) data)
-                .stream()
-                .map(it -> JSON.parseObject(JSON.toJSONString(it), ElementDTO.class))
-                .toList();
-        super.setData(list);
     }
 }
