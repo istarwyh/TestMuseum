@@ -2,6 +2,7 @@ package istarwyh.page_module_loader;
 
 import com.alibaba.fastjson2.JSON;
 import istarwyh.page_module_loader.bill.AbstractBillElement;
+import istarwyh.util.ReflectionUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +13,9 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.ServiceLoader;
+
+import static istarwyh.util.FindClassesUtil.getAllClassesImplementingInterface;
+import static istarwyh.util.ReflectionUtil.getInstanceWithoutArgs;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -26,15 +29,18 @@ public class PageModuleLoader {
 
     static {
         // JDK SPI load from META-INF.services/
-        ServiceLoader.load(PageModuleConstructor.class).forEach(PageModuleConstructor::register);
+//        ServiceLoader.load(PageModuleConstructor.class).forEach(PageModuleConstructor::register);
+        getAllClassesImplementingInterface(PageModuleConstructor.class).stream()
+                .map(ReflectionUtil::getInstanceWithoutArgs)
+                .forEach(PageModuleConstructor::register);
     }
 
     @SneakyThrows
     public static void registerPageModuleConstructor(@NotNull PageModuleConstructor<?, ?> pageModuleConstructor) {
         Class<? extends AbstractBillElement<?>> supportedElement = pageModuleConstructor.supportedElement();
         Method getModuleTypeCode = supportedElement.getMethod("getModuleTypeCode");
-        String moduleTypeCode = (String)getModuleTypeCode.invoke(supportedElement.newInstance());
-        PAGE_MODULE_CONSTRUCTOR_MAP.put( moduleTypeCode, pageModuleConstructor);
+        String moduleTypeCode = (String) getModuleTypeCode.invoke(getInstanceWithoutArgs(supportedElement));
+        PAGE_MODULE_CONSTRUCTOR_MAP.put(moduleTypeCode, pageModuleConstructor);
     }
 
     public static PageModuleLoader createModuleLoader(PageModuleRawStructure pageModuleRawStructure, DataContext context) {
@@ -52,22 +58,22 @@ public class PageModuleLoader {
             // child of same level should be the same element
             List<PageModule> children = ((List) data).stream()
                     .map(JSON::toJSONString)
-                    .filter(it -> PageModuleRawStructure.isPageModuleStr((String)it))
-                    .map(it -> PageModuleRawStructure.of((String)it))
+                    .filter(it -> PageModuleRawStructure.isPageModuleStr((String) it))
+                    .map(it -> PageModuleRawStructure.of((String) it))
                     .map(it -> constructPageModule((PageModuleRawStructure) it, context))
                     .toList();
-            if(CollectionUtils.isEmpty(children)) {
+            if (CollectionUtils.isEmpty(children)) {
                 return pageModule;
             }
             pageModule.setData(children);
             children.forEach(this::fillData);
             return pageModule;
-        }else if (data instanceof PageModule) {
+        } else if (data instanceof PageModule) {
             PageModuleRawStructure structure = PageModuleRawStructure.of(JSON.toJSONString(data));
             PageModule<?> child = constructPageModule(structure, context);
             pageModule.setData(child);
             return fillData(pageModule);
-        }else {
+        } else {
             log.debug("pageModule:{}", JSON.toJSONString(pageModule));
             return pageModule;
         }

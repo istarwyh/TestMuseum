@@ -4,6 +4,7 @@ import lombok.SneakyThrows;
 import org.jetbrains.annotations.NotNull;
 import sun.misc.Unsafe;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.security.AccessController;
@@ -20,6 +21,14 @@ import static istarwyh.util.UnsafeUntil.unsafe;
  * @see <a href=https://www.baeldung.com/mockito-mock-static-methods>Mockito#mockStatic</a>
  */
 public class ReflectionUtil {
+
+    @SneakyThrows
+    public static <T> T getInstanceWithoutArgs(Class<T> clazz) {
+        // 获取无参构造方法（如果有参数，则传入对应的 Class 类型作为参数）
+        Constructor<T> constructor = clazz.getDeclaredConstructor();
+        constructor.setAccessible(true); // 当构造方法为 private 时，需要设置可访问
+        return constructor.newInstance();
+    }
 
     /**
      *
