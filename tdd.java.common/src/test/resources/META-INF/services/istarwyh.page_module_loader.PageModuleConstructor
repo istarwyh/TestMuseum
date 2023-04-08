@@ -1,0 +1,8 @@
+istarwyh.page_module_loader.constructor.AnnularChartConstructor
+istarwyh.page_module_loader.constructor.BarChartConstructor
+istarwyh.page_module_loader.constructor.BlockConstructor
+istarwyh.page_module_loader.constructor.GraphLevelConstructor
+istarwyh.page_module_loader.constructor.MainPointConstructor
+istarwyh.page_module_loader.constructor.MapBusinessConstructor
+istarwyh.page_module_loader.constructor.ModuleConstructor
+istarwyh.page_module_loader.constructor.PointConstructor
