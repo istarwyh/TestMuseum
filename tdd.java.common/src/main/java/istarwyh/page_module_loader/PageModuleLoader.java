@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static istarwyh.util.FindClassesUtil.getAllClassesImplementingInterface;
+import static istarwyh.util.ReflectionUtil.getAllClassesImplementingInterface;
 import static istarwyh.util.ReflectionUtil.getInstanceWithoutArgs;
 
 @Slf4j
