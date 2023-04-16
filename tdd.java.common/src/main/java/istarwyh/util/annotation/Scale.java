@@ -13,7 +13,7 @@ public @interface Scale {
      *
      * @return the scale
      */
-    int value() default 0;
+    int value() default 2;
 
     /**
      *

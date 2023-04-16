@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="??">
-      <change afterPath="$PROJECT_DIR$/tdd.java.algorithm/src/main/java/istarwyh/leetcode/MySQL.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/AnnotationUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/annotation/Scale.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/PageModuleLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/PageModuleLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/FindClassesUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/AnnotationUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/AnnotationUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ReflectionUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ReflectionUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/annotation/Scale.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/annotation/Scale.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/AnnotationUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/AnnotationUtilTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -163,7 +160,7 @@
       <recent name="istarwyh.junit5.extension" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.AnnotationUtilTest.forScaleAnnotation">
+  <component name="RunManager" selected="Gradle.AnnotationUtilTest.should_throw_exception_with_not_supported_type">
     <configuration name="AnnotationUtilTest.forScaleAnnotation" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -187,7 +184,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="AnnotationUtilTest.getAllClassesImplementingInterface" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="AnnotationUtilTest.scaleFields" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -200,7 +197,7 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.util.AnnotationUtilTest.getAllClassesImplementingInterface&quot;" />
+            <option value="&quot;istarwyh.util.AnnotationUtilTest.scaleFields&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -210,7 +207,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="AnnotationUtilTest.testGetClassesWithItsClass" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="AnnotationUtilTest.should_throw_exception_with_not_supported_type" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -223,7 +220,7 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.util.AnnotationUtilTest.testGetClassesWithItsClass&quot;" />
+            <option value="&quot;istarwyh.util.AnnotationUtilTest.should_throw_exception_with_not_supported_type&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -281,11 +278,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.AnnotationUtilTest.should_throw_exception_with_not_supported_type" />
+        <item itemvalue="Gradle.AnnotationUtilTest.scaleFields" />
         <item itemvalue="Gradle.AnnotationUtilTest.forScaleAnnotation" />
         <item itemvalue="Gradle.Tests in 'istarwyh'" />
         <item itemvalue="Gradle.PageModuleLoaderTest.build (1)" />
-        <item itemvalue="Gradle.AnnotationUtilTest.getAllClassesImplementingInterface" />
-        <item itemvalue="Gradle.AnnotationUtilTest.testGetClassesWithItsClass" />
       </list>
     </recent_temporary>
   </component>
@@ -306,7 +303,7 @@
       <workItem from="1671207092067" duration="34255000" />
       <workItem from="1677408182495" duration="51341000" />
       <workItem from="1679150978795" duration="1664000" />
-      <workItem from="1680421421721" duration="15391000" />
+      <workItem from="1680421421721" duration="20481000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>
@@ -406,6 +403,14 @@
           <url>file://$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/provider/model/TestCase.java</url>
           <line>48</line>
           <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ReflectionUtil.java</url>
+          <line>38</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="42" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

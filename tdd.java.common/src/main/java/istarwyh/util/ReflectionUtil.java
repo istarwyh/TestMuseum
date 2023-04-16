@@ -13,6 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -30,6 +31,19 @@ import static istarwyh.util.UnsafeUntil.unsafe;
  */
 public class ReflectionUtil {
 
+    /**
+     * eg. lambda$scaleFields$3
+     * @return the method name of calling this method
+     */
+    public static String getCurrentMethodName() {
+        return Arrays.stream(Thread.currentThread().getStackTrace())
+                .map(StackTraceElement::getMethodName)
+                // skip getCurrentMethodName() and getStackTrace()
+                .skip(2)
+                .findFirst()
+                .orElse(null);
+    }
+
     @SneakyThrows
     public static <T> T getInstanceWithoutArgs(Class<T> clazz) {
         // 获取无参构造方法（如果有参数，则传入对应的 Class 类型作为参数）
@@ -39,7 +53,7 @@ public class ReflectionUtil {
     }
 
     /**
-     *
+     * If you want to set static field, you should call {@link ReflectionUtil#setField(Object, Field, Object)}
      * @param modifiedObj modifiedObj
      * @param fieldName including final field, not null or static field
      * @param value value
@@ -55,7 +69,7 @@ public class ReflectionUtil {
         return (T)foundField.get(object);
     }
 
-    private static Field findFieldInHierarchy(Object modifiedObj, String fieldName,
+    public static Field findFieldInHierarchy(Object modifiedObj, String fieldName,
                                               @NotNull Predicate<Field> fieldPredicate) throws NoSuchFieldException {
         if(modifiedObj == null){
             throw new IllegalArgumentException("The modifiedObj containing the field cannot be null!");
@@ -113,7 +127,7 @@ public class ReflectionUtil {
         return object instanceof Class<?>;
     }
 
-    private static void setField(Object object, Field foundField, Object value) {
+    public static void setField(Object object, Field foundField, Object value) {
         boolean isStatic = isModifier(foundField,Modifier.STATIC);
         Unsafe unsafe = unsafe();
         if(isStatic) setStaticFieldUsingUnsafe(foundField,value);
