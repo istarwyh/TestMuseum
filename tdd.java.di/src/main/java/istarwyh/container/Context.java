@@ -3,6 +3,7 @@ package istarwyh.container;
 import istarwyh.exception.IllegalComponentException;
 import jakarta.inject.Inject;
 import lombok.SneakyThrows;
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Constructor;
 import java.util.HashMap;
@@ -20,7 +21,7 @@ public class Context {
 
     @SneakyThrows
     public <Type, Implementation extends Type>
-    void bind(Class<Type> type, Class<Implementation> implementation) {
+    void bind(@NotNull Class<Type> type,@NotNull Class<Implementation> implementation) {
         Constructor<?>[] injectConstructors = stream(implementation.getConstructors())
                 .filter(c -> c.isAnnotationPresent(Inject.class))
                 .toArray(Constructor[]::new);

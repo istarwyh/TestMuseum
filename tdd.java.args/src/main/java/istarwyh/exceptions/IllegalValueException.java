@@ -20,4 +20,7 @@ public class IllegalValueException extends RuntimeException{
      */
     @Getter
     private final String value;
+
+    @Getter
+    private final Exception exception;
 }

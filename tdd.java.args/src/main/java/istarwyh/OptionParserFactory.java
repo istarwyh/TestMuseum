@@ -41,7 +41,7 @@ public class OptionParserFactory {
         try{
             return valueParser.apply(value);
         }catch (Exception ex){
-            throw new IllegalValueException(option.value(), value);
+            throw new IllegalValueException(option.value(), value, ex);
         }
     }
 

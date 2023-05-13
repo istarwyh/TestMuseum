@@ -107,14 +107,15 @@ public class JsonFileArgumentsProvider implements
             String moduleAbsoluteResource = RESOURCES_PATH_PREFIX + resource;
             File file = new File(moduleAbsoluteResource);
             file.createNewFile();
-            BufferedWriter writer = new BufferedWriter(new FileWriter(moduleAbsoluteResource));
-            writer.write(JSON.toJSONString(
-                    new TestCase<>("This is your input","This is your expected output"))
-            );
-            writer.flush();
-            writer.close();
-            System.out.println(moduleAbsoluteResource + (file.exists() ? " created successfully" : "on way..."));
-            return resource;
+            try(BufferedWriter writer = new BufferedWriter(new FileWriter(moduleAbsoluteResource))){
+                writer.write(JSON.toJSONString(
+                        new TestCase<>("This is your input","This is your expected output"))
+                );
+                writer.flush();
+                writer.close();
+                System.out.println(moduleAbsoluteResource + (file.exists() ? " created successfully" : "on way..."));
+                return resource;
+            }
         } catch (IOException e) {
             System.out.println("Error creating file: " + e.getMessage());
             throw new RuntimeException(e);
