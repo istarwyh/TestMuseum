@@ -1,5 +1,5 @@
 {
-  "name": "tablestore-data-tranmission-service",
+  "name": "kv-data-transmission-service",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
