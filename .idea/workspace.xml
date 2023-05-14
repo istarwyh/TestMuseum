@@ -7,26 +7,12 @@
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="??">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/tablestore-data-tranmission-service/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/tablestore-data-tranmission-service/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/tablestore-data-tranmission-service/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/tablestore-data-tranmission-service/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/tablestore-data-tranmission-service/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/public/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/tablestore-data-tranmission-service/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/tablestore-data-tranmission-service/public/logo192.png" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/public/logo192.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/tablestore-data-tranmission-service/public/logo512.png" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/public/logo512.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/tablestore-data-tranmission-service/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/public/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/tablestore-data-tranmission-service/public/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/public/robots.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/tablestore-data-tranmission-service/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/tablestore-data-tranmission-service/src/App.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/App.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/tablestore-data-tranmission-service/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/tablestore-data-tranmission-service/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/tablestore-data-tranmission-service/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/tablestore-data-tranmission-service/src/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/logo.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/tablestore-data-tranmission-service/src/react-app-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/react-app-env.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/tablestore-data-tranmission-service/src/reportWebVitals.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/reportWebVitals.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/tablestore-data-tranmission-service/src/setupTests.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/setupTests.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/tablestore-data-tranmission-service/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/App.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/App.test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +73,7 @@
     <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-params/5.9.0/90177afa01c4b718dd91c27bdc91cb1062e640af/junit-jupiter-params-5.9.0-sources.jar!/org/junit/jupiter/params/provider/CsvFileArgumentsProvider.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-params/5.9.0/90177afa01c4b718dd91c27bdc91cb1062e640af/junit-jupiter-params-5.9.0-sources.jar!/org/junit/jupiter/params/provider/CsvFileSource.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-params/5.9.0/90177afa01c4b718dd91c27bdc91cb1062e640af/junit-jupiter-params-5.9.0-sources.jar!/org/junit/jupiter/params/support/AnnotationConsumer.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/App.test.tsx" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -118,7 +105,7 @@
     "js.last.introduce.type": "CONST",
     "last_directory_selection": "/Users/mac/Desktop/code-open/TestMuseum/tdd.java.algorithm/src/test/java/istarwyh/data_structure",
     "last_opened_file_path": "/Users/mac/Desktop/code-open/TestMuseum/tdd.javascript.util/src/main/tablestore-dts",
-    "nodejs.jest.jest_package": "/Users/mac/Desktop/code-open/TestMuseum/tdd.javascript.util/src/main/tablestore-data-tranmission-service/node_modules/react-scripts",
+    "nodejs.jest.jest_package": "/Users/mac/Desktop/code-open/TestMuseum/tdd.javascript.util/src/main/kv-data-transmission-service/node_modules/react-scripts",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
@@ -177,76 +164,7 @@
       <recent name="istarwyh.junit5.extension" />
     </key>
   </component>
-  <component name="RunManager" selected="Jest.renders learn react link">
-    <configuration name="AnnotationUtilTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":tdd.java.common:test" />
-            <option value="--tests" />
-            <option value="&quot;istarwyh.util.AnnotationUtilTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="AnnotationUtilTest.forScaleAnnotation" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":tdd.java.common:test" />
-            <option value="--tests" />
-            <option value="&quot;istarwyh.util.AnnotationUtilTest.forScaleAnnotation&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="AnnotationUtilTest.scaleFields" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":tdd.java.common:test" />
-            <option value="--tests" />
-            <option value="&quot;istarwyh.util.AnnotationUtilTest.scaleFields&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Jest.extractTableAndColumns">
     <configuration name="AnnotationUtilTest.should_throw_exception_with_not_supported_type" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -270,6 +188,47 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="extractTableAndColumns" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/App.test.tsx" />
+      <test-names>
+        <test-name value="extractTableAndColumns" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="extractTableAndColumns.should extract table name and columns from valid DDL statement" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/App.test.tsx" />
+      <test-names>
+        <test-name value="extractTableAndColumns" />
+        <test-name value="should extract table name and columns from valid DDL statement" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="extractTableAndColumns.should return null for invalid DDL statement" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/App.test.tsx" />
+      <test-names>
+        <test-name value="extractTableAndColumns" />
+        <test-name value="should return null for invalid DDL statement" />
+      </test-names>
+      <method v="2" />
+    </configuration>
     <configuration name="renders learn react link" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -285,11 +244,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest.extractTableAndColumns" />
+        <item itemvalue="Jest.extractTableAndColumns.should return null for invalid DDL statement" />
+        <item itemvalue="Jest.extractTableAndColumns.should extract table name and columns from valid DDL statement" />
         <item itemvalue="Jest.renders learn react link" />
         <item itemvalue="Gradle.AnnotationUtilTest.should_throw_exception_with_not_supported_type" />
-        <item itemvalue="Gradle.AnnotationUtilTest" />
-        <item itemvalue="Gradle.AnnotationUtilTest.scaleFields" />
-        <item itemvalue="Gradle.AnnotationUtilTest.forScaleAnnotation" />
       </list>
     </recent_temporary>
   </component>
@@ -313,7 +272,7 @@
       <workItem from="1680421421721" duration="27738000" />
       <workItem from="1683957806061" duration="1615000" />
       <workItem from="1683963522121" duration="6914000" />
-      <workItem from="1683993243040" duration="324000" />
+      <workItem from="1683993243040" duration="9686000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>
