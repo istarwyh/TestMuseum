@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="??">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/package-lock.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/App.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/App.test.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service/src/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,31 +86,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "javascript.nodejs.core.library.configured.version": "16.17.0",
-    "javascript.nodejs.core.library.typings.version": "16.18.16",
-    "jdk.selected.JAVA_MODULE": "jbr-17",
-    "js.last.introduce.type": "CONST",
-    "last_directory_selection": "/Users/mac/Desktop/code-open/TestMuseum/tdd.java.algorithm/src/test/java/istarwyh/data_structure",
-    "last_opened_file_path": "/Users/mac/Desktop/code-open/TestMuseum/tdd.javascript.util/src/main/tablestore-dts",
-    "nodejs.jest.jest_package": "/Users/mac/Desktop/code-open/TestMuseum/tdd.javascript.util/src/main/kv-data-transmission-service/node_modules/react-scripts",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.31724137",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "ts.external.directory.path": "/Users/mac/Desktop/code-open/TestMuseum/tdd.javascript.util/src/main/kv-data-transmission-service/node_modules/typescript/lib"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.17.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.16&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;jbr-17&quot;,
+    &quot;js.last.introduce.type&quot;: &quot;CONST&quot;,
+    &quot;last_directory_selection&quot;: &quot;/Users/mac/Desktop/code-open/TestMuseum/tdd.java.algorithm/src/test/java/istarwyh/data_structure&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/mac/Desktop/code-open/TestMuseum/tdd.javascript.util/src/main/tablestore-dts&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/mac/Desktop/code-open/TestMuseum/tdd.javascript.util/src/main/kv-data-transmission-service/node_modules/react-scripts&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.31724137&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/mac/Desktop/code-open/TestMuseum/tdd.javascript.util/src/main/kv-data-transmission-service/node_modules/typescript/lib&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="istarwyh.moduleloader.display" />
@@ -272,7 +269,8 @@
       <workItem from="1680421421721" duration="27738000" />
       <workItem from="1683957806061" duration="1615000" />
       <workItem from="1683963522121" duration="6914000" />
-      <workItem from="1683993243040" duration="9686000" />
+      <workItem from="1683993243040" duration="11756000" />
+      <workItem from="1684058439597" duration="2547000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>

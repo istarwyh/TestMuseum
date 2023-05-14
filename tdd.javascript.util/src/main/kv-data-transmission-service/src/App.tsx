@@ -1,7 +1,9 @@
 import React from 'react';
 import './App.css';
 import {Button, Col, Input, Row, Space, Typography} from 'antd';
-import {get} from 'http';
+import { JSONTree } from 'react-json-tree';
+import {theme} from "./constant";
+
 
 const {TextArea} = Input;
 const {Title} = Typography;
@@ -117,7 +119,7 @@ const TableStoreDataTransmissionServiceConfigGenerate = (): JSX.Element => {
         jsonConfig: ''
     });
     const {operator, odpsSpace, partition, schema, jsonConfig, tableStoreName,tableStoreSpace,primaryKeyCount} = state;
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const {name, value} = event.target;
         setState({...state, [name]: value});
     };
@@ -133,6 +135,8 @@ const TableStoreDataTransmissionServiceConfigGenerate = (): JSX.Element => {
             }
         );
     };
+    const data = {name: 'John', age: 30};
+
 
     return (
         <div className="container">
@@ -167,7 +171,7 @@ const TableStoreDataTransmissionServiceConfigGenerate = (): JSX.Element => {
                 </Row>
                 <Row>
                     <Col span={12}>
-                        <Input name="schema" value={schema} onChange={handleChange} placeholder="DDL语句"/>
+                        <TextArea name="schema" rows={10} value={schema} onChange={handleChange} placeholder="DDL语句"/>
                     </Col>
                 </Row>
                 <Row>
@@ -178,8 +182,14 @@ const TableStoreDataTransmissionServiceConfigGenerate = (): JSX.Element => {
                 </Row>
                 <Row>
                     <Col span={12}>
-                        <TextArea value={jsonConfig} className={"text-area"}/>
+                        <TextArea rows={10} value={jsonConfig} className={"text-area"}/>
                     </Col>
+                    {
+                        jsonConfig === '' ? null :
+                        <Col span={12}>
+                            <JSONTree data={JSON.parse(jsonConfig)} theme={theme} invertTheme={true} />
+                        </Col>
+                    }
                 </Row>
             </Space>
         </div>
