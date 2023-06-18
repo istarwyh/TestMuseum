@@ -19,13 +19,14 @@ interface State {
     primaryKeyCount: number;
     jsonConfig: string;
 }
-
+interface ColumnInfo {
+    name: string;
+    type: string;
+    comment?: string;
+}
 interface TableInfo {
     tableName: string;
-    columns: {
-        name: string,
-        type: string
-    }[];
+    columns: ColumnInfo[];
 }
 
 export function extractTableInfo(ddl: string) {

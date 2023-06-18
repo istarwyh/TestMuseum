@@ -27,7 +27,9 @@ public class PageModuleLoader {
 
     public static final Map<String, PageModuleConstructor<?, ?>> PAGE_MODULE_CONSTRUCTOR_MAP = new HashMap<>(8);
 
+    //   在不借助Spring等框架的情况下，目前看来SPI和反射拿全部接口实现类/注解类就是将对象放到一个集合里唯二的办法
     static {
+
         // JDK SPI load from META-INF.services/
 //        ServiceLoader.load(PageModuleConstructor.class).forEach(PageModuleConstructor::register);
         getAllClassesImplementingInterface(PageModuleConstructor.class).stream()
