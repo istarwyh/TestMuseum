@@ -1,12 +1,9 @@
 package istarwyh.classloader.modifier;
 
 import istarwyh.classloader.MyClassLoader;
-import istarwyh.classloader.model.CannotInitialDueToLoadingClassError;
-import jakarta.validation.constraints.NotNull;
-import javassist.CannotCompileException;
 import javassist.CtClass;
 import lombok.SneakyThrows;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -35,7 +32,7 @@ public interface Modifier<T> {
         throw new IllegalArgumentException("Invalid interface");
     }
 
-    @Nullable
+    @NotNull
     private static <T>  Class<T> getClassFromParameterizedType(Type actualTypeArgument) {
         if(actualTypeArgument instanceof Class){
             return (Class<T>) actualTypeArgument;

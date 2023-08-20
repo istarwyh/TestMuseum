@@ -6,7 +6,6 @@ import istarwyh.util.ReflectionUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections.CollectionUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Method;
@@ -64,7 +63,7 @@ public class PageModuleLoader {
                     .map(it -> PageModuleRawStructure.of((String) it))
                     .map(it -> constructPageModule((PageModuleRawStructure) it, context))
                     .toList();
-            if (CollectionUtils.isEmpty(children)) {
+            if (children.isEmpty()) {
                 return pageModule;
             }
             pageModule.setData(children);

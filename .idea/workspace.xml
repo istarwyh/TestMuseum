@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="GROUP_BY_SEVERITY" value="true" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
@@ -7,7 +10,7 @@
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="??">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdd.java.common/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/ReflectionUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/ReflectionUtilTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/PageModuleLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/PageModuleLoader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +162,7 @@
       <recent name="istarwyh.junit5.extension" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ReflectionUtilTest">
+  <component name="RunManager" selected="Gradle.ReflectionUtilTest.should_get_pojo_annotation_field_name_and_value">
     <configuration name="GenerateMap (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="istarwyh.page_module_loader.newWay.GenerateMap" />
       <module name="TestMuseum.tdd.java.common.main" />
@@ -268,8 +271,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.ReflectionUtilTest" />
         <item itemvalue="Gradle.ReflectionUtilTest.should_get_pojo_annotation_field_name_and_value" />
+        <item itemvalue="Gradle.ReflectionUtilTest" />
         <item itemvalue="Gradle.ReflectionUtilTest.should_get_pojo_field_name_and_value" />
         <item itemvalue="Gradle.PageModuleLoaderTest.build" />
         <item itemvalue="Application.GenerateMap (1)" />
@@ -300,7 +303,7 @@
       <workItem from="1684058439597" duration="8247000" />
       <workItem from="1687095935915" duration="5112000" />
       <workItem from="1690124186689" duration="6335000" />
-      <workItem from="1692536456222" duration="25000" />
+      <workItem from="1692536456222" duration="468000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>

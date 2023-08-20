@@ -3,8 +3,7 @@ package istarwyh.page_module_loader;
 import com.alibaba.fastjson2.JSON;
 import istarwyh.page_module_loader.bill.AbstractBillElement;
 import istarwyh.page_module_loader.bill.BillElementDTO;
-import jakarta.validation.constraints.NotNull;
-import org.apache.commons.collections.CollectionUtils;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.lang.reflect.ParameterizedType;
@@ -54,7 +53,7 @@ public interface PageModuleConstructor<Element extends AbstractBillElement<?>, Q
             return element;
         }
         List<BillElementDTO> details = billElementDTO.getDetails();
-        if(CollectionUtils.isNotEmpty(details)){
+        if(details != null && !details.isEmpty()){
             element.setData(details);
         }
         element.setAmount(billElementDTO.getAmount());
