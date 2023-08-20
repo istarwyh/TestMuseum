@@ -1,6 +1,7 @@
 package istarwyh.util;
 
 import lombok.SneakyThrows;
+import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.jetbrains.annotations.NotNull;
 import sun.misc.Unsafe;
 
@@ -13,10 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -243,5 +241,27 @@ public class ReflectionUtil {
                     })
                     .collect(Collectors.toList());
         }
+    }
+
+    public static <POJO> List<ImmutablePair<String, Object>> getPojoFieldNameAndValue(POJO pojo) {
+        return getPojoFieldNameAndValue(pojo, any -> true);
+    }
+
+    public static <POJO> List<ImmutablePair<String, Object>>
+    getPojoFieldNameAndValue(POJO pojo, Predicate<Field> fieldPredicate) {
+        List<Field> fields = Arrays.stream(pojo.getClass().getDeclaredFields())
+                .filter(fieldPredicate)
+                .peek(field -> field.setAccessible(true))
+                .toList();
+        return fields.stream()
+                .map(field -> {
+                    try {
+                        Object value = field.get(pojo);
+                        return new ImmutablePair<>(field.getName(), value);
+                    } catch (IllegalAccessException e) {
+                        throw new RuntimeException(e);
+                    }
+                })
+                .collect(Collectors.toList());
     }
 }

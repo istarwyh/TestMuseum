@@ -1,14 +1,20 @@
 package istarwyh.util;
 
+import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ReflectionUtilTest {
 
+    private static final String wuwei = "wuwei";
+    private static final String died = "died";
+    private final String xiaohui = "xiaohui";
     private WhoIAm whoIAm;
     private WhereIGo whereIGo;
 
@@ -46,17 +52,38 @@ class ReflectionUtilTest {
     @Test
     void should_get_static_field_value(){
         String country = ReflectionUtil.getField(whereIGo, "country");
-        assertEquals("wuwei",country);
+        assertEquals(wuwei,country);
     }
+
+    @Test
+    void should_get_pojo_field_name_and_value() throws NoSuchFieldException {
+        ReflectionUtil.setField(whoIAm,"name", xiaohui);
+        List<ImmutablePair<String,Object>> fields = ReflectionUtil.getPojoFieldNameAndValue(whoIAm);
+        assertEquals(xiaohui,fields.get(0).getValue());
+        assertEquals(wuwei,fields.get(1).getValue());
+        assertEquals(died,fields.get(2).getValue());
+    }
+
+    @Test
+    void should_get_pojo_annotation_field_name_and_value() throws NoSuchFieldException {
+        ReflectionUtil.setField(whoIAm,"name", xiaohui);
+        List<ImmutablePair<String,Object>> fields = ReflectionUtil.
+                getPojoFieldNameAndValue(whoIAm, it -> it.isAnnotationPresent(MyAnnotation.class));
+        assertEquals(xiaohui,fields.get(0).getValue());
+        assertEquals(1,fields.size());
+    }
+
+
 
 
     public static class WhoIAm{
 
+        @MyAnnotation
         private String name;
 
-        private static String country = "wuwei";
+        private static final String country = wuwei;
 
-        private final String heart = "died";
+        private final String heart = died;
     }
 
     public static class WhereIGo extends WhoIAm{}
