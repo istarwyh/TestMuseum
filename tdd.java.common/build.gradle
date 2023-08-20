@@ -75,8 +75,6 @@ dependencies {
     )
 
     testImplementation(
-            "com.github.istarwyh:Initial:${istarwyhInitialVersion}",
-
             // JUnit Jupiter API and TestEngine and ParameterizedTest
             "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
             "org.junit.jupiter:junit-jupiter-engine:${junitVersion}",
@@ -90,24 +88,28 @@ dependencies {
             "org.apache.commons:commons-lang3:${apacheCommonsLang3Version}"
 
     )
+//    testImplementation( "com.github.istarwyh:Initial:${istarwyhInitialVersion}"){
+//        exclude group: "com.github.istarwyh", module: "Initial"
+//    }
 
     testAnnotationProcessor(
             "org.projectlombok:lombok:${lombokVersion}"
     )
 
-    def excludeRule = { dependency ->
-        // 排除除了引入的包之外的其他所有包
-        if (dependency.group == "com.github.istarwyh" && dependency.module == "Initial") {
-            exclude group: dependency.group, module: dependency.module,except: "Initial"
-        }
-    }
-
     // 对公共依赖项应用排除规则
-    configurations.all {
-        resolutionStrategy {
-            dependencies.each {excludeRule(it) }
-        }
-    }
+    // Unfortunately, Gradle does not provide a direct way to exclude a group from all dependencies in the resolutionStrategy block.
+    // You can only exclude modules when declaring a dependency.
+//    configurations.all {
+//        resolutionStrategy {
+//            dependencies.each {
+//                { dependency ->
+//                    // 排除除了引入的包之外的其他所有包
+//                    if (dependency.group == "com.github.istarwyh" && dependency.name == "Initial") {
+//                        exclude group: dependency.group, module: dependency.module
+//                    }
+//                }(it) }
+//        }
+//    }
 }
 
 defaultTasks 'clean', 'test'

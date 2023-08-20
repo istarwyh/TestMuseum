@@ -1,5 +1,7 @@
 package istarwyh.page_module_loader;
 
+import org.jetbrains.annotations.NotNull;
+
 public interface PageModule<T> {
 
     /**
@@ -15,6 +17,7 @@ public interface PageModule<T> {
      */
     String getSubjectCode();
 
+    @NotNull
     T getData();
 
     void setData(Object data);

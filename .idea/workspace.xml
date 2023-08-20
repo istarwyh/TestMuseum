@@ -161,7 +161,7 @@
       <recent name="istarwyh.junit5.extension" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.AnnotationUtilTest">
+  <component name="RunManager" selected="Gradle.TestMuseum [dependencies]">
     <configuration name="AnnotationUtilTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -231,30 +231,28 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ReflectionUtilTest.should_get_pojo_annotation_field_name_and_value" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="TestMuseum [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
+        <option name="scriptParameters" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value=":tdd.java.common:test" />
-            <option value="--tests" />
-            <option value="&quot;istarwyh.util.ReflectionUtilTest.should_get_pojo_annotation_field_name_and_value&quot;" />
+            <option value="dependencies" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ReflectionUtilTest.should_get_pojo_field_name_and_value" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Tests in 'istarwyh'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -267,7 +265,7 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.util.ReflectionUtilTest.should_get_pojo_field_name_and_value&quot;" />
+            <option value="&quot;istarwyh.*&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -279,11 +277,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.TestMuseum [dependencies]" />
+        <item itemvalue="Gradle.Tests in 'istarwyh'" />
         <item itemvalue="Gradle.AnnotationUtilTest" />
         <item itemvalue="Gradle.AssertPlusTest" />
         <item itemvalue="Gradle.ReflectionUtilTest" />
-        <item itemvalue="Gradle.ReflectionUtilTest.should_get_pojo_field_name_and_value" />
-        <item itemvalue="Gradle.ReflectionUtilTest.should_get_pojo_annotation_field_name_and_value" />
       </list>
     </recent_temporary>
   </component>
@@ -311,7 +309,7 @@
       <workItem from="1684058439597" duration="8247000" />
       <workItem from="1687095935915" duration="5112000" />
       <workItem from="1690124186689" duration="6335000" />
-      <workItem from="1692536456222" duration="1957000" />
+      <workItem from="1692536456222" duration="4191000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>

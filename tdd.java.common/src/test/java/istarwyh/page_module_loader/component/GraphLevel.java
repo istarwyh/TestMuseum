@@ -3,7 +3,7 @@ package istarwyh.page_module_loader.component;
 import istarwyh.page_module_loader.bill.AbstractBillElement;
 import istarwyh.page_module_loader.bill.BillElementDTO;
 import lombok.NoArgsConstructor;
-import org.apache.commons.collections.CollectionUtils;
+
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -20,7 +20,7 @@ public class GraphLevel<T extends BillElementDTO> extends AbstractBillElement<Li
     @Override
     public String getAmount() {
         String amount = super.getAmount();
-        if(amount != null || CollectionUtils.isEmpty(super.getData())){
+        if(amount != null || ( super.getData() !=null && !super.getData().isEmpty())){
             return amount;
         }
         return super.getData().stream()
@@ -42,7 +42,7 @@ public class GraphLevel<T extends BillElementDTO> extends AbstractBillElement<Li
     @Override
     public String getNumber() {
         String number = super.getNumber();
-        if(number != null || CollectionUtils.isEmpty(super.getData())){
+        if(number != null || ( super.getData() !=null && !super.getData().isEmpty())){
             return number;
         }
         return super.getData().stream()
