@@ -27,18 +27,19 @@ repositories {
 }
 
 ext {
-    junitVersion = '5.9.0'
+    junitVersion = '5.9.2'
     junitPlatformVersion = '1.0.0'
-    lombokVersion = '1.18.24'
+    lombokVersion = '1.18.26'
     slf4jVersion = '1.7.36'
-    logbackClassicVersion = '1.4.4'
-    jetbrainsAnnotationVersion = '23.0.0'
+    logbackClassicVersion = '1.4.7'
+    jetbrainsAnnotationVersion = '24.0.1'
     javassistVersion = '3.29.2-GA'
     istarwyhInitialVersion = '0.2.7'
-    mockitoJunit5Version = '4.8.0'
-    fastjson2Version = '2.0.20'
+    mockitoJunit5Version = '5.2.0'
+    fastjson2Version = '2.0.25'
     guavaVersion = '31.1-jre'
     mapstructVersion = '1.5.3.Final'
+    apacheCommonsLang3Version= '3.13.0'
 }
 
 
@@ -51,11 +52,11 @@ dependencies {
     )
 
     implementation(
+            "com.github.istarwyh:Initial:${istarwyhInitialVersion}",
             // 	logback-classic includes logback-core , slf4j-api
             "org.jetbrains:annotations:${jetbrainsAnnotationVersion}",
             "ch.qos.logback:logback-classic:${logbackClassicVersion}",
             "org.javassist:javassist:${javassistVersion}",
-            "com.github.istarwyh:Initial:${istarwyhInitialVersion}",
             "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
             "org.junit.jupiter:junit-jupiter-params:${junitVersion}",
             "com.alibaba.fastjson2:fastjson2:${fastjson2Version}",
@@ -76,6 +77,7 @@ dependencies {
     )
 
     testImplementation(
+            "com.github.istarwyh:Initial:${istarwyhInitialVersion}",
 
             // JUnit Jupiter API and TestEngine and ParameterizedTest
             "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
@@ -87,7 +89,8 @@ dependencies {
 
             "ch.qos.logback:logback-classic:${logbackClassicVersion}",
             "org.javassist:javassist:${javassistVersion}",
-            "com.github.istarwyh:Initial:${istarwyhInitialVersion}"
+            "org.apache.commons:commons-lang3:${apacheCommonsLang3Version}"
+
     )
 
     testAnnotationProcessor(
