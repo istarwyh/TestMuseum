@@ -3,7 +3,6 @@ package istarwyh.util;
 import istarwyh.page_module_loader.PageModuleConstructor;
 import istarwyh.page_module_loader.constructor.PointConstructor;
 import istarwyh.util.annotation.Scale;
-import jakarta.validation.constraints.AssertTrue;
 import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
