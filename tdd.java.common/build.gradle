@@ -44,7 +44,6 @@ ext {
 
 
 dependencies {
-
 /**************************************************  SRC  ************************************************************/
 
     compileOnly(
@@ -95,6 +94,20 @@ dependencies {
     testAnnotationProcessor(
             "org.projectlombok:lombok:${lombokVersion}"
     )
+
+    def excludeRule = { dependency ->
+        // 排除除了引入的包之外的其他所有包
+        if (dependency.group == "com.github.istarwyh" && dependency.module == "Initial") {
+            exclude group: dependency.group, module: dependency.module,except: "Initial"
+        }
+    }
+
+    // 对公共依赖项应用排除规则
+    configurations.all {
+        resolutionStrategy {
+            dependencies.each {excludeRule(it) }
+        }
+    }
 }
 
 defaultTasks 'clean', 'test'
