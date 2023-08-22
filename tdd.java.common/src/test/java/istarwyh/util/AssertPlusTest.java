@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import static istarwyh.util.ReflectionUtilTest.WhoIAm;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class AssertPlusTest {
 
@@ -19,7 +18,8 @@ class AssertPlusTest {
         assertDoesNotThrow(() -> AssertPlus.compareFields(lele,dudu));
         ReflectionUtil.setField(lele,"name","le");
         ReflectionUtil.setField(dudu,"name","du");
-        assertThrows(Throwable.class,() -> AssertPlus.compareFields(lele,dudu));
+        Throwable throwable = AssertPlus.assertThrows(Throwable.class, AssertPlus::compareFields, lele, dudu);
+        System.out.println(throwable.toString());
     }
 
     @Test
@@ -35,8 +35,7 @@ class AssertPlusTest {
         jsonObject1.put("key3",jsonObject3);
         jsonObject2.put("key3",jsonObject3);
         assertDoesNotThrow(() -> AssertPlus.compareFields(jsonObject1, jsonObject2));
-        assertThrows(Throwable.class,
-                () -> AssertPlus.compareFieldsWithOrder(jsonObject1, jsonObject2)
-        );
+        Throwable throwable = AssertPlus.assertThrows(Throwable.class, AssertPlus::compareFieldsWithOrder, jsonObject1, jsonObject2);
+        System.out.println(throwable.toString());
     }
 }

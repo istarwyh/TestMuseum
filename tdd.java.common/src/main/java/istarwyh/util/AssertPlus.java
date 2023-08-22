@@ -2,9 +2,12 @@ package istarwyh.util;
 
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
+import org.junit.jupiter.api.Assertions;
 
 import java.lang.reflect.Field;
 import java.util.*;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
 import static istarwyh.util.AssertPlus.TypeUtil.isJsonType;
 import static org.junit.jupiter.api.Assertions.*;
@@ -126,6 +129,14 @@ public class AssertPlus {
         } else {
             return false;
         }
+    }
+
+    public static <T extends Throwable, A, B> T assertThrows(Class<T> expectedType, Consumer<A> function, A arg1) {
+        return Assertions.assertThrows(expectedType,() -> function.accept(arg1));
+    }
+
+    public static <T extends Throwable, A, B> T assertThrows(Class<T> expectedType, BiConsumer<A, B> function, A arg1, B arg2) {
+        return Assertions.assertThrows(expectedType,() -> function.accept(arg1, arg2));
     }
 
 
