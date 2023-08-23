@@ -8,9 +8,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="??">
+      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/MapperTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/AssertPlus.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/AssertPlus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/AssertPlusTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/AssertPlusTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/AnnotationUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/AnnotationUtilTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,8 +62,8 @@
         <option value="Record" />
         <option value="JUnit5 Test Class" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="AnnotationType" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -162,7 +163,7 @@
       <recent name="istarwyh.junit5.extension" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.AssertPlusTest.should_compare_two_object_just_with_their_field_value">
+  <component name="RunManager" selected="Gradle.MapperTest.testMapper1">
     <configuration name="AssertPlusTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -232,7 +233,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ReflectionUtilTest.should_get_pojo_field_name_and_value" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MapperTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -245,7 +246,7 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.util.ReflectionUtilTest.should_get_pojo_field_name_and_value&quot;" />
+            <option value="&quot;istarwyh.util.MapperTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -255,34 +256,36 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="TestMuseum [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MapperTest.testMapper1" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value="dependencies" />
+            <option value=":tdd.java.common:test" />
+            <option value="--tests" />
+            <option value="&quot;istarwyh.util.MapperTest.testMapper1&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.MapperTest.testMapper1" />
+        <item itemvalue="Gradle.MapperTest" />
         <item itemvalue="Gradle.AssertPlusTest.should_compare_two_object_just_with_their_field_value" />
         <item itemvalue="Gradle.AssertPlusTest.compare_json_without_default_order_being_true_and_with_order_being_false" />
         <item itemvalue="Gradle.AssertPlusTest" />
-        <item itemvalue="Gradle.ReflectionUtilTest.should_get_pojo_field_name_and_value" />
-        <item itemvalue="Gradle.TestMuseum [dependencies]" />
       </list>
     </recent_temporary>
   </component>
@@ -310,7 +313,7 @@
       <workItem from="1684058439597" duration="8247000" />
       <workItem from="1687095935915" duration="5112000" />
       <workItem from="1690124186689" duration="6335000" />
-      <workItem from="1692536456222" duration="6288000" />
+      <workItem from="1692536456222" duration="9545000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>

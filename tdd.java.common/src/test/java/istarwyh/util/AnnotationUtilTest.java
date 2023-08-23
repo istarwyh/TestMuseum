@@ -47,7 +47,9 @@ class AnnotationUtilTest {
 
         assertEquals(BigDecimal.valueOf(output).setScale(2, RoundingMode.HALF_EVEN), any.amount);
         assertEquals(
-                Any.decimalList.stream().map(it -> it.setScale(2, RoundingMode.HALF_EVEN)).collect(Collectors.toList()),
+                Any.decimalList.stream()
+                        .map(it -> it.setScale(2, RoundingMode.HALF_EVEN))
+                        .collect(Collectors.toList()),
                 Any.decimalList);
     }
 

@@ -85,7 +85,9 @@ dependencies {
 
             "ch.qos.logback:logback-classic:${logbackClassicVersion}",
             "org.javassist:javassist:${javassistVersion}",
-            "org.apache.commons:commons-lang3:${apacheCommonsLang3Version}"
+            "org.apache.commons:commons-lang3:${apacheCommonsLang3Version}",
+            "org.mapstruct:mapstruct:${mapstructVersion}",
+
 
     )
 //    testImplementation( "com.github.istarwyh:Initial:${istarwyhInitialVersion}"){
@@ -93,7 +95,9 @@ dependencies {
 //    }
 
     testAnnotationProcessor(
-            "org.projectlombok:lombok:${lombokVersion}"
+            "org.projectlombok:lombok:${lombokVersion}",
+            "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+
     )
 
     // 对公共依赖项应用排除规则
