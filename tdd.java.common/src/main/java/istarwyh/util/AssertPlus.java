@@ -9,7 +9,7 @@ import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-import static istarwyh.util.AssertPlus.TypeUtil.isJsonType;
+import static istarwyh.util.TypeUtil.isJsonType;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AssertPlus {
@@ -140,28 +140,16 @@ public class AssertPlus {
     }
 
 
-    public static class TypeUtil {
-        private static final Set<Class<?>> BUILT_IN_TYPES = new HashSet<>(
-                Arrays.asList(
-                        Boolean.class, Byte.class, Character.class, Short.class,
-                        Integer.class, Long.class, Float.class, Double.class,
-                        boolean.class, byte.class, char.class, short.class,
-                        int.class, long.class, float.class, double.class,
-                        // 自定义内建类型
-                        String.class
-                )
-        );
-
-        public static boolean isBuiltInType(Object obj) {
-            if (obj == null) {
-                return false;
+    public static void assertAllNotNull(Object object) {
+        Field[] fields = object.getClass().getDeclaredFields();
+        for (Field field : fields) {
+            try {
+                field.setAccessible(true);
+                Object value = field.get(object);
+                assertNotNull(value);
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException("Error accessing field: " + field.getName());
             }
-            return BUILT_IN_TYPES.contains(obj.getClass());
         }
-
-        public static boolean isJsonType(Object value) {
-            return value instanceof JSONObject || value instanceof JSONArray;
-        }
-
     }
 }

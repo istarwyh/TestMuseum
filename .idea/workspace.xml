@@ -8,10 +8,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="??">
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/MapperTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ObjectInitUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/TypeUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/TDD prompt.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/ObjectInitUtilTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/AnnotationUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/AnnotationUtilTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/AssertPlus.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/AssertPlus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/AssertPlusTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/AssertPlusTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/MapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/MapperTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,39 +92,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.17.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.39&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;jbr-17&quot;,
-    &quot;js.last.introduce.type&quot;: &quot;CONST&quot;,
-    &quot;last_directory_selection&quot;: &quot;/Users/mac/Desktop/code-open/TestMuseum/tdd.java.algorithm/src/test/java/istarwyh/data_structure&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/mac/Desktop/code-open/TestMuseum/tdd.javascript.util/src/main/tablestore-dts&quot;,
-    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/mac/Desktop/code-open/TestMuseum/tdd.javascript.util/src/main/kv-data-transmission-service/node_modules/react-scripts&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.31724137&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/mac/Desktop/code-open/TestMuseum/tdd.javascript.util/src/main/kv-data-transmission-service/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "javascript.nodejs.core.library.configured.version": "16.17.0",
+    "javascript.nodejs.core.library.typings.version": "16.18.39",
+    "jdk.selected.JAVA_MODULE": "jbr-17",
+    "js.last.introduce.type": "CONST",
+    "last_directory_selection": "/Users/mac/Desktop/code-open/TestMuseum/tdd.java.algorithm/src/test/java/istarwyh/data_structure",
+    "last_opened_file_path": "/Users/mac/Desktop/code-open/TestMuseum/tdd.javascript.util/src/main/tablestore-dts",
+    "nodejs.jest.jest_package": "/Users/mac/Desktop/code-open/TestMuseum/tdd.javascript.util/src/main/kv-data-transmission-service/node_modules/react-scripts",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.31724137",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie",
+    "ts.external.directory.path": "/Users/mac/Desktop/code-open/TestMuseum/tdd.javascript.util/src/main/kv-data-transmission-service/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="istarwyh.util" />
       <recent name="istarwyh.moduleloader.display" />
       <recent name="istarwyh.moduleloader.constructor" />
       <recent name="istarwyh.data_structure" />
       <recent name="istarwyh.leetcode.data_structure" />
-      <recent name="istarwyh.container" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/tdd.javascript.util/src/main/tablestore-dts" />
@@ -142,6 +147,7 @@
       <recent name="istarwyh.util.ReflectionUtil" />
     </key>
     <key name="MoveInnerDialog.RECENTS_KEY">
+      <recent name="istarwyh.util" />
       <recent name="istarwyh.moduleloader" />
       <recent name="istarwyh.provider" />
     </key>
@@ -163,8 +169,8 @@
       <recent name="istarwyh.junit5.extension" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.MapperTest.testMapper1">
-    <configuration name="AssertPlusTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.ObjectInitUtilTest.generateValue">
+    <configuration name="AssertPlusTest.assertAllFieldsNotNull" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -177,7 +183,7 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.util.AssertPlusTest&quot;" />
+            <option value="&quot;istarwyh.util.AssertPlusTest.assertAllFieldsNotNull&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -187,7 +193,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="AssertPlusTest.compare_json_without_default_order_being_true_and_with_order_being_false" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ObjectInitUtilTest.generateValue" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -200,7 +206,7 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.util.AssertPlusTest.compare_json_without_default_order_being_true_and_with_order_being_false&quot;" />
+            <option value="&quot;istarwyh.util.ObjectInitUtilTest.generateValue&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -210,7 +216,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="AssertPlusTest.should_compare_two_object_just_with_their_field_value" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ObjectInitUtilTest.get_all_valid_fields" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -223,7 +229,7 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.util.AssertPlusTest.should_compare_two_object_just_with_their_field_value&quot;" />
+            <option value="&quot;istarwyh.util.ObjectInitUtilTest.get_all_valid_fields&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -233,7 +239,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="MapperTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ObjectInitUtilTest.init" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -246,7 +252,7 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.util.MapperTest&quot;" />
+            <option value="&quot;istarwyh.util.ObjectInitUtilTest.init&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -256,7 +262,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="MapperTest.testMapper1" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ObjectInitUtilTest.initWithDefault" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -269,7 +275,7 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.util.MapperTest.testMapper1&quot;" />
+            <option value="&quot;istarwyh.util.ObjectInitUtilTest.initWithDefault&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -277,15 +283,24 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <option name="AUTO_RESTART" value="false" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.MapperTest.testMapper1" />
-        <item itemvalue="Gradle.MapperTest" />
-        <item itemvalue="Gradle.AssertPlusTest.should_compare_two_object_just_with_their_field_value" />
-        <item itemvalue="Gradle.AssertPlusTest.compare_json_without_default_order_being_true_and_with_order_being_false" />
-        <item itemvalue="Gradle.AssertPlusTest" />
+        <item itemvalue="Gradle.ObjectInitUtilTest.generateValue" />
+        <item itemvalue="Gradle.ObjectInitUtilTest.initWithDefault" />
+        <item itemvalue="Gradle.AssertPlusTest.assertAllFieldsNotNull" />
+        <item itemvalue="Gradle.ObjectInitUtilTest.init" />
+        <item itemvalue="Gradle.ObjectInitUtilTest.get_all_valid_fields" />
       </list>
     </recent_temporary>
   </component>
@@ -313,7 +328,7 @@
       <workItem from="1684058439597" duration="8247000" />
       <workItem from="1687095935915" duration="5112000" />
       <workItem from="1690124186689" duration="6335000" />
-      <workItem from="1692536456222" duration="9545000" />
+      <workItem from="1692536456222" duration="24744000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>
@@ -415,6 +430,11 @@
           <url>file://$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/provider/model/TestCase.java</url>
           <line>48</line>
           <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/ObjectInitUtilTest.java</url>
+          <line>66</line>
+          <option name="timeStamp" value="39" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

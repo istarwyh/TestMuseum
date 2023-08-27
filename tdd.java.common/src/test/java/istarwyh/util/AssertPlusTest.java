@@ -1,6 +1,7 @@
 package istarwyh.util;
 
 import com.alibaba.fastjson2.JSONObject;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static istarwyh.util.ReflectionUtilTest.WhoIAm;
@@ -37,5 +38,11 @@ class AssertPlusTest {
         assertDoesNotThrow(() -> AssertPlus.compareFields(jsonObject1, jsonObject2));
         Throwable throwable = AssertPlus.assertThrows(Throwable.class, AssertPlus::compareFieldsWithOrder, jsonObject1, jsonObject2);
         System.out.println(throwable.toString());
+    }
+
+    @DisplayName("assert all fields including in superclass cannot be null")
+    @Test
+    void assertAllFieldsNotNull(){
+        assertDoesNotThrow(() -> AssertPlus.assertAllNotNull(new Object()));
     }
 }

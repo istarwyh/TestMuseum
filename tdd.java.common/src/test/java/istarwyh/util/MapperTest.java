@@ -62,9 +62,7 @@ public class MapperTest {
     interface Converter{
         Converter INSTANCE = Mappers.getMapper(Converter.class);
 
-        @Mappings({
-                @Mapping(target = "name",source = "name")
-        })
+
         @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
         void updateB(@MappingTarget B b,A a);
 
