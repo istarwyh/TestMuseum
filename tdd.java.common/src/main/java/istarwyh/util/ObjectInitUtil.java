@@ -92,9 +92,21 @@ public class ObjectInitUtil {
         return initWithValues(clazz, true);
     }
 
+    public static <T> T initWithDefault(T instance) {
+        return initWithValues(instance, true);
+    }
+
+    public static <T> T initWithRandom(T instance) {
+        return initWithValues(instance, true);
+    }
+
+
     private static <T> T initWithValues(Class<T> clazz, boolean useDefaultValue) {
-        T instance = init(clazz);
-        List<Field> allSettableFields = getAllSettableFields(clazz);
+        return initWithValues(init(clazz), useDefaultValue);
+    }
+
+    private static <T> T initWithValues(T instance, boolean useDefaultValue) {
+        List<Field> allSettableFields = getAllSettableFields(instance.getClass());
         for (Field field : allSettableFields) {
             field.setAccessible(true);
             try {

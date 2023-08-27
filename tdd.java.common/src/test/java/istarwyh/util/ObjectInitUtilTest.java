@@ -12,7 +12,7 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
+int
 public class ObjectInitUtilTest {
 
 
@@ -25,10 +25,26 @@ public class ObjectInitUtilTest {
 
     }
 
+    @DisplayName("the valid fields of the class was set with default value")
+    @Test
+    void initClassWithDefault(){
+        SampleClass sampleClass = ObjectInitUtil.initWithDefault(SampleClass.class);
+        System.out.println(JSON.toJSONString(sampleClass));
+        AssertPlus.assertAllNotNull(sampleClass);
+    }
+
     @DisplayName("the valid fields of the instance was set with default value")
     @Test
-    void initWithDefault(){
-        SampleClass sampleClass = ObjectInitUtil.initWithDefault(SampleClass.class);
+    void initInstanceWithDefault(){
+        SampleClass sampleClass = ObjectInitUtil.initWithDefault(new SampleClass());
+        System.out.println(JSON.toJSONString(sampleClass));
+        AssertPlus.assertAllNotNull(sampleClass);
+    }
+
+    @DisplayName("the valid fields of the instance was set with default value")
+    @Test
+    void initInstanceWithRandom(){
+        SampleClass sampleClass = ObjectInitUtil.initWithRandom(new SampleClass());
         System.out.println(JSON.toJSONString(sampleClass));
         AssertPlus.assertAllNotNull(sampleClass);
     }
