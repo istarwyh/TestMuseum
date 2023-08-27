@@ -5,7 +5,10 @@ import sun.misc.Unsafe;
 
 import java.lang.reflect.Field;
 
-public class UnsafeUntil {
+/**
+ * @author mac
+ */
+public class UnsafeUtil {
 
     @SneakyThrows
     public static Unsafe unsafe(){

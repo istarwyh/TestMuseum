@@ -19,7 +19,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static istarwyh.util.UnsafeUntil.unsafe;
+import static istarwyh.util.UnsafeUtil.unsafe;
 
 
 /**

@@ -212,7 +212,7 @@ public class ObjectInitUtil {
 
     public static <T> T init(Class<T> clazz) {
         try {
-            return (T) UnsafeUntil.unsafe().allocateInstance(clazz);
+            return (T) UnsafeUtil.unsafe().allocateInstance(clazz);
         } catch (InstantiationException e) {
             throw new UnsupportedOperationException(String.format(
                     "Cannot initialize {},please add {} with the method called by registerCustomValueGenerator",
