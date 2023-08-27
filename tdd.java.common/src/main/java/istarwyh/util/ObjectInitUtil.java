@@ -12,6 +12,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -45,14 +47,10 @@ public class ObjectInitUtil {
         return map;
     }
 
-    @NotNull
     private static String generateString(Field field, boolean useDefaultValue) {
-        String name = field.getName();
-        if (name.contains("time") ||
-                name.contains("Time") ||
-                name.contains("date") ||
-                name.contains("Date")
-        ) {
+        String pattern = "(.*time.*)|(.*date.*)|(.*create.*)|(.*modified.*)";
+        Matcher m = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE).matcher(field.getName());
+        if (m.matches()) {
             return generateLocalDateTime(useDefaultValue).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         }
         return String.valueOf(generateValue(int.class, useDefaultValue));
