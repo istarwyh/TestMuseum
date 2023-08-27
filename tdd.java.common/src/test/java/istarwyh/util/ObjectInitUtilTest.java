@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -100,6 +101,15 @@ public class ObjectInitUtilTest {
         assertNotNull(((SampleClassWithNonBuiltinType) instance).getCustomTypeValue());
     }
 
+    @Test
+    void should_handle_time_string() {
+        Class<?> clazz = SampleClassWithFrequentTypes.class;
+        Object instance = ObjectInitUtil.initWithRandom(clazz);
+        assertNotNull(instance);
+        String endTime = ((SampleClassWithFrequentTypes) instance).getEndTime();
+        assertNotNull(LocalDateTime.parse(endTime, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+    }
+
     @Data
     static class SampleParentClass {
         private LocalDateTime localDateTimeValue;
@@ -117,7 +127,7 @@ public class ObjectInitUtilTest {
 
     @Data
     static class SampleClassWithFrequentTypes {
-        private String stringValue;
+        private String endTime;
         private List<String> listValue;
         private Set<String> setValue;
         private Map<String, String> mapValue;

@@ -1,6 +1,5 @@
 package istarwyh.util;
 
-import org.apache.commons.lang3.RandomStringUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Array;
@@ -9,6 +8,7 @@ import java.lang.reflect.Modifier;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -31,7 +31,6 @@ public class ObjectInitUtil {
     @NotNull
     private static Map<Class<?>, ValueGenerator<?>> initValueGenerators() {
         Map<Class<?>, ValueGenerator<?>> map = new HashMap<>(10);
-        map.put(String.class, (useDefaultValue) -> (useDefaultValue ? "0" : RandomStringUtils.randomAlphabetic(10)));
         map.put(List.class, ObjectInitUtil::generateList);
         map.put(ArrayList.class, ObjectInitUtil::generateList);
         map.put(Set.class, (any) -> new HashSet<>());
@@ -44,6 +43,19 @@ public class ObjectInitUtil {
         map.put(LocalDateTime.class, ObjectInitUtil::generateLocalDateTime);
         map.put(Date.class, (any) -> new Date());
         return map;
+    }
+
+    @NotNull
+    private static String generateString(Field field, boolean useDefaultValue) {
+        String name = field.getName();
+        if (name.contains("time") ||
+                name.contains("Time") ||
+                name.contains("date") ||
+                name.contains("Date")
+        ) {
+            return generateLocalDateTime(useDefaultValue).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        }
+        return String.valueOf(generateValue(int.class, useDefaultValue));
     }
 
     public static List<Object> generateList(boolean useDefaultValues) {
@@ -110,13 +122,25 @@ public class ObjectInitUtil {
         for (Field field : allSettableFields) {
             field.setAccessible(true);
             try {
-                Object value = generateValue(field.getType(), useDefaultValue);
+                Object value = generateValue(field, useDefaultValue);
                 field.set(instance, value);
             } catch (IllegalAccessException e) {
                 throw new RuntimeException("Error accessing field: " + field.getName());
             }
         }
         return instance;
+    }
+
+    private static Object generateValue(Field field, boolean useDefaultValue) {
+        Class<?> fieldType = field.getType();
+        ValueGenerator<?> valueGenerator = VALUE_GENERATORS.get().get(fieldType);
+        if (valueGenerator != null) {
+            return valueGenerator.generateValue(useDefaultValue);
+        } else if (fieldType == String.class) {
+            return generateString(field, useDefaultValue);
+        } else {
+            return generateValue(fieldType, useDefaultValue);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -128,20 +152,15 @@ public class ObjectInitUtil {
         } else if (fieldType.isEnum()) {
             return generateEnumFieldValue(fieldType, useDefaultValue);
         } else {
-            ValueGenerator<?> valueGenerator = VALUE_GENERATORS.get().get(fieldType);
-            if (valueGenerator != null) {
-                return (T) valueGenerator.generateValue(useDefaultValue);
-            } else {
-                return initWithValues(fieldType, useDefaultValue);
-            }
+            return initWithValues(fieldType, useDefaultValue);
         }
     }
 
     private static <T> T generateEnumFieldValue(Class<T> enumType, boolean useDefaultValue) {
         T[] enumConstants = enumType.getEnumConstants();
-        if(enumConstants.length == 0){
+        if (enumConstants.length == 0) {
             return null;
-        }else {
+        } else {
             return useDefaultValue ? enumConstants[0] : enumConstants[RANDOM.nextInt(enumConstants.length)];
         }
     }
@@ -215,7 +234,7 @@ public class ObjectInitUtil {
             return (T) UnsafeUtil.unsafe().allocateInstance(clazz);
         } catch (InstantiationException e) {
             throw new UnsupportedOperationException(String.format(
-                    "Cannot initialize {},please add {} with the method called by registerCustomValueGenerator",
+                    "Cannot initialize %s ,please add %s with the method called by registerCustomValueGenerator",
                     clazz.getName(), clazz.getSimpleName()));
         }
     }
