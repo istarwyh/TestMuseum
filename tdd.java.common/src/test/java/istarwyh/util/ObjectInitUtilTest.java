@@ -12,7 +12,6 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-int
 public class ObjectInitUtilTest {
 
 
