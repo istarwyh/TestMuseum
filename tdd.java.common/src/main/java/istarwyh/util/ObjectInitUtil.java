@@ -48,10 +48,16 @@ public class ObjectInitUtil {
     }
 
     private static String generateString(Field field, boolean useDefaultValue) {
-        String pattern = "(.*time.*)|(.*date.*)|(.*create.*)|(.*modified.*)";
-        Matcher m = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE).matcher(field.getName());
-        if (m.matches()) {
+        String timePattern = "(.*time.*)|(.*date.*)|(.*create.*)|(.*modified.*)";
+        String fieldName = field.getName();
+        Matcher timeMatcher = Pattern.compile(timePattern, Pattern.CASE_INSENSITIVE).matcher(fieldName);
+        if (timeMatcher.matches()) {
             return generateLocalDateTime(useDefaultValue).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        }
+        String enumPattern = "(.*enum.*)|(.*code.*)|(.*status.*)|(.*type.*)";
+        Matcher enumMatcher = Pattern.compile(enumPattern, Pattern.CASE_INSENSITIVE).matcher(fieldName);
+        if(enumMatcher.matches()) {
+            return null;
         }
         return String.valueOf(generateValue(int.class, useDefaultValue));
     }
@@ -116,18 +122,36 @@ public class ObjectInitUtil {
     }
 
     private static <T> T initWithValues(T instance, boolean useDefaultValue) {
-        List<Field> allSettableFields = getAllSettableFields(instance.getClass());
-        for (Field field : allSettableFields) {
-            field.setAccessible(true);
-            try {
-                Object value = generateValue(field, useDefaultValue);
-                field.set(instance, value);
-            } catch (IllegalAccessException e) {
-                throw new RuntimeException("Error accessing field: " + field.getName());
-            }
-        }
+        getAllSettableFields(instance.getClass())
+                .stream()
+                .peek(field -> field.setAccessible(true))
+                .filter(field -> isFieldNull(instance, field))
+                .forEach(field -> setValue(instance, field, useDefaultValue));
         return instance;
     }
+
+    private static <T> boolean isFieldNull(T instance, Field field) {
+        try {
+            return field.get(instance) == null;
+        } catch (IllegalAccessException e) {
+            throw new FieldAccessException(field.getName(),e);
+        }
+    }
+
+    public static class FieldAccessException extends RuntimeException{
+        public FieldAccessException(String message, Throwable cause) {
+            super(message, cause);
+        }
+    }
+
+    private static <T> void setValue(T instance, Field field, boolean useDefaultValue) {
+        try {
+            field.set(instance, generateValue(field, useDefaultValue));
+        } catch (IllegalAccessException e) {
+            throw new FieldAccessException(field.getName(),e);
+        }
+    }
+
 
     private static Object generateValue(Field field, boolean useDefaultValue) {
         Class<?> fieldType = field.getType();
@@ -220,8 +244,8 @@ public class ObjectInitUtil {
     public static List<Field> getAllSettableFields(Class<?> clazz) {
         return Stream.<Class<?>>iterate(clazz, Objects::nonNull, Class::getSuperclass)
                 .flatMap(c -> Arrays.stream(c.getDeclaredFields()))
-                .filter(field -> !(Modifier.isStatic(field.getModifiers()) && Modifier.isFinal(field.getModifiers())))
-                .filter(field -> !(Modifier.isPrivate(field.getModifiers()) && Modifier.isFinal(field.getModifiers())))
+                .filter(field -> !Modifier.isStatic(field.getModifiers()))
+                .filter(field -> !Modifier.isFinal(field.getModifiers()))
                 .filter(field -> !Modifier.isAbstract(field.getModifiers()))
                 .filter(field -> !field.getType().isInterface())
                 .collect(Collectors.toList());

@@ -5,13 +5,16 @@ import java.util.ArrayList;
 import static istarwyh.handler.ContextHolder.*;
 import static istarwyh.handler.MyOutputDTO.*;
 
-public abstract class AnalysisHandler extends Handler<MyOutputDTO>{
+/**
+ * @author xiaohui
+ */
+public abstract class AbstractAnalysisHandler extends Handler<MyOutputDTO>{
 
     MyInputDTO myInputDTO;
 
     MyOutputDTO outputDTO;
 
-    public AnalysisHandler() {
+    public AbstractAnalysisHandler() {
         this.myInputDTO = getMyInput();
         if(getMyOutput() == null){
             outputDTO = new MyOutputDTO();

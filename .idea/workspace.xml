@@ -9,7 +9,10 @@
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="??">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/handler/AnalysisHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/handler/AbstractAnalysisHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/handler/ContextHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/handler/ContextHolder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ObjectInitUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ObjectInitUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/ObjectInitUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/ObjectInitUtilTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +165,7 @@
       <recent name="istarwyh.junit5.extension" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ObjectInitUtilTest.should_handle_time_string">
+  <component name="RunManager" selected="Gradle.ObjectInitUtilTest">
     <configuration name="ObjectInitUtilTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -289,9 +292,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.ObjectInitUtilTest" />
         <item itemvalue="Gradle.ObjectInitUtilTest.should_handle_time_string" />
         <item itemvalue="Gradle.ObjectInitUtilTest.initWithCustomValueGenerator" />
-        <item itemvalue="Gradle.ObjectInitUtilTest" />
         <item itemvalue="Gradle.ObjectInitUtilTest.initInstanceWithDefault" />
         <item itemvalue="Gradle.ObjectInitUtilTest.should_handle_non_builtin_types" />
       </list>
@@ -321,7 +324,7 @@
       <workItem from="1684058439597" duration="8247000" />
       <workItem from="1687095935915" duration="5112000" />
       <workItem from="1690124186689" duration="6335000" />
-      <workItem from="1692536456222" duration="31237000" />
+      <workItem from="1692536456222" duration="36621000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>

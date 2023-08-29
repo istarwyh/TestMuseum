@@ -87,8 +87,8 @@ public class ObjectInitUtilTest {
     @Test
     void get_all_settable_valid_fields(){
         List<Field> allValidFields = ObjectInitUtil.getAllSettableFields(SampleClass.class);
-        assertEquals(5, Objects.requireNonNull(allValidFields).size());
-        assertTrue(allValidFields.stream().anyMatch(field -> field.getName().equals("intValue")));
+        assertEquals(4, Objects.requireNonNull(allValidFields).size());
+        assertTrue(allValidFields.stream().noneMatch(field -> field.getName().equals("intValue")));
         assertTrue(allValidFields.stream().noneMatch(field -> field.getName().equals("longValue")));
     }
 
@@ -103,8 +103,8 @@ public class ObjectInitUtilTest {
 
     @Test
     void should_handle_time_string() {
-        Class<?> clazz = SampleClassWithFrequentTypes.class;
-        Object instance = ObjectInitUtil.initWithRandom(clazz);
+        ObjectInitUtil.specifyCustomValueGenerator(String.class,null);
+        Object instance = ObjectInitUtil.initWithRandom((Class<?>) SampleClassWithFrequentTypes.class);
         assertNotNull(instance);
         String endTime = ((SampleClassWithFrequentTypes) instance).getEndTime();
         assertNotNull(LocalDateTime.parse(endTime, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
@@ -149,5 +149,4 @@ public class ObjectInitUtilTest {
     static class CustomType {
         private String customField;
     }
-
 }

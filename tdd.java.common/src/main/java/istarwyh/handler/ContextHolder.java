@@ -1,5 +1,8 @@
 package istarwyh.handler;
 
+/**
+ * @author xiaohui
+ */
 public class ContextHolder {
 
     private static final ThreadLocal<MyOutputDTO> MY_OUTPUT_THREAD_LOCAL = new ThreadLocal<>();
