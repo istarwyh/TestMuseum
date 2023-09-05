@@ -9,6 +9,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="??">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/Development Prompt.md" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/Development Prompt.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,11 +130,11 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util" />
       <recent name="$PROJECT_DIR$/tdd.javascript.util/src/main/kv-data-transmission-service" />
       <recent name="$PROJECT_DIR$/tdd.javascript.util/src/main" />
       <recent name="$PROJECT_DIR$/tdd.javascript.util/src" />
       <recent name="$PROJECT_DIR$/tdd.javascript.util/src/main/tablestore-data-tranmission-service" />
-      <recent name="$PROJECT_DIR$/tdd.java.common/src/test/resources/META-INF/services" />
     </key>
     <key name="MoveMembersDialog.RECENTS_KEY">
       <recent name="istarwyh.util.ReflectionUtil" />
@@ -320,7 +321,7 @@
       <workItem from="1684058439597" duration="8247000" />
       <workItem from="1687095935915" duration="5112000" />
       <workItem from="1690124186689" duration="6335000" />
-      <workItem from="1692536456222" duration="38949000" />
+      <workItem from="1692536456222" duration="42809000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>
