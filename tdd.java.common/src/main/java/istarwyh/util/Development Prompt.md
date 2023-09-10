@@ -28,7 +28,10 @@
 {
   "task": "Only Write the test method",
   "context": "",
-  "examples":"",
+  "examples":{
+    "input": "",
+    "output": ""
+  },
   "role": "You are a senior development engineer who wants to work with TDD",
   "programming_language": "Java",
   "language_version": "8",
