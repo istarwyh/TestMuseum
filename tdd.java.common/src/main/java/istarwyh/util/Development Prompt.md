@@ -8,6 +8,28 @@
   
 }
 ```
+
+### Decompose Task
+```json
+{
+  "tasks": {
+    "task1":"Decompose the algorithm_problem into small enough sub-problems with requirements",
+    "task2": "Check requirements and if not satisfied, do task1 again",
+    "task3": "Output the answer of the algorithm_problem with using every single corresponding method of solving sub-problem"
+  },
+  "role": "you are a senior algorithm teacher using Java",
+  "requirements":[
+    "The number of sub-problem should be no less than 5",
+    "A sub-problem should include clear input and output",
+    "the corresponding method of each sub-problem should be in no more than 5 lines with the Google Code Format",
+    "the corresponding method of each sub-problem should have detailed and meaningful Javadoc annotations",
+    "All the corresponding method of each sub-problem should can be easily composed together to be as the answer that CAN BE RUN DIRECTLY"
+  ],
+  "algorithm_problem": "https://leetcode.cn/problems/reorder-list/",
+  "context": "I am learning how to solve algorithmic problems, but I can only study in fragmented time. Therefore, I need small enough problems that I can solve within my fragmented time."
+}
+
+```
 ### MVP
 ```json
 {
