@@ -124,36 +124,26 @@ Write tests for given test.
 - Code
 ```java
 public class Test {
-  public static String generateString(Field field, boolean useDefaultValue) {
-    String fieldName = field.getName();
-    String generateString;
-    if (isAboutTime(fieldName)) {
-      generateString = generateLocalDateTime(useDefaultValue).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-    }else if(isAboutEnum(fieldName)) {
-      generateString = null;
-    }else if(isAboutNumber(fieldName)) {
-      generateString = String.valueOf(generateValue(int.class, useDefaultValue));
-    }else {
-      generateString = fieldName;
+  private static String createTestReSource(String resource) {
+    String fileDirPath = RESOURCES_PATH_PREFIX + resource.substring(0, resource.lastIndexOf("/"));
+    new File(fileDirPath).mkdirs();
+    try {
+      String moduleAbsoluteResource = RESOURCES_PATH_PREFIX + resource;
+      File file = new File(moduleAbsoluteResource);
+      file.createNewFile();
+      try(BufferedWriter writer = new BufferedWriter(new FileWriter(moduleAbsoluteResource))){
+        writer.write(JSON.toJSONString(
+                new TestCase<>("This is your input","This is your expected output"))
+        );
+        writer.flush();
+        writer.close();
+        System.out.println(moduleAbsoluteResource + (file.exists() ? "\ncreated successfully" : "on way..."));
+        return resource;
+      }
+    } catch (IOException e) {
+      System.out.println("Error creating file: " + e.getMessage());
+      throw new RuntimeException(e);
     }
-    return generateString;
-  }
-
-  private static boolean isAboutNumber(String fieldName) {
-    return getMatcher("(.*id.*)|(.*no.*)|(.*number.*)|(.*serial.*)", fieldName).matches();
-  }
-
-  private static boolean isAboutEnum(String fieldName) {
-    return getMatcher("(.*enum.*)|(.*code.*)|(.*status.*)|(.*type.*)", fieldName).matches();
-  }
-
-  private static boolean isAboutTime(String fieldName) {
-    return getMatcher("(.*time.*)|(.*date.*)|(.*create.*)|(.*modified.*)", fieldName).matches();
-  }
-
-  @NotNull
-  private static Matcher getMatcher(String pattern, String fieldName) {
-    return Pattern.compile(pattern, Pattern.CASE_INSENSITIVE).matcher(fieldName);
   }
 }
 
@@ -169,29 +159,27 @@ public class Test {
   - functional
 - code:
 ```java
-public class ObjectInitUtil {
-    private static String generateString(Field field, boolean useDefaultValue) {
-        String fieldName = field.getName();
-        Matcher timeMatcher = getMatcher("(.*time.*)|(.*date.*)|(.*create.*)|(.*modified.*)", fieldName);
-        Matcher enumMatcher = getMatcher("(.*enum.*)|(.*code.*)|(.*status.*)|(.*type.*)", fieldName);
-        Matcher numberMatcher = getMatcher("(.*id.*)|(.*no.*)|(.*number.*)|(.*serial.*)", fieldName);
-        String generateString;
-        if (timeMatcher.matches()) {
-            generateString = generateLocalDateTime(useDefaultValue).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        }else if(enumMatcher.matches()) {
-            generateString = null;
-        }else if(numberMatcher.matches()) {
-            generateString = String.valueOf(generateValue(int.class, useDefaultValue));
-        }else {
-            generateString = fieldName;
-        }
-        return generateString;
+public class TestUtil {
+  private static String createTestReSource(String resource) {
+    String fileDirPath = RESOURCES_PATH_PREFIX + resource.substring(0, resource.lastIndexOf("/"));
+    new File(fileDirPath).mkdirs();
+    try {
+      String moduleAbsoluteResource = RESOURCES_PATH_PREFIX + resource;
+      File file = new File(moduleAbsoluteResource);
+      file.createNewFile();
+      try(BufferedWriter writer = new BufferedWriter(new FileWriter(moduleAbsoluteResource))){
+        writer.write(JSON.toJSONString(
+                new TestCase<>("This is your input","This is your expected output"))
+        );
+        writer.flush();
+        System.out.println(moduleAbsoluteResource + (file.exists() ? "\ncreated successfully" : "on way..."));
+        return resource;
+      }
+    } catch (IOException e) {
+      System.out.println("Error creating file: " + e.getMessage());
+      throw new RuntimeException(e);
     }
-
-    @NotNull
-    private static Matcher getMatcher(String timePattern, String fieldName) {
-        return Pattern.compile(timePattern, Pattern.CASE_INSENSITIVE).matcher(fieldName);
-    }
+  }
 }
 ```
 

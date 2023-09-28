@@ -5,6 +5,7 @@ import com.alibaba.fastjson2.JSONReader;
 import istarwyh.junit5.annotation.JsonFileSource;
 import istarwyh.junit5.provider.model.TestCase;
 import lombok.SneakyThrows;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.api.extension.ParameterResolutionException;
@@ -30,8 +31,7 @@ import static java.util.Arrays.stream;
 public class JsonFileArgumentsProvider implements
         AnnotationConsumer<JsonFileSource>
         ,ArgumentsProvider
-        ,ParameterResolver
-{
+        ,ParameterResolver {
 
     public static final String ADDRESS_DASH = "/";
     private final BiFunction<Class<?>, String, InputStream> inputStreamProvider;
@@ -93,7 +93,7 @@ public class JsonFileArgumentsProvider implements
         InputStream inputStream;
         inputStream = inputStreamProvider.apply(testClass, resource);
         if(inputStream == null){
-            CompletableFuture<String> resourceFuture = CompletableFuture.supplyAsync(() -> createTestReSource(resource));
+            CompletableFuture<String> resourceFuture = CompletableFuture.supplyAsync(() -> createTestResource(resource));
             // avoid too long to end this process by io error
             inputStream = inputStreamProvider.apply(testClass, resourceFuture.get(2, TimeUnit.SECONDS));
         }
@@ -101,25 +101,46 @@ public class JsonFileArgumentsProvider implements
                 () -> "Classpath resource does not exist: " + resource +", and we have created it");
     }
 
-    private static String createTestReSource(String resource) {
-        String fileDirPath = RESOURCES_PATH_PREFIX + resource.substring(0, resource.lastIndexOf("/"));
-        new File(fileDirPath).mkdirs();
+    private static String createTestResource(String resource) {
+        createDirectoryForResource(resource);
+        return createFileAndWriteTestResource(resource);
+    }
+
+    private static String createFileAndWriteTestResource(String resource) {
         try {
             String moduleAbsoluteResource = RESOURCES_PATH_PREFIX + resource;
-            File file = new File(moduleAbsoluteResource);
-            file.createNewFile();
-            try(BufferedWriter writer = new BufferedWriter(new FileWriter(moduleAbsoluteResource))){
-                writer.write(JSON.toJSONString(
-                        new TestCase<>("This is your input","This is your expected output"))
-                );
-                writer.flush();
-                writer.close();
-                System.out.println(moduleAbsoluteResource + (file.exists() ? "\ncreated successfully" : "on way..."));
-                return resource;
-            }
+            File file = createFile(moduleAbsoluteResource);
+            writeTestResource2File(moduleAbsoluteResource, file);
+            return resource;
         } catch (IOException e) {
             System.out.println("Error creating file: " + e.getMessage());
             throw new RuntimeException(e);
+        }
+    }
+
+    @NotNull
+    private static File createFile(String moduleAbsoluteResource) throws IOException {
+        File file = new File(moduleAbsoluteResource);
+        if (!file.createNewFile()) {
+            System.out.println("File already exists or could not be created: " + moduleAbsoluteResource);
+        }
+        return file;
+    }
+
+    private static void writeTestResource2File(String moduleAbsoluteResource, File file) throws IOException {
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(moduleAbsoluteResource))){
+            writer.write(JSON.toJSONString(
+                    new TestCase<>("This is your input","This is your expected output"))
+            );
+            writer.flush();
+            System.out.println(moduleAbsoluteResource + (file.exists() ? "\ncreated successfully" : "on way..."));
+        }
+    }
+
+    private static void createDirectoryForResource(String resource) {
+        String fileDirPath = RESOURCES_PATH_PREFIX + resource.substring(0, resource.lastIndexOf("/"));
+        if (!new File(fileDirPath).mkdirs()) {
+            System.out.println("Directory already exists or could not be created: " + fileDirPath);
         }
     }
 
