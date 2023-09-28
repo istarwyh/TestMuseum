@@ -95,7 +95,7 @@ public class AssertPlus {
     private static void directCompareFields(Object expected, Object actual) {
         Class<?> aClass = expected.getClass();
         assertSame(aClass, actual.getClass());
-        if (TypeUtil.isBuiltInType(expected)) {
+        if (canUseAssertEqual(aClass)) {
             assertEquals(expected, actual);
         } else {
             Field[] fields = aClass.getDeclaredFields();
@@ -110,6 +110,10 @@ public class AssertPlus {
                 }
             }
         }
+    }
+
+    private static boolean canUseAssertEqual(Class<?> aClass) {
+        return aClass.isPrimitive() || aClass.isArray() || aClass == String.class || aClass.isEnum();
     }
 
     private static boolean eitherNullThenPass(Object a, Object b) {

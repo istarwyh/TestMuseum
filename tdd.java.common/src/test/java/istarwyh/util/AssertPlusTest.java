@@ -11,16 +11,21 @@ class AssertPlusTest {
 
 
     @Test
-    void should_compare_two_object_just_with_their_field_value() throws NoSuchFieldException {
+    void should_compare_two_objects_and_find_different_field_values() throws NoSuchFieldException {
         WhoIAm lele = new WhoIAm();
         WhoIAm dudu = new WhoIAm();
-        ReflectionUtil.setField(lele,"name","me");
-        ReflectionUtil.setField(dudu,"name","me");
-        assertDoesNotThrow(() -> AssertPlus.compareFields(lele,dudu));
         ReflectionUtil.setField(lele,"name","le");
         ReflectionUtil.setField(dudu,"name","du");
         Throwable throwable = AssertPlus.assertThrows(Throwable.class, AssertPlus::compareFields, lele, dudu);
         System.out.println(throwable.toString());
+    }
+
+
+    @Test
+    void should_compare_two_object_just_with_their_field_value() {
+        WhoIAm lele = ObjectInitUtil.initWithDefault(new WhoIAm());
+        WhoIAm dudu = ObjectInitUtil.initWithDefault(new WhoIAm());
+        assertDoesNotThrow(() -> AssertPlus.compareFields(lele,dudu));
     }
 
     @Test

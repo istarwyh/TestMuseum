@@ -85,7 +85,14 @@ class ReflectionUtilTest {
         private static final String country = wuwei;
 
         private final String heart = died;
+
+        private final TestClassEnum type = TestClassEnum.WHO_AM_I;
     }
 
     public static class WhereIGo extends WhoIAm{}
+
+    public enum TestClassEnum{
+
+        WHO_AM_I;
+    }
 }

@@ -9,9 +9,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="??">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/Development Prompt.md" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/Development Prompt.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ObjectInitUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ObjectInitUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/ObjectInitUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/ObjectInitUtilTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/TypeUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/TypeUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,6 +186,29 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="ObjectInitUtilTest.generate_string" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":tdd.java.common:test" />
+            <option value="--tests" />
+            <option value="&quot;istarwyh.util.ObjectInitUtilTest.generate_string&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="ObjectInitUtilTest.get_all_settable_valid_fields" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -211,7 +232,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ObjectInitUtilTest.initInstanceWithDefault" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ObjectInitUtilTest.is_about_number" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -224,30 +245,7 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.util.ObjectInitUtilTest.initInstanceWithDefault&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="ObjectInitUtilTest.initWithCustomValueGenerator" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":tdd.java.common:test" />
-            <option value="--tests" />
-            <option value="&quot;istarwyh.util.ObjectInitUtilTest.initWithCustomValueGenerator&quot;" />
+            <option value="&quot;istarwyh.util.ObjectInitUtilTest.is_about_number&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -291,10 +289,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.ObjectInitUtilTest" />
+        <item itemvalue="Gradle.ObjectInitUtilTest.is_about_number" />
+        <item itemvalue="Gradle.ObjectInitUtilTest.generate_string" />
         <item itemvalue="Gradle.ObjectInitUtilTest.get_all_settable_valid_fields" />
         <item itemvalue="Gradle.ObjectInitUtilTest.should_handle_time_string" />
-        <item itemvalue="Gradle.ObjectInitUtilTest.initWithCustomValueGenerator" />
-        <item itemvalue="Gradle.ObjectInitUtilTest.initInstanceWithDefault" />
       </list>
     </recent_temporary>
   </component>
@@ -323,7 +321,7 @@
       <workItem from="1687095935915" duration="5112000" />
       <workItem from="1690124186689" duration="6335000" />
       <workItem from="1692536456222" duration="56504000" />
-      <workItem from="1695789771130" duration="4820000" />
+      <workItem from="1695789771130" duration="7646000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>
