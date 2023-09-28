@@ -25,7 +25,7 @@
     "Each solution method should have detailed and meaningful Javadoc annotations",
     "The solutions to the sub-problems should be easily combined into a final, runnable solution"
   ],
-  "algorithm_problem": "https://leetcode.com/problems/reorder-list/",
+  "algorithm_problem": "输入任意数字组成的数组,将该数组前半部分全部变成偶数,后半部分变成奇数输出",
   "context": "You're learning to solve algorithmic problems but only have limited, fragmented time to study. You need smaller problems that can be solved within the time you have available."
 }
 ```
@@ -107,39 +107,94 @@
 }
 ```
 ### Code -> Test
-```json
-{
-  "task": "Write tests for given test",
-  "test_code_requirements":{
-    "coverage_goal":"100% branch",
-    "testing_framework": "JUnit5",
-    "test_types": [
-      "ParametrizedTest",
-      "DynamicTest"
-    ],
-    "Library_for_mocking": "Mockito",
-    "naming_convention": "lowercase_underscore",
-    "avoid_unnecessary_annotations": true,
-    "additional_dependencies": [
-      "Lombok",
-      "other common dependencies"
-    ]
+- task
+Write tests for given test.
+- Test Code Requirements
+  - Coverage goal: 100% branch
+  - Testing framework: JUnit5
+  - Test types:
+    - ParametrizedTest
+    - DynamicTest
+  - Library for mocking: Mockito
+  - Naming convention: lowercase_underscore
+  - Avoid unnecessary annotations: true
+  - Additional dependencies:
+    - Lombok
+    - Other common dependencies
+- Code
+```java
+public class Test {
+  public static String generateString(Field field, boolean useDefaultValue) {
+    String fieldName = field.getName();
+    String generateString;
+    if (isAboutTime(fieldName)) {
+      generateString = generateLocalDateTime(useDefaultValue).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+    }else if(isAboutEnum(fieldName)) {
+      generateString = null;
+    }else if(isAboutNumber(fieldName)) {
+      generateString = String.valueOf(generateValue(int.class, useDefaultValue));
+    }else {
+      generateString = fieldName;
+    }
+    return generateString;
+  }
+
+  private static boolean isAboutNumber(String fieldName) {
+    return getMatcher("(.*id.*)|(.*no.*)|(.*number.*)|(.*serial.*)", fieldName).matches();
+  }
+
+  private static boolean isAboutEnum(String fieldName) {
+    return getMatcher("(.*enum.*)|(.*code.*)|(.*status.*)|(.*type.*)", fieldName).matches();
+  }
+
+  private static boolean isAboutTime(String fieldName) {
+    return getMatcher("(.*time.*)|(.*date.*)|(.*create.*)|(.*modified.*)", fieldName).matches();
+  }
+
+  @NotNull
+  private static Matcher getMatcher(String pattern, String fieldName) {
+    return Pattern.compile(pattern, Pattern.CASE_INSENSITIVE).matcher(fieldName);
   }
 }
+
 ```
+
+
 ### Code Review
-```json
-{
-  "task": "review code and modify it",
-  "code_style": [
-    "clean",
-    "advanced",
-    "testable",
-    "functional"
-  ],
-  "code": ""
+- task: review code and modify it
+- code_style:
+  - clean
+  - advanced
+  - testable
+  - functional
+- code:
+```java
+public class ObjectInitUtil {
+    private static String generateString(Field field, boolean useDefaultValue) {
+        String fieldName = field.getName();
+        Matcher timeMatcher = getMatcher("(.*time.*)|(.*date.*)|(.*create.*)|(.*modified.*)", fieldName);
+        Matcher enumMatcher = getMatcher("(.*enum.*)|(.*code.*)|(.*status.*)|(.*type.*)", fieldName);
+        Matcher numberMatcher = getMatcher("(.*id.*)|(.*no.*)|(.*number.*)|(.*serial.*)", fieldName);
+        String generateString;
+        if (timeMatcher.matches()) {
+            generateString = generateLocalDateTime(useDefaultValue).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        }else if(enumMatcher.matches()) {
+            generateString = null;
+        }else if(numberMatcher.matches()) {
+            generateString = String.valueOf(generateValue(int.class, useDefaultValue));
+        }else {
+            generateString = fieldName;
+        }
+        return generateString;
+    }
+
+    @NotNull
+    private static Matcher getMatcher(String timePattern, String fieldName) {
+        return Pattern.compile(timePattern, Pattern.CASE_INSENSITIVE).matcher(fieldName);
+    }
 }
 ```
+
 ### Find Bugs
 ```json
 {

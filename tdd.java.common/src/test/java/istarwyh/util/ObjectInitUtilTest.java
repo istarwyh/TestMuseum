@@ -4,14 +4,23 @@ import com.alibaba.fastjson2.JSON;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestFactory;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.lang.reflect.Field;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.stream.Stream;
 
+import static istarwyh.util.ObjectInitUtil.*;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class ObjectInitUtilTest {
 
@@ -108,6 +117,48 @@ public class ObjectInitUtilTest {
         assertNotNull(instance);
         String endTime = ((SampleClassWithFrequentTypes) instance).getEndTime();
         assertNotNull(LocalDateTime.parse(endTime, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"id,true", "no,true", "number,true", "serial,true"})
+    void is_about_number(String fieldName, boolean expectedResult) {
+        assertEquals(expectedResult, isAboutNumber(fieldName));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"enum,true", "code,true", "status,true", "type,true"})
+    void is_about_enum(String fieldName, boolean expectedResult) {
+        assertEquals(expectedResult, isAboutEnum(fieldName));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"time,true", "date,true", "create,true", "modified,true"})
+    void is_about_time(String fieldName, boolean expectedResult) {
+        assertEquals(expectedResult, isAboutTime(fieldName));
+    }
+
+    @TestFactory
+    Stream<DynamicTest> generate_string() {
+        Field mockField = mock(Field.class);
+        Collection<Object[]> testData = Arrays.asList(new Object[][]{
+                {"id", true, "0"},
+                {"enum", true, null},
+                {"time", true, LocalDateTime.now().getYear()},
+                {"other", true, "other"}
+        });
+
+        return testData.stream().map(data -> dynamicTest("Test generateString for field: " + data[0], () -> {
+            when(mockField.getName()).thenReturn((String) data[0]);
+            String result = generateString(mockField, (Boolean) data[1]);
+
+            if (data[2] == null) {
+                assertNull(result);
+            } else if(data[2] instanceof Integer){
+                assertEquals(data[2],Integer.valueOf(result.substring(0,4)));
+            } else {
+                assertEquals(data[2], result);
+            }
+        }));
     }
 
     @Data

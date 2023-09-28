@@ -47,19 +47,36 @@ public class ObjectInitUtil {
         return map;
     }
 
-    private static String generateString(Field field, boolean useDefaultValue) {
-        String timePattern = "(.*time.*)|(.*date.*)|(.*create.*)|(.*modified.*)";
+    public static String generateString(Field field, boolean useDefaultValue) {
         String fieldName = field.getName();
-        Matcher timeMatcher = Pattern.compile(timePattern, Pattern.CASE_INSENSITIVE).matcher(fieldName);
-        if (timeMatcher.matches()) {
-            return generateLocalDateTime(useDefaultValue).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        String generateString;
+        if (isAboutTime(fieldName)) {
+            generateString = generateLocalDateTime(useDefaultValue).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        }else if(isAboutEnum(fieldName)) {
+            generateString = null;
+        }else if(isAboutNumber(fieldName)) {
+            generateString = String.valueOf(generateValue(int.class, useDefaultValue));
+        }else {
+            generateString = fieldName;
         }
-        String enumPattern = "(.*enum.*)|(.*code.*)|(.*status.*)|(.*type.*)";
-        Matcher enumMatcher = Pattern.compile(enumPattern, Pattern.CASE_INSENSITIVE).matcher(fieldName);
-        if(enumMatcher.matches()) {
-            return null;
-        }
-        return String.valueOf(generateValue(int.class, useDefaultValue));
+        return generateString;
+    }
+
+    public static boolean isAboutNumber(String fieldName) {
+        return getMatcher("(.*id.*)|(.*no.*)|(.*number.*)|(.*serial.*)", fieldName).matches();
+    }
+
+    public static boolean isAboutEnum(String fieldName) {
+        return getMatcher("(.*enum.*)|(.*code.*)|(.*status.*)|(.*type.*)", fieldName).matches();
+    }
+
+    public static boolean isAboutTime(String fieldName) {
+        return getMatcher("(.*time.*)|(.*date.*)|(.*create.*)|(.*modified.*)", fieldName).matches();
+    }
+
+    @NotNull
+    private static Matcher getMatcher(String pattern, String fieldName) {
+        return Pattern.compile(pattern, Pattern.CASE_INSENSITIVE).matcher(fieldName);
     }
 
     public static List<Object> generateList(boolean useDefaultValues) {
