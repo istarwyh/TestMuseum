@@ -8,8 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="??">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/TypeUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/TypeUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/provider/JsonFileArgumentsProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/provider/JsonFileArgumentsProvider.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +161,53 @@
       <recent name="istarwyh.junit5.extension" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ObjectInitUtilTest">
+  <component name="RunManager" selected="Gradle.AssertPlusTest">
+    <configuration name="AssertPlusTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":tdd.java.common:test" />
+            <option value="--tests" />
+            <option value="&quot;istarwyh.util.AssertPlusTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="AssertPlusTest.compare_two_object_just_with_their_field_value" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":tdd.java.common:test" />
+            <option value="--tests" />
+            <option value="&quot;istarwyh.util.AssertPlusTest.compare_two_object_just_with_their_field_value&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="ObjectInitUtilTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -177,52 +222,6 @@
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
             <option value="&quot;istarwyh.util.ObjectInitUtilTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="ObjectInitUtilTest.generate_string" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":tdd.java.common:test" />
-            <option value="--tests" />
-            <option value="&quot;istarwyh.util.ObjectInitUtilTest.generate_string&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="ObjectInitUtilTest.get_all_settable_valid_fields" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":tdd.java.common:test" />
-            <option value="--tests" />
-            <option value="&quot;istarwyh.util.ObjectInitUtilTest.get_all_settable_valid_fields&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -255,7 +254,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ObjectInitUtilTest.should_handle_time_string" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ReflectionUtilTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -268,7 +267,7 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.util.ObjectInitUtilTest.should_handle_time_string&quot;" />
+            <option value="&quot;istarwyh.util.ReflectionUtilTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -288,11 +287,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.AssertPlusTest" />
+        <item itemvalue="Gradle.AssertPlusTest.compare_two_object_just_with_their_field_value" />
+        <item itemvalue="Gradle.ReflectionUtilTest" />
         <item itemvalue="Gradle.ObjectInitUtilTest" />
         <item itemvalue="Gradle.ObjectInitUtilTest.is_about_number" />
-        <item itemvalue="Gradle.ObjectInitUtilTest.generate_string" />
-        <item itemvalue="Gradle.ObjectInitUtilTest.get_all_settable_valid_fields" />
-        <item itemvalue="Gradle.ObjectInitUtilTest.should_handle_time_string" />
       </list>
     </recent_temporary>
   </component>
@@ -321,7 +320,7 @@
       <workItem from="1687095935915" duration="5112000" />
       <workItem from="1690124186689" duration="6335000" />
       <workItem from="1692536456222" duration="56504000" />
-      <workItem from="1695789771130" duration="7646000" />
+      <workItem from="1695789771130" duration="11181000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>
@@ -413,6 +412,11 @@
           <url>jrt:///Applications/IntelliJ IDEA.app/Contents/jbr/Contents/Home!/java.base/java/io/File.class</url>
           <line>460</line>
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/AssertPlus.java</url>
+          <line>97</line>
+          <option name="timeStamp" value="36" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

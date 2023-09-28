@@ -24,6 +24,7 @@ import java.util.stream.Stream;
 import static java.util.Arrays.stream;
 
 /**
+ * @author xiaohui
  * @see <a href="https://github.com/joshka/junit-json-params">junit-json-params</a>
  */
 public class JsonFileArgumentsProvider implements
@@ -34,7 +35,7 @@ public class JsonFileArgumentsProvider implements
 
     public static final String ADDRESS_DASH = "/";
     private final BiFunction<Class<?>, String, InputStream> inputStreamProvider;
-    private static final String RESOURCES_PATH_PREFIX = "src/test/resources/";
+    private static final String RESOURCES_PATH_PREFIX = "src/test/resources";
 
     private String[] resources;
 
@@ -65,7 +66,7 @@ public class JsonFileArgumentsProvider implements
 
     private String[] getResources(JsonFileSource jsonFileSource) {
         String[] resources = jsonFileSource.resources();
-        if(!(ownClass == Object.class)){
+        if(ownClass != Object.class){
             String packageName = ownClass.getPackageName();
             for(int i = 0; i < resources.length; i++){
                 resources[i] = packageName.replaceAll("\\.",ADDRESS_DASH) + ADDRESS_DASH + resources[i];
@@ -87,7 +88,7 @@ public class JsonFileArgumentsProvider implements
                 .map(Arguments::arguments);
     }
 
-    @SneakyThrows
+    @SneakyThrows(Exception.class)
     private InputStream openInputStream(Class<?> testClass,String resource){
         InputStream inputStream;
         inputStream = inputStreamProvider.apply(testClass, resource);
@@ -101,8 +102,8 @@ public class JsonFileArgumentsProvider implements
     }
 
     private static String createTestReSource(String resource) {
-        String filePath = RESOURCES_PATH_PREFIX + resource.substring(0, resource.lastIndexOf("/"));
-        new File(filePath).mkdirs();
+        String fileDirPath = RESOURCES_PATH_PREFIX + resource.substring(0, resource.lastIndexOf("/"));
+        new File(fileDirPath).mkdirs();
         try {
             String moduleAbsoluteResource = RESOURCES_PATH_PREFIX + resource;
             File file = new File(moduleAbsoluteResource);
@@ -113,7 +114,7 @@ public class JsonFileArgumentsProvider implements
                 );
                 writer.flush();
                 writer.close();
-                System.out.println(moduleAbsoluteResource + (file.exists() ? " created successfully" : "on way..."));
+                System.out.println(moduleAbsoluteResource + (file.exists() ? "\ncreated successfully" : "on way..."));
                 return resource;
             }
         } catch (IOException e) {
