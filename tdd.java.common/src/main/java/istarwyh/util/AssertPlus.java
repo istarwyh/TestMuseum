@@ -5,14 +5,21 @@ import com.alibaba.fastjson2.JSONObject;
 import org.junit.jupiter.api.Assertions;
 
 import java.lang.reflect.Field;
+import java.time.temporal.Temporal;
 import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
+import static istarwyh.util.TypeUtil.isBuiltInType;
 import static istarwyh.util.TypeUtil.isJsonType;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * @author xiaohui
+ */
 public class AssertPlus {
+
+    public static final List<IfUsingAssertEqual> CUSTOM_CLASS_OF_USING_ASSERT_EQUAL = new ArrayList<>();
 
     /**
      * 递归遍历json对象所有的key-value，将其封装成path:value格式进行比较
@@ -112,8 +119,33 @@ public class AssertPlus {
         }
     }
 
-    private static boolean canUseAssertEqual(Class<?> aClass) {
-        return aClass.isPrimitive() || aClass.isArray() || aClass == String.class || aClass.isEnum();
+    private static boolean canUseAssertEqual(Class<?> clazz) {
+        return isBuiltInType(clazz) ||
+                clazz.isArray() ||
+                clazz == String.class ||
+                clazz.isEnum() ||
+                Collection.class.isAssignableFrom(clazz) ||
+                Map.class.isAssignableFrom(clazz) ||
+                Temporal.class.isAssignableFrom(clazz) ||
+                customClassOfUsingAssertEqual(clazz);
+    }
+
+    private static boolean customClassOfUsingAssertEqual(Class<?> clazz) {
+        return CUSTOM_CLASS_OF_USING_ASSERT_EQUAL.stream().anyMatch(it -> it.canUseAssertEqual(clazz));
+    }
+
+    public static void specifyClassJudgeCondition(IfUsingAssertEqual ifUsingAssertEqual){
+        CUSTOM_CLASS_OF_USING_ASSERT_EQUAL.add(ifUsingAssertEqual);
+    }
+
+    public interface IfUsingAssertEqual{
+
+        /**
+         * 是否使用{@link Assertions#assertEquals}
+         * @param clazz {@link Class}
+         * @return 是否可以直接使用 {@link Assertions#assertEquals}
+         */
+        boolean canUseAssertEqual(Class<?> clazz);
     }
 
     private static boolean eitherNullThenPass(Object a, Object b) {
