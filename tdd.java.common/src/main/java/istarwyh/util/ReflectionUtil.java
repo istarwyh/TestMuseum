@@ -8,6 +8,7 @@ import sun.misc.Unsafe;
 import java.io.File;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.net.URL;
 import java.nio.file.Files;
@@ -25,6 +26,7 @@ import static istarwyh.util.UnsafeUtil.unsafe;
 /**
  * This class is changed from WhileBox in PowerMock.
  * The class can set instance field,including final field, not null or static field
+ * @author xiaohui
  * @see <a href=https://www.baeldung.com/mockito-mock-static-methods>Mockito#mockStatic</a>
  */
 public class ReflectionUtil {
@@ -42,11 +44,12 @@ public class ReflectionUtil {
                 .orElse(null);
     }
 
-    @SneakyThrows
+    @SneakyThrows({NoSuchMethodException.class, InvocationTargetException.class,InstantiationException.class,IllegalAccessException.class})
     public static <T> T getInstanceWithoutArgs(Class<T> clazz) {
         // 获取无参构造方法（如果有参数，则传入对应的 Class 类型作为参数）
         Constructor<T> constructor = clazz.getDeclaredConstructor();
-        constructor.setAccessible(true); // 当构造方法为 private 时，需要设置可访问
+        // 当构造方法为 private 时，需要设置可访问
+        constructor.setAccessible(true);
         return constructor.newInstance();
     }
 
@@ -56,12 +59,13 @@ public class ReflectionUtil {
      * @param fieldName including final field, not null or static field
      * @param value value
      */
-    public static void setField(Object modifiedObj,String fieldName,Object value) throws NoSuchFieldException {
+    @SneakyThrows(NoSuchFieldException.class)
+    public static void setField(Object modifiedObj,String fieldName,Object value) {
         Field foundField = findFieldInHierarchy(modifiedObj,fieldName, field -> hasFieldProperModifier(modifiedObj, field));
         setField(modifiedObj,foundField,value);
     }
 
-    @SneakyThrows
+    @SneakyThrows({NoSuchFieldException.class,IllegalAccessException.class})
     public static <T> T getField(Object object,String fieldName){
         Field foundField = findFieldInHierarchy(object,fieldName,anyField -> true);
         return (T)foundField.get(object);
@@ -263,5 +267,12 @@ public class ReflectionUtil {
                     }
                 })
                 .collect(Collectors.toList());
+    }
+
+    @NotNull
+    public static List<Field> getAllFields(Class<?> clazz) {
+        return Stream.<Class<?>>iterate(clazz, Objects::nonNull, Class::getSuperclass)
+                .flatMap(it -> Arrays.stream(it.getDeclaredFields()))
+                .toList();
     }
 }

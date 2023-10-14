@@ -3,9 +3,11 @@ package istarwyh.util;
 import com.alibaba.fastjson2.JSONObject;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.opentest4j.AssertionFailedError;
 
+import static istarwyh.util.ReflectionUtilTest.WhereIGo;
 import static istarwyh.util.ReflectionUtilTest.WhoIAm;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.*;
 
 class AssertPlusTest {
 
@@ -23,9 +25,11 @@ class AssertPlusTest {
 
     @Test
     void should_compare_two_object_just_with_their_field_value() {
-        WhoIAm lele = ObjectInitUtil.initWithDefault(new WhoIAm());
-        WhoIAm dudu = ObjectInitUtil.initWithDefault(new WhoIAm());
-        assertDoesNotThrow(() -> AssertPlus.compareFields(lele,dudu));
+        WhereIGo lele = ObjectInitUtil.initWithDefault(new WhereIGo());
+        ReflectionUtil.setField(lele,"name","le");
+        WhereIGo dudu = ObjectInitUtil.initWithDefault(new WhereIGo());
+        AssertionFailedError error = assertThrows(AssertionFailedError.class, () -> AssertPlus.compareFields(lele, dudu));
+        assertEquals("expected: <le> but was: <name>",error.getMessage());
     }
 
     @Test

@@ -105,16 +105,20 @@ public class AssertPlus {
         if (canUseAssertEqual(aClass)) {
             assertEquals(expected, actual);
         } else {
-            Field[] fields = aClass.getDeclaredFields();
-            for (Field field : fields) {
-                try {
-                    String fieldName = field.getName();
-                    Object valueA = ReflectionUtil.getField(expected, fieldName);
-                    Object valueB = ReflectionUtil.getField(actual, fieldName);
-                    compareFields(valueA, valueB);
-                } catch (NoSuchElementException e) {
-                    throw new RuntimeException(e);
-                }
+            compareDeclaredFields(expected, actual, aClass);
+        }
+    }
+
+    private static void compareDeclaredFields(Object expected, Object actual, Class<?> clazz) {
+        List<Field> fieldList = ReflectionUtil.getAllFields(clazz);
+        for (Field field : fieldList) {
+            try {
+                String fieldName = field.getName();
+                Object valueA = ReflectionUtil.getField(expected, fieldName);
+                Object valueB = ReflectionUtil.getField(actual, fieldName);
+                compareFields(valueA, valueB);
+            } catch (NoSuchElementException e) {
+                throw new RuntimeException(e);
             }
         }
     }
