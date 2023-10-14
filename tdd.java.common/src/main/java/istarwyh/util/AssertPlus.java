@@ -110,7 +110,7 @@ public class AssertPlus {
     }
 
     private static void compareDeclaredFields(Object expected, Object actual, Class<?> clazz) {
-        List<Field> fieldList = ReflectionUtil.getAllFields(clazz);
+        List<Field> fieldList = ReflectionUtil.getAllFields(clazz, it -> !it.equals(Object.class));
         for (Field field : fieldList) {
             try {
                 String fieldName = field.getName();

@@ -270,8 +270,9 @@ public class ReflectionUtil {
     }
 
     @NotNull
-    public static List<Field> getAllFields(Class<?> clazz) {
+    public static List<Field> getAllFields(Class<?> clazz, Predicate<Class<?>> filterClazz) {
         return Stream.<Class<?>>iterate(clazz, Objects::nonNull, Class::getSuperclass)
+                .filter(filterClazz)
                 .flatMap(it -> Arrays.stream(it.getDeclaredFields()))
                 .toList();
     }

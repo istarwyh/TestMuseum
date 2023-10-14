@@ -7,12 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="??">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/AssertPlus.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/AssertPlus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ReflectionUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ReflectionUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/AssertPlusTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/AssertPlusTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="??" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -319,7 +314,7 @@
       <workItem from="1695789771130" duration="16781000" />
       <workItem from="1695957017669" duration="549000" />
       <workItem from="1696160903313" duration="195000" />
-      <workItem from="1697273835504" duration="965000" />
+      <workItem from="1697273835504" duration="1860000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>
