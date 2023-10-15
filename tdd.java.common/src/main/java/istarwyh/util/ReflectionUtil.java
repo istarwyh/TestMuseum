@@ -6,10 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import sun.misc.Unsafe;
 
 import java.io.File;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Modifier;
+import java.lang.reflect.*;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -132,8 +129,11 @@ public class ReflectionUtil {
     public static void setField(Object object, Field foundField, Object value) {
         boolean isStatic = isModifier(foundField,Modifier.STATIC);
         Unsafe unsafe = unsafe();
-        if(isStatic) setStaticFieldUsingUnsafe(foundField,value);
-        else setFieldUsingUnsafe(object,foundField,unsafe.objectFieldOffset(foundField),value);
+        if(isStatic) {
+            setStaticFieldUsingUnsafe(foundField,value);
+        } else {
+            setFieldUsingUnsafe(object,foundField,unsafe.objectFieldOffset(foundField),value);
+        }
     }
 
     private static void setStaticFieldUsingUnsafe(Field field, Object value) {
@@ -275,5 +275,35 @@ public class ReflectionUtil {
                 .filter(filterClazz)
                 .flatMap(it -> Arrays.stream(it.getDeclaredFields()))
                 .toList();
+    }
+
+
+    /**
+     * find the first generic clazz of the given interface
+     * @param originInterface the generic interface
+     * @param concreteClass the concrete class the implemented the generic interface
+     * @return the generic interface generic clazz
+     * @param <T> the generic interface generic param,like `Interface Example<T>`
+     */
+    public static <T> Class<T> getInterfaceFirstGenericClazz(Class<?> originInterface, Class<?> concreteClass) {
+        for(Type type : concreteClass.getGenericInterfaces()){
+            if(type instanceof ParameterizedType &&
+                    ((ParameterizedType) type).getRawType().getTypeName().equals(originInterface.getName())){
+                Type actualTypeArgument = ((ParameterizedType) type).getActualTypeArguments()[0];
+                if(actualTypeArgument != null){
+                    return getClassFromParameterizedType(actualTypeArgument);
+                }
+            }
+        }
+        throw new IllegalArgumentException("Invalid interface");
+    }
+
+    @NotNull
+    private static <T>  Class<T> getClassFromParameterizedType(Type actualTypeArgument) {
+        if(actualTypeArgument instanceof Class){
+            return (Class<T>) actualTypeArgument;
+        }else {
+            return getClassFromParameterizedType(((ParameterizedType)actualTypeArgument).getRawType());
+        }
     }
 }

@@ -44,7 +44,12 @@ public class ObjectInitUtil {
         map.put(LocalDate.class, ObjectInitUtil::generateLocalDate);
         map.put(LocalDateTime.class, ObjectInitUtil::generateLocalDateTime);
         map.put(Date.class, (any) -> new Date());
+        customValueGenerators();
         return map;
+    }
+
+    public static void customValueGenerators(){
+        ServiceLoader.load(ValueGenerator.class).forEach(ValueGenerator::register);
     }
 
     public static String generateString(Field field, boolean useDefaultValue) {
@@ -248,6 +253,12 @@ public class ObjectInitUtil {
         return (T) initWithValues(clazz, false);
     }
 
+    /**
+     * specify the latest value generator
+     * if {@link ObjectInitUtil#VALUE_GENERATORS} has more than one generator, then the generator will use the latest one.
+     * @param clazz the class needed to generate value
+     * @param valueGenerator how to generate value
+     */
     public static void specifyCustomValueGenerator(Class<?> clazz, ValueGenerator<?> valueGenerator) {
         VALUE_GENERATORS.get().put(clazz, valueGenerator);
     }
@@ -278,14 +289,4 @@ public class ObjectInitUtil {
         }
     }
 
-    public interface ValueGenerator<T> {
-
-        /**
-         * Returns the value
-         *
-         * @param useDefaultValues whether to use default values
-         * @return the value
-         */
-        T generateValue(boolean useDefaultValues);
-    }
 }

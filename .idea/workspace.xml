@@ -160,7 +160,7 @@
       <recent name="istarwyh.junit5.extension" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.AssertPlusTest.should_compare_two_object_just_with_their_field_value">
+  <component name="RunManager" selected="Gradle.AssertPlusTest">
     <configuration name="AssertPlusTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -278,11 +278,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.AssertPlusTest" />
         <item itemvalue="Gradle.AssertPlusTest.should_compare_two_object_just_with_their_field_value" />
         <item itemvalue="Gradle.JsonFileArgumentsProviderTest.should_generate_test_case_json_lack_of_it" />
         <item itemvalue="Gradle.JsonFileArgumentsProviderTest" />
         <item itemvalue="Gradle.JsonFileArgumentsProviderTest.should_generate_test_case_json_given_ownClass" />
-        <item itemvalue="Gradle.AssertPlusTest" />
       </list>
     </recent_temporary>
   </component>
@@ -314,7 +314,7 @@
       <workItem from="1695789771130" duration="16781000" />
       <workItem from="1695957017669" duration="549000" />
       <workItem from="1696160903313" duration="195000" />
-      <workItem from="1697273835504" duration="1860000" />
+      <workItem from="1697273835504" duration="2495000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>

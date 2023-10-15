@@ -15,6 +15,7 @@ import java.util.Set;
 /**
  * ClassLoader will load more class when needed. And {@link MyClassLoader} will load class what is not satisfied with
  * {@link MyClassLoader#shouldLoadedByParent(String)}.
+ * @author xiaohui
  */
 public class MyClassLoader extends ClassLoader{
 
