@@ -10,7 +10,6 @@ import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-import static istarwyh.util.TypeUtil.isBuiltInType;
 import static istarwyh.util.TypeUtil.isJsonType;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,7 +18,19 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class AssertPlus {
 
-    public static final List<IfUsingAssertEqual> CUSTOM_CLASS_OF_USING_ASSERT_EQUAL = new ArrayList<>();
+    public static final List<IfUsingAssertEqual> CUSTOM_CLASS_OF_USING_ASSERT_EQUAL;
+
+    static {
+        CUSTOM_CLASS_OF_USING_ASSERT_EQUAL = new ArrayList<>(4);
+        CUSTOM_CLASS_OF_USING_ASSERT_EQUAL.add(TypeUtil::isBuiltInType);
+        CUSTOM_CLASS_OF_USING_ASSERT_EQUAL.add(Class::isArray);
+        CUSTOM_CLASS_OF_USING_ASSERT_EQUAL.add(Class::isEnum);
+        CUSTOM_CLASS_OF_USING_ASSERT_EQUAL.add(clazz -> clazz == String.class);
+        CUSTOM_CLASS_OF_USING_ASSERT_EQUAL.add(Collection.class::isAssignableFrom);
+        CUSTOM_CLASS_OF_USING_ASSERT_EQUAL.add(Map.class::isAssignableFrom);
+        CUSTOM_CLASS_OF_USING_ASSERT_EQUAL.add(Temporal.class::isAssignableFrom);
+        ServiceLoader.load(IfUsingAssertEqual.class).forEach(CUSTOM_CLASS_OF_USING_ASSERT_EQUAL::add);
+    }
 
     /**
      * 递归遍历json对象所有的key-value，将其封装成path:value格式进行比较
@@ -124,17 +135,6 @@ public class AssertPlus {
     }
 
     private static boolean canUseAssertEqual(Class<?> clazz) {
-        return isBuiltInType(clazz) ||
-                clazz.isArray() ||
-                clazz == String.class ||
-                clazz.isEnum() ||
-                Collection.class.isAssignableFrom(clazz) ||
-                Map.class.isAssignableFrom(clazz) ||
-                Temporal.class.isAssignableFrom(clazz) ||
-                customClassOfUsingAssertEqual(clazz);
-    }
-
-    private static boolean customClassOfUsingAssertEqual(Class<?> clazz) {
         return CUSTOM_CLASS_OF_USING_ASSERT_EQUAL.stream().anyMatch(it -> it.canUseAssertEqual(clazz));
     }
 
@@ -150,6 +150,7 @@ public class AssertPlus {
          * @return 是否可以直接使用 {@link Assertions#assertEquals}
          */
         boolean canUseAssertEqual(Class<?> clazz);
+
     }
 
     private static boolean eitherNullThenPass(Object a, Object b) {
