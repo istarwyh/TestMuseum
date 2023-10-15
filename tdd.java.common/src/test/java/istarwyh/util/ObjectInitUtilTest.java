@@ -149,7 +149,7 @@ public class ObjectInitUtilTest {
 
         return testData.stream().map(data -> dynamicTest("Test generateString for field: " + data[0], () -> {
             when(mockField.getName()).thenReturn((String) data[0]);
-            String result = generateString(mockField, (Boolean) data[1]);
+            String result = generateString((Boolean) data[1], mockField.getName());
 
             if (data[2] == null) {
                 assertNull(result);
@@ -159,6 +159,16 @@ public class ObjectInitUtilTest {
                 assertEquals(data[2], result);
             }
         }));
+    }
+
+
+    @Test
+    void should_generate_custom_class_value_with_spi(){
+        Class<CustomClassValueGenerator.CustomClass> clazz = CustomClassValueGenerator.CustomClass.class;
+        CustomClassValueGenerator.CustomClass customClass = initWithDefault(clazz);
+        assertEquals(0, customClass.getValue());
+        assertEquals(10, customClass.getCustomClass().getValue());
+        assertEquals(11, customClass.getCustomClass().getCustomClass().getValue());
     }
 
     @Data

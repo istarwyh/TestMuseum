@@ -26,34 +26,29 @@ public class ObjectInitUtil {
     private static final Random RANDOM = new Random();
 
 
-    private static final ThreadLocal<Map<Class<?>, ValueGenerator<?>>> VALUE_GENERATORS =
-            ThreadLocal.withInitial(ObjectInitUtil::initValueGenerators);
+    private static final Map<Class<?>, ValueGenerator<?>> VALUE_GENERATORS;
 
-
-    @NotNull
-    private static Map<Class<?>, ValueGenerator<?>> initValueGenerators() {
-        Map<Class<?>, ValueGenerator<?>> map = new HashMap<>(10);
-        map.put(List.class, ObjectInitUtil::generateList);
-        map.put(ArrayList.class, ObjectInitUtil::generateList);
-        map.put(Set.class, (any) -> new HashSet<>());
-        map.put(HashSet.class, (any) -> new HashSet<>());
-        map.put(Map.class, ObjectInitUtil::generateMap);
-        map.put(HashMap.class, ObjectInitUtil::generateMap);
-        map.put(ConcurrentMap.class, (any) -> new ConcurrentHashMap<>(2));
-        map.put(ConcurrentHashMap.class, (any) -> new ConcurrentHashMap<>(2));
-        map.put(LocalDate.class, ObjectInitUtil::generateLocalDate);
-        map.put(LocalDateTime.class, ObjectInitUtil::generateLocalDateTime);
-        map.put(Date.class, (any) -> new Date());
+    static  {
+        VALUE_GENERATORS = new HashMap<>(10);
+        VALUE_GENERATORS.put(List.class, ObjectInitUtil::generateList);
+        VALUE_GENERATORS.put(ArrayList.class, ObjectInitUtil::generateList);
+        VALUE_GENERATORS.put(Set.class, (any) -> new HashSet<>());
+        VALUE_GENERATORS.put(HashSet.class, (any) -> new HashSet<>());
+        VALUE_GENERATORS.put(Map.class, ObjectInitUtil::generateMap);
+        VALUE_GENERATORS.put(HashMap.class, ObjectInitUtil::generateMap);
+        VALUE_GENERATORS.put(ConcurrentMap.class, (any) -> new ConcurrentHashMap<>(2));
+        VALUE_GENERATORS.put(ConcurrentHashMap.class, (any) -> new ConcurrentHashMap<>(2));
+        VALUE_GENERATORS.put(LocalDate.class, ObjectInitUtil::generateLocalDate);
+        VALUE_GENERATORS.put(LocalDateTime.class, ObjectInitUtil::generateLocalDateTime);
+        VALUE_GENERATORS.put(Date.class, (any) -> new Date());
         customValueGenerators();
-        return map;
     }
 
     public static void customValueGenerators(){
         ServiceLoader.load(ValueGenerator.class).forEach(ValueGenerator::register);
     }
 
-    public static String generateString(Field field, boolean useDefaultValue) {
-        String fieldName = field.getName();
+    public static String generateString(boolean useDefaultValue, String fieldName) {
         String generateString;
         if (isAboutTime(fieldName)) {
             generateString = generateLocalDateTime(useDefaultValue).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
@@ -168,20 +163,18 @@ public class ObjectInitUtil {
 
     private static <T> void setValue(T instance, Field field, boolean useDefaultValue) {
         try {
-            field.set(instance, generateValue(field, useDefaultValue));
+            field.set(instance, generateValue(useDefaultValue, field.getType(), field.getName()));
         } catch (IllegalAccessException e) {
             throw new FieldAccessException(field.getName(),e);
         }
     }
 
-
-    private static Object generateValue(Field field, boolean useDefaultValue) {
-        Class<?> fieldType = field.getType();
-        ValueGenerator<?> valueGenerator = VALUE_GENERATORS.get().get(fieldType);
+    private static Object generateValue(boolean useDefaultValue, Class<?> fieldType, String fieldName) {
+        ValueGenerator<?> valueGenerator = VALUE_GENERATORS.get(fieldType);
         if (valueGenerator != null) {
             return valueGenerator.generateValue(useDefaultValue);
         } else if (fieldType == String.class) {
-            return generateString(field, useDefaultValue);
+            return generateString(useDefaultValue, fieldName);
         } else {
             return generateValue(fieldType, useDefaultValue);
         }
@@ -260,7 +253,7 @@ public class ObjectInitUtil {
      * @param valueGenerator how to generate value
      */
     public static void specifyCustomValueGenerator(Class<?> clazz, ValueGenerator<?> valueGenerator) {
-        VALUE_GENERATORS.get().put(clazz, valueGenerator);
+        VALUE_GENERATORS.put(clazz, valueGenerator);
     }
 
     /**
@@ -289,4 +282,27 @@ public class ObjectInitUtil {
         }
     }
 
+    /**
+     * @author mac
+     */
+    public interface ValueGenerator<T> {
+
+        /**
+         * Returns the value
+         *
+         * @param useDefaultValues whether to use default values
+         * @return the value
+         */
+        T generateValue(boolean useDefaultValues);
+
+        /**
+         * specify the custom value generator
+         */
+        default void register(){
+            specifyCustomValueGenerator(
+                    ReflectionUtil.getInterfaceFirstGenericClazz(ValueGenerator.class,this.getClass())
+                    ,this);
+        }
+
+    }
 }
