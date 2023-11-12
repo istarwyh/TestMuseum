@@ -112,14 +112,18 @@ Write tests for given test.
 - Test Code Requirements
   - Coverage goal: 100% branch
   - Testing framework: JUnit5
+  - code style: 
+    - Use class variables instead of local variables as much as possible
+    - use static imports
   - Test types:
     - ParametrizedTest
-    - DynamicTest
+    - DynamicTest(necessary for complex tests)
   - Library for mocking: Mockito
   - Naming convention: lowercase_underscore
   - Avoid unnecessary annotations: true
   - Additional dependencies:
     - Lombok
+    - Guava
     - Other common dependencies
 - Code
 ```java
