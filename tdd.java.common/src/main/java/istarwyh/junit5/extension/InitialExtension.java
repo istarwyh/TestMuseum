@@ -2,7 +2,6 @@ package istarwyh.junit5.extension;
 
 import istarwyh.classloader.MyClassLoader;
 import istarwyh.classloader.modifier.Modifier;
-import lombok.SneakyThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.*;
 
@@ -11,6 +10,7 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 
 import static istarwyh.util.UnsafeUtil.unsafe;
+import static java.util.Arrays.stream;
 
 
 /**
@@ -55,28 +55,47 @@ public class InitialExtension implements BeforeAllCallback
     @Override
     public void beforeEach(ExtensionContext context) throws Exception {
         Object instance = unsafe().allocateInstance(newTestClass);
-        invokeSetUpMethod(context.getRequiredTestClass(),instance);
-        Method testMethod = context.getRequiredTestMethod();
-        Method newTestMethod = newTestClass.getDeclaredMethod(testMethod.getName(), testMethod.getParameterTypes());
+        invokeSetUpMethod(instance, context.getRequiredTestClass().getDeclaredMethods());
+        invokeNewTestMethod(instance, context.getRequiredTestMethod());
+    }
+
+    private static void invokeNewTestMethod(Object instance, Method testMethod) throws IllegalAccessException, InvocationTargetException {
+        Method newTestMethod = getNewTestMethod(testMethod);
         newTestMethod.setAccessible(true);
         if(newTestMethod.getParameterCount() == 0){
             newTestMethod.invoke(instance);
         }else {
+            // todo There is ParameterizedTest what can be got in testMethod.
             throw new IllegalCallerException("ParameterizedTest cannot be supported at present!");
         }
     }
 
-    @SneakyThrows
-    private static void invokeSetUpMethod(Class<?> testClass,Object instance) {
-        Arrays.stream(testClass.getDeclaredMethods())
+    private static Method getNewTestMethod(Method testMethod) {
+        Method newTestMethod;
+        String testMethodName = testMethod.getName();
+        Class<?>[] parameterTypes = testMethod.getParameterTypes();
+        try{
+            newTestMethod = newTestClass.getDeclaredMethod(testMethodName, parameterTypes);
+        }catch (NoSuchMethodException ignore){
+            // todo Sometimes the above getDeclaredMethod will fail without unknown reason.
+            newTestMethod = stream(newTestClass.getDeclaredMethods())
+            .filter(it -> it.getName().equals(testMethodName))
+            .findFirst()
+            .orElseThrow(() -> new RuntimeException(String.format("Cannot find method: %s ,parameterTypes: %s", testMethodName, Arrays.toString(parameterTypes))));
+        }
+        return newTestMethod;
+    }
+
+    private static void invokeSetUpMethod(Object instance, Method[] declaredMethods) {
+        stream(declaredMethods)
                 .filter(it -> SET_UP_METHOD_NAME.equals(it.getName()))
                 .findFirst()
                 .ifPresent(
                         setUpMethod -> {
-                            boolean existBeforeEachOnSetupMethod = Arrays.stream(setUpMethod.getDeclaredAnnotations())
+                            boolean existBeforeEachOnSetupMethod = stream(setUpMethod.getDeclaredAnnotations())
                                     .anyMatch(it -> BeforeEach.class.equals(it.annotationType()));
                             if(existBeforeEachOnSetupMethod){
-                                Arrays.stream(newTestClass.getDeclaredMethods())
+                                stream(newTestClass.getDeclaredMethods())
                                         .filter(it -> SET_UP_METHOD_NAME.equals(it.getName()))
                                         .findFirst()
                                         .ifPresent(it -> {
