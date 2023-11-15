@@ -5,6 +5,9 @@ import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
 import com.alibaba.fastjson2.TypeReference;
 
+/**
+ * @author xiaohui
+ */
 public class TestCase<IN, OUT> {
 
     /**

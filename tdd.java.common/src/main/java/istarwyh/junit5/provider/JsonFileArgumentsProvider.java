@@ -5,6 +5,7 @@ import com.alibaba.fastjson2.JSONReader;
 import istarwyh.junit5.annotation.JsonFileSource;
 import istarwyh.junit5.provider.model.TestCase;
 import lombok.SneakyThrows;
+import org.apache.commons.lang3.tuple.Pair;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ParameterContext;
@@ -16,12 +17,16 @@ import org.junit.jupiter.params.support.AnnotationConsumer;
 import org.junit.platform.commons.util.Preconditions;
 
 import java.io.*;
+import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.nio.charset.Charset;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.function.BiFunction;
 import java.util.stream.Stream;
 
+import static istarwyh.util.ObjectInitUtil.initWithRandom;
 import static java.util.Arrays.stream;
 
 /**
@@ -41,6 +46,8 @@ public class JsonFileArgumentsProvider implements
 
     private Class<?> type;
     private Class<?> ownClass;
+    private Method requiredTestMethod;
+    private Class<?> requiredTestClass;
 
 
     JsonFileArgumentsProvider() {
@@ -82,8 +89,10 @@ public class JsonFileArgumentsProvider implements
 
     @Override
     public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
+        requiredTestMethod = context.getRequiredTestMethod();
+        requiredTestClass = context.getRequiredTestClass();
         return stream(resources)
-                .map(resource -> openInputStream(context.getRequiredTestClass(),resource))
+                .map(resource -> openInputStream(requiredTestClass,resource))
                 .map(this::valueOfType)
                 .map(Arguments::arguments);
     }
@@ -95,18 +104,18 @@ public class JsonFileArgumentsProvider implements
         if(inputStream == null){
             CompletableFuture<String> resourceFuture = CompletableFuture.supplyAsync(() -> createTestResource(resource));
             // avoid too long to end this process by io error
-            inputStream = inputStreamProvider.apply(testClass, resourceFuture.get(2, TimeUnit.SECONDS));
+            inputStream = inputStreamProvider.apply(testClass, resourceFuture.get(5, TimeUnit.SECONDS));
         }
         return Preconditions.notNull(inputStream,
                 () -> "Classpath resource does not exist: " + resource +", and we have created it");
     }
 
-    private static String createTestResource(String resource) {
+    private String createTestResource(String resource) {
         createDirectoryForResource(resource);
         return createFileAndWriteTestResource(resource);
     }
 
-    private static String createFileAndWriteTestResource(String resource) {
+    private String createFileAndWriteTestResource(String resource) {
         try {
             String moduleAbsoluteResource = RESOURCES_PATH_PREFIX + resource;
             File file = createFile(moduleAbsoluteResource);
@@ -127,11 +136,17 @@ public class JsonFileArgumentsProvider implements
         return file;
     }
 
-    private static void writeTestResource2File(String moduleAbsoluteResource, File file) throws IOException {
+    @SneakyThrows(ClassNotFoundException.class)
+    private void writeTestResource2File(String moduleAbsoluteResource, File file) throws IOException {
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(moduleAbsoluteResource))){
-            writer.write(JSON.toJSONString(
-                    new TestCase<>("This is your input","This is your expected output"))
-            );
+            TestCase<Object, Object> testCase = new TestCase<>();
+            Type[] actualTypeArguments = ((ParameterizedType) requiredTestMethod.getGenericParameterTypes()[0]).getActualTypeArguments();
+            Pair<Class<?>, Class<?>> classPair = Pair.of(
+                    Class.forName(actualTypeArguments[0].getTypeName()),
+                    Class.forName(actualTypeArguments[1].getTypeName()));
+            testCase.setInput(initWithRandom(classPair.getLeft()));
+            testCase.setOutput(initWithRandom(classPair.getRight()));
+            writer.write(JSON.toJSONString(testCase));
             writer.flush();
             System.out.println(moduleAbsoluteResource + (file.exists() ? "\ncreated successfully" : "on way..."));
         }

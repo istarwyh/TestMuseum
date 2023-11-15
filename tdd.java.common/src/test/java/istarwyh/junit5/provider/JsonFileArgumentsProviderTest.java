@@ -25,8 +25,8 @@ class JsonFileArgumentsProviderTest {
 
     @JsonFileSource(resources = {"istarwyh/absent/absent_test_case.json"})
     void should_generate_test_case_json_lack_of_it(TestCase<String,String> testCase){
-        assertEquals("This is your input", testCase.getInput());
-        assertEquals("This is your expected output", testCase.getOutput());
+        assertEquals("please input your case value", testCase.getInput());
+        assertEquals("please input your case value", testCase.getOutput());
     }
 
     @JsonFileSource(in = JsonFileArgumentsProviderTest.class,resources = {"absent_test_case.json"})

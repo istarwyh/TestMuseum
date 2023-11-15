@@ -135,7 +135,13 @@ public class ObjectInitUtil {
 
 
     private static <T> T initWithValues(Class<T> clazz, boolean useDefaultValue) {
-        return initWithValues(init(clazz), useDefaultValue);
+        T value;
+        if (shouldDirectlyGenerateValue(clazz)) {
+            value = (T) generateValue( clazz,useDefaultValue, "please input your case value");
+        }else {
+            value = initWithValues(init(clazz), useDefaultValue);
+        }
+        return value;
     }
 
     private static <T> T initWithValues(T instance, boolean useDefaultValue) {
@@ -163,13 +169,13 @@ public class ObjectInitUtil {
 
     private static <T> void setValue(T instance, Field field, boolean useDefaultValue) {
         try {
-            field.set(instance, generateValue(useDefaultValue, field.getType(), field.getName()));
+            field.set(instance, generateValue(field.getType(), useDefaultValue, field.getName()));
         } catch (IllegalAccessException e) {
             throw new FieldAccessException(field.getName(),e);
         }
     }
 
-    private static Object generateValue(boolean useDefaultValue, Class<?> fieldType, String fieldName) {
+    private static Object generateValue(Class<?> fieldType, boolean useDefaultValue, String fieldName) {
         ValueGenerator<?> valueGenerator = VALUE_GENERATORS.get(fieldType);
         if (valueGenerator != null) {
             return valueGenerator.generateValue(useDefaultValue);
@@ -191,6 +197,19 @@ public class ObjectInitUtil {
         } else {
             return initWithValues(fieldType, useDefaultValue);
         }
+    }
+
+    /**
+     * todo 基本类型应该直接生成值，并且应该和收拢判断
+     * @param clazz
+     * @return
+     */
+    public static boolean shouldDirectlyGenerateValue(Class<?> clazz){
+        return VALUE_GENERATORS.containsKey(clazz) ||
+                clazz == String.class ||
+                clazz.isPrimitive() ||
+                clazz.isArray() ||
+                clazz.isEnum();
     }
 
     private static <T> T generateEnumFieldValue(Class<T> enumType, boolean useDefaultValue) {

@@ -2,6 +2,7 @@ package istarwyh.util;
 
 import lombok.SneakyThrows;
 import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
 import org.jetbrains.annotations.NotNull;
 import sun.misc.Unsafe;
 
@@ -306,4 +307,21 @@ public class ReflectionUtil {
             return getClassFromParameterizedType(((ParameterizedType)actualTypeArgument).getRawType());
         }
     }
+
+    /**
+     *
+     * parseGenericTypesFromSignature
+     * @param str method signature like "(Listarwyh/junit5/provider/model/TestCase<Ljava/lang/String;Ljava/lang/String;>;)V"
+     * @return (Class)
+     */
+    @SneakyThrows(ClassNotFoundException.class)
+    public static Pair<Class<?>, Class<?>> parseGenericTypesFromSignature(String str) {
+        int firstIndex = str.indexOf("<L") + 2;
+        int lastIndex = str.lastIndexOf(">;");
+        String[] classes = str.substring(firstIndex, lastIndex).split(";L");
+        Class<?> firstClass = Class.forName(classes[0].replace('/', '.'));
+        Class<?> secondClass = Class.forName(classes[1].replace('/', '.'));
+        return Pair.of(firstClass, secondClass);
+    }
+
 }
