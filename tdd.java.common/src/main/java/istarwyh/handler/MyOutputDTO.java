@@ -1,14 +1,18 @@
 package istarwyh.handler;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 
+/**
+ * @author xiaohui
+ */
+@Data
+@Accessors(chain = true)
 public class MyOutputDTO{
 
-    @Getter @Setter
-    List<MyOutputDTO> outputs;
+    private List<MyOutputDTO> outputs;
 
-    public  record MyInputDTO() {}
+    public record MyInputDTO() {}
 }

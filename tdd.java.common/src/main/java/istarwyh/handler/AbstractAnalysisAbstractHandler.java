@@ -8,17 +8,16 @@ import static istarwyh.handler.MyOutputDTO.*;
 /**
  * @author xiaohui
  */
-public abstract class AbstractAnalysisHandler extends Handler<MyOutputDTO>{
+public abstract class AbstractAnalysisAbstractHandler extends AbstractHandler<MyOutputDTO> {
 
-    MyInputDTO myInputDTO;
+    protected MyInputDTO myInputDTO;
 
-    MyOutputDTO outputDTO;
+    protected MyOutputDTO outputDTO;
 
-    public AbstractAnalysisHandler() {
+    public AbstractAnalysisAbstractHandler() {
         this.myInputDTO = getMyInput();
         if(getMyOutput() == null){
-            outputDTO = new MyOutputDTO();
-            outputDTO.setOutputs(new ArrayList<>());
+            outputDTO = new MyOutputDTO().setOutputs(new ArrayList<>());
             setMyOutput(outputDTO);
         }else {
             outputDTO = getMyOutput();
