@@ -18,7 +18,7 @@ public class ArgsTest {
         assertEquals("/usr/logs",options.directory());
     }
 
-    public static record MultiOptions(@Option("l") boolean logging, @Option("p") int port, @Option("d") String directory){}
+    record MultiOptions(@Option("l") boolean logging, @Option("p") int port, @Option("d") String directory){}
 
     @Test
     void should_throw_illegal_annotation_exception_when_annotation_absent(){
@@ -27,7 +27,7 @@ public class ArgsTest {
         });
     }
 
-    public static record OptionsWithoutAnnotation(@Option("l") boolean logging, int port, @Option("d") String directory){}
+    record OptionsWithoutAnnotation(@Option("l") boolean logging, int port, @Option("d") String directory){}
 
 
     @Test// exception
@@ -40,7 +40,7 @@ public class ArgsTest {
         assertEquals(Object.class,unsupportedOptionTypeException.getType());
     }
 
-    static record OptionWithUnsupportedType(@Option("d") Object decimals){}
+    record OptionWithUnsupportedType(@Option("d") Object decimals){}
 
     @Test
     @DisplayName("-g this is a list -d 1 2 -3 5")
@@ -52,6 +52,6 @@ public class ArgsTest {
         assertArrayEquals(new Integer[]{-1,-2,3,6},listOptions.decimals());
     }
 
-    static record ListOptions(@Option("g") String[] group,@Option("d") Integer[] decimals){}
+    record ListOptions(@Option("g") String[] group,@Option("d") Integer[] decimals){}
 
 }
