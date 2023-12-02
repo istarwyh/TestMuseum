@@ -20,7 +20,7 @@ public class GraphLevel<T extends BillElementDTO> extends AbstractBillElement<Li
     @Override
     public String getAmount() {
         String amount = super.getAmount();
-        if(amount != null || ( super.getData() !=null && !super.getData().isEmpty())){
+        if(amount != null || super.getData().isEmpty()){
             return amount;
         }
         return super.getData().stream()
@@ -42,7 +42,7 @@ public class GraphLevel<T extends BillElementDTO> extends AbstractBillElement<Li
     @Override
     public String getNumber() {
         String number = super.getNumber();
-        if(number != null || ( super.getData() !=null && !super.getData().isEmpty())){
+        if(number != null || super.getData().isEmpty()){
             return number;
         }
         return super.getData().stream()

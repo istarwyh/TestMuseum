@@ -8,6 +8,7 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +17,9 @@ import java.util.Map;
 import static istarwyh.util.ReflectionUtil.getAllClassesImplementingInterface;
 import static istarwyh.util.ReflectionUtil.getInstanceWithoutArgs;
 
+/**
+ * @author xiaohui
+ */
 @Slf4j
 @RequiredArgsConstructor
 public class PageModuleLoader {
@@ -36,7 +40,7 @@ public class PageModuleLoader {
                 .forEach(PageModuleConstructor::register);
     }
 
-    @SneakyThrows
+    @SneakyThrows({NoSuchMethodException.class, IllegalAccessException.class, InvocationTargetException.class})
     public static void registerPageModuleConstructor(@NotNull PageModuleConstructor<?, ?> pageModuleConstructor) {
         Class<? extends AbstractBillElement<?>> supportedElement = pageModuleConstructor.supportedElement();
         Method getModuleTypeCode = supportedElement.getMethod("getModuleTypeCode");

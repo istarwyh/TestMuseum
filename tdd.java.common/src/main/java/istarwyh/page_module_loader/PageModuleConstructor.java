@@ -10,6 +10,9 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
 
+/**
+ * @author xiaohui
+ */
 public interface PageModuleConstructor<Element extends AbstractBillElement<?>, QueryDTO> {
 
     /**

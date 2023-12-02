@@ -11,6 +11,9 @@ import java.util.stream.Collectors;
 import static istarwyh.util.ReflectionUtil.*;
 import static java.util.Arrays.stream;
 
+/**
+ * @author xiaohui
+ */
 public class AnnotationUtil {
 
     /**

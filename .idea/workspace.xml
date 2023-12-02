@@ -9,8 +9,14 @@
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="??">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.args/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.args/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.args/src/test/java/istarwyh/ArgsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.args/src/test/java/istarwyh/ArgsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/PageModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/PageModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/PageModuleConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/PageModuleConstructor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/PageModuleLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/PageModuleLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/bill/AbstractBillElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/bill/AbstractBillElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/bill/BillElementDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/bill/BillElementDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/AnnotationUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/AnnotationUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/annotation/Scale.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/annotation/Scale.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/GraphLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/GraphLevel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +170,7 @@
       <recent name="istarwyh.junit5.extension" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.JsonFileArgumentsProviderTest">
+  <component name="RunManager" selected="Gradle.ObjectInitUtilTest.should_generate_custom_class_value_with_spi">
     <configuration name="JsonFileArgumentsProviderTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -188,7 +194,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="JsonFileArgumentsProviderTest.should_generate_test_case_json_lack_of_it" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ObjectInitUtilTest.should_generate_custom_class_value_with_spi" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -201,7 +207,7 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.junit5.provider.JsonFileArgumentsProviderTest.should_generate_test_case_json_lack_of_it&quot;" />
+            <option value="&quot;istarwyh.util.ObjectInitUtilTest.should_generate_custom_class_value_with_spi&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -211,7 +217,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ObjectInitUtilTest.get_all_settable_valid_fields" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="PageModuleLoaderTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -224,7 +230,7 @@
           <list>
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.util.ObjectInitUtilTest.get_all_settable_valid_fields&quot;" />
+            <option value="&quot;istarwyh.page_module_loader.PageModuleLoaderTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -257,7 +263,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="Tests in 'istarwyh'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Tests in 'TestMuseum.tdd.java.common.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -269,8 +275,6 @@
         <option name="taskNames">
           <list>
             <option value=":tdd.java.common:test" />
-            <option value="--tests" />
-            <option value="&quot;istarwyh.*&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -290,11 +294,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.JsonFileArgumentsProviderTest" />
-        <item itemvalue="Gradle.JsonFileArgumentsProviderTest.should_generate_test_case_json_lack_of_it" />
-        <item itemvalue="Gradle.ObjectInitUtilTest.get_all_settable_valid_fields" />
-        <item itemvalue="Gradle.Tests in 'istarwyh'" />
+        <item itemvalue="Gradle.ObjectInitUtilTest.should_generate_custom_class_value_with_spi" />
+        <item itemvalue="Gradle.Tests in 'TestMuseum.tdd.java.common.test'" />
+        <item itemvalue="Gradle.PageModuleLoaderTest" />
         <item itemvalue="Gradle.PageModuleLoaderTest.build" />
+        <item itemvalue="Gradle.JsonFileArgumentsProviderTest" />
       </list>
     </recent_temporary>
   </component>
@@ -333,7 +337,7 @@
       <workItem from="1699868599491" duration="1147000" />
       <workItem from="1699870765224" duration="799000" />
       <workItem from="1700059472018" duration="6942000" />
-      <workItem from="1700404052693" duration="4373000" />
+      <workItem from="1700404052693" duration="9483000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>
@@ -459,13 +463,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/provider/JsonFileArgumentsProvider.java</url>
-          <line>62</line>
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/provider/JsonFileArgumentsProvider.java</url>
           <line>147</line>
           <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/GraphLevel.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/ObjectInitUtilTest.java</url>
+          <line>168</line>
+          <option name="timeStamp" value="64" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
