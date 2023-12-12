@@ -8,15 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="??">
+      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/exception/ErrorModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/PageModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/PageModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/PageModuleConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/PageModuleConstructor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/PageModuleLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/PageModuleLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/bill/AbstractBillElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/bill/AbstractBillElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/bill/BillElementDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/bill/BillElementDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/AnnotationUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/AnnotationUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/annotation/Scale.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/annotation/Scale.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/GraphLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/GraphLevel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SystemLayer.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/SystemLayer.drawio" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,7 +164,7 @@
       <recent name="istarwyh.junit5.extension" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ObjectInitUtilTest.should_generate_custom_class_value_with_spi">
+  <component name="RunManager" selected="Gradle.Tests in 'TestMuseum.tdd.java.common.test'">
     <configuration name="JsonFileArgumentsProviderTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -284,18 +278,10 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration default="true" type="aws.lambda" factoryName="Remote">
-      <option name="credentialProviderId" />
-      <option name="regionId" />
-      <option name="functionName" />
-      <option name="input" />
-      <option name="inputIsFile" value="false" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.ObjectInitUtilTest.should_generate_custom_class_value_with_spi" />
         <item itemvalue="Gradle.Tests in 'TestMuseum.tdd.java.common.test'" />
+        <item itemvalue="Gradle.ObjectInitUtilTest.should_generate_custom_class_value_with_spi" />
         <item itemvalue="Gradle.PageModuleLoaderTest" />
         <item itemvalue="Gradle.PageModuleLoaderTest.build" />
         <item itemvalue="Gradle.JsonFileArgumentsProviderTest" />
@@ -337,7 +323,9 @@
       <workItem from="1699868599491" duration="1147000" />
       <workItem from="1699870765224" duration="799000" />
       <workItem from="1700059472018" duration="6942000" />
-      <workItem from="1700404052693" duration="9483000" />
+      <workItem from="1700404052693" duration="13266000" />
+      <workItem from="1702114417968" duration="331000" />
+      <workItem from="1702122359074" duration="1644000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>
