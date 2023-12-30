@@ -29,7 +29,7 @@ repositories {
 ext {
     junitVersion = '5.9.2'
     junitPlatformVersion = '1.0.0'
-    lombokVersion = '1.18.26'
+    lombokVersion = '1.18.30'
     slf4jVersion = '1.7.36'
     logbackClassicVersion = '1.4.7'
     jetbrainsAnnotationVersion = '24.0.1'

@@ -1,0 +1,21 @@
+{
+  "input":
+  [
+    {
+      "name": "function1",
+      "args": {
+        "arg1": "someshit",
+        "arg2": {
+          "lalaInt": 1,
+          "lolString": "lol"
+        }
+      }
+    },
+    {
+      "name": "function2",
+      "args": {
+        "dddd": "fefefef"
+      }
+    }
+  ]
+}
