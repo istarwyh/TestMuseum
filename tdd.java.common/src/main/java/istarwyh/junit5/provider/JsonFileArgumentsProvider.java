@@ -6,7 +6,7 @@ import istarwyh.junit5.annotation.JsonFileSource;
 import istarwyh.junit5.provider.model.TestCase;
 import lombok.SneakyThrows;
 import org.apache.commons.lang3.tuple.Pair;
-import org.jetbrains.annotations.NotNull;
+import org.jeasy.random.EasyRandom;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.api.extension.ParameterResolutionException;
@@ -26,7 +26,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.BiFunction;
 import java.util.stream.Stream;
 
-import static istarwyh.util.ObjectInitUtil.initWithRandom;
 import static java.util.Arrays.stream;
 
 /**
@@ -42,6 +41,8 @@ public class JsonFileArgumentsProvider implements
     private final BiFunction<Class<?>, String, InputStream> inputStreamProvider;
     private static final String RESOURCES_PATH_PREFIX = "src/test/resources";
 
+    private static final EasyRandom RANDOM = new EasyRandom();
+
     private String[] resources;
 
     private Class<?> type;
@@ -50,6 +51,7 @@ public class JsonFileArgumentsProvider implements
     private Class<?> requiredTestClass;
 
 
+    @SuppressWarnings("unused")
     JsonFileArgumentsProvider() {
         this(Class::getResourceAsStream);
     }
@@ -107,7 +109,7 @@ public class JsonFileArgumentsProvider implements
             inputStream = inputStreamProvider.apply(testClass, resourceFuture.get(5, TimeUnit.SECONDS));
         }
         return Preconditions.notNull(inputStream,
-                () -> "Classpath resource does not exist: " + resource +", and we have created it");
+                () -> "*** Classpath resource does not exist: " + resource +", and we have created it ***");
     }
 
     private String createTestResource(String resource) {
@@ -127,7 +129,6 @@ public class JsonFileArgumentsProvider implements
         }
     }
 
-    @NotNull
     private static File createFile(String moduleAbsoluteResource) throws IOException {
         File file = new File(moduleAbsoluteResource);
         if (!file.createNewFile()) {
@@ -144,8 +145,8 @@ public class JsonFileArgumentsProvider implements
             Pair<Class<?>, Class<?>> classPair = Pair.of(
                     Class.forName(actualTypeArguments[0].getTypeName()),
                     Class.forName(actualTypeArguments[1].getTypeName()));
-            testCase.setInput(initWithRandom(classPair.getLeft()));
-            testCase.setOutput(initWithRandom(classPair.getRight()));
+            testCase.setInput(RANDOM.nextObject(classPair.getLeft()));
+            testCase.setOutput(RANDOM.nextObject(classPair.getRight()));
             writer.write(JSON.toJSONString(testCase));
             writer.flush();
             System.out.println(moduleAbsoluteResource + (file.exists() ? "\ncreated successfully" : "on way..."));

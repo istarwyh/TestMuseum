@@ -324,4 +324,21 @@ public class ReflectionUtil {
         return Pair.of(firstClass, secondClass);
     }
 
+    /**
+     * We added an explicit type parameter Class<?> to the iterate method. This resolves the nested wildcard types.
+     *
+     * @param clazz any type parameter
+     * @return the valid fields of the class
+     */
+    public static List<Field> getAllSettableFields(Class<?> clazz) {
+        return Stream.<Class<?>>iterate(clazz, Objects::nonNull, Class::getSuperclass)
+                .flatMap(c -> Arrays.stream(c.getDeclaredFields()))
+                .filter(field -> !Modifier.isStatic(field.getModifiers()))
+                .filter(field -> !Modifier.isFinal(field.getModifiers()))
+                .filter(field -> !Modifier.isAbstract(field.getModifiers()))
+                .filter(field -> !Modifier.isNative(field.getModifiers()))
+                .filter(field -> !Modifier.isTransient(field.getModifiers()))
+                .filter(field -> !field.getType().isInterface())
+                .collect(Collectors.toList());
+    }
 }

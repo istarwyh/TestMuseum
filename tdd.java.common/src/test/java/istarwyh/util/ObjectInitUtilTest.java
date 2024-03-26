@@ -87,25 +87,10 @@ public class ObjectInitUtilTest {
     }
 
 
-    @DisplayName("""
-                  settable fields:
-                  1. not static && final
-                  2. not abstract or interface
-                  3. all fields of the instance including the superclass and subclass
-            """)
-    @Test
-    void get_all_settable_valid_fields(){
-        List<Field> allValidFields = ObjectInitUtil.getAllSettableFields(SampleClass.class);
-        assertEquals(4, Objects.requireNonNull(allValidFields).size());
-        assertTrue(allValidFields.stream().noneMatch(field -> field.getName().equals("intValue")));
-        assertTrue(allValidFields.stream().noneMatch(field -> field.getName().equals("longValue")));
-    }
-
-
     @Test
     void should_handle_non_builtin_types() {
         Class<?> clazz = SampleClassWithNonBuiltinType.class;
-        Object instance = ObjectInitUtil.initWithRandom(clazz);
+        Object instance = ObjectInitUtil.initWithDefault(clazz);
         assertNotNull(instance);
         assertNotNull(((SampleClassWithNonBuiltinType) instance).getCustomTypeValue());
     }
@@ -197,9 +182,10 @@ public class ObjectInitUtilTest {
     }
 
     @Data
-    static
-    class SampleClassWithNonBuiltinType {
+    static class SampleClassWithNonBuiltinType {
         private CustomType customTypeValue;
+        private SampleClassWithNonBuiltinType sampleClassWithNonBuiltinType;
+        private List<SampleClassWithNonBuiltinType> simpleClassList;
     }
 
     enum SampleEnum {

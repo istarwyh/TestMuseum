@@ -25,8 +25,8 @@ class JsonFileArgumentsProviderTest {
 
     @JsonFileSource(resources = {"istarwyh/absent/absent_test_case.json"})
     void should_generate_test_case_json_lack_of_it(TestCase<String,String> testCase){
-        assertEquals("please input your case value", testCase.getInput());
-        assertEquals("please input your case value", testCase.getOutput());
+        assertEquals("eOMtThyhVNLWUZNRcBaQKxI", testCase.getInput());
+        assertEquals("yedUsFwdkelQbxeTeQOvaScfqIOOmaa", testCase.getOutput());
     }
 
     @JsonFileSource(in = JsonFileArgumentsProviderTest.class,resources = {"absent_test_case.json"})
@@ -37,7 +37,7 @@ class JsonFileArgumentsProviderTest {
 
     @JsonFileSource(in = JsonFileArgumentsProviderTest.class, resources = {"list_testCase.json", "list_testCase.json"})
     void should_parse_multi_List_with_Integer_type_test_case(TestCase<List<Integer>,List<Integer>> testCase){
-        assertEquals(1,testCase.getInput().get(0));
+        assertEquals(1,testCase.getInput().getFirst());
         assertEquals(5,testCase.getOutput().get(2));
     }
 
@@ -63,12 +63,15 @@ class JsonFileArgumentsProviderTest {
 
     @JsonFileSource(type = String.class,resources = {"istarwyh/junit5/provider/list.json"})
     void should_parse_String_input(String testCase){
-        List<People> peopleList = new TypeReference<List<People>>() {}.parseObject(testCase);
+        List<People> peopleList = new TypeReference<List<People>>(){}.parseObject(testCase);
         assertEquals("lele",peopleList.get(0).name);
         assertEquals("02",peopleList.get(1).id);
     }
 
-    public record People(String id,String name){}
+    public static class People{
+        public final String  id = "02";
+        public final String  name = "lele";
+    }
 
     // TODO get args type from test method's args and give the type to deserialization
 

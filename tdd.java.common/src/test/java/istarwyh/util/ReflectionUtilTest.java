@@ -2,14 +2,17 @@ package istarwyh.util;
 
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Objects;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ReflectionUtilTest {
 
@@ -74,6 +77,14 @@ class ReflectionUtilTest {
         assertEquals(1,fields.size());
     }
 
+
+    @Test
+    void get_all_settable_valid_fields(){
+        List<Field> allValidFields = ReflectionUtil.getAllSettableFields(ObjectInitUtilTest.SampleClass.class);
+        assertEquals(4, Objects.requireNonNull(allValidFields).size());
+        assertTrue(allValidFields.stream().noneMatch(field -> field.getName().equals("intValue")));
+        assertTrue(allValidFields.stream().noneMatch(field -> field.getName().equals("longValue")));
+    }
 
 
 
