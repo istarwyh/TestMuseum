@@ -140,17 +140,28 @@ public class JsonFileArgumentsProvider implements
     @SneakyThrows(ClassNotFoundException.class)
     private void writeTestResource2File(String moduleAbsoluteResource, File file) throws IOException {
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(moduleAbsoluteResource))){
-            TestCase<Object, Object> testCase = new TestCase<>();
-            Type[] actualTypeArguments = ((ParameterizedType) requiredTestMethod.getGenericParameterTypes()[0]).getActualTypeArguments();
-            Pair<Class<?>, Class<?>> classPair = Pair.of(
-                    Class.forName(actualTypeArguments[0].getTypeName()),
-                    Class.forName(actualTypeArguments[1].getTypeName()));
-            testCase.setInput(RANDOM.nextObject(classPair.getLeft()));
-            testCase.setOutput(RANDOM.nextObject(classPair.getRight()));
-            writer.write(JSON.toJSONString(testCase));
+            Type[] genericParameterTypes = requiredTestMethod.getGenericParameterTypes();
+            Type genericParameterType = genericParameterTypes[0];
+            Object parameterInstance = getParameterInstance(genericParameterType);
+            writer.write(JSON.toJSONString(parameterInstance));
             writer.flush();
             System.out.println(moduleAbsoluteResource + (file.exists() ? "\ncreated successfully" : "on way..."));
         }
+    }
+
+    private static Object getParameterInstance(Type genericParameterType) throws ClassNotFoundException {
+        Object object;
+        if(genericParameterType instanceof  ParameterizedType){
+            Type[] actualTypeArguments = ((ParameterizedType) genericParameterType).getActualTypeArguments();
+            Pair<Class<?>, Class<?>> classPair = Pair.of(
+                    Class.forName(actualTypeArguments[0].getTypeName()),
+                    Class.forName(actualTypeArguments[1].getTypeName()));
+            object = new TestCase<>(RANDOM.nextObject(classPair.getLeft()),RANDOM.nextObject(classPair.getRight()));
+        }else {
+            String typeName = genericParameterType.getTypeName();
+            object = RANDOM.nextObject(Class.forName(typeName));
+        }
+        return object;
     }
 
     private static void createDirectoryForResource(String resource) {

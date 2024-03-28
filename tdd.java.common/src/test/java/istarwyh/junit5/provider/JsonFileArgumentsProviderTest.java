@@ -68,6 +68,11 @@ class JsonFileArgumentsProviderTest {
         assertEquals("02",peopleList.get(1).id);
     }
 
+    @JsonFileSource(type = People.class,resources = {"istarwyh/junit5/provider/people_input.json"})
+    void should_parse_People_input(People people){
+        assertEquals("lele", people.name);
+    }
+
     public static class People{
         public final String  id = "02";
         public final String  name = "lele";

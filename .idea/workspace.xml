@@ -8,21 +8,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="??">
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ObjectInit.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh/junit5/provider/people_list_testCase1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh/junit5/provider/people_list_testCase11.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh/junit5/provider/people_list_testCase111.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/extension/InitialExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/extension/InitialExtension.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/provider/JsonFileArgumentsProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/provider/JsonFileArgumentsProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/Development Prompt.md" beforeDir="false" afterPath="$PROJECT_DIR$/Development Prompt.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ReflectionUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ReflectionUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/provider/model/TestCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/provider/model/TestCase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/junit5/provider/JsonFileArgumentsProviderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/junit5/provider/JsonFileArgumentsProviderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/ObjectInitUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/ObjectInitUtilTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/ReflectionUtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/ReflectionUtilTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh/absent/absent_test_case.json" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh/absent/absent_test_case.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +124,8 @@
     "Gradle.FunctionCallTest.test.executor": "Run",
     "Gradle.JsonFileArgumentsProviderTest.executor": "Run",
     "Gradle.JsonFileArgumentsProviderTest.should_generate_test_case_json_lack_of_it.executor": "Run",
-    "Gradle.JsonFileArgumentsProviderTest.should_parse_People_type_test_case_with_direct_address.executor": "Run",
+    "Gradle.JsonFileArgumentsProviderTest.should_parse_People_input.executor": "Debug",
+    "Gradle.JsonFileArgumentsProviderTest.should_parse_People_type_test_case_with_direct_address.executor": "Debug",
     "Gradle.Load Gradle Dependencies.executor": "Run",
     "Gradle.ObjectInitTest.executor": "Run",
     "Gradle.ObjectInitTest.initClassWithDefault.executor": "Run",
@@ -228,7 +220,7 @@
       <recent name="istarwyh.junit5.extension" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.JsonFileArgumentsProviderTest.should_parse_People_type_test_case_with_direct_address">
+  <component name="RunManager" selected="Gradle.JsonFileArgumentsProviderTest.should_parse_People_input">
     <configuration name="FunctionCallTest.test" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -301,6 +293,30 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="JsonFileArgumentsProviderTest.should_parse_People_input" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":tdd.java.common:test" />
+            <option value="--tests" />
+            <option value="&quot;istarwyh.junit5.provider.JsonFileArgumentsProviderTest.should_parse_People_input&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="JsonFileArgumentsProviderTest.should_parse_People_type_test_case_with_direct_address" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -325,30 +341,6 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="ObjectInitUtilTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":tdd.java.common:test" />
-            <option value="--tests" />
-            <option value="&quot;istarwyh.util.ObjectInitUtilTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -360,11 +352,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.JsonFileArgumentsProviderTest.should_parse_People_input" />
         <item itemvalue="Gradle.JsonFileArgumentsProviderTest.should_parse_People_type_test_case_with_direct_address" />
-        <item itemvalue="Gradle.JsonFileArgumentsProviderTest.should_generate_test_case_json_lack_of_it" />
         <item itemvalue="Gradle.JsonFileArgumentsProviderTest" />
+        <item itemvalue="Gradle.JsonFileArgumentsProviderTest.should_generate_test_case_json_lack_of_it" />
         <item itemvalue="Gradle.FunctionCallTest.test" />
-        <item itemvalue="Gradle.ObjectInitUtilTest" />
       </list>
     </recent_temporary>
   </component>
@@ -417,7 +409,7 @@
       <workItem from="1711379098067" duration="329000" />
       <workItem from="1711379639636" duration="98000" />
       <workItem from="1711379754303" duration="171000" />
-      <workItem from="1711380024987" duration="8356000" />
+      <workItem from="1711380024987" duration="11416000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>
@@ -528,8 +520,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/provider/JsonFileArgumentsProvider.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="68" />
+          <line>142</line>
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/provider/JsonFileArgumentsProvider.java</url>
+          <line>160</line>
+          <option name="timeStamp" value="70" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

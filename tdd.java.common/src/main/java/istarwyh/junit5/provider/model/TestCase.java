@@ -4,28 +4,25 @@ import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
 import com.alibaba.fastjson2.TypeReference;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 /**
  * @author xiaohui
  */
+@RequiredArgsConstructor
+@Getter
 public class TestCase<IN, OUT> {
 
     /**
      * input args of function
      */
-    private IN input;
+    private final IN input;
 
     /**
-     * output result of function
+     * output result of function*
      */
-    private OUT output;
-
-    public TestCase() {}
-
-    public TestCase(IN input, OUT output) {
-        this.input = input;
-        this.output = output;
-    }
+    private final OUT output;
 
     /**
      *
@@ -81,29 +78,5 @@ public class TestCase<IN, OUT> {
 
     public <T> boolean isJSON(T o){
         return o instanceof JSONObject || o instanceof JSONArray;
-    }
-
-    /**
-     *
-     * @return {@link IN} primitive type
-     */
-    public IN getInput() {
-        return input;
-    }
-
-    /**
-     *
-     * @return {@link OUT} primitive type
-     */
-    public OUT getOutput() {
-        return output;
-    }
-
-    public void setInput(IN input) {
-        this.input = input;
-    }
-
-    public void setOutput(OUT output) {
-        this.output = output;
     }
 }
