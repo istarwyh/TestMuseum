@@ -1,17 +1,17 @@
 package istarwyh.junit5.provider;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import com.alibaba.fastjson2.TypeReference;
 import istarwyh.junit5.annotation.JsonFileSource;
 import istarwyh.junit5.provider.model.TestCase;
+import java.util.List;
+import java.util.Map;
+import lombok.Data;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.List;
-import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-class JsonFileArgumentsProviderTest {
+public class JsonFileArgumentsProviderTest {
 
     @ParameterizedTest
     @CsvSource(value = {
@@ -72,6 +72,19 @@ class JsonFileArgumentsProviderTest {
     void should_parse_People_input(People people){
         assertEquals("lele", people.name);
     }
+
+    @JsonFileSource(type = RecursionClass.class,resources = {"istarwyh/junit5/provider/RecursionClass_input.json"})
+    void should_parse_recursionClass_input(RecursionClass recursionClass){
+        assertNotNull(recursionClass);
+        assertNotNull(recursionClass.getRecursionClasses());
+    }
+
+    @Data
+    public static class RecursionClass {
+        private RecursionClass recursionClass;
+        private List<RecursionClass> recursionClasses;
+    }
+
 
     public static class People{
         public final String  id = "02";

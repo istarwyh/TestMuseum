@@ -8,11 +8,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="??">
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh/junit5/provider/people_list_testCase1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.common/src/test/resources/istarwyh/util/RecursiveReferenceDetector/hasRecursiveReference.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/RecursiveReferenceDetector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/RecursiveReferenceDetectorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh/junit5/provider/RecursionClass_input.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/provider/JsonFileArgumentsProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/provider/JsonFileArgumentsProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/provider/model/TestCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/provider/model/TestCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ReflectionUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ReflectionUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/junit5/provider/JsonFileArgumentsProviderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/junit5/provider/JsonFileArgumentsProviderTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -124,8 +126,9 @@
     "Gradle.FunctionCallTest.test.executor": "Run",
     "Gradle.JsonFileArgumentsProviderTest.executor": "Run",
     "Gradle.JsonFileArgumentsProviderTest.should_generate_test_case_json_lack_of_it.executor": "Run",
-    "Gradle.JsonFileArgumentsProviderTest.should_parse_People_input.executor": "Debug",
+    "Gradle.JsonFileArgumentsProviderTest.should_parse_People_input.executor": "Run",
     "Gradle.JsonFileArgumentsProviderTest.should_parse_People_type_test_case_with_direct_address.executor": "Debug",
+    "Gradle.JsonFileArgumentsProviderTest.should_parse_cannot_input.executor": "Run",
     "Gradle.Load Gradle Dependencies.executor": "Run",
     "Gradle.ObjectInitTest.executor": "Run",
     "Gradle.ObjectInitTest.initClassWithDefault.executor": "Run",
@@ -136,6 +139,7 @@
     "Gradle.ObjectInitUtilTest.should_generate_custom_class_value_with_spi.executor": "Run",
     "Gradle.ObjectInitUtilTest.should_handle_non_builtin_types.executor": "Run",
     "Gradle.ObjectInitUtilTest.should_handle_time_string.executor": "Run",
+    "Gradle.RecursiveReferenceDetectorTest.hasRecursiveReferenceTest.executor": "Run",
     "Gradle.ReflectionUtilTest.get_all_settable_valid_fields.executor": "Run",
     "Gradle.TestMuseum [assemble].executor": "Run",
     "Gradle.TestMuseum [dependencies].executor": "Run",
@@ -220,31 +224,7 @@
       <recent name="istarwyh.junit5.extension" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.JsonFileArgumentsProviderTest.should_parse_People_input">
-    <configuration name="FunctionCallTest.test" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":tdd.java.common:test" />
-            <option value="--tests" />
-            <option value="&quot;istarwyh.util.FunctionCallTest.test&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Gradle.JsonFileArgumentsProviderTest.should_parse_cannot_input">
     <configuration name="JsonFileArgumentsProviderTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -259,30 +239,6 @@
             <option value=":tdd.java.common:test" />
             <option value="--tests" />
             <option value="&quot;istarwyh.junit5.provider.JsonFileArgumentsProviderTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="JsonFileArgumentsProviderTest.should_generate_test_case_json_lack_of_it" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":tdd.java.common:test" />
-            <option value="--tests" />
-            <option value="&quot;istarwyh.junit5.provider.JsonFileArgumentsProviderTest.should_generate_test_case_json_lack_of_it&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -341,22 +297,69 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration default="true" type="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-      <option name="AUTO_RESTART" value="false" />
+    <configuration name="JsonFileArgumentsProviderTest.should_parse_cannot_input" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":tdd.java.common:test" />
+            <option value="--tests" />
+            <option value="&quot;istarwyh.junit5.provider.JsonFileArgumentsProviderTest.should_parse_cannot_input&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="RecursiveReferenceDetectorTest.hasRecursiveReferenceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":tdd.java.common:test" />
+            <option value="--tests" />
+            <option value="&quot;istarwyh.util.RecursiveReferenceDetectorTest.hasRecursiveReferenceTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="aws.lambda" factoryName="Remote">
+      <option name="credentialProviderId" />
+      <option name="regionId" />
+      <option name="functionName" />
+      <option name="input" />
+      <option name="inputIsFile" value="false" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.JsonFileArgumentsProviderTest.should_parse_cannot_input" />
+        <item itemvalue="Gradle.RecursiveReferenceDetectorTest.hasRecursiveReferenceTest" />
+        <item itemvalue="Gradle.JsonFileArgumentsProviderTest" />
         <item itemvalue="Gradle.JsonFileArgumentsProviderTest.should_parse_People_input" />
         <item itemvalue="Gradle.JsonFileArgumentsProviderTest.should_parse_People_type_test_case_with_direct_address" />
-        <item itemvalue="Gradle.JsonFileArgumentsProviderTest" />
-        <item itemvalue="Gradle.JsonFileArgumentsProviderTest.should_generate_test_case_json_lack_of_it" />
-        <item itemvalue="Gradle.FunctionCallTest.test" />
       </list>
     </recent_temporary>
   </component>
@@ -409,7 +412,8 @@
       <workItem from="1711379098067" duration="329000" />
       <workItem from="1711379639636" duration="98000" />
       <workItem from="1711379754303" duration="171000" />
-      <workItem from="1711380024987" duration="11416000" />
+      <workItem from="1711380024987" duration="12115000" />
+      <workItem from="1711642242451" duration="6439000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>
@@ -520,12 +524,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/provider/JsonFileArgumentsProvider.java</url>
-          <line>142</line>
-          <option name="timeStamp" value="69" />
+          <line>146</line>
+          <option name="timeStamp" value="67" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/provider/JsonFileArgumentsProvider.java</url>
-          <line>160</line>
+          <line>168</line>
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/RecursiveReferenceDetectorTest.java</url>
+          <line>13</line>
           <option name="timeStamp" value="70" />
         </line-breakpoint>
       </breakpoints>

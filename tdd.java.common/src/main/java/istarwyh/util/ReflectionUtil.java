@@ -275,7 +275,18 @@ public class ReflectionUtil {
         return Stream.<Class<?>>iterate(clazz, Objects::nonNull, Class::getSuperclass)
                 .filter(filterClazz)
                 .flatMap(it -> Arrays.stream(it.getDeclaredFields()))
+                .peek(it -> it.setAccessible(true))
                 .toList();
+    }
+
+    @NotNull
+    public static Stream<Object> getDeclaredFields(Object obj) {
+        return Stream.of(obj.getClass().getDeclaredFields())
+                .peek(field -> field.setAccessible(true))
+                .map(field -> {
+                    try { return field.get(obj); }
+                    catch (IllegalAccessException e) { throw new RuntimeException(e); }
+                });
     }
 
 
@@ -340,5 +351,42 @@ public class ReflectionUtil {
                 .filter(field -> !Modifier.isTransient(field.getModifiers()))
                 .filter(field -> !field.getType().isInterface())
                 .collect(Collectors.toList());
+    }
+
+    public static boolean containsRecursion(Object obj) {
+        Set<Object> visited = new HashSet<>();
+        return containsRecursion(obj, visited, new HashSet<>());
+    }
+
+    private static boolean containsRecursion(Object obj, Set<Object> visited, Set<Class<?>> inspectedClasses) {
+        if (obj == null) {
+            return false;
+        }
+
+        // 使用IdentityHashMap来确保即使是具有相同内容的对象也被视为不同的实例
+        if (!visited.add(obj)) {
+            return true; // 对象已被访问，表示存在递归
+        }
+
+        Class<?> objClass = obj.getClass();
+        if (!inspectedClasses.add(objClass)) {
+            return false; // 避免重复检查同一个类的字段
+        }
+
+        for (Field field : objClass.getDeclaredFields()) {
+            field.setAccessible(true); // 设置可访问性，以访问私有字段
+            try {
+                Object fieldValue = field.get(obj);
+                if (containsRecursion(fieldValue, visited, inspectedClasses)) {
+                    return true;
+                }
+            } catch (IllegalAccessException e) {
+                // 忽略访问异常，继续检查其他字段
+            }
+        }
+
+        // 移除当前对象，允许其被GC
+        visited.remove(obj);
+        return false;
     }
 }
