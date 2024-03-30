@@ -1,26 +1,26 @@
 package istarwyh.junit5.provider;
 
+import static java.util.Arrays.copyOf;
 import static java.util.Arrays.stream;
 import static java.util.concurrent.CompletableFuture.*;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONReader;
 import istarwyh.junit5.annotation.JsonFileSource;
-import istarwyh.junit5.provider.model.TestCase;
 import istarwyh.util.RecursiveReferenceDetector;
-import istarwyh.util.UnsafeUtil;
+import istarwyh.util.ReflectionUtil;
+import istarwyh.util.TypeUtil;
 import java.io.*;
-import java.lang.reflect.Method;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
+import java.lang.reflect.*;
 import java.nio.charset.Charset;
+import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.function.BiFunction;
 import java.util.stream.Stream;
 import lombok.SneakyThrows;
-import org.apache.commons.lang3.tuple.Pair;
 import org.jeasy.random.EasyRandom;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.api.extension.ParameterResolutionException;
@@ -43,12 +43,13 @@ public class JsonFileArgumentsProvider
 
   private static final EasyRandom RANDOM = new EasyRandom();
 
-  private String[] resources;
+  private String[] resourceNames;
 
-  private Class<?> type;
-  private Class<?> ownClass;
   private Method requiredTestMethod;
+
   private Class<?> requiredTestClass;
+
+  private Class<?> testMethodParameterClazz;
 
   @SuppressWarnings("unused")
   JsonFileArgumentsProvider() {
@@ -61,41 +62,52 @@ public class JsonFileArgumentsProvider
 
   private Object valueOfType(InputStream inputStream) {
     try (JSONReader reader = JSONReader.of(inputStream, Charset.defaultCharset())) {
-      return reader.read(type);
+      return reader.read(testMethodParameterClazz);
     }
   }
 
   @Override
   public void accept(JsonFileSource jsonFileSource) {
-    ownClass = jsonFileSource.in();
-    resources = getResources(jsonFileSource);
-    type = jsonFileSource.type();
+    resourceNames = jsonFileSource.resources();
   }
 
-  private String[] getResources(JsonFileSource jsonFileSource) {
-    String[] resources = jsonFileSource.resources();
-    if (ownClass != Object.class) {
-      String packageName = ownClass.getPackageName();
-      for (int i = 0; i < resources.length; i++) {
-        resources[i] = packageName.replaceAll("\\.", ADDRESS_DASH) + ADDRESS_DASH + resources[i];
+  private String[] getResourcePaths(String[] partResourceNames) {
+    final String[] resourcePaths = copyOf(partResourceNames, partResourceNames.length);
+    String packageName = requiredTestClass.getPackageName();
+    for (int i = 0; i < resourcePaths.length; i++) {
+      resourcePaths[i] =
+          packageName.replaceAll("\\.", ADDRESS_DASH) + ADDRESS_DASH + partResourceNames[i];
+    }
+    for (int i = 0; i < resourcePaths.length; i++) {
+      if (!partResourceNames[i].startsWith(ADDRESS_DASH)) {
+        resourcePaths[i] = ADDRESS_DASH + resourcePaths[i];
       }
     }
-    for (int i = 0; i < resources.length; i++) {
-      if (!resources[i].startsWith(ADDRESS_DASH)) {
-        resources[i] = ADDRESS_DASH + resources[i];
-      }
-    }
-    return resources;
+    return resourcePaths;
   }
 
+  /** Only support one genericParameterType */
   @Override
   public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
     requiredTestMethod = context.getRequiredTestMethod();
     requiredTestClass = context.getRequiredTestClass();
-    return stream(resources)
+    testMethodParameterClazz = initTestMethodParameterClazz();
+    String[] resourcePaths = getResourcePaths(resourceNames);
+    return stream(resourcePaths)
         .map(resource -> openInputStream(requiredTestClass, resource))
         .map(this::valueOfType)
         .map(Arguments::arguments);
+  }
+
+  /** Only support one genericParameterType */
+  @SneakyThrows
+  private Class<?> initTestMethodParameterClazz() {
+    Type genericParameterType = requiredTestMethod.getGenericParameterTypes()[0];
+    String testMethodParameterTypeName =
+        genericParameterType instanceof ParameterizedType
+            ? ((ParameterizedType) genericParameterType).getRawType().getTypeName()
+            : genericParameterType.getTypeName();
+    return Class.forName(testMethodParameterTypeName);
   }
 
   @SneakyThrows(Exception.class)
@@ -138,7 +150,6 @@ public class JsonFileArgumentsProvider
     return file;
   }
 
-  @SneakyThrows(ClassNotFoundException.class)
   private void writeTestResource2File(String moduleAbsoluteResource, File file) throws IOException {
     try (BufferedWriter writer = new BufferedWriter(new FileWriter(moduleAbsoluteResource))) {
       Type[] genericParameterTypes = requiredTestMethod.getGenericParameterTypes();
@@ -151,34 +162,83 @@ public class JsonFileArgumentsProvider
     }
   }
 
-  private static Object getParameterInstance(Type genericParameterType)
-      throws ClassNotFoundException {
+  private Object getParameterInstance(Type genericParameterType) {
     Object object;
     if (genericParameterType instanceof ParameterizedType) {
-      Type[] actualTypeArguments =
-          ((ParameterizedType) genericParameterType).getActualTypeArguments();
-      Pair<Class<?>, Class<?>> classPair =
-          Pair.of(
-              Class.forName(actualTypeArguments[0].getTypeName()),
-              Class.forName(actualTypeArguments[1].getTypeName()));
-      object =
-          new TestCase<>(
-              RANDOM.nextObject(classPair.getLeft()), RANDOM.nextObject(classPair.getRight()));
+      object = newParameterTypeInstance((ParameterizedType) genericParameterType);
     } else {
-      String typeName = genericParameterType.getTypeName();
-      Class<?> clazz = Class.forName(typeName);
-      object = RANDOM.nextObject(clazz);
-      boolean hasRecursiveReference = RecursiveReferenceDetector.hasRecursiveReference(object);
-      if (hasRecursiveReference) {
-        object = getEmptyInstance(clazz);
-      }
+      object = newConcreteTypeInstance();
     }
     return object;
   }
 
+  private Object newConcreteTypeInstance() {
+    Object object = RANDOM.nextObject(testMethodParameterClazz);
+    setNullIfRecursive(object);
+    return object;
+  }
+
+  /** 将对象中所有有递归引用的字段设置为null */
+  public static void setNullIfRecursive(Object object) {
+    if (object == null || TypeUtil.isBuiltInType(object.getClass())) {
+      return;
+    }
+    boolean hasRecursiveReference = RecursiveReferenceDetector.hasRecursiveReference(object);
+    if (hasRecursiveReference) {
+      Stream.of(object.getClass().getDeclaredFields())
+          .peek(field -> field.setAccessible(true))
+          .forEach(field -> setNullIfRecursive(object, field));
+    }
+  }
+
+  private static void setNullIfRecursive(Object object, Field it) {
+    Object filedObj;
+    try {
+      filedObj = it.get(object);
+    } catch (IllegalAccessException e) {
+      throw new RuntimeException(e);
+    }
+    if (RecursiveReferenceDetector.hasRecursiveReference(filedObj)) {
+      ReflectionUtil.setField(object, it, null);
+    } else {
+      setNullIfRecursive(filedObj);
+    }
+  }
+
+  /**
+   * Here it is assumed that {@code testMethodParameterClass} must have corresponding constructor
+   * arguments.
+   *
+   * <p>Because for parameterized types of classes (such as generic classes), we cannot actually
+   * find that field to assign a value to it, so as a compromise, it is agreed to use the
+   * constructor instead.
+   */
   @SneakyThrows
-  private static Object getEmptyInstance(Class<?> clazz) {
-    return UnsafeUtil.unsafe().allocateInstance(clazz);
+  @NotNull
+  private Object newParameterTypeInstance(ParameterizedType genericParameterType) {
+    Type[] genericParameterTypes = genericParameterType.getActualTypeArguments();
+    Constructor<?> suitableConstructor =
+        findSuitableConstructor(testMethodParameterClazz, genericParameterTypes);
+    Object[] args =
+        stream(genericParameterTypes).map(JsonFileArgumentsProvider::getNextObject).toArray();
+    return suitableConstructor.newInstance(args);
+  }
+
+  @SneakyThrows
+  private static Object getNextObject(Type it) {
+    return RANDOM.nextObject(Class.forName(it.getTypeName()));
+  }
+
+  @SneakyThrows
+  public static Constructor<?> findSuitableConstructor(Class<?> clazz, Type[] typeArguments) {
+    return stream(clazz.getConstructors())
+        .filter(it -> it.getParameterCount() == typeArguments.length)
+        .findFirst()
+        .orElseThrow(
+            () ->
+                new UnsupportedOperationException(
+                    "Lack of the first matched constructors for type argument: "
+                        + Arrays.toString(typeArguments)));
   }
 
   private static void createDirectoryForResource(String resource) {
@@ -192,7 +252,7 @@ public class JsonFileArgumentsProvider
   public boolean supportsParameter(
       ParameterContext parameterContext, ExtensionContext extensionContext)
       throws ParameterResolutionException {
-    return false;
+    return true;
   }
 
   @Override

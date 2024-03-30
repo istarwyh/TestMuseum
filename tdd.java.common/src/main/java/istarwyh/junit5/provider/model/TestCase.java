@@ -30,7 +30,7 @@ public class TestCase<IN, OUT> {
      * @return {@link IN}
      */
     public IN getInput(Class<IN> inType) {
-        if(isJSON(input)){
+        if(isJsonType(input)){
             return JSON.parseObject(JSON.toJSONString(input),inType) ;
         }else {
             return input ;
@@ -43,7 +43,7 @@ public class TestCase<IN, OUT> {
      * @return {@link IN}
      */
     public IN getInput(TypeReference<IN> typeReference) {
-        if(isJSON(input)){
+        if(isJsonType(input)){
             return JSON.parseObject(JSON.toJSONString(input),typeReference) ;
         }else {
             return input ;
@@ -56,7 +56,7 @@ public class TestCase<IN, OUT> {
      * @return {@link OUT}
      */
     public OUT getOutput(Class<OUT> outType) {
-        if(isJSON(output)){
+        if(isJsonType(output)){
             return JSON.parseObject(JSON.toJSONString(output),outType) ;
         }else {
             return output ;
@@ -69,14 +69,14 @@ public class TestCase<IN, OUT> {
      * @return {@link OUT}
      */
     public OUT getOutput(TypeReference<OUT> typeReference) {
-        if(isJSON(output)){
+        if(isJsonType(output)){
             return JSON.parseObject(JSON.toJSONString(output),typeReference) ;
         }else {
             return output;
         }
     }
 
-    public <T> boolean isJSON(T o){
+    public <T> boolean isJsonType(T o){
         return o instanceof JSONObject || o instanceof JSONArray;
     }
 }

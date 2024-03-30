@@ -1,4 +1,6 @@
 {
-  "recursionClass": {},
-  "recursionClasses": []
+  "people": {
+    "id": "02",
+    "name": "lele"
+  }
 }

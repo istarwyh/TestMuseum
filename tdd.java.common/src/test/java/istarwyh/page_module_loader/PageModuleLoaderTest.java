@@ -25,7 +25,7 @@ class PageModuleLoaderTest {
         context.setQueryDTO(MapBusinessConstructor.QueryDTO.builder().bizCode(ABusiness.name()).build());
     }
 
-    @JsonFileSource(in = PageModuleLoaderTest.class,resources = "component-business-constructor.json")
+    @JsonFileSource(resources = "component-business-constructor.json")
     void build(TestCase<Input,String> testCase) {
         Input input = testCase.getInput(Input.class);
         PageModuleRawStructure pageModuleRawStructure = PageModuleRawStructure.of(input.getViewStructureStr());

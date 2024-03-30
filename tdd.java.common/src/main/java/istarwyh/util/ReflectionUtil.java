@@ -1,10 +1,6 @@
 package istarwyh.util;
 
-import lombok.SneakyThrows;
-import org.apache.commons.lang3.tuple.ImmutablePair;
-import org.apache.commons.lang3.tuple.Pair;
-import org.jetbrains.annotations.NotNull;
-import sun.misc.Unsafe;
+import static istarwyh.util.UnsafeUtil.unsafe;
 
 import java.io.File;
 import java.lang.reflect.*;
@@ -14,12 +10,15 @@ import java.nio.file.Path;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.util.*;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import static istarwyh.util.UnsafeUtil.unsafe;
-
+import lombok.SneakyThrows;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
+import org.jetbrains.annotations.NotNull;
+import sun.misc.Unsafe;
 
 /**
  * This class is changed from WhileBox in PowerMock.
@@ -75,7 +74,7 @@ public class ReflectionUtil {
             throw new IllegalArgumentException("The modifiedObj containing the field cannot be null!");
         }
         Class<?> startClass = getClassOf(modifiedObj);
-        Field foundField = findField(fieldName,startClass)
+        Field foundField = findFieldByUniqueName(fieldName,startClass)
                 .filter(fieldPredicate)
                 .orElseThrow(() -> new NoSuchFieldException(String.format(
                         "No %s field named \"%s\" could be found in the \"%s\" class hierarchy",
@@ -85,25 +84,42 @@ public class ReflectionUtil {
         return foundField;
     }
 
-    private static Optional<Field> findField(String fieldName, Class<?> startClass) {
+    public static Optional<Field> findFieldByUniqueName(String fieldName, Class<?> startClass) {
+        FieldSearchCriteria criteria = new FieldSearchCriteria(
+                startClass,
+                field -> field.getName().equals(fieldName),
+                fieldName);
+        return findField(criteria);
+    }
+
+    public static Optional<Field> findFieldByUniqueType(Type fieldType, Class<?> startClass) {
+        FieldSearchCriteria criteria = new FieldSearchCriteria(startClass,
+                field -> field.getGenericType().equals(fieldType),
+                fieldType.getTypeName());
+        return findField(criteria);
+    }
+
+    private static Optional<Field> findField(FieldSearchCriteria criteria) {
         Field foundField = null;
-        while (startClass != null){
-            Field[] declaredFields = startClass.getDeclaredFields();
-            for(var field : declaredFields){
-                if(fieldName.equals(field.getName())){
-                    if(foundField != null){
-                        throw new IllegalStateException("Two or more field matching " + fieldName + ".");
+        Class<?> currentClass = criteria.startClass();
+        while (currentClass != null) {
+            Field[] declaredFields = currentClass.getDeclaredFields();
+            for (var field : declaredFields) {
+                if (criteria.matcher().apply(field)) {
+                    if (foundField != null) {
+                        throw new IllegalStateException("Two or more fields matching " + criteria.errorMessage() + ".");
                     }
                     foundField = field;
                 }
             }
-            if(foundField != null){
+            if (foundField != null) {
                 break;
             }
-            startClass = startClass.getSuperclass();
+            currentClass = currentClass.getSuperclass();
         }
         return Optional.ofNullable(foundField);
     }
+    public record FieldSearchCriteria(Class<?> startClass, Function<Field, Boolean> matcher, String errorMessage) {}
 
     private static boolean hasFieldProperModifier(Object object, Field field) {
         if(isClass(object)){
@@ -282,7 +298,6 @@ public class ReflectionUtil {
     @NotNull
     public static Stream<Object> getDeclaredFields(Object obj) {
         return Stream.of(obj.getClass().getDeclaredFields())
-                .peek(field -> field.setAccessible(true))
                 .map(field -> {
                     try { return field.get(obj); }
                     catch (IllegalAccessException e) { throw new RuntimeException(e); }
@@ -351,42 +366,5 @@ public class ReflectionUtil {
                 .filter(field -> !Modifier.isTransient(field.getModifiers()))
                 .filter(field -> !field.getType().isInterface())
                 .collect(Collectors.toList());
-    }
-
-    public static boolean containsRecursion(Object obj) {
-        Set<Object> visited = new HashSet<>();
-        return containsRecursion(obj, visited, new HashSet<>());
-    }
-
-    private static boolean containsRecursion(Object obj, Set<Object> visited, Set<Class<?>> inspectedClasses) {
-        if (obj == null) {
-            return false;
-        }
-
-        // 使用IdentityHashMap来确保即使是具有相同内容的对象也被视为不同的实例
-        if (!visited.add(obj)) {
-            return true; // 对象已被访问，表示存在递归
-        }
-
-        Class<?> objClass = obj.getClass();
-        if (!inspectedClasses.add(objClass)) {
-            return false; // 避免重复检查同一个类的字段
-        }
-
-        for (Field field : objClass.getDeclaredFields()) {
-            field.setAccessible(true); // 设置可访问性，以访问私有字段
-            try {
-                Object fieldValue = field.get(obj);
-                if (containsRecursion(fieldValue, visited, inspectedClasses)) {
-                    return true;
-                }
-            } catch (IllegalAccessException e) {
-                // 忽略访问异常，继续检查其他字段
-            }
-        }
-
-        // 移除当前对象，允许其被GC
-        visited.remove(obj);
-        return false;
     }
 }

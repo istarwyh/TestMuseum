@@ -26,7 +26,7 @@ public class FunctionCallTest {
 //        this.getClass().getMethod("");
     }
 
-    @JsonFileSource(in = FunctionCallTest.class,resources = "resources.json")
+    @JsonFileSource(resources = "resources.json")
     void test(TestCase<List<BaseFunctionParam>,Void> testCase) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         List<BaseFunctionParam> input = testCase.getInput(new TypeReference<>() {
         });
