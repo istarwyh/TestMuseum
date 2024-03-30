@@ -37,8 +37,11 @@ public class RecursiveReferenceDetector {
   }
 
   /**
-   * 这个putIfAbsent 方法会返回该键之前关联的值，如果该键没有之前的关联，则返回null
-   * 如果是第一次访问，那么条件为真，这意味着没有发现递归引用；如果不是第一次访问，那么条件为假，这意味着发现了递归引用。
+   * The `putIfAbsent` method returns the value previously associated with the key,
+   * or `null` if there was no previous association.
+   * If it's the first access, the condition is true,which means no recursive reference is found;
+   * if it's not the first access,
+   * the condition is false, indicating that a recursive reference has been detected.
    */
   private static boolean isNotRecursion(IdentityHashMap<Object, Boolean> visited, Object childObj) {
     return visited.putIfAbsent(childObj, Boolean.TRUE) == null;

@@ -8,14 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="??">
-      <change afterPath="$PROJECT_DIR$/tdd.common/src/test/resources/istarwyh/util/RecursiveReferenceDetector/hasRecursiveReference.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/RecursiveReferenceDetector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/util/RecursiveReferenceDetectorTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.common/src/test/resources/istarwyh/junit5/provider/RecursionClass_input.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/provider/JsonFileArgumentsProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/provider/JsonFileArgumentsProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ReflectionUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/ReflectionUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/junit5/provider/JsonFileArgumentsProviderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/junit5/provider/JsonFileArgumentsProviderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/RecursiveReferenceDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/util/RecursiveReferenceDetector.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -413,7 +407,7 @@
       <workItem from="1711379639636" duration="98000" />
       <workItem from="1711379754303" duration="171000" />
       <workItem from="1711380024987" duration="12115000" />
-      <workItem from="1711642242451" duration="6439000" />
+      <workItem from="1711642242451" duration="8333000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>
