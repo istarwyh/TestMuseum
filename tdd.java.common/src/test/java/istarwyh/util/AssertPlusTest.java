@@ -5,8 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.opentest4j.AssertionFailedError;
 
-import static istarwyh.util.ReflectionUtilTest.WhereIGo;
-import static istarwyh.util.ReflectionUtilTest.WhoIAm;
+import static istarwyh.util.ReflectionUtilsTest.WhereIGo;
+import static istarwyh.util.ReflectionUtilsTest.WhoIAm;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AssertPlusTest {
@@ -16,8 +16,8 @@ class AssertPlusTest {
     void should_compare_two_objects_and_find_different_field_values() throws NoSuchFieldException {
         WhoIAm lele = new WhoIAm();
         WhoIAm dudu = new WhoIAm();
-        ReflectionUtil.setField(lele,"name","le");
-        ReflectionUtil.setField(dudu,"name","du");
+        ReflectionUtils.setField(lele,"name","le");
+        ReflectionUtils.setField(dudu,"name","du");
         Throwable throwable = AssertPlus.assertThrows(Throwable.class, AssertPlus::compareFields, lele, dudu);
         System.out.println(throwable.toString());
     }
@@ -26,7 +26,7 @@ class AssertPlusTest {
     @Test
     void should_compare_two_object_just_with_their_field_value() {
         WhereIGo lele = ObjectInitUtil.initWithDefault(new WhereIGo());
-        ReflectionUtil.setField(lele,"name","le");
+        ReflectionUtils.setField(lele,"name","le");
         WhereIGo dudu = ObjectInitUtil.initWithDefault(new WhereIGo());
         AssertionFailedError error = assertThrows(AssertionFailedError.class, () -> AssertPlus.compareFields(lele, dudu));
         assertEquals("expected: <le> but was: <name>",error.getMessage());

@@ -2,7 +2,7 @@ package istarwyh.page_module_loader;
 
 import com.alibaba.fastjson2.JSON;
 import istarwyh.page_module_loader.bill.AbstractBillElement;
-import istarwyh.util.ReflectionUtil;
+import istarwyh.util.ReflectionUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -14,8 +14,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static istarwyh.util.ReflectionUtil.getAllClassesImplementingInterface;
-import static istarwyh.util.ReflectionUtil.getInstanceWithoutArgs;
+import static istarwyh.util.ReflectionUtils.getAllClassesImplementingInterface;
+import static istarwyh.util.ReflectionUtils.getInstanceWithoutArgs;
 
 /**
  * @author xiaohui
@@ -36,7 +36,7 @@ public class PageModuleLoader {
         // JDK SPI load from META-INF.services/
 //        ServiceLoader.load(PageModuleConstructor.class).forEach(PageModuleConstructor::register);
         getAllClassesImplementingInterface(PageModuleConstructor.class).stream()
-                .map(ReflectionUtil::getInstanceWithoutArgs)
+                .map(ReflectionUtils::getInstanceWithoutArgs)
                 .forEach(PageModuleConstructor::register);
     }
 

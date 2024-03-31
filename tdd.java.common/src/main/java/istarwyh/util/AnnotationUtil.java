@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static istarwyh.util.ReflectionUtil.*;
+import static istarwyh.util.ReflectionUtils.*;
 import static java.util.Arrays.stream;
 
 /**

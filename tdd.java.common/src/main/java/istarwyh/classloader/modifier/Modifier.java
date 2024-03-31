@@ -1,7 +1,7 @@
 package istarwyh.classloader.modifier;
 
 import istarwyh.classloader.MyClassLoader;
-import istarwyh.util.ReflectionUtil;
+import istarwyh.util.ReflectionUtils;
 import javassist.CannotCompileException;
 import javassist.CtClass;
 import lombok.SneakyThrows;
@@ -28,7 +28,7 @@ public interface Modifier<T> {
      */
     @SneakyThrows(CannotCompileException.class)
     default void afterLoadClass(String className, CtClass ctClass){
-        Class<?> needBeModifiedClass = ReflectionUtil.<T>getInterfaceFirstGenericClazz(Modifier.class, this.getClass());
+        Class<?> needBeModifiedClass = ReflectionUtils.<T>getInterfaceFirstGenericClazz(Modifier.class, this.getClass());
         if(needBeModifiedClass.getName().equals(className)){
             while (needBeModifiedClass != Object.class){
                 wipeOriginalByteCode(ctClass);

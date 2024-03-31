@@ -8,7 +8,7 @@ import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONReader;
 import istarwyh.junit5.annotation.JsonFileSource;
 import istarwyh.util.RecursiveReferenceDetector;
-import istarwyh.util.ReflectionUtil;
+import istarwyh.util.ReflectionUtils;
 import istarwyh.util.TypeUtil;
 import java.io.*;
 import java.lang.reflect.*;
@@ -22,9 +22,6 @@ import lombok.SneakyThrows;
 import org.jeasy.random.EasyRandom;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.extension.ExtensionContext;
-import org.junit.jupiter.api.extension.ParameterContext;
-import org.junit.jupiter.api.extension.ParameterResolutionException;
-import org.junit.jupiter.api.extension.ParameterResolver;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.support.AnnotationConsumer;
@@ -35,7 +32,7 @@ import org.junit.platform.commons.util.Preconditions;
  * @see <a href="https://github.com/joshka/junit-json-params">junit-json-params</a>
  */
 public class JsonFileArgumentsProvider
-    implements AnnotationConsumer<JsonFileSource>, ArgumentsProvider, ParameterResolver {
+    implements AnnotationConsumer<JsonFileSource>, ArgumentsProvider {
 
   public static final String ADDRESS_DASH = "/";
   private final BiFunction<Class<?>, String, InputStream> inputStreamProvider;
@@ -199,7 +196,7 @@ public class JsonFileArgumentsProvider
       throw new RuntimeException(e);
     }
     if (RecursiveReferenceDetector.hasRecursiveReference(filedObj)) {
-      ReflectionUtil.setField(object, it, null);
+      ReflectionUtils.setField(object, it, null);
     } else {
       setNullIfRecursive(filedObj);
     }
@@ -246,19 +243,5 @@ public class JsonFileArgumentsProvider
     if (!new File(fileDirPath).mkdirs()) {
       System.out.println("Directory already exists or could not be created: " + fileDirPath);
     }
-  }
-
-  @Override
-  public boolean supportsParameter(
-      ParameterContext parameterContext, ExtensionContext extensionContext)
-      throws ParameterResolutionException {
-    return true;
-  }
-
-  @Override
-  public Object resolveParameter(
-      ParameterContext parameterContext, ExtensionContext extensionContext)
-      throws ParameterResolutionException {
-    return null;
   }
 }

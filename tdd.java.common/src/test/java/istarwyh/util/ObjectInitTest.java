@@ -51,7 +51,7 @@ public class ObjectInitTest {
             """)
     @Test
     void get_all_settable_valid_fields(){
-        List<Field> allValidFields = ReflectionUtil.getAllSettableFields(SampleClass.class);
+        List<Field> allValidFields = ReflectionUtils.getAllSettableFields(SampleClass.class);
         assertEquals(4, Objects.requireNonNull(allValidFields).size());
         assertTrue(allValidFields.stream().noneMatch(field -> field.getName().equals("intValue")));
         assertTrue(allValidFields.stream().noneMatch(field -> field.getName().equals("longValue")));

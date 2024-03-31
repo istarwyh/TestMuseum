@@ -21,14 +21,14 @@ class AnnotationUtilTest {
 
     @Test
     void testGetClassesWithItsClass() {
-        List<Class<?>> classList = ReflectionUtil.getClasses("istarwyh.util");
+        List<Class<?>> classList = ReflectionUtils.getClasses("istarwyh.util");
         assertTrue(classList.contains(AnnotationUtil.class));
     }
 
     @Test
     void getAllClassesImplementingInterface() {
         List<Class<? extends PageModuleConstructor>> interfaceClasses =
-                ReflectionUtil.getAllClassesImplementingInterface(PageModuleConstructor.class);
+                ReflectionUtils.getAllClassesImplementingInterface(PageModuleConstructor.class);
 
         assertTrue(interfaceClasses.contains(PointConstructor.class));
     }

@@ -121,12 +121,12 @@ public class AssertPlus {
     }
 
     private static void compareDeclaredFields(Object expected, Object actual, Class<?> clazz) {
-        List<Field> fieldList = ReflectionUtil.getAllFields(clazz, it -> !it.equals(Object.class));
+        List<Field> fieldList = ReflectionUtils.getAllFields(clazz, it -> !it.equals(Object.class));
         for (Field field : fieldList) {
             try {
                 String fieldName = field.getName();
-                Object valueA = ReflectionUtil.getField(expected, fieldName);
-                Object valueB = ReflectionUtil.getField(actual, fieldName);
+                Object valueA = ReflectionUtils.getField(expected, fieldName);
+                Object valueB = ReflectionUtils.getField(actual, fieldName);
                 compareFields(valueA, valueB);
             } catch (NoSuchElementException e) {
                 throw new RuntimeException(e);

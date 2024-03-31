@@ -26,7 +26,7 @@ import sun.misc.Unsafe;
  * @author xiaohui
  * @see <a href=https://www.baeldung.com/mockito-mock-static-methods>Mockito#mockStatic</a>
  */
-public class ReflectionUtil {
+public class ReflectionUtils {
 
     /**
      * eg. lambda$scaleFields$3
@@ -51,7 +51,7 @@ public class ReflectionUtil {
     }
 
     /**
-     * If you want to set static field, you should call {@link ReflectionUtil#setField(Object, Field, Object)}
+     * If you want to set static field, you should call {@link ReflectionUtils#setField(Object, Field, Object)}
      * @param modifiedObj modifiedObj
      * @param fieldName including final field, not null or static field
      * @param value value

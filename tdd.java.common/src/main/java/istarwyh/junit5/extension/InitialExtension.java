@@ -31,7 +31,7 @@ import static java.util.Arrays.stream;
 public class InitialExtension implements BeforeAllCallback
         , BeforeEachCallback
         , TestExecutionExceptionHandler
-        , LifecycleMethodExecutionExceptionHandler {
+        , LifecycleMethodExecutionExceptionHandler,ParameterResolver {
 
     private static final ClassLoader MY_CLASS_LOADER;
     static {
@@ -129,4 +129,14 @@ public class InitialExtension implements BeforeAllCallback
      */
     @Override
     public void handleAfterEachMethodExecutionException(ExtensionContext context, Throwable throwable){}
+
+    @Override
+    public boolean supportsParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
+        return false;
+    }
+
+    @Override
+    public Object resolveParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
+        return null;
+    }
 }

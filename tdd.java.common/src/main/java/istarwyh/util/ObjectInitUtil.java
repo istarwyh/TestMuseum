@@ -319,7 +319,7 @@ public class ObjectInitUtil {
          */
         default void register(){
             specifyCustomValueGenerator(
-                    ReflectionUtil.getInterfaceFirstGenericClazz(ValueGenerator.class,this.getClass())
+                    ReflectionUtils.getInterfaceFirstGenericClazz(ValueGenerator.class,this.getClass())
                     ,this);
         }
 
