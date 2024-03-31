@@ -22,10 +22,10 @@ public class RecursiveReferenceDetector {
    */
   public static boolean hasRecursiveReference(Object obj) {
     IdentityHashMap<Object, Boolean> visited = new IdentityHashMap<>();
-    return !Stream.of(obj).allMatch(newObj -> checkNotRecursiveAndAdd(visited, newObj));
+    return Stream.of(obj).anyMatch(newObj -> checkRecursiveAndAdd(visited, newObj));
   }
 
-  private static boolean checkNotRecursiveAndAdd(IdentityHashMap<Object, Boolean> visited, Object obj) {
+  private static boolean checkRecursiveAndAdd(IdentityHashMap<Object, Boolean> visited, Object obj) {
     return Optional.ofNullable(obj)
         .map(Object::getClass)
         .filter(it -> !TypeUtil.isBuiltInType(it))
@@ -36,14 +36,14 @@ public class RecursiveReferenceDetector {
                     : Stream.of(it.getDeclaredFields()).map(field -> getFieldValue(obj, field)))
         .map(
             it ->
-                it.allMatch(
+                it.anyMatch(
                     childObj -> {
                       if (isNotRecursion(visited, childObj)) {
-                        return checkNotRecursiveAndAdd(visited, childObj);
+                        return checkRecursiveAndAdd(visited, childObj);
                       }
-                      return false;
+                      return true;
                     }))
-        .orElse(true);
+        .orElse(false);
   }
 
   private static boolean canIterate(Class<?> it) {
@@ -87,6 +87,9 @@ public class RecursiveReferenceDetector {
    * indicating that a recursive reference has been detected.
    */
   private static boolean isNotRecursion(IdentityHashMap<Object, Boolean> visited, Object childObj) {
+    if(childObj == null){
+      return true;
+    }
     return visited.putIfAbsent(childObj, Boolean.TRUE) == null;
   }
 

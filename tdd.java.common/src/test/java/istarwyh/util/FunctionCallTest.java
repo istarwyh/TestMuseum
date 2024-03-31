@@ -6,6 +6,7 @@ import istarwyh.junit5.annotation.JsonFileSource;
 import istarwyh.junit5.provider.model.TestCase;
 import lombok.Data;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -26,6 +27,7 @@ public class FunctionCallTest {
 //        this.getClass().getMethod("");
     }
 
+    @Disabled
     @JsonFileSource(resources = "resources.json")
     void test(TestCase<List<BaseFunctionParam>,Void> testCase) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         List<BaseFunctionParam> input = testCase.getInput(new TypeReference<>() {

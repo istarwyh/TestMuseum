@@ -183,18 +183,12 @@ public class JsonFileArgumentsProvider
     boolean hasRecursiveReference = RecursiveReferenceDetector.hasRecursiveReference(object);
     if (hasRecursiveReference) {
       Stream.of(object.getClass().getDeclaredFields())
-          .peek(field -> field.setAccessible(true))
           .forEach(field -> setNullIfRecursive(object, field));
     }
   }
 
   private static void setNullIfRecursive(Object object, Field it) {
-    Object filedObj;
-    try {
-      filedObj = it.get(object);
-    } catch (IllegalAccessException e) {
-      throw new RuntimeException(e);
-    }
+    Object filedObj = ReflectionUtils.getField(object,it.getName());
     if (RecursiveReferenceDetector.hasRecursiveReference(filedObj)) {
       ReflectionUtils.setField(object, it, null);
     } else {

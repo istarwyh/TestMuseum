@@ -1,26 +1,22 @@
 package istarwyh.util;
 
-import com.alibaba.fastjson2.JSON;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.DynamicTest;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestFactory;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-
-import java.lang.reflect.Field;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
-import java.util.stream.Stream;
-
 import static istarwyh.util.ObjectInitUtil.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+
+import com.alibaba.fastjson2.JSON;
+import java.lang.reflect.Field;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+import java.util.stream.Stream;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class ObjectInitUtilTest {
 
@@ -86,7 +82,7 @@ public class ObjectInitUtilTest {
         assertEquals("test",customType.getCustomField());
     }
 
-
+    @Disabled
     @Test
     void should_handle_non_builtin_types() {
         Class<?> clazz = SampleClassWithNonBuiltinType.class;

@@ -33,4 +33,11 @@ public class RecursiveReferenceDetectorTest {
     boolean res = RecursiveReferenceDetector.hasRecursiveReference(object);
     assertFalse(res);
   }
+
+  @Test
+  public void should_not_judge_recursion_2() {
+    Object object = new EasyRandom().nextObject(People.class);
+    boolean res = RecursiveReferenceDetector.hasRecursiveReference(object);
+    assertFalse(res);
+  }
 }

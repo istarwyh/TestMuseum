@@ -20,6 +20,7 @@ import java.util.stream.Stream;
 /**
  * @author xiaohui
  */
+@Deprecated
 public class ObjectInitUtil {
 
 
