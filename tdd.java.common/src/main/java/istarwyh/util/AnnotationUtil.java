@@ -27,7 +27,10 @@ public class AnnotationUtil {
                     String fieldName = it.getName();
                     Scale annotation = it.getAnnotation(Scale.class);
                     try {
-                        Field foundedField = findFieldInHierarchy(object, fieldName, anyField -> true);
+                        Field foundedField = findFieldInHierarchy(object, fieldName, anyField -> true).orElse(null);
+                        if(foundedField == null){
+                            return;
+                        }
                         Object fieldValue = foundedField.get(object);
                         if (fieldValue == null) {
                             return;

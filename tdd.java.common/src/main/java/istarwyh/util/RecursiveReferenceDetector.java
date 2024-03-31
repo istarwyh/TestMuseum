@@ -4,8 +4,10 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author mac
@@ -20,30 +22,27 @@ public class RecursiveReferenceDetector {
    */
   public static boolean hasRecursiveReference(Object obj) {
     IdentityHashMap<Object, Boolean> visited = new IdentityHashMap<>();
-    return !Stream.of(obj).allMatch(newObj -> checkAndAdd(visited, newObj));
+    return !Stream.of(obj).allMatch(newObj -> checkNotRecursiveAndAdd(visited, newObj));
   }
 
-  private static boolean checkAndAdd(IdentityHashMap<Object, Boolean> visited, Object obj) {
-    return Optional.of(obj.getClass())
+  private static boolean checkNotRecursiveAndAdd(IdentityHashMap<Object, Boolean> visited, Object obj) {
+    return Optional.ofNullable(obj)
+        .map(Object::getClass)
         .filter(it -> !TypeUtil.isBuiltInType(it))
         .map(
             it ->
                 canIterate(it)
-                    // This snippet code should be deleted due to it is unused
                     ? Arrays.stream(toInstanceArray(obj))
-                        .map(instance -> instance.getClass().getDeclaredFields())
-                        .flatMap(Arrays::stream)
-                    : Stream.of(it.getDeclaredFields()))
+                    : Stream.of(it.getDeclaredFields()).map(field -> getFieldValue(obj, field)))
         .map(
-            fieldStream ->
-                getFieldValueStream(obj, fieldStream)
-                    .allMatch(
-                        childObj -> {
-                          if (isNotRecursion(visited, childObj)) {
-                            return checkAndAdd(visited, childObj);
-                          }
-                          return false;
-                        }))
+            it ->
+                it.allMatch(
+                    childObj -> {
+                      if (isNotRecursion(visited, childObj)) {
+                        return checkNotRecursiveAndAdd(visited, childObj);
+                      }
+                      return false;
+                    }))
         .orElse(true);
   }
 
@@ -51,27 +50,34 @@ public class RecursiveReferenceDetector {
     return it.isArray() || Collection.class.isAssignableFrom(it);
   }
 
+  @Nullable
+  private static Object getFieldValue(Object obj, Field cur) {
+    Predicate<Field> fieldPredicate = getFieldTypePredicate(TypeUtil::isBuiltInType)
+            .and(combineModifierPredicates(
+                    Modifier::isFinal,
+                    Modifier::isAbstract,
+                    Modifier::isNative,
+                    Modifier::isTransient,
+                    Modifier::isInterface
+            ));
+    return Optional.of(cur)
+            .map(field -> ReflectionUtils.getFieldWithFilter(obj, field.getName(), fieldPredicate))
+            .orElse(null);
+  }
+
   @NotNull
-  private static Stream<Object> getFieldValueStream(Object obj, Stream<Field> fieldStream) {
-    return canIterate(obj.getClass())
-        ? Arrays.stream(toInstanceArray(obj))
-        : fieldStream
-            .filter(field -> !TypeUtil.isBuiltInType(field.getType()))
-            .filter(field -> !Modifier.isFinal(field.getModifiers()))
-            .filter(field -> !Modifier.isAbstract(field.getModifiers()))
-            .filter(field -> !Modifier.isNative(field.getModifiers()))
-            .filter(field -> !Modifier.isTransient(field.getModifiers()))
-            .filter(field -> !Modifier.isInterface(field.getModifiers()))
-            .peek(it -> it.setAccessible(true))
-            .map(
-                it -> {
-                  try {
-                    System.out.println(it);
-                    return it.get(obj);
-                  } catch (IllegalAccessException e) {
-                    throw new RuntimeException(e);
-                  }
-                });
+  private static Predicate<Field> getFieldTypePredicate(Predicate<Class<?>> classPredicate) {
+    return field -> !classPredicate.test(field.getType());
+  }
+
+  @SafeVarargs
+  @NotNull
+  private static Predicate<Field> combineModifierPredicates(Predicate<Integer>... predicates) {
+    Predicate<Field> combinedPredicate = field -> true;
+    for (Predicate<Integer> predicate : predicates) {
+      combinedPredicate = combinedPredicate.and(field -> !predicate.test(field.getModifiers()));
+    }
+    return combinedPredicate;
   }
 
   /**
