@@ -10,7 +10,7 @@ import java.util.Set;
 /**
  * @author mac
  */
-public class TypeUtil {
+public class TypeUtils {
 
     private static final Set<Class<?>> BUILT_IN_TYPES = new HashSet<>(
             Arrays.asList(

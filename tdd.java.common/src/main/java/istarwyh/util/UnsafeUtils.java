@@ -1,6 +1,5 @@
 package istarwyh.util;
 
-import lombok.SneakyThrows;
 import sun.misc.Unsafe;
 
 import java.lang.reflect.Field;
@@ -8,7 +7,7 @@ import java.lang.reflect.Field;
 /**
  * @author mac
  */
-public class UnsafeUtil {
+public class UnsafeUtils {
 
     public static Unsafe unsafe(){
         return Singleton.UNSAFE;

@@ -294,7 +294,7 @@ public class ObjectInitUtil {
 
     public static <T> T init(Class<T> clazz) {
         try {
-            return (T) UnsafeUtil.unsafe().allocateInstance(clazz);
+            return (T) UnsafeUtils.unsafe().allocateInstance(clazz);
         } catch (InstantiationException e) {
             throw new UnsupportedOperationException(String.format(
                     "Cannot initialize %s ,please add %s with the method called by registerCustomValueGenerator",

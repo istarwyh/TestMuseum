@@ -1,6 +1,6 @@
 package istarwyh.util;
 
-import static istarwyh.util.UnsafeUtil.unsafe;
+import static istarwyh.util.UnsafeUtils.unsafe;
 
 import java.io.File;
 import java.lang.reflect.*;

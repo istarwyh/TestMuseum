@@ -58,14 +58,13 @@ class ReflectionUtilsTest {
   }
 
   @Test
-  void should_not_get_final_field_value() {
+  void should_not_get_non_exist_field_value_with_null() {
     assertDoesNotThrow(() -> ReflectionUtils.getField(whereIGo, "died"));
   }
 
   @Test
-  void should_not_set_final_field_value() {
-    assertThrows(
-            NoSuchFieldException.class, () -> ReflectionUtils.setField(whereIGo, "died", null));
+  void should_set_final_field_value() {
+    assertDoesNotThrow(() -> ReflectionUtils.setField(whereIGo, "heart", null));
   }
 
   @Test

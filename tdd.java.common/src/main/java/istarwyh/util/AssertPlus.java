@@ -10,7 +10,7 @@ import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-import static istarwyh.util.TypeUtil.isJsonType;
+import static istarwyh.util.TypeUtils.isJsonType;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -22,7 +22,7 @@ public class AssertPlus {
 
     static {
         CUSTOM_CLASS_OF_USING_ASSERT_EQUAL = new ArrayList<>(4);
-        CUSTOM_CLASS_OF_USING_ASSERT_EQUAL.add(TypeUtil::isBuiltInType);
+        CUSTOM_CLASS_OF_USING_ASSERT_EQUAL.add(TypeUtils::isBuiltInType);
         CUSTOM_CLASS_OF_USING_ASSERT_EQUAL.add(Class::isArray);
         CUSTOM_CLASS_OF_USING_ASSERT_EQUAL.add(Class::isEnum);
         CUSTOM_CLASS_OF_USING_ASSERT_EQUAL.add(clazz -> clazz == String.class);

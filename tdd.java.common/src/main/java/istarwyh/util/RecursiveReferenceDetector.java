@@ -28,7 +28,7 @@ public class RecursiveReferenceDetector {
   private static boolean checkRecursiveAndAdd(IdentityHashMap<Object, Boolean> visited, Object obj) {
     return Optional.ofNullable(obj)
         .map(Object::getClass)
-        .filter(it -> !TypeUtil.isBuiltInType(it))
+        .filter(it -> !TypeUtils.isBuiltInType(it))
         .map(
             it ->
                 canIterate(it)
@@ -52,7 +52,7 @@ public class RecursiveReferenceDetector {
 
   @Nullable
   private static Object getFieldValue(Object obj, Field cur) {
-    Predicate<Field> fieldPredicate = getFieldTypePredicate(TypeUtil::isBuiltInType)
+    Predicate<Field> fieldPredicate = getFieldTypePredicate(TypeUtils::isBuiltInType)
             .and(combineModifierPredicates(
                     Modifier::isFinal,
                     Modifier::isAbstract,

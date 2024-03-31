@@ -1,8 +1,8 @@
 package istarwyh.junit5.provider.model;
 
+import static istarwyh.util.TypeUtils.isJsonType;
+
 import com.alibaba.fastjson2.JSON;
-import com.alibaba.fastjson2.JSONArray;
-import com.alibaba.fastjson2.JSONObject;
 import com.alibaba.fastjson2.TypeReference;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -76,7 +76,4 @@ public class TestCase<IN, OUT> {
         }
     }
 
-    public <T> boolean isJsonType(T o){
-        return o instanceof JSONObject || o instanceof JSONArray;
-    }
 }
