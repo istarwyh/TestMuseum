@@ -27,7 +27,7 @@
     <inspection_tool class="AlibabaAvoidUseTimer" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="AlibabaBigDecimalAvoidDoubleConstructor" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="AlibabaBooleanPropertyShouldNotStartWithIs" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="AlibabaClassCastExceptionWithSubListToArrayList" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="AlibabaClassCastExceptionWithSubListToArrayList" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="AlibabaClassCastExceptionWithToArray" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="AlibabaClassMustHaveAuthor" enabled="true" level="WARNING" enabled_by_default="true" editorAttributes="ERRORS_ATTRIBUTES" />
     <inspection_tool class="AlibabaClassNamingShouldBeCamel" enabled="true" level="WARNING" enabled_by_default="true" />

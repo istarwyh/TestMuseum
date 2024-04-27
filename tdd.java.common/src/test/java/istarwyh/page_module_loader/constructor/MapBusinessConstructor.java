@@ -22,10 +22,10 @@ public class MapBusinessConstructor implements PageModuleConstructor<MapBusiness
         throw new IllegalStateException("Invalid QueryDTO: " + dataContext);
     }
 
+    @Getter
     @Builder
     public static class QueryDTO {
 
-        @Getter
         private String bizCode;
     }
 

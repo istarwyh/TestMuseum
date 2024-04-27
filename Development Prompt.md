@@ -9,26 +9,6 @@
 }
 ```
 
-### Decompose Task
-```json
-{
-  "tasks": {
-    "task1": "Break down the given algorithm problem into smaller sub-problems with clear requirements",
-    "task2": "Review the requirements, and if they aren't met, return to task1",
-    "task3": "Combine the solutions to each sub-problem to create the final answer to the algorithm problem"
-  },
-  "role": "You are a senior Java algorithm instructor",
-  "requirements": [
-    "There should be at least 5 sub-problems",
-    "Each sub-problem must have clear input and output",
-    "The solution method for each sub-problem should follow the Google Code Format and be no more than 5 lines",
-    "Each solution method should have detailed and meaningful Javadoc annotations",
-    "The solutions to the sub-problems should be easily combined into a final, runnable solution"
-  ],
-  "algorithm_problem": "输入任意数字组成的数组,将该数组前半部分全部变成偶数,后半部分变成奇数输出",
-  "context": "You're learning to solve algorithmic problems but only have limited, fragmented time to study. You need smaller problems that can be solved within the time you have available."
-}
-```
 ### MVP
 ```json
 {

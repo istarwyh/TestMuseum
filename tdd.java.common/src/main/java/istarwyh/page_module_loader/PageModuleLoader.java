@@ -26,6 +26,8 @@ public class PageModuleLoader {
 
     @NotNull
     private final PageModuleRawStructure pageModuleRawStructure;
+
+    @SuppressWarnings("rawtypes")
     private final DataContext context;
 
     public static final Map<String, PageModuleConstructor<?, ?>> PAGE_MODULE_CONSTRUCTOR_MAP = new HashMap<>(8);
@@ -57,6 +59,7 @@ public class PageModuleLoader {
         return fillData(root);
     }
 
+    @SuppressWarnings({"unchecked","rawtypes"})
     private PageModule<?> fillData(@NotNull PageModule<?> pageModule) {
         Object data = pageModule.getData();
         if (data instanceof List) {

@@ -10,12 +10,12 @@ import java.util.Optional;
 @Data
 public class DataContext<QueryDTO> {
 
-    private Map<String, BillElementDTO> elementMap;
+  private Map<String, BillElementDTO> elementMap;
 
-    private QueryDTO queryDTO;
+  private QueryDTO queryDTO;
 
-    @Nullable
-    public BillElementDTO getElement(String key) {
-        return Optional.ofNullable(elementMap).map(it -> it.get(key)).orElse(null);
-    }
+  @Nullable
+  public BillElementDTO getElement(String key) {
+    return Optional.ofNullable(elementMap).map(it -> it.get(key)).orElse(null);
+  }
 }
