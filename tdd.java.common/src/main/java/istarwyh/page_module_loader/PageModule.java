@@ -20,8 +20,16 @@ public interface PageModule<T> {
      */
     String getSubjectCode();
 
+    /**
+     * getData
+     * @return  data
+     */
     @NotNull
     T getData();
 
+    /**
+     * setData
+     * @param data data
+     */
     void setData(Object data);
 }

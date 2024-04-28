@@ -1,21 +1,25 @@
 package istarwyh.page_module_loader;
 
-import istarwyh.page_module_loader.bill.BillElementDTO;
-import lombok.Data;
-
-import javax.annotation.Nullable;
+import istarwyh.page_module_loader.bill.AbstractElement;
 import java.util.Map;
 import java.util.Optional;
+import javax.annotation.Nullable;
+import lombok.Data;
 
+/**
+ * @author xiaohui
+ */
 @Data
-public class DataContext<QueryDTO> {
+public class DataContext<ELEMENT extends AbstractElement<?>, QUERY> {
 
-  private Map<String, BillElementDTO> elementMap;
+  private Map<String, ELEMENT> elementMap;
 
-  private QueryDTO queryDTO;
+  private QUERY queryDTO;
 
   @Nullable
-  public BillElementDTO getElement(String key) {
-    return Optional.ofNullable(elementMap).map(it -> it.get(key)).orElse(null);
+  public ELEMENT getElement(String key) {
+    return Optional.ofNullable(elementMap)
+            .map(it -> it.get(key))
+            .orElse(null);
   }
 }

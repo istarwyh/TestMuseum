@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
+
 
 /**
  * @author xiaohui
@@ -14,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 @Getter
 @Setter
 @NoArgsConstructor
-public abstract class AbstractBillElement<DATA> extends BillElementDTO implements PageModule<DATA> {
+public abstract class AbstractElement<DATA> extends BillElementDTO implements PageModule<DATA> {
 
     private DATA data;
 
@@ -31,5 +33,18 @@ public abstract class AbstractBillElement<DATA> extends BillElementDTO implement
     @Override
     public void setData(Object data) {
         this.data = (DATA) data;
+    }
+
+    public <ELEMENT extends AbstractElement<?>> void fillWith(ELEMENT materiaElement){
+        if (materiaElement == null) {
+            return;
+        }
+        this.setAmount(materiaElement.getAmount());
+        this.setNumber(materiaElement.getNumber());
+        this.setTime(materiaElement.getTime());
+        List<BillElementDTO> details = materiaElement.getDetails();
+        if (details != null && !details.isEmpty()) {
+            this.setData(details);
+        }
     }
 }

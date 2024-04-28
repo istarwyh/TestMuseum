@@ -1,7 +1,7 @@
 package istarwyh.page_module_loader;
 
 import com.alibaba.fastjson2.JSON;
-import istarwyh.page_module_loader.bill.AbstractBillElement;
+import istarwyh.page_module_loader.bill.AbstractElement;
 import istarwyh.util.ReflectionUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -30,7 +30,8 @@ public class PageModuleLoader {
     @SuppressWarnings("rawtypes")
     private final DataContext context;
 
-    public static final Map<String, PageModuleConstructor<?, ?>> PAGE_MODULE_CONSTRUCTOR_MAP = new HashMap<>(8);
+    public static final Map<String, PageModuleConstructor<?, ?>> PAGE_MODULE_CONSTRUCTOR_MAP =
+            new HashMap<>(8);
 
     //   在不借助Spring等框架的情况下，目前看来SPI和反射拿全部接口实现类/注解类就是将对象放到一个集合里唯二的办法
     static {
@@ -44,7 +45,7 @@ public class PageModuleLoader {
 
     @SneakyThrows({NoSuchMethodException.class, IllegalAccessException.class, InvocationTargetException.class})
     public static void registerPageModuleConstructor(@NotNull PageModuleConstructor<?, ?> pageModuleConstructor) {
-        Class<? extends AbstractBillElement<?>> supportedElement = pageModuleConstructor.supportedElement();
+        Class<? extends AbstractElement<?>> supportedElement = pageModuleConstructor.supportedElement();
         Method getModuleTypeCode = supportedElement.getMethod("getModuleTypeCode");
         String moduleTypeCode = (String) getModuleTypeCode.invoke(getInstanceWithoutArgs(supportedElement));
         PAGE_MODULE_CONSTRUCTOR_MAP.put(moduleTypeCode, pageModuleConstructor);
@@ -87,10 +88,11 @@ public class PageModuleLoader {
         }
     }
 
-    private PageModule<?> constructPageModule(PageModuleRawStructure pageModuleRawStructure, DataContext<Object> context) {
+    private <ELEMENT extends AbstractElement<?>, QUERY> PageModule<?>
+    constructPageModule(PageModuleRawStructure pageModuleRawStructure, DataContext<ELEMENT,QUERY> context) {
         String moduleTypeCode = pageModuleRawStructure.getModuleTypeCode();
-        PageModuleConstructor<?, Object> pageModuleConstructor =
-                (PageModuleConstructor<?, Object>) PAGE_MODULE_CONSTRUCTOR_MAP.get(moduleTypeCode);
+        PageModuleConstructor<ELEMENT, QUERY> pageModuleConstructor =
+                (PageModuleConstructor<ELEMENT, QUERY>) PAGE_MODULE_CONSTRUCTOR_MAP.get(moduleTypeCode);
         if (pageModuleConstructor == null) {
             throw new IllegalArgumentException("should define a component constructor of " + moduleTypeCode);
         }

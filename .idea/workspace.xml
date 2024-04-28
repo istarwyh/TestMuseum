@@ -8,15 +8,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="??">
-      <change afterPath="$PROJECT_DIR$/tdd.java.algorithm/src/main/java/istarwyh/data_structure/SimpleASCIIArrayMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.algorithm/src/main/java/istarwyh/leetcode/Solution.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tdd.java.algorithm/src/main/java/istarwyh/leetcode/Solution.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Development Prompt.md" beforeDir="false" afterPath="$PROJECT_DIR$/Development Prompt.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/DataContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/DataContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/PageModuleConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/PageModuleConstructor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/PageModuleLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/PageModuleLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/PageModuleRawStructure.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/PageModuleRawStructure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/bill/AbstractBillElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/bill/AbstractElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/PageModuleLoaderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/PageModuleLoaderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/AnnularChart.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/AnnularChart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/BarChart.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/BarChart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/GraphLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/GraphLevel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/MainPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/MainPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/MapBusiness.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/MapBusiness.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/Module.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/Module.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/Point.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/constructor/MapBusinessConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/constructor/MapBusinessConstructor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -164,6 +169,7 @@
     "Gradle.ObjectInitUtilTest.should_generate_custom_class_value_with_spi.executor": "Run",
     "Gradle.ObjectInitUtilTest.should_handle_non_builtin_types.executor": "Run",
     "Gradle.ObjectInitUtilTest.should_handle_time_string.executor": "Run",
+    "Gradle.PageModuleLoaderTest.build.executor": "Debug",
     "Gradle.PageModuleLoaderTest.executor": "Run",
     "Gradle.RecursiveReferenceDetectorTest.executor": "Run",
     "Gradle.RecursiveReferenceDetectorTest.hasRecursiveReferenceTest.executor": "Run",
@@ -266,7 +272,7 @@
       <recent name="istarwyh.junit5.extension" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.PageModuleLoaderTest">
+  <component name="RunManager" selected="Gradle.PageModuleLoaderTest.build">
     <configuration name="Solution" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="istarwyh.leetcode.Solution" />
       <module name="TestMuseum.tdd.java.algorithm.main" />
@@ -329,6 +335,30 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="PageModuleLoaderTest.build" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":tdd.java.common:test" />
+            <option value="--tests" />
+            <option value="&quot;istarwyh.page_module_loader.PageModuleLoaderTest.build&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="ReflectionUtilsTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -353,30 +383,6 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="ReflectionUtilsTest.should_not_set_final_field_value" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":tdd.java.common:test" />
-            <option value="--tests" />
-            <option value="&quot;istarwyh.util.ReflectionUtilsTest.should_not_set_final_field_value&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -388,11 +394,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.PageModuleLoaderTest.build" />
         <item itemvalue="Gradle.PageModuleLoaderTest" />
         <item itemvalue="Application.Solution" />
         <item itemvalue="Gradle.JsonFileArgumentsProviderTest.should_parse_Map_type_test_case_with_direct_address" />
         <item itemvalue="Gradle.ReflectionUtilsTest" />
-        <item itemvalue="Gradle.ReflectionUtilsTest.should_not_set_final_field_value" />
       </list>
     </recent_temporary>
   </component>
@@ -447,7 +453,7 @@
       <workItem from="1711379754303" duration="171000" />
       <workItem from="1711380024987" duration="12115000" />
       <workItem from="1711642242451" duration="60525000" />
-      <workItem from="1713656604688" duration="13912000" />
+      <workItem from="1713656604688" duration="18867000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>

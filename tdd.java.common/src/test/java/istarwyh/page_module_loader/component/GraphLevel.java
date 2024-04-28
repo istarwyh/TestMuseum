@@ -1,6 +1,6 @@
 package istarwyh.page_module_loader.component;
 
-import istarwyh.page_module_loader.bill.AbstractBillElement;
+import istarwyh.page_module_loader.bill.AbstractElement;
 import istarwyh.page_module_loader.bill.BillElementDTO;
 import lombok.NoArgsConstructor;
 
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Objects;
 
 @NoArgsConstructor
-public class GraphLevel<T extends BillElementDTO> extends AbstractBillElement<List<T>> {
+public class GraphLevel<T extends BillElementDTO> extends AbstractElement<List<T>> {
 
     /**
      * 演示组件内的值会随着子元素的不同而动态变化,这里为子元素之和

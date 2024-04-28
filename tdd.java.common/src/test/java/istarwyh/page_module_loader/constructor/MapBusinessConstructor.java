@@ -12,7 +12,8 @@ import static istarwyh.page_module_loader.component.MapBusiness.createMapBusines
 
 public class MapBusinessConstructor implements PageModuleConstructor<MapBusiness, MapBusinessConstructor.QueryDTO> {
 
-    public MapBusiness construct(PageModuleRawStructure pageModuleRawStructure, DataContext<QueryDTO> dataContext){
+    public MapBusiness construct(PageModuleRawStructure pageModuleRawStructure,
+                                 DataContext<MapBusiness,QueryDTO> dataContext){
         if("ABusiness".equals(dataContext.getQueryDTO().getBizCode())) {
             Map<String, String> data = Maps.newHashMap();
             data.put("key1", "value1");
