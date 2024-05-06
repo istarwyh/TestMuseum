@@ -1,6 +1,6 @@
 package istarwyh.page_module_loader.constructor;
 
-import istarwyh.page_module_loader.PageModuleConstructor;
+import istarwyh.page_module_loader.ModuleConstructor;
 import istarwyh.page_module_loader.component.Point;
 
-public class PointConstructor implements PageModuleConstructor<Point,Void> {}
+public class PointConstructor implements ModuleConstructor<Point,Void> {}

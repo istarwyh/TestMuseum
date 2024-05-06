@@ -1,4 +1,4 @@
-package istarwyh.page_module_loader.bill;
+package istarwyh.page_module_loader;
 
 import lombok.Data;
 
@@ -8,7 +8,7 @@ import java.util.List;
  * @author xiaohui
  */
 @Data
-public class BillElementDTO {
+public class ElementDTO {
 
     /**
      * 标志数据的Code
@@ -38,6 +38,6 @@ public class BillElementDTO {
     /**
      * 子项
      */
-    private List<BillElementDTO> details;
+    private List<ElementDTO> details;
 
 }

@@ -1,6 +1,7 @@
 package istarwyh.page_module_loader;
 
-import istarwyh.page_module_loader.bill.AbstractElement;
+import istarwyh.page_module_loader.component.AbstractElement;
+import istarwyh.page_module_loader.component.Point;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -21,5 +22,9 @@ public class DataContext<ELEMENT extends AbstractElement<?>, QUERY> {
     return Optional.ofNullable(elementMap)
             .map(it -> it.get(key))
             .orElse(null);
+  }
+
+  public void setElementMap(Map<String, Point> elementMap) {
+    this.elementMap = (Map<String, ELEMENT>)elementMap;
   }
 }

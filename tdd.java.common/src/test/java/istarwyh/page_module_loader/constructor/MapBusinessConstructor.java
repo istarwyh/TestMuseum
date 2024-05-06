@@ -2,6 +2,7 @@ package istarwyh.page_module_loader.constructor;
 
 import com.google.common.collect.Maps;
 import istarwyh.page_module_loader.*;
+import istarwyh.page_module_loader.ModuleConstructor;
 import istarwyh.page_module_loader.component.MapBusiness;
 import lombok.Builder;
 import lombok.Getter;
@@ -10,9 +11,9 @@ import java.util.Map;
 
 import static istarwyh.page_module_loader.component.MapBusiness.createMapBusiness;
 
-public class MapBusinessConstructor implements PageModuleConstructor<MapBusiness, MapBusinessConstructor.QueryDTO> {
+public class MapBusinessConstructor implements ModuleConstructor<MapBusiness, MapBusinessConstructor.QueryDTO> {
 
-    public MapBusiness construct(PageModuleRawStructure pageModuleRawStructure,
+    public MapBusiness construct(ViewStructure viewStructure,
                                  DataContext<MapBusiness,QueryDTO> dataContext){
         if("ABusiness".equals(dataContext.getQueryDTO().getBizCode())) {
             Map<String, String> data = Maps.newHashMap();

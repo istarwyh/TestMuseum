@@ -1,7 +1,6 @@
 package istarwyh.page_module_loader.component;
 
-import istarwyh.page_module_loader.bill.AbstractElement;
-import istarwyh.page_module_loader.bill.BillElementDTO;
+import istarwyh.page_module_loader.ElementDTO;
 import lombok.NoArgsConstructor;
 
 
@@ -11,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 @NoArgsConstructor
-public class GraphLevel<T extends BillElementDTO> extends AbstractElement<List<T>> {
+public class GraphLevel<T extends ElementDTO> extends AbstractElement<List<T>> {
 
     /**
      * 演示组件内的值会随着子元素的不同而动态变化,这里为子元素之和
@@ -24,7 +23,7 @@ public class GraphLevel<T extends BillElementDTO> extends AbstractElement<List<T
             return amount;
         }
         return super.getData().stream()
-                .map(BillElementDTO::getAmount)
+                .map(ElementDTO::getAmount)
                 .filter(Objects::nonNull)
                 .map(BigDecimal::new)
                 .toList()
@@ -46,7 +45,7 @@ public class GraphLevel<T extends BillElementDTO> extends AbstractElement<List<T
             return number;
         }
         return super.getData().stream()
-                .map(BillElementDTO::getNumber)
+                .map(ElementDTO::getNumber)
                 .filter(Objects::nonNull)
                 .map(Long::valueOf)
                 .toList()

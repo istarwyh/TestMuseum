@@ -7,12 +7,12 @@ import lombok.Data;
  * @author xiaohui
  */
 @Data
-public class PageModuleRawStructure {
+public class ViewStructure {
   private String structureStr;
 
   private String moduleTypeCode;
 
-  private PageModuleRawStructure(String structureStr) {
+  private ViewStructure(String structureStr) {
     if (structureStr.startsWith("[")) {
       throw new IllegalArgumentException("module data must be a object instead of array");
     }
@@ -20,8 +20,8 @@ public class PageModuleRawStructure {
     this.moduleTypeCode = JSON.parseObject(structureStr).get("moduleTypeCode").toString();
   }
 
-  public static PageModuleRawStructure of(String structureStr) {
-    return new PageModuleRawStructure(structureStr);
+  public static ViewStructure of(String structureStr) {
+    return new ViewStructure(structureStr);
   }
 
   /**

@@ -2,8 +2,7 @@ package istarwyh.page_module_loader;
 
 import static com.alibaba.fastjson2.JSON.parseObject;
 
-import istarwyh.page_module_loader.bill.AbstractElement;
-import istarwyh.page_module_loader.bill.BillElementDTO;
+import istarwyh.page_module_loader.component.AbstractElement;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import org.jetbrains.annotations.NotNull;
@@ -12,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 /**
  * @author xiaohui
  */
-public interface PageModuleConstructor<ELEMENT extends AbstractElement<?>, QUERY> {
+public interface ModuleConstructor<ELEMENT extends AbstractElement<?>, QUERY> {
 
   /**
    * @return supported page module
@@ -25,7 +24,7 @@ public interface PageModuleConstructor<ELEMENT extends AbstractElement<?>, QUERY
           && ((ParameterizedType) type)
               .getRawType()
               .getTypeName()
-              .equals(PageModuleConstructor.class.getName())) {
+              .equals(ModuleConstructor.class.getName())) {
         Type actualTypeArgument = ((ParameterizedType) type).getActualTypeArguments()[0];
         if (actualTypeArgument != null) {
           return getClassFromParameterizedType(actualTypeArgument);
@@ -45,15 +44,15 @@ public interface PageModuleConstructor<ELEMENT extends AbstractElement<?>, QUERY
   }
 
   /**
-   * eg. build with {@link BillElementDTO}
+   * eg. build with {@link ElementDTO}
    *
-   * @param pageModuleRawStructure {@link PageModuleRawStructure}
+   * @param viewStructure {@link ViewStructure}
    * @param context {@link DataContext}
    * @return {@link PageModule}
    */
   default ELEMENT construct(
-      PageModuleRawStructure pageModuleRawStructure, DataContext<ELEMENT, QUERY> context) {
-    ELEMENT emptyElement = parseObject(pageModuleRawStructure.getStructureStr(), this.supportedElement());
+          ViewStructure viewStructure, DataContext<ELEMENT, QUERY> context) {
+    ELEMENT emptyElement = parseObject(viewStructure.getStructureStr(), this.supportedElement());
     ELEMENT materiaElement = context.getElement(emptyElement.getSubjectCode());
     emptyElement.fillWith(materiaElement);
     return emptyElement;
@@ -61,6 +60,6 @@ public interface PageModuleConstructor<ELEMENT extends AbstractElement<?>, QUERY
 
   /** register the page module constructor in a map by SPI */
   default void register() {
-    PageModuleLoader.registerPageModuleConstructor(this);
+    ModuleLoader.registerPageModuleConstructor(this);
   }
 }

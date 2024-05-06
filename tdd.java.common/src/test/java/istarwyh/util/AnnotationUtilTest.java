@@ -1,6 +1,6 @@
 package istarwyh.util;
 
-import istarwyh.page_module_loader.PageModuleConstructor;
+import istarwyh.page_module_loader.ModuleConstructor;
 import istarwyh.page_module_loader.constructor.PointConstructor;
 import istarwyh.util.annotation.Scale;
 import lombok.AllArgsConstructor;
@@ -27,8 +27,8 @@ class AnnotationUtilTest {
 
     @Test
     void getAllClassesImplementingInterface() {
-        List<Class<? extends PageModuleConstructor>> interfaceClasses =
-                ReflectionUtils.getAllClassesImplementingInterface(PageModuleConstructor.class);
+        List<Class<? extends ModuleConstructor>> interfaceClasses =
+                ReflectionUtils.getAllClassesImplementingInterface(ModuleConstructor.class);
 
         assertTrue(interfaceClasses.contains(PointConstructor.class));
     }

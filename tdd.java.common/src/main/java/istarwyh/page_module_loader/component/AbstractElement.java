@@ -1,7 +1,8 @@
-package istarwyh.page_module_loader.bill;
+package istarwyh.page_module_loader.component;
 
 import com.google.common.base.CaseFormat;
 import istarwyh.page_module_loader.PageModule;
+import istarwyh.page_module_loader.ElementDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,7 +17,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public abstract class AbstractElement<DATA> extends BillElementDTO implements PageModule<DATA> {
+public abstract class AbstractElement<DATA> extends ElementDTO implements PageModule<DATA> {
 
     private DATA data;
 
@@ -42,7 +43,7 @@ public abstract class AbstractElement<DATA> extends BillElementDTO implements Pa
         this.setAmount(materiaElement.getAmount());
         this.setNumber(materiaElement.getNumber());
         this.setTime(materiaElement.getTime());
-        List<BillElementDTO> details = materiaElement.getDetails();
+        List<ElementDTO> details = materiaElement.getDetails();
         if (details != null && !details.isEmpty()) {
             this.setData(details);
         }
