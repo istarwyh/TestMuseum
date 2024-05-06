@@ -1,5 +1,8 @@
 package istarwyh.data_structure;
 
+/**
+ * @author mac
+ */
 public class Stack {
 
     private final Object[] elements = new Object[2];

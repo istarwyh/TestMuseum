@@ -2,6 +2,9 @@ package istarwyh.leetcode;
 
 import com.github.istarwyh.ListNode;
 
+/**
+ * @author mac
+ */
 public class LinkedList {
 
     /**
@@ -43,8 +46,9 @@ public class LinkedList {
     }
 
     public ListNode getSecondPartHeadNode(ListNode head) {
-        if (head == null)
+        if (head == null) {
             return null;
+        }
         ListNode prev = null;
         ListNode cur = head;
         while (cur != null) {

@@ -9,20 +9,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e784baf7-e9e6-42ab-9673-6cc2b23c0db7" name="Changes" comment="??">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/DataContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/DataContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/PageModuleConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/PageModuleConstructor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/PageModuleLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/PageModuleLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/bill/AbstractBillElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/page_module_loader/bill/AbstractElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/PageModuleLoaderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/PageModuleLoaderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/AnnularChart.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/AnnularChart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/BarChart.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/BarChart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/GraphLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/GraphLevel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/MainPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/MainPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/MapBusiness.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/MapBusiness.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/Module.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/Module.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/component/Point.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/constructor/MapBusinessConstructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.common/src/test/java/istarwyh/page_module_loader/constructor/MapBusinessConstructor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.algorithm/src/main/java/istarwyh/data_structure/Stack.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.algorithm/src/main/java/istarwyh/data_structure/Stack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.algorithm/src/main/java/istarwyh/leetcode/LinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.algorithm/src/main/java/istarwyh/leetcode/LinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tdd.java.algorithm/src/test/java/istarwyh/leetcode/LinkedListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tdd.java.algorithm/src/test/java/istarwyh/leetcode/LinkedListTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,6 +140,7 @@
     "Gradle.ContainerTest.executor": "Run",
     "Gradle.Download Sources.executor": "Run",
     "Gradle.FunctionCallTest.test.executor": "Run",
+    "Gradle.GetFirstPartEndNodeAsSplitNode.should_get_first_part_end_node_as_split_node_when_the_length_is_odd.executor": "Debug",
     "Gradle.JsonFileArgumentsProviderTest.executor": "Run",
     "Gradle.JsonFileArgumentsProviderTest.setNullIfRecursive.executor": "Debug",
     "Gradle.JsonFileArgumentsProviderTest.should_generate_test_case_json_lack_of_it.executor": "Run",
@@ -159,6 +149,7 @@
     "Gradle.JsonFileArgumentsProviderTest.should_parse_People_type_test_case_with_direct_address.executor": "Run",
     "Gradle.JsonFileArgumentsProviderTest.should_parse_cannot_input.executor": "Run",
     "Gradle.JsonFileArgumentsProviderTest.should_parse_recursionClass_input.executor": "Run",
+    "Gradle.LinkedListTest.executor": "Run",
     "Gradle.Load Gradle Dependencies.executor": "Run",
     "Gradle.ObjectInitTest.executor": "Run",
     "Gradle.ObjectInitTest.initClassWithDefault.executor": "Run",
@@ -183,6 +174,7 @@
     "Gradle.ReflectionUtilsTest.should_get_static_field_value.executor": "Debug",
     "Gradle.ReflectionUtilsTest.should_not_get_final_field_value.executor": "Run",
     "Gradle.ReflectionUtilsTest.should_not_set_final_field_value.executor": "Run",
+    "Gradle.ReorderList.should_pass_when_the_length_is_odd.executor": "Debug",
     "Gradle.TestMuseum [assemble].executor": "Run",
     "Gradle.TestMuseum [dependencies].executor": "Run",
     "Gradle.TestMuseum:tdd.java.algorithm [:tdd.java.algorithm:Solution.main()].executor": "Run",
@@ -272,22 +264,8 @@
       <recent name="istarwyh.junit5.extension" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.PageModuleLoaderTest.build">
-    <configuration name="Solution" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="istarwyh.leetcode.Solution" />
-      <module name="TestMuseum.tdd.java.algorithm.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="istarwyh.leetcode.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-        <option name="com.soywiz.korge.intellij.UpdateResourceBeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration name="JsonFileArgumentsProviderTest.should_parse_Map_type_test_case_with_direct_address" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.ReorderList.should_pass_when_the_length_is_odd">
+    <configuration name="GetFirstPartEndNodeAsSplitNode.should_get_first_part_end_node_as_split_node_when_the_length_is_odd" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -298,9 +276,33 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":tdd.java.common:test" />
+            <option value=":tdd.java.algorithm:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.junit5.provider.JsonFileArgumentsProviderTest.should_parse_Map_type_test_case_with_direct_address&quot;" />
+            <option value="&quot;istarwyh.leetcode.LinkedListTest$ReorderList$GetFirstPartEndNodeAsSplitNode.should_get_first_part_end_node_as_split_node_when_the_length_is_odd&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="LinkedListTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":tdd.java.algorithm:test" />
+            <option value="--tests" />
+            <option value="&quot;istarwyh.leetcode.LinkedListTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -359,7 +361,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="ReflectionUtilsTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ReorderList.should_pass_when_the_length_is_odd" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -370,9 +372,9 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":tdd.java.common:test" />
+            <option value=":tdd.java.algorithm:test" />
             <option value="--tests" />
-            <option value="&quot;istarwyh.util.ReflectionUtilsTest&quot;" />
+            <option value="&quot;istarwyh.leetcode.LinkedListTest$ReorderList.should_pass_when_the_length_is_odd&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -394,11 +396,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.ReorderList.should_pass_when_the_length_is_odd" />
+        <item itemvalue="Gradle.GetFirstPartEndNodeAsSplitNode.should_get_first_part_end_node_as_split_node_when_the_length_is_odd" />
+        <item itemvalue="Gradle.LinkedListTest" />
         <item itemvalue="Gradle.PageModuleLoaderTest.build" />
         <item itemvalue="Gradle.PageModuleLoaderTest" />
-        <item itemvalue="Application.Solution" />
-        <item itemvalue="Gradle.JsonFileArgumentsProviderTest.should_parse_Map_type_test_case_with_direct_address" />
-        <item itemvalue="Gradle.ReflectionUtilsTest" />
       </list>
     </recent_temporary>
   </component>
@@ -453,7 +455,7 @@
       <workItem from="1711379754303" duration="171000" />
       <workItem from="1711380024987" duration="12115000" />
       <workItem from="1711642242451" duration="60525000" />
-      <workItem from="1713656604688" duration="18867000" />
+      <workItem from="1713656604688" duration="25209000" />
     </task>
     <task id="LOCAL-00001" summary="Add: common module">
       <created>1665063158890</created>
@@ -566,6 +568,16 @@
           <url>file://$PROJECT_DIR$/tdd.java.common/src/main/java/istarwyh/junit5/provider/JsonFileArgumentsProvider.java</url>
           <line>201</line>
           <option name="timeStamp" value="105" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tdd.java.algorithm/src/main/java/istarwyh/leetcode/LinkedList.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="110" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tdd.java.algorithm/src/main/java/istarwyh/leetcode/LinkedList.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="111" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
