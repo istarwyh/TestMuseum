@@ -9,7 +9,7 @@ import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author xiaohui
@@ -27,7 +27,8 @@ public abstract class AbstractElement<DATA> extends ElementDTO implements PageMo
   }
 
   @Override
-  public @NotNull DATA getData() {
+  @Nullable
+  public DATA getData() {
     return data;
   }
 
@@ -45,5 +46,12 @@ public abstract class AbstractElement<DATA> extends ElementDTO implements PageMo
     this.setTime(ofNullable(this.getTime()).orElse(materiaElement.getTime()));
     List<ElementDTO> details = materiaElement.getDetails();
     this.setData(ofNullable(this.getData()).orElse((DATA) details));
+  }
+
+  public boolean dataEmpty(){
+    if(data == null){
+      return true;
+    }
+    return !(data instanceof List) || ((List<?>) data).isEmpty();
   }
 }

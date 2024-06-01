@@ -9,6 +9,9 @@ import java.math.RoundingMode;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * @author xiaohui
+ */
 @NoArgsConstructor
 public class GraphLevel<T extends ElementDTO> extends AbstractElement<List<T>> {
 
@@ -19,7 +22,7 @@ public class GraphLevel<T extends ElementDTO> extends AbstractElement<List<T>> {
     @Override
     public String getAmount() {
         String amount = super.getAmount();
-        if(amount != null || super.getData().isEmpty()){
+        if(amount != null || super.dataEmpty()){
             return amount;
         }
         return super.getData().stream()
@@ -41,7 +44,7 @@ public class GraphLevel<T extends ElementDTO> extends AbstractElement<List<T>> {
     @Override
     public String getNumber() {
         String number = super.getNumber();
-        if(number != null || super.getData().isEmpty()){
+        if(number != null || super.dataEmpty()){
             return number;
         }
         return super.getData().stream()

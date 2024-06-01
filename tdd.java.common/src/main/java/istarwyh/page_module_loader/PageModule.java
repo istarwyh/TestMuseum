@@ -1,6 +1,7 @@
 package istarwyh.page_module_loader;
 
-import org.jetbrains.annotations.NotNull;
+
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author xiaohui
@@ -24,7 +25,7 @@ public interface PageModule<T> {
      * getData
      * @return  data
      */
-    @NotNull
+    @Nullable
     T getData();
 
     /**
