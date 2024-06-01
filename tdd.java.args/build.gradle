@@ -1,8 +1,4 @@
-plugins {
-    id 'java'
-}
 
-group 'istarwyh'
 version '1.0-SNAPSHOT'
 
 compileJava {
@@ -26,17 +22,6 @@ repositories {
     mavenCentral()
 }
 
-ext {
-    junitVersion = '5.9.2'
-    junitPlatformVersion = '1.0.0'
-    lombokVersion = '1.18.30'
-    slf4jVersion = '1.7.36'
-    logbackClassicVersion = '1.4.7'
-    jetbrainsAnnotationVersion = '24.0.1'
-    javassistVersion = '3.29.2-GA'
-    istarwyhInitialVersion = '0.2.7'
-    mockitoJunit5Version = '5.2.0'
-}
 
 dependencies {
 
@@ -55,31 +40,6 @@ dependencies {
     )
 
     annotationProcessor(
-            "org.projectlombok:lombok:${lombokVersion}"
-    )
-
-/**************************************************  TEST  ************************************************************/
-
-    testCompileOnly(
-            "org.projectlombok:lombok:${lombokVersion}"
-    )
-
-    testImplementation(
-
-            // JUnit Jupiter API and TestEngine and ParameterizedTest
-            "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
-            "org.junit.jupiter:junit-jupiter-engine:${junitVersion}",
-            "org.junit.vintage:junit-vintage-engine:${junitVersion}",
-
-            "org.junit.jupiter:junit-jupiter-params:${junitVersion}",
-            "org.mockito:mockito-junit-jupiter:${mockitoJunit5Version}",
-
-            "ch.qos.logback:logback-classic:${logbackClassicVersion}",
-            "org.javassist:javassist:${javassistVersion}",
-            "com.github.istarwyh:Initial:${istarwyhInitialVersion}"
-    )
-
-    testAnnotationProcessor(
             "org.projectlombok:lombok:${lombokVersion}"
     )
 }
