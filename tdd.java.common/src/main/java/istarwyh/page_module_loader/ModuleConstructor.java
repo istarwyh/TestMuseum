@@ -34,6 +34,7 @@ public interface ModuleConstructor<ELEMENT extends AbstractElement<?>, QUERY> {
     throw new IllegalArgumentException("Invalid interface");
   }
 
+  @SuppressWarnings("unchecked")
   @Nullable
   private static <T> Class<T> getClassFromParameterizedType(Type actualTypeArgument) {
     if (actualTypeArgument instanceof Class) {

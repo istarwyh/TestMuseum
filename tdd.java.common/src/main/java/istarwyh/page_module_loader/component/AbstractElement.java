@@ -32,11 +32,13 @@ public abstract class AbstractElement<DATA> extends ElementDTO implements PageMo
     return data;
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public void setData(Object data) {
     this.data = (DATA) data;
   }
 
+  @SuppressWarnings("unchecked")
   public <ELEMENT extends AbstractElement<?>> void fillWith(ELEMENT materiaElement) {
     if (materiaElement == null) {
       return;

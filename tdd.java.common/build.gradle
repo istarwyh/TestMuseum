@@ -1,26 +1,17 @@
 plugins {
-    id 'java'
+    id 'java-library'
 }
 
 group 'istarwyh'
 version '1.0-SNAPSHOT'
 
-compileJava {
-    sourceCompatibility = 21
-    targetCompatibility = 21
-    options.encoding = 'UTF-8'
-//    options.compilerArgs << "-Xlint:unchecked" << "-Werror"
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
 }
-
-compileTestJava {
-    sourceCompatibility = 21
-    targetCompatibility = 21
-    options.encoding = 'UTF-8'
-}
-
 
 repositories {
-    mavenLocal()
     maven { url "https://maven.aliyun.com/repository/public" }
     maven { url "https://repo.huaweicloud.com/repository/maven" }
     mavenCentral()
@@ -45,7 +36,7 @@ ext {
 
 
 dependencies {
-/**************************************************  SRC  ************************************************************/
+    /**************************************************  SRC  ************************************************************/
 
     compileOnly(
             "org.projectlombok:lombok:${lombokVersion}"
@@ -81,7 +72,6 @@ dependencies {
             "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
             "org.junit.jupiter:junit-jupiter-engine:${junitVersion}",
             "org.junit.vintage:junit-vintage-engine:${junitVersion}",
-
             "org.junit.jupiter:junit-jupiter-params:${junitVersion}",
             "org.mockito:mockito-junit-jupiter:${mockitoJunit5Version}",
 
@@ -90,8 +80,6 @@ dependencies {
             "org.apache.commons:commons-lang3:${apacheCommonsLang3Version}",
             "org.mapstruct:mapstruct:${mapstructVersion}",
             "org.jeasy:easy-random-core:${easyRandomVersion}"
-
-
     )
 //    testImplementation( "com.github.istarwyh:Initial:${istarwyhInitialVersion}"){
 //        exclude group: "com.github.istarwyh", module: "Initial"
@@ -100,23 +88,11 @@ dependencies {
     testAnnotationProcessor(
             "org.projectlombok:lombok:${lombokVersion}",
             "org.mapstruct:mapstruct-processor:${mapstructVersion}"
-
     )
+}
 
-    // 对公共依赖项应用排除规则
-    // Unfortunately, Gradle does not provide a direct way to exclude a group from all dependencies in the resolutionStrategy block.
-    // You can only exclude modules when declaring a dependency.
-//    configurations.all {
-//        resolutionStrategy {
-//            dependencies.each {
-//                { dependency ->
-//                    // 排除除了引入的包之外的其他所有包
-//                    if (dependency.group == "com.github.istarwyh" && dependency.name == "Initial") {
-//                        exclude group: dependency.group, module: dependency.module
-//                    }
-//                }(it) }
-//        }
-//    }
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs << "-Xlint:unchecked" << "-Werror"
 }
 
 defaultTasks 'clean', 'test'

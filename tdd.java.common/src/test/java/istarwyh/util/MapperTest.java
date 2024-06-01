@@ -58,7 +58,7 @@ public class MapperTest {
         assertEquals(id,a.id);
     }
 
-    @Mapper
+    @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
     interface Converter{
         Converter INSTANCE = Mappers.getMapper(Converter.class);
 

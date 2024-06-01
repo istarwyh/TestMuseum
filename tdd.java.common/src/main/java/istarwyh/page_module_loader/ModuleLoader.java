@@ -51,10 +51,12 @@ public class ModuleLoader {
         PAGE_MODULE_CONSTRUCTOR_MAP.put(moduleTypeCode, moduleConstructor);
     }
 
-    public static ModuleLoader createModuleLoader(ViewStructure viewStructure, DataContext context) {
+    public static <ELEMENT extends AbstractElement<?>, QUERY> ModuleLoader
+    createModuleLoader(ViewStructure viewStructure, DataContext<ELEMENT,QUERY> context) {
         return new ModuleLoader(viewStructure, context);
     }
 
+    @SuppressWarnings("unchecked")
     public PageModule<?> parse() {
         PageModule<?> root = constructPageModule(viewStructure, context);
         return fillData(root);
@@ -88,6 +90,7 @@ public class ModuleLoader {
         }
     }
 
+    @SuppressWarnings("unchecked")
     private <ELEMENT extends AbstractElement<?>, QUERY> PageModule<?>
     constructPageModule(ViewStructure viewStructure, DataContext<ELEMENT,QUERY> context) {
         String moduleTypeCode = viewStructure.getModuleTypeCode();

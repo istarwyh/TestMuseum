@@ -87,6 +87,7 @@ public class ReflectionUtils {
     return getFieldWithFilter(object, fieldName, anyField -> true);
   }
 
+  @SuppressWarnings("unchecked")
   @Nullable
   @SneakyThrows({NoSuchFieldException.class, IllegalAccessException.class})
   public static <T> T getFieldWithFilter(
@@ -200,11 +201,12 @@ public class ReflectionUtils {
   }
 
   @SneakyThrows
-  @SuppressWarnings("all")
+  @SuppressWarnings({"all","removal"})
   private static void setFieldUsingUnsafe(Object base, Field field, long offset, Object newValue) {
     field.setAccessible(true);
     boolean isFinal = isModifier(field, Modifier.FINAL);
     if (isFinal) {
+
       AccessController.doPrivileged(
           (PrivilegedAction<Object>)
               () -> {
@@ -244,6 +246,7 @@ public class ReflectionUtils {
    * @return a list of class that implements the interface
    * @param <T> eg. {@link String}
    */
+  @SuppressWarnings("unchecked")
   public static <T> List<Class<? extends T>> getAllClassesImplementingInterface(
       Class<T> interfaceClass) {
     String packageName = interfaceClass.getPackageName();
@@ -361,6 +364,7 @@ public class ReflectionUtils {
   }
 
   @NotNull
+  @SuppressWarnings("unchecked")
   private static <T> Class<T> getClassFromParameterizedType(Type actualTypeArgument) {
     if (actualTypeArgument instanceof Class) {
       return (Class<T>) actualTypeArgument;

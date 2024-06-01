@@ -39,7 +39,7 @@ public class AnnotationUtil {
                         if (fieldValue instanceof BigDecimal) {
                             scaledValue = getScaledValue(annotation, fieldValue);
                         } else if (fieldValue instanceof List) {
-                            scaledValue = ((List) fieldValue).stream()
+                            scaledValue = ((List<?>) fieldValue).stream()
                                     .map(e -> getScaledValue(annotation, e))
                                     .collect(Collectors.toList());
                         } else {

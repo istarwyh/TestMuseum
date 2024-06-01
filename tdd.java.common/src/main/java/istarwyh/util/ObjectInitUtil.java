@@ -135,6 +135,7 @@ public class ObjectInitUtil {
     }
 
 
+    @SuppressWarnings("unchecked")
     private static <T> T initWithValues(Class<T> clazz, boolean useDefaultValue) {
         T value;
         if (shouldDirectlyGenerateValue(clazz)) {
@@ -222,6 +223,7 @@ public class ObjectInitUtil {
         }
     }
 
+    @SuppressWarnings("unchecked")
     @NotNull
     private static <T> T generateArray(Class<T> fieldType, boolean useDefaultValue) {
         Class<?> componentType = fieldType.getComponentType();
@@ -292,6 +294,7 @@ public class ObjectInitUtil {
                 .collect(Collectors.toList());
     }
 
+    @SuppressWarnings("unchecked")
     public static <T> T init(Class<T> clazz) {
         try {
             return (T) UnsafeUtils.unsafe().allocateInstance(clazz);

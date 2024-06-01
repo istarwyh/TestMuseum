@@ -24,6 +24,7 @@ public class DataContext<ELEMENT extends AbstractElement<?>, QUERY> {
             .orElse(null);
   }
 
+  @SuppressWarnings("unchecked")
   public void setElementMap(Map<String, Point> elementMap) {
     this.elementMap = (Map<String, ELEMENT>)elementMap;
   }
