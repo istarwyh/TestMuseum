@@ -12,6 +12,9 @@ import java.util.function.Supplier;
 
 import static java.util.Arrays.stream;
 
+/**
+ * @author xiaohui
+ */
 public class Context {
     private final Map<Class<?>, Supplier<?>> suppliers = new HashMap<>();
 
@@ -19,6 +22,7 @@ public class Context {
         suppliers.put(typeClass, () -> instance);
     }
 
+    @SuppressWarnings("unchecked")
     @SneakyThrows
     public <Type, Implementation extends Type>
     void bind(@NotNull Class<Type> type,@NotNull Class<Implementation> implementation) {
@@ -58,6 +62,7 @@ public class Context {
         return stream(implementation.getConstructors()).noneMatch(c -> c.getParameters().length == 0);
     }
 
+    @SuppressWarnings("unchecked")
     public <Type> Type get(Class<Type> typeClass) {
         return (Type) suppliers.get(typeClass).get();
     }

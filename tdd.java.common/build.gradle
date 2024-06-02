@@ -1,44 +1,6 @@
+plugins {
+    id 'java'
+}
 version '1.0-SNAPSHOT'
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
-    }
-}
 
-dependencies {
-    /**************************************************  SRC  ************************************************************/
-
-    compileOnly(
-            "org.projectlombok:lombok:${lombokVersion}"
-    )
-
-    implementation(
-            // 	logback-classic includes logback-core , slf4j-api
-            "org.jetbrains:annotations:${jetbrainsAnnotationVersion}",
-            "ch.qos.logback:logback-classic:${logbackClassicVersion}",
-            "org.javassist:javassist:${javassistVersion}",
-            "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
-            "org.junit.jupiter:junit-jupiter-params:${junitVersion}",
-            "com.alibaba.fastjson2:fastjson2:${fastjson2Version}",
-            "com.google.guava:guava:${guavaVersion}",
-            "org.mapstruct:mapstruct:${mapstructVersion}",
-            "org.apache.commons:commons-lang3:${apacheCommonsLang3Version}",
-            "org.jeasy:easy-random-core:${easyRandomVersion}"
-    )
-
-    annotationProcessor(
-            "org.projectlombok:lombok:${lombokVersion}",
-            "org.mapstruct:mapstruct-processor:${mapstructVersion}"
-    )
-}
-
-tasks.withType(JavaCompile).configureEach {
-    options.compilerArgs << "-Xlint:unchecked" << "-Werror"
-}
-
-defaultTasks 'clean', 'test'
-
-test {
-    useJUnitPlatform()
-}

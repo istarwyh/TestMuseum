@@ -1,13 +1,6 @@
-plugins {
-    id 'java'
-}
-
 version '1.0-SNAPSHOT'
-allprojects {
-    group 'istarwyh'
-}
-
 ext {
+    istarwyhInitialVersion = '0.2.7'
     jakartaInjectVersion = '2.0.1'
     junitVersion = '5.9.2'
     junitPlatformVersion = '1.0.0'
@@ -16,7 +9,6 @@ ext {
     logbackClassicVersion = '1.4.14'
     jetbrainsAnnotationVersion = '24.0.1'
     javassistVersion = '3.29.2-GA'
-    istarwyhInitialVersion = '0.2.7'
     mockitoJunit5Version = '5.11.0'
     fastjson2Version = '2.0.25'
     guavaVersion = '33.0.0-jre'
@@ -25,8 +17,9 @@ ext {
     easyRandomVersion='5.0.0'
 }
 
-subprojects {
-    apply plugin: 'java'
+allprojects {
+    group 'istarwyh'
+
 
     repositories {
         maven { url "https://maven.aliyun.com/repository/public" }
@@ -34,34 +27,92 @@ subprojects {
         mavenCentral()
     }
 
-    dependencies {
-        /**************************************************  TEST  ************************************************************/
-
-        testCompileOnly(
-                "org.projectlombok:lombok:${lombokVersion}"
-        )
-
-        testImplementation(
-                // JUnit Jupiter API and TestEngine and ParameterizedTest
-                "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
-                "org.junit.jupiter:junit-jupiter-engine:${junitVersion}",
-                "org.junit.vintage:junit-vintage-engine:${junitVersion}",
-                "org.junit.jupiter:junit-jupiter-params:${junitVersion}",
-                "org.mockito:mockito-junit-jupiter:${mockitoJunit5Version}",
-
-                "ch.qos.logback:logback-classic:${logbackClassicVersion}",
-                "org.javassist:javassist:${javassistVersion}",
-                "org.apache.commons:commons-lang3:${apacheCommonsLang3Version}",
-                "org.mapstruct:mapstruct:${mapstructVersion}",
-                "org.jeasy:easy-random-core:${easyRandomVersion}"
-        )
-//    testImplementation( "com.github.istarwyh:Initial:${istarwyhInitialVersion}"){
-//        exclude group: "com.github.istarwyh", module: "Initial"
-//    }
-
-        testAnnotationProcessor(
-                "org.projectlombok:lombok:${lombokVersion}",
-                "org.mapstruct:mapstruct-processor:${mapstructVersion}"
-        )
+    tasks.withType(JavaCompile).configureEach {
+        options.compilerArgs << "-Xlint:unchecked" << "-Werror"
     }
+
+
+// 使用 plugins.withType(JavaPlugin) 来确保只有应用了 Java 插件的项目才会应用这个配置
+    plugins.withType(JavaPlugin).configureEach {
+        java {
+            toolchain {
+                languageVersion = JavaLanguageVersion.of(21)
+            }
+        }
+
+        test {
+            useJUnitPlatform()
+        }
+
+        dependencies {
+            /**************************************************  SRC  ************************************************************/
+
+            compileOnly(
+                    "org.projectlombok:lombok:${lombokVersion}"
+            )
+
+            implementation(
+                    // 	logback-classic includes logback-core , slf4j-api
+                    "org.jetbrains:annotations:${jetbrainsAnnotationVersion}",
+                    "ch.qos.logback:logback-classic:${logbackClassicVersion}",
+                    "org.javassist:javassist:${javassistVersion}",
+                    "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
+                    "org.junit.jupiter:junit-jupiter-params:${junitVersion}",
+                    "com.alibaba.fastjson2:fastjson2:${fastjson2Version}",
+                    "com.google.guava:guava:${guavaVersion}",
+                    "org.mapstruct:mapstruct:${mapstructVersion}",
+                    "org.apache.commons:commons-lang3:${apacheCommonsLang3Version}",
+                    "org.jeasy:easy-random-core:${easyRandomVersion}"
+            )
+
+            annotationProcessor(
+                    "org.projectlombok:lombok:${lombokVersion}",
+                    "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+            )
+            /**************************************************  TEST  ************************************************************/
+
+            testCompileOnly(
+                    "org.projectlombok:lombok:${lombokVersion}"
+            )
+
+            testImplementation(
+                    // JUnit Jupiter API and TestEngine and ParameterizedTest
+                    "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
+                    "org.junit.jupiter:junit-jupiter-engine:${junitVersion}",
+                    "org.junit.vintage:junit-vintage-engine:${junitVersion}",
+                    "org.junit.jupiter:junit-jupiter-params:${junitVersion}",
+                    "org.mockito:mockito-junit-jupiter:${mockitoJunit5Version}",
+
+                    "ch.qos.logback:logback-classic:${logbackClassicVersion}",
+                    "org.javassist:javassist:${javassistVersion}",
+                    "org.apache.commons:commons-lang3:${apacheCommonsLang3Version}",
+                    "org.mapstruct:mapstruct:${mapstructVersion}",
+                    "org.jeasy:easy-random-core:${easyRandomVersion}"
+            )
+
+            testAnnotationProcessor(
+                    "org.projectlombok:lombok:${lombokVersion}",
+                    "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+            )
+        }
+    }
+
+    configurations {
+        implementation {
+            dependencies.configureEach { dep ->
+                if (dep.getGroup() == 'com.github.istarwyh' && dep.getName() == 'Initial') {
+                    dep.transitive = false
+                }
+            }
+        }
+    }
+
+    defaultTasks 'clean', 'test'
+
 }
+
+subprojects {
+
+}
+
+
