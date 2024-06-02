@@ -3,4 +3,12 @@ plugins {
 }
 version '1.0-SNAPSHOT'
 
+dependencies {
+    implementation(
+            "org.javassist:javassist:${javassistVersion}",
+            "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
+            "org.junit.jupiter:junit-jupiter-params:${junitVersion}"
+    )
+
+}
 
