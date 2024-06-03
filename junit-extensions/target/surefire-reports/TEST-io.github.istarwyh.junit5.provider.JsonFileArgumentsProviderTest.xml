@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="io.github.istarwyh.junit5.provider.JsonFileArgumentsProviderTest" time="1.43" tests="13" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/mac/Desktop/code-open/TestMuseum/junit-extensions/target/test-classes:/Users/mac/Desktop/code-open/TestMuseum/junit-extensions/target/classes:/Users/mac/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar:/Users/mac/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/mac/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar:/Users/mac/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/mac/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar:/Users/mac/.m2/repository/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar:/Users/mac/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.2/junit-jupiter-params-5.9.2.jar:/Users/mac/.m2/repository/org/mockito/mockito-core/2.7.19/mockito-core-2.7.19.jar:/Users/mac/.m2/repository/net/bytebuddy/byte-buddy/1.6.11/byte-buddy-1.6.11.jar:/Users/mac/.m2/repository/net/bytebuddy/byte-buddy-agent/1.6.11/byte-buddy-agent-1.6.11.jar:/Users/mac/.m2/repository/org/objenesis/objenesis/2.5/objenesis-2.5.jar:/Users/mac/.m2/repository/com/alibaba/fastjson2/fastjson2/2.0.25/fastjson2-2.0.25.jar:/Users/mac/.m2/repository/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar:/Users/mac/.m2/repository/org/jetbrains/annotations/24.1.0/annotations-24.1.0.jar:/Users/mac/.m2/repository/org/jeasy/easy-random-core/4.3.0/easy-random-core-4.3.0.jar:/Users/mac/.m2/repository/io/github/classgraph/classgraph/4.8.90/classgraph-4.8.90.jar:/Users/mac/.m2/repository/org/javassist/javassist/3.29.2-GA/javassist-3.29.2-GA.jar:"/>
+    <property name="java.vm.vendor" value="Homebrew"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.boot.library.path" value="/usr/local/Cellar/openjdk/21.0.3/libexec/openjdk.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/mac/Desktop/code-open/TestMuseum/junit-extensions/target/surefire/surefirebooter9681982950024862243.jar /Users/mac/Desktop/code-open/TestMuseum/junit-extensions/target/surefire 2024-06-03T11-56-41_740-jvmRun1 surefire5686364484198698571tmp surefire_013684400595316143386tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/mac/Desktop/code-open/TestMuseum/junit-extensions/target/test-classes:/Users/mac/Desktop/code-open/TestMuseum/junit-extensions/target/classes:/Users/mac/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar:/Users/mac/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/mac/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar:/Users/mac/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/mac/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar:/Users/mac/.m2/repository/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar:/Users/mac/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.2/junit-jupiter-params-5.9.2.jar:/Users/mac/.m2/repository/org/mockito/mockito-core/2.7.19/mockito-core-2.7.19.jar:/Users/mac/.m2/repository/net/bytebuddy/byte-buddy/1.6.11/byte-buddy-1.6.11.jar:/Users/mac/.m2/repository/net/bytebuddy/byte-buddy-agent/1.6.11/byte-buddy-agent-1.6.11.jar:/Users/mac/.m2/repository/org/objenesis/objenesis/2.5/objenesis-2.5.jar:/Users/mac/.m2/repository/com/alibaba/fastjson2/fastjson2/2.0.25/fastjson2-2.0.25.jar:/Users/mac/.m2/repository/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar:/Users/mac/.m2/repository/org/jetbrains/annotations/24.1.0/annotations-24.1.0.jar:/Users/mac/.m2/repository/org/jeasy/easy-random-core/4.3.0/easy-random-core-4.3.0.jar:/Users/mac/.m2/repository/io/github/classgraph/classgraph/4.8.90/classgraph-4.8.90.jar:/Users/mac/.m2/repository/org/javassist/javassist/3.29.2-GA/javassist-3.29.2-GA.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/mac"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2024-04-16"/>
+    <property name="java.home" value="/usr/local/Cellar/openjdk/21.0.3/libexec/openjdk.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/mac/Desktop/code-open/TestMuseum/junit-extensions"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="apple.awt.application.name" value="ForkedBooter"/>
+    <property name="surefire.real.class.path" value="/Users/mac/Desktop/code-open/TestMuseum/junit-extensions/target/surefire/surefirebooter9681982950024862243.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="21.0.3"/>
+    <property name="user.name" value="mac"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="14.2.1"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Homebrew"/>
+    <property name="localRepository" value="/Users/mac/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="java.io.tmpdir" value="/var/folders/nf/h0q147rn6v3d6hlp6v2p8wkr0000gn/T/"/>
+    <property name="java.version" value="21.0.3"/>
+    <property name="user.dir" value="/Users/mac/Desktop/code-open/TestMuseum/junit-extensions"/>
+    <property name="os.arch" value="x86_64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/mac/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Homebrew"/>
+    <property name="java.vm.version" value="21.0.3"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="java.class.version" value="65.0"/>
+  </properties>
+  <testcase name="should_parse_Map_type_test_case{TestCase}[1]" classname="io.github.istarwyh.junit5.provider.JsonFileArgumentsProviderTest" time="0.056"/>
+  <testcase name="should_parse_String_input{String}[1]" classname="io.github.istarwyh.junit5.provider.JsonFileArgumentsProviderTest" time="0.034"/>
+  <testcase name="should_parse_People_input{People}[1]" classname="io.github.istarwyh.junit5.provider.JsonFileArgumentsProviderTest" time="0.001"/>
+  <testcase name="should_parse_recursionClass_input{RecursionClass}[1]" classname="io.github.istarwyh.junit5.provider.JsonFileArgumentsProviderTest" time="0.003"/>
+  <testcase name="should_generate_test_case_json_lack_of_it{TestCase}[1]" classname="io.github.istarwyh.junit5.provider.JsonFileArgumentsProviderTest" time="0.001"/>
+  <testcase name="should_parse_Map_type_test_case_with_direct_address{TestCase}[1]" classname="io.github.istarwyh.junit5.provider.JsonFileArgumentsProviderTest" time="0.001"/>
+  <testcase name="should_parse_People_type_test_case_with_direct_address{TestCase}[1]" classname="io.github.istarwyh.junit5.provider.JsonFileArgumentsProviderTest" time="0.002"/>
+  <testcase name="should_parse_multi_List_with_Integer_type_test_case{TestCase}[1]" classname="io.github.istarwyh.junit5.provider.JsonFileArgumentsProviderTest" time="0.001"/>
+  <testcase name="should_parse_multi_List_with_Integer_type_test_case{TestCase}[2]" classname="io.github.istarwyh.junit5.provider.JsonFileArgumentsProviderTest" time="0.001"/>
+  <testcase name="should_generate_test_case_json_given_ownClass{TestCase}[1]" classname="io.github.istarwyh.junit5.provider.JsonFileArgumentsProviderTest" time="0.002"/>
+  <testcase name="should_show_how_to_parse_multi_args_with_csv{Integer, Integer}[1]" classname="io.github.istarwyh.junit5.provider.JsonFileArgumentsProviderTest" time="0.002"/>
+  <testcase name="should_show_how_to_parse_multi_args_with_csv{Integer, Integer}[2]" classname="io.github.istarwyh.junit5.provider.JsonFileArgumentsProviderTest" time="0.001"/>
+  <testcase name="setNullIfRecursive" classname="io.github.istarwyh.junit5.provider.JsonFileArgumentsProviderTest" time="0.086"/>
+</testsuite>
