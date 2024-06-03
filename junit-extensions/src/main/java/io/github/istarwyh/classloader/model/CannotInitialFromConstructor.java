@@ -1,4 +1,4 @@
-package istarwyh.classloader.model;
+package io.github.istarwyh.classloader.model;
 
 public class CannotInitialFromConstructor {
 

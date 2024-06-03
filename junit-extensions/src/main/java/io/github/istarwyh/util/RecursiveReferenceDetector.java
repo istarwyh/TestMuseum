@@ -1,4 +1,4 @@
-package istarwyh.util;
+package io.github.istarwyh.util;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
@@ -6,8 +6,6 @@ import java.lang.reflect.Modifier;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * @author mac
@@ -27,30 +25,29 @@ public class RecursiveReferenceDetector {
 
   private static boolean checkRecursiveAndAdd(IdentityHashMap<Object, Boolean> visited, Object obj) {
     return Optional.ofNullable(obj)
-        .map(Object::getClass)
-        .filter(it -> !TypeUtils.isBuiltInType(it))
-        .map(
-            it ->
-                canIterate(it)
-                    ? Arrays.stream(toInstanceArray(obj))
-                    : Stream.of(it.getDeclaredFields()).map(field -> getFieldValue(obj, field)))
-        .map(
-            it ->
-                it.anyMatch(
-                    childObj -> {
-                      if (isNotRecursion(visited, childObj)) {
-                        return checkRecursiveAndAdd(visited, childObj);
-                      }
-                      return true;
-                    }))
-        .orElse(false);
+            .map(Object::getClass)
+            .filter(it -> !TypeUtils.isBuiltInType(it))
+            .map(
+                    it ->
+                            canIterate(it)
+                                    ? Arrays.stream(toInstanceArray(obj))
+                                    : Stream.of(it.getDeclaredFields()).map(field -> getFieldValue(obj, field)))
+            .map(
+                    it ->
+                            it.anyMatch(
+                                    childObj -> {
+                                      if (isNotRecursion(visited, childObj)) {
+                                        return checkRecursiveAndAdd(visited, childObj);
+                                      }
+                                      return true;
+                                    }))
+            .orElse(false);
   }
 
   private static boolean canIterate(Class<?> it) {
     return it.isArray() || Collection.class.isAssignableFrom(it);
   }
 
-  @Nullable
   private static Object getFieldValue(Object obj, Field cur) {
     Predicate<Field> fieldPredicate = getFieldTypePredicate(TypeUtils::isBuiltInType)
             .and(combineModifierPredicates(
@@ -65,13 +62,11 @@ public class RecursiveReferenceDetector {
             .orElse(null);
   }
 
-  @NotNull
   private static Predicate<Field> getFieldTypePredicate(Predicate<Class<?>> classPredicate) {
     return field -> !classPredicate.test(field.getType());
   }
 
   @SafeVarargs
-  @NotNull
   private static Predicate<Field> combineModifierPredicates(Predicate<Integer>... predicates) {
     Predicate<Field> combinedPredicate = field -> true;
     for (Predicate<Integer> predicate : predicates) {
@@ -95,9 +90,11 @@ public class RecursiveReferenceDetector {
 
   private static Object[] toInstanceArray(Object array) {
     array = array.getClass().isArray() ? array : ((Collection<?>) array).toArray();
-    Object finalArray = array;
-    return Stream.iterate(0, i -> i < Array.getLength(finalArray), i -> i + 1)
-        .map(i -> Array.get(finalArray, i))
-        .toArray();
+    int length = Array.getLength(array);
+    List<Object> list = new ArrayList<>(length);
+    for (int i = 0; i < length; i++) {
+      list.add(Array.get(array, i));
+    }
+    return list.toArray();
   }
 }

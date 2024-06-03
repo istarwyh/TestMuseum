@@ -1,8 +1,10 @@
-package istarwyh.classloader.modifier.impl;
+package io.github.istarwyh.classloader.modifier.impl;
 
-import istarwyh.classloader.model.CannotInitialLackMatchedConstructor;
-import istarwyh.classloader.modifier.Modifier;
-import istarwyh.util.JavassistUtil;
-import javassist.CtClass;
 
+import io.github.istarwyh.classloader.model.CannotInitialLackMatchedConstructor;
+import io.github.istarwyh.classloader.modifier.Modifier;
+
+/**
+ * @author xiaohui
+ */
 public class CannotInitialDueToPrivateConstructorModifier implements Modifier<CannotInitialLackMatchedConstructor> {}

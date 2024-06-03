@@ -1,17 +1,15 @@
-package istarwyh.junit5.extension;
+package io.github.istarwyh.junit5.extension;
 
-import istarwyh.classloader.MyClassLoader;
-import istarwyh.classloader.modifier.Modifier;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.extension.*;
+import static io.github.istarwyh.util.UnsafeUtils.unsafe;
+import static java.util.Arrays.stream;
 
+import io.github.istarwyh.classloader.MyClassLoader;
+import io.github.istarwyh.classloader.modifier.Modifier;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
-
-import static istarwyh.util.UnsafeUtils.unsafe;
-import static java.util.Arrays.stream;
-
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.*;
 
 /**
  * This junit5 extension is designed for new instance for any custom class (not JDK)
@@ -45,7 +43,7 @@ public class InitialExtension implements BeforeAllCallback
     public void beforeAll(ExtensionContext context) throws Exception {
         String name = context.getRequiredTestClass().getName();
         newTestClass = MY_CLASS_LOADER.loadClass(name);
-        System.out.println(name + " are loaded by " + newTestClass.getClassLoader().getName());
+        System.out.println(name + " are loaded by " + newTestClass.getClassLoader().getClass().getName());
     }
 
     /**
@@ -67,7 +65,7 @@ public class InitialExtension implements BeforeAllCallback
             newTestMethod.invoke(instance);
         }else {
             // todo There is ParameterizedTest what can be got in testMethod.
-            throw new IllegalCallerException("ParameterizedTest cannot be supported at present!");
+            throw new UnsupportedOperationException("ParameterizedTest cannot be supported at present!");
         }
     }
 

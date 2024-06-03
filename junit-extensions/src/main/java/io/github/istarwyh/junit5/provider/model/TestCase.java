@@ -1,11 +1,12 @@
-package istarwyh.junit5.provider.model;
+package io.github.istarwyh.junit5.provider.model;
 
-import static istarwyh.util.TypeUtils.isJsonType;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.TypeReference;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+
+import static io.github.istarwyh.util.TypeUtils.isJsonType;
 
 /**
  * @author xiaohui

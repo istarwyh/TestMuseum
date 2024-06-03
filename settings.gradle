@@ -14,4 +14,5 @@ include 'tdd.java.args'
 include 'tdd.java.di'
 include 'tdd.java.common'
 include 'tdd.java.algorithm'
+include 'junit-extensions'
 

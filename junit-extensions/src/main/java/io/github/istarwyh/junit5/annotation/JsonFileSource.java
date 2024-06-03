@@ -1,6 +1,6 @@
-package istarwyh.junit5.annotation;
+package io.github.istarwyh.junit5.annotation;
 
-import istarwyh.junit5.provider.JsonFileArgumentsProvider;
+import io.github.istarwyh.junit5.provider.JsonFileArgumentsProvider;
 import java.lang.annotation.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;

@@ -1,16 +1,16 @@
-package istarwyh.classloader;
+package io.github.istarwyh.classloader;
 
-import istarwyh.classloader.modifier.Modifier;
-import javassist.ClassPool;
-import javassist.CtClass;
-import lombok.SneakyThrows;
 
+import io.github.istarwyh.classloader.modifier.Modifier;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.ServiceLoader;
 import java.util.Set;
+import javassist.ClassPool;
+import javassist.CtClass;
+import lombok.SneakyThrows;
 
 /**
  * ClassLoader will load more class when needed. And {@link MyClassLoader} will load class what is not satisfied with
@@ -35,7 +35,7 @@ public class MyClassLoader extends ClassLoader{
      */
     private static final String packageHead;
     static  {
-        String packageName = MyClassLoader.class.getPackageName();
+        String packageName = MyClassLoader.class.getPackage().getName();
         String[] packageNameStrings = packageName.split("\\.");
         if(packageNameStrings.length > 1){
             String theSecondPackageNameInPackagePath = packageNameStrings[1];
@@ -157,8 +157,4 @@ public class MyClassLoader extends ClassLoader{
         }
     }
 
-    @Override
-    public String getName() {
-        return "my";
-    }
 }

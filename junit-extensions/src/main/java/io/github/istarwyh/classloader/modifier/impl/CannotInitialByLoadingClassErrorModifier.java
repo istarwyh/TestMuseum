@@ -1,7 +1,8 @@
-package istarwyh.classloader.modifier.impl;
+package io.github.istarwyh.classloader.modifier.impl;
 
-import istarwyh.classloader.model.CannotInitialDueToLoadingClassError;
-import istarwyh.classloader.modifier.Modifier;
+
+import io.github.istarwyh.classloader.model.CannotInitialDueToLoadingClassError;
+import io.github.istarwyh.classloader.modifier.Modifier;
 
 /**
  * @author xiaohui

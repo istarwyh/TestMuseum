@@ -1,6 +1,6 @@
-package istarwyh.util;
+package io.github.istarwyh.util;
 
-import static istarwyh.util.UnsafeUtils.unsafe;
+import static io.github.istarwyh.util.UnsafeUtils.unsafe;
 
 import java.lang.reflect.*;
 import java.security.AccessController;
@@ -200,4 +200,40 @@ public class ReflectionUtils {
       unsafe().putObject(base, offset, newValue);
     }
   }
+
+  /**
+   * find the first generic clazz of the given interface
+   *
+   * @param originInterface the generic interface
+   * @param concreteClass the concrete class the implemented the generic interface
+   * @return the generic interface generic clazz
+   * @param <T> the generic interface generic param,like `Interface Example<T>`
+   */
+  public static <T> Class<T> getInterfaceFirstGenericClazz(
+          Class<?> originInterface, Class<?> concreteClass) {
+    for (Type type : concreteClass.getGenericInterfaces()) {
+      if (type instanceof ParameterizedType
+              && ((ParameterizedType) type)
+              .getRawType()
+              .getTypeName()
+              .equals(originInterface.getName())) {
+        Type actualTypeArgument = ((ParameterizedType) type).getActualTypeArguments()[0];
+        if (actualTypeArgument != null) {
+          return getClassFromParameterizedType(actualTypeArgument);
+        }
+      }
+    }
+    throw new IllegalArgumentException("Invalid interface");
+  }
+
+  @NotNull
+  @SuppressWarnings("unchecked")
+  private static <T> Class<T> getClassFromParameterizedType(Type actualTypeArgument) {
+    if (actualTypeArgument instanceof Class) {
+      return (Class<T>) actualTypeArgument;
+    } else {
+      return getClassFromParameterizedType(((ParameterizedType) actualTypeArgument).getRawType());
+    }
+  }
+
 }

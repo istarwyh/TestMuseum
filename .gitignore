@@ -41,3 +41,5 @@ bin/
 
 ### FrontEnd ###
 node_modules
+/junit-extensions/target/
+/junit-extensions/io/

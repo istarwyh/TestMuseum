@@ -1,8 +1,7 @@
-package istarwyh.util;
+package io.github.istarwyh.util;
 
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;

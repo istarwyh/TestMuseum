@@ -1,4 +1,4 @@
-package istarwyh.classloader.model;
+package io.github.istarwyh.classloader.model;
 
 public class CannotInitialDueToLoadingClassError {
     public static final Integer id;

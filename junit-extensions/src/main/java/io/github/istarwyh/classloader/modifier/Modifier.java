@@ -1,12 +1,15 @@
-package istarwyh.classloader.modifier;
+package io.github.istarwyh.classloader.modifier;
 
-import istarwyh.classloader.MyClassLoader;
-import istarwyh.util.ReflectionUtils;
+
+
+import io.github.istarwyh.classloader.MyClassLoader;
+
+import io.github.istarwyh.util.ReflectionUtils;
 import javassist.CannotCompileException;
 import javassist.CtClass;
 import lombok.SneakyThrows;
 
-import static istarwyh.util.JavassistUtil.wipeOriginalByteCode;
+import static io.github.istarwyh.util.JavassistUtil.wipeOriginalByteCode;
 
 
 /**

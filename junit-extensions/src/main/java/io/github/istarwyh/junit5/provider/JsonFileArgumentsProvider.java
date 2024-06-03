@@ -1,4 +1,4 @@
-package istarwyh.junit5.provider;
+package io.github.istarwyh.junit5.provider;
 
 import static java.util.Arrays.copyOf;
 import static java.util.Arrays.stream;
@@ -6,10 +6,10 @@ import static java.util.concurrent.CompletableFuture.*;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONReader;
-import istarwyh.junit5.annotation.JsonFileSource;
-import istarwyh.util.RecursiveReferenceDetector;
-import istarwyh.util.ReflectionUtils;
-import istarwyh.util.TypeUtils;
+import io.github.istarwyh.junit5.annotation.JsonFileSource;
+import io.github.istarwyh.util.RecursiveReferenceDetector;
+import io.github.istarwyh.util.ReflectionUtils;
+import io.github.istarwyh.util.TypeUtils;
 import java.io.*;
 import java.lang.reflect.*;
 import java.nio.charset.Charset;
@@ -54,9 +54,9 @@ import org.junit.platform.commons.util.Preconditions;
  * }</pre>
  *
  * Detailed example usage can be seen in the {@code JsonFileArgumentsProviderTest}.
- * <p>Note that this class relies on the {@link com.alibaba.fastjson2.JSON} library for JSON processing
- * and uses the {@link org.jeasy.random.EasyRandom} library for generating random values for object
- * instantiation when needed. It also makes use of {@link lombok.SneakyThrows} to bypass checked
+ * <p>Note that this class relies on the {@link JSON} library for JSON processing
+ * and uses the {@link EasyRandom} library for generating random values for object
+ * instantiation when needed. It also makes use of {@link SneakyThrows} to bypass checked
  * exceptions, which should be used cautiously as it may hide potentially recoverable errors.
  *
  * <p>This class is part of a suite of extensions that enhance JUnit 5's parameterized testing capabilities,
@@ -107,7 +107,7 @@ public class JsonFileArgumentsProvider
 
   private String[] getResourcePaths(String[] partResourceNames) {
     final String[] resourcePaths = copyOf(partResourceNames, partResourceNames.length);
-    String packageName = requiredTestClass.getPackageName();
+    String packageName = requiredTestClass.getPackage().getName();
     for (int i = 0; i < resourcePaths.length; i++) {
       resourcePaths[i] =
           packageName.replaceAll("\\.", ADDRESS_DASH) + ADDRESS_DASH + partResourceNames[i];

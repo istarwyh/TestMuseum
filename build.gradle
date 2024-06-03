@@ -13,8 +13,9 @@ ext {
     fastjson2Version = '2.0.25'
     guavaVersion = '33.0.0-jre'
     mapstructVersion = '1.5.3.Final'
-    apacheCommonsLang3Version= '3.13.0'
-    easyRandomVersion='5.0.0'
+    apacheCommonsLang3Version = '3.13.0'
+    easyRandomVersion = '5.0.0'
+    olderEasyRandomVersion = '4.3.0'
 }
 
 allprojects {
@@ -47,7 +48,6 @@ allprojects {
 
         dependencies {
             /**************************************************  SRC  ************************************************************/
-
             compileOnly(
                     "org.projectlombok:lombok:${lombokVersion}"
             )
@@ -59,16 +59,15 @@ allprojects {
                     "com.alibaba.fastjson2:fastjson2:${fastjson2Version}",
                     "com.google.guava:guava:${guavaVersion}",
                     "org.mapstruct:mapstruct:${mapstructVersion}",
-                    "org.apache.commons:commons-lang3:${apacheCommonsLang3Version}",
-                    "org.jeasy:easy-random-core:${easyRandomVersion}"
+                    "org.apache.commons:commons-lang3:${apacheCommonsLang3Version}"
             )
 
             annotationProcessor(
                     "org.projectlombok:lombok:${lombokVersion}",
                     "org.mapstruct:mapstruct-processor:${mapstructVersion}"
             )
-            /**************************************************  TEST  ************************************************************/
 
+            /**************************************************  TEST  ************************************************************/
             testCompileOnly(
                     "org.projectlombok:lombok:${lombokVersion}"
             )
@@ -84,8 +83,7 @@ allprojects {
                     "ch.qos.logback:logback-classic:${logbackClassicVersion}",
                     "org.javassist:javassist:${javassistVersion}",
                     "org.apache.commons:commons-lang3:${apacheCommonsLang3Version}",
-                    "org.mapstruct:mapstruct:${mapstructVersion}",
-                    "org.jeasy:easy-random-core:${easyRandomVersion}"
+                    "org.mapstruct:mapstruct:${mapstructVersion}"
             )
 
             testAnnotationProcessor(
@@ -105,7 +103,7 @@ allprojects {
         }
     }
 
-    defaultTasks 'clean', 'test'
+    defaultTasks 'clean', 'build', 'test'
 
 }
 

@@ -1,4 +1,4 @@
-package istarwyh.util;
+package io.github.istarwyh.util;
 
 import java.lang.reflect.Field;
 import sun.misc.Unsafe;
