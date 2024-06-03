@@ -1,9 +1,0 @@
-io.github.istarwyh.classloader
-io.github.istarwyh.classloader.model
-io.github.istarwyh.classloader.modifier
-io.github.istarwyh.classloader.modifier.impl
-io.github.istarwyh.junit5.annotation
-io.github.istarwyh.junit5.extension
-io.github.istarwyh.junit5.provider
-io.github.istarwyh.junit5.provider.model
-io.github.istarwyh.util
