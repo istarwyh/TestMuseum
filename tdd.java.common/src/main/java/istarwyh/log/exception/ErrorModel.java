@@ -1,4 +1,4 @@
-package istarwyh.exception;
+package istarwyh.log.exception;
 
 /**
  * @author xiaohui
