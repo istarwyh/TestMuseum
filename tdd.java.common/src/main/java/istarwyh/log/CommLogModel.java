@@ -10,6 +10,8 @@ import java.io.Serializable;
 import java.io.StringWriter;
 import java.util.List;
 import java.util.Map;
+
+import istarwyh.log.annotation.NotPrintTrace;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -92,6 +94,10 @@ public class CommLogModel implements Serializable {
   }
 
   private CommLogModel() {}
+
+  public void setErrorType(CommLogErrorType errorType) {
+    this.errorType = errorType.name();
+  }
 
   public String getParams() {
     if (getParamsMap() == null) {
@@ -222,5 +228,10 @@ public class CommLogModel implements Serializable {
       count = ((List<?>) returnValue).size();
     }
     return count;
+  }
+
+  public CommLogModel addParam(String parameterName, Object arg) {
+    paramsMap.put(parameterName,arg);
+    return this;
   }
 }

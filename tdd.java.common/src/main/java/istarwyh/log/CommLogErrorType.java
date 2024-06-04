@@ -1,12 +1,16 @@
 package istarwyh.log;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 /**
  * @author mac
  */
+@Getter
 @AllArgsConstructor
 public enum CommLogErrorType {
+
+    SUCCESS("成功"),
 
     REQUEST_ILLEGAL("非法请求"),
 
@@ -21,10 +25,12 @@ public enum CommLogErrorType {
     OUTER_ERROR("外部系统错误"),
 
     SENTINEL_BLOCK("限流异常"),
+    RESULT_NULL("结果为null"),
 
     UNKNOWN_ERROR("未知错误")
 
     ;
+
 
     private final String msg;
 }
