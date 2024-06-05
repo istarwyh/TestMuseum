@@ -1,4 +1,4 @@
-package istarwyh.log;
+package istarwyh.log.constant;
 
 /**
  * @author mac

@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import java.util.Arrays;
 import java.util.Objects;
 
-import static istarwyh.log.CommLogErrorType.RESULT_NULL;
+import static istarwyh.log.constant.CommLogErrorType.RESULT_NULL;
 
 /**
  * @author mac
@@ -17,7 +17,7 @@ import static istarwyh.log.CommLogErrorType.RESULT_NULL;
 public abstract class AbstractLogInterceptor {
 
   protected boolean ignoreCommLog(ProceedingJoinPoint joinPoint) {
-    boolean print = false;
+    boolean print;
     MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
     CommLog commLog = methodSignature.getMethod().getAnnotation(CommLog.class);
     print = ifPrint(commLog);

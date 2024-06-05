@@ -1,17 +1,17 @@
 package istarwyh.log;
 
-import static istarwyh.log.LogConstants.CN_LOG_TYPE_SEPARATOR;
-import static istarwyh.log.LogConstants.LOG_TYPE_SEPARATOR;
+import static istarwyh.log.constant.LogConstants.CN_LOG_TYPE_SEPARATOR;
+import static istarwyh.log.constant.LogConstants.LOG_TYPE_SEPARATOR;
 
 import com.alibaba.fastjson2.JSON;
 import com.google.common.collect.Maps;
+import istarwyh.log.annotation.NotPrintTrace;
+import istarwyh.log.constant.CommLogErrorType;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.io.StringWriter;
 import java.util.List;
 import java.util.Map;
-
-import istarwyh.log.annotation.NotPrintTrace;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
