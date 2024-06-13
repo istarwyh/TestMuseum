@@ -13,6 +13,7 @@ import io.github.istarwyh.util.TypeUtils;
 import java.io.*;
 import java.lang.reflect.*;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
@@ -95,9 +96,18 @@ public class JsonFileArgumentsProvider
   }
 
   private Object valueOfType(InputStream inputStream) {
-    try (JSONReader reader = JSONReader.of(inputStream, Charset.defaultCharset())) {
+    try (JSONReader reader = JSONReader.of(inputStream, getCharset())) {
       return reader.read(testMethodParameterClazz);
     }
+  }
+
+  /**
+   * Compatible with GBK charset due to JSON not supporting GBK charset
+   */
+  @NotNull
+  private static Charset getCharset() {
+    Charset charset = Charset.defaultCharset();
+    return charset.name().equals("GBK") ? StandardCharsets.UTF_8 : charset;
   }
 
   @Override
