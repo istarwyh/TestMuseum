@@ -25,6 +25,7 @@ public enum CommLogErrorType {
     OUTER_ERROR("外部系统错误"),
 
     SENTINEL_BLOCK("限流异常"),
+
     RESULT_NULL("结果为null"),
 
     UNKNOWN_ERROR("未知错误")

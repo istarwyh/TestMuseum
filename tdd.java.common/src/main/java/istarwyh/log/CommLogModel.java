@@ -1,6 +1,6 @@
 package istarwyh.log;
 
-import static istarwyh.log.constant.CommLogErrorType.RESULT_NULL;
+import static istarwyh.log.constant.CommLogErrorType.*;
 import static istarwyh.log.constant.LogConstants.CN_LOG_TYPE_SEPARATOR;
 import static istarwyh.log.constant.LogConstants.LOG_TYPE_SEPARATOR;
 
@@ -249,7 +249,9 @@ public class CommLogModel implements Serializable {
   public void log() {
     if (getErrorCode() != null || getErrorMsg() != null) {
       this.loggerMethod = logger::error;
-    } else if (RESULT_NULL.name().equals(getErrorType())) {
+    } else if (RESULT_NULL.name().equals(getErrorType())
+        || BIZ_IGNORE.name().equals(getErrorType())
+        || BIZ_WARN.name().equals(getErrorType())) {
       this.loggerMethod = logger::warn;
     }
     loggerMethod.accept(toString());
