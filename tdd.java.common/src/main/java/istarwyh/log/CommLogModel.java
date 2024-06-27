@@ -1,5 +1,6 @@
 package istarwyh.log;
 
+import static istarwyh.log.constant.CommLogErrorType.RESULT_NULL;
 import static istarwyh.log.constant.LogConstants.CN_LOG_TYPE_SEPARATOR;
 import static istarwyh.log.constant.LogConstants.LOG_TYPE_SEPARATOR;
 
@@ -12,9 +13,13 @@ import java.io.Serializable;
 import java.io.StringWriter;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+import org.aspectj.lang.reflect.MethodSignature;
+import org.slf4j.Logger;
 
 /**
  * @author xiaohui
@@ -30,14 +35,12 @@ public class CommLogModel implements Serializable {
   private int maxLength = 2048;
 
   /** 当前输出日志的方法名称 */
-  private String methodName;
+  private String classMethodName;
 
   /** 异常编码，最好是统一定义的异常编码，也可以是具体抛异常的方法名称，只要能具体表示该异常操作即可 */
   private String errorCode;
 
-  /** 异常类型，，主要用于监控
-   * {@link CommLogErrorType}
-   * */
+  /** 异常类型，，主要用于监控 {@link CommLogErrorType} */
   private String errorType;
 
   /** 异常信息，包括堆栈 */
@@ -49,18 +52,11 @@ public class CommLogModel implements Serializable {
   /** traceId */
   private String traceId;
 
-  /** rpcId */
-  private String rpcId;
-
-  /** 调用来源端 */
-  private String clientSource;
-
-  /** 调用方方法描述 */
-  private String clientMethod;
+  /** 调用信息 */
+  private String invokeInfo;
 
   /** 操作人信息 */
   private String operatorInfo;
-
 
   /** 入参内容 */
   private Map<String, Object> paramsMap;
@@ -82,18 +78,30 @@ public class CommLogModel implements Serializable {
   private String stat;
 
   /** 统计/分析信息，内容格式各个业务自己定义 */
-  private Map<String, String> statMap;
+  private Map<String, String> statisticMap;
 
-  public CommLogModel(String methodName) {
-    this.methodName = methodName;
+  private Logger logger;
+
+  private Consumer<String> loggerMethod;
+
+  public CommLogModel(String classMethodName, Logger logger) {
+    this.classMethodName = classMethodName;
     this.startTime = System.currentTimeMillis();
+    this.logger = logger;
+    this.loggerMethod = logger::info;
 
     contextMap = Maps.newHashMap();
     paramsMap = Maps.newHashMap();
-    statMap = Maps.newHashMap();
+    statisticMap = Maps.newHashMap();
   }
 
   private CommLogModel() {}
+
+  public void setErrorType(MethodSignature methodSignature, Object result) {
+    if (!void.class.equals(methodSignature.getReturnType()) && null == result) {
+      this.setErrorType(RESULT_NULL);
+    }
+  }
 
   public void setErrorType(CommLogErrorType errorType) {
     this.errorType = errorType.name();
@@ -119,10 +127,10 @@ public class CommLogModel implements Serializable {
   }
 
   public String getStat() {
-    if (getStatMap() == null) {
+    if (getStatisticMap() == null) {
       return "";
     }
-    return JSON.toJSONString(getStatMap());
+    return JSON.toJSONString(getStatisticMap());
   }
 
   public String getReturnValueStr() {
@@ -134,7 +142,7 @@ public class CommLogModel implements Serializable {
 
   public boolean addStatHitRule(boolean express, String value) {
     if (express) {
-      statMap.put("hitRule", value);
+      statisticMap.put("hitRule", value);
     }
     return express;
   }
@@ -149,39 +157,37 @@ public class CommLogModel implements Serializable {
     return str.replaceAll("\\|", CN_LOG_TYPE_SEPARATOR);
   }
 
+  private static final ToStringStyle CUSTOM_PRINT_STYLE =
+      new ToStringStyle() {
+        {
+          this.setContentStart("");
+          this.setContentEnd("");
+          this.setUseIdentityHashCode(false);
+          this.setUseClassName(false);
+          this.setUseFieldNames(false);
+          this.setFieldSeparator(LOG_TYPE_SEPARATOR);
+          this.setNullText("");
+        }
+      };
+
   @Override
   public String toString() {
-    return new ToStringBuilder(this)
-        .append(errorCode)
-        .append(LOG_TYPE_SEPARATOR)
-        .append(errorType)
-        .append(LOG_TYPE_SEPARATOR)
-        .append(methodName)
-        .append(LOG_TYPE_SEPARATOR)
-        .append(traceId)
-        .append(LOG_TYPE_SEPARATOR)
-        .append(rpcId)
-        .append(LOG_TYPE_SEPARATOR)
-        .append(clientSource)
-        .append(LOG_TYPE_SEPARATOR)
-        .append(clientMethod)
-        .append(LOG_TYPE_SEPARATOR)
+    return new ToStringBuilder(null, CUSTOM_PRINT_STYLE)
+        .append(getClassMethodName())
+        .append(getTraceId())
+        .append(getInvokeInfo())
         .append(escapeVerticalLine(getOperatorInfo()))
-        .append(LOG_TYPE_SEPARATOR)
         .append(escapeVerticalLine(getParams()))
-        .append(LOG_TYPE_SEPARATOR)
         .append(escapeVerticalLine(getContext()))
-        .append(LOG_TYPE_SEPARATOR)
         .append(escapeVerticalLine(getReturnValueStr()))
-        .append(LOG_TYPE_SEPARATOR)
-        .append(statMap)
-        .append(LOG_TYPE_SEPARATOR)
+        .append(getStatisticMap())
         .append(getCount())
-        .append(LOG_TYPE_SEPARATOR)
         .append(getRt())
-        .append(LOG_TYPE_SEPARATOR)
+        .append(getErrorCode())
+        .append(getErrorType())
         .append(getErrorMsg())
-        .toString();
+        .toString()
+        .replaceFirst("\\|$", "");
   }
 
   public void setErrorMsg(Throwable throwable) {
@@ -231,7 +237,21 @@ public class CommLogModel implements Serializable {
   }
 
   public CommLogModel addParam(String parameterName, Object arg) {
-    paramsMap.put(parameterName,arg);
+    paramsMap.put(parameterName, arg);
     return this;
+  }
+
+  public CommLogModel warn() {
+    this.loggerMethod = logger::warn;
+    return this;
+  }
+
+  public void log() {
+    if (getErrorCode() != null || getErrorMsg() != null) {
+      this.loggerMethod = logger::error;
+    } else if (RESULT_NULL.name().equals(getErrorType())) {
+      this.loggerMethod = logger::warn;
+    }
+    loggerMethod.accept(toString());
   }
 }

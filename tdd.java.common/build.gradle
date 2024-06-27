@@ -11,9 +11,7 @@ dependencies {
             "org.jeasy:easy-random-core:${easyRandomVersion}",
             'org.springframework:spring-aop:5.3.25',
             'org.springframework.boot:spring-boot:3.2.0',
-            'org.aspectj:aspectjrt:1.9.19'
-
-
+            'org.aspectj:aspectjweaver:1.9.22'
     )
 
     testImplementation(

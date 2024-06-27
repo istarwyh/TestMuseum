@@ -1,18 +1,20 @@
 package istarwyh.log;
 
+import static istarwyh.log.constant.LogConstants.CLASS_METHOD_SEPARATOR;
+
 import istarwyh.log.annotation.CommLog;
+import java.util.Arrays;
+import java.util.Objects;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.reflect.CodeSignature;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
-
-import java.util.Arrays;
-import java.util.Objects;
-
-import static istarwyh.log.constant.CommLogErrorType.RESULT_NULL;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 /**
  * @author mac
+ * {@link EnableAspectJAutoProxy}
  */
 public abstract class AbstractLogInterceptor {
 
@@ -30,21 +32,38 @@ public abstract class AbstractLogInterceptor {
 
   public Object buildToCommLog(ProceedingJoinPoint joinPoint, Logger logger) {
     MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
-    String classAndMethodName =
-        joinPoint.getTarget().getClass().getSimpleName()
-            + "#"
-            + methodSignature.getMethod().getName();
-    CommLogModel logModel = new CommLogModel(classAndMethodName);
-    logModel.setTraceId("");
-    logModel.setRpcId("");
+    CommLogModel logModel =
+        CommLogHolder.get(getClassMethodName(joinPoint, methodSignature), logger);
+    logModel.setTraceId(getTraceId());
+    logModel.setInvokeInfo(getRpcId());
+    CommLog commLog = methodSignature.getMethod().getAnnotation(CommLog.class);
+    addLogModelParam(logModel, joinPoint, commLog);
+    Object result = proceedResultMaybeLogError(joinPoint, logModel);
+    // 根据业务具体的Result 类型获取信息 补全 errorCode errorMsg 和 errorType
+    postCustomResult(result, logModel);
+    logModel.setReturnValue(result);
+    logModel.setErrorType(methodSignature, result);
+    logModel.log();
+    return result;
+  }
 
+  @NotNull
+  private static String getClassMethodName(
+      ProceedingJoinPoint joinPoint, MethodSignature methodSignature) {
+    return joinPoint.getTarget().getClass().getSimpleName()
+        + CLASS_METHOD_SEPARATOR
+        + methodSignature.getMethod().getName();
+  }
+
+  private static void addLogModelParam(
+      CommLogModel logModel, ProceedingJoinPoint joinPoint, CommLog commLog) {
     String[] parameterNames = ((CodeSignature) joinPoint.getSignature()).getParameterNames();
+
     Object[] args = joinPoint.getArgs();
     if (parameterNames.length == args.length) {
       for (int i = 0; i < parameterNames.length; i++) {
         if (Objects.isNull(args[i])) {
           String parameterName = parameterNames[i];
-          CommLog commLog = methodSignature.getMethod().getAnnotation(CommLog.class);
           if (commLog != null && Arrays.asList(commLog.ignoreParams()).contains(parameterName)) {
             continue;
           }
@@ -52,34 +71,40 @@ public abstract class AbstractLogInterceptor {
         }
       }
     }
-    CommLogHolder.put(classAndMethodName, logModel);
-    Object result = null;
+  }
+
+  protected abstract String getRpcId();
+
+  protected abstract String getTraceId();
+
+  private Object proceedResultMaybeLogError(ProceedingJoinPoint joinPoint, CommLogModel logModel) {
+    Object result;
     try {
       result = joinPoint.proceed();
     } catch (Throwable e) {
       postThrowableResult(e, logModel);
-      logger.info(logModel.toString());
+      logModel.log();
       throw new RuntimeException(e);
     } finally {
-      CommLogHolder.clear(classAndMethodName);
+      CommLogHolder.clear(logModel.getClassMethodName());
     }
-    postCustomResult(methodSignature.getReturnType(), result, logModel);
-    //TODO 通过 logModel 中的 LEVEL 来判断打印什么级别的日志
-    logger.info(logModel.toString());
     return result;
   }
 
+  /**
+   * postThrowableResult
+   *
+   * @param e {@link Throwable}
+   * @param logModel {@link CommLogModel}
+   */
   abstract void postThrowableResult(Throwable e, CommLogModel logModel);
 
-  private void postCustomResult(Class<?> returnType, Object result, CommLogModel logModel) {
-    if (!void.class.equals(returnType) && null == result) {
-      logModel.setErrorType(RESULT_NULL);
-    }
-    // 根据业务具体的Result 类型获取信息 补全 errorCode errorMsg 和 errorType
-    postCustomResult(result, logModel);
-    logModel.setReturnValue(result);
-  }
-
+  /**
+   * postCustomResult
+   *
+   * @param result result
+   * @param logModel {@link CommLogModel}
+   */
   abstract void postCustomResult(Object result, CommLogModel logModel);
 
   private static boolean ifPrint(CommLog commLog) {

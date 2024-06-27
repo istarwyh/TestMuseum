@@ -19,6 +19,16 @@ public class TestMuseumLogInterceptor extends AbstractLogInterceptor{
     private static final Logger COMMLOG = LoggerFactory.getLogger("COMMLOG");
 
     @Override
+    protected String getRpcId() {
+        return null;
+    }
+
+    @Override
+    protected  String getTraceId() {
+        return null;
+    }
+
+    @Override
     void postThrowableResult(Throwable e, CommLogModel logModel) {
 
     }
