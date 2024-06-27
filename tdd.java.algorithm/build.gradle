@@ -5,9 +5,17 @@ plugins {
 version '1.0-SNAPSHOT'
 
 repositories {
-    mavenLocal()
+//    mavenLocal()
+    maven {
+        name "GitHubRelease"
+        url "https://maven.pkg.github.com/istarwyh/Initial"
+        credentials {
+            username = System.getenv("GITHUB_NAME")
+            password = System.getenv("GITHUB_TOKEN")
+        }
+    }
 }
 
 dependencies {
-    implementation("com.github.istarwyh:Initial:${istarwyhInitialVersion}")
+//    implementation("com.github.istarwyh:Initial:${istarwyhInitialVersion}")
 }

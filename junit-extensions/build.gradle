@@ -111,8 +111,11 @@ publishing {
         from sourceSets.main.allSource
     }
 
+    /**
+     * javadocJar
+     */
     artifacts {
-        archives javadocJar, sourcesJar
+        archives  sourcesJar
     }
 }
 

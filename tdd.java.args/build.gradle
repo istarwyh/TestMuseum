@@ -9,5 +9,5 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.istarwyh:Initial:${istarwyhInitialVersion}")
+//    implementation("com.github.istarwyh:Initial:${istarwyhInitialVersion}")
 }

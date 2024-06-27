@@ -1,6 +1,6 @@
 version '1.0-SNAPSHOT'
 ext {
-    istarwyhInitialVersion = '0.2.7'
+    istarwyhInitialVersion = '0.2.9'
     jakartaInjectVersion = '2.0.1'
     junitVersion = '5.9.2'
     junitPlatformVersion = '1.0.0'
