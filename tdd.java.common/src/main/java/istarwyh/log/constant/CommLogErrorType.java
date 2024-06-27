@@ -16,15 +16,15 @@ public enum CommLogErrorType {
 
     PARAM_INVALID("无效参数"),
 
+    OUTER_ERROR("外部系统错误"),
+
+    SENTINEL_BLOCK("限流异常"),
+
     BIZ_WARN("业务警告"),
 
     BIZ_IGNORE("业务忽略"),
 
     BIZ_PROCESSING("业务处理中"),
-
-    OUTER_ERROR("外部系统错误"),
-
-    SENTINEL_BLOCK("限流异常"),
 
     RESULT_NULL("结果为null"),
 
