@@ -2,7 +2,12 @@ package istarwyh.log;
 
 import static istarwyh.log.constant.LogConstants.CLASS_METHOD_SEPARATOR;
 
+import com.alibaba.fastjson2.JSONObject;
 import istarwyh.log.annotation.CommLog;
+import istarwyh.log.annotation.LogIgnore;
+import istarwyh.log.annotation.LogShow;
+import istarwyh.util.TypeUtils;
+import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Objects;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -10,11 +15,11 @@ import org.aspectj.lang.reflect.CodeSignature;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 /**
- * @author mac
- * {@link EnableAspectJAutoProxy}
+ * @author mac {@link EnableAspectJAutoProxy}
  */
 public abstract class AbstractLogInterceptor {
 
@@ -62,15 +67,57 @@ public abstract class AbstractLogInterceptor {
     Object[] args = joinPoint.getArgs();
     if (parameterNames.length == args.length) {
       for (int i = 0; i < parameterNames.length; i++) {
-        if (Objects.isNull(args[i])) {
+        if (Objects.nonNull(args[i])) {
           String parameterName = parameterNames[i];
           if (commLog != null && Arrays.asList(commLog.ignoreParams()).contains(parameterName)) {
             continue;
           }
-          logModel.addParam(parameterName, args[i]);
+          logModel.addParam(parameterName, handleArg(args[i]));
         }
       }
     }
+  }
+
+  private static Object handleArg(Object args) {
+    if (args == null) {
+      return new JSONObject();
+    }
+    if (TypeUtils.cannotGetAccess(args.getClass())) {
+      return args;
+    }
+    try {
+      return convertJsonObject(args);
+    } catch (Throwable throwable) {
+      LoggerFactory.getLogger(AbstractLogInterceptor.class).error("convert args to jsonObject error:",throwable);
+      return args;
+    }
+  }
+
+  private static Object convertJsonObject(Object args) throws IllegalAccessException {
+    JSONObject jsonObject = new JSONObject();
+    boolean hasLogShow = false;
+    Field[] fields = args.getClass().getDeclaredFields();
+    for (Field field : fields) {
+      if (field.isAnnotationPresent(LogShow.class)) {
+        hasLogShow = true;
+        break;
+      }
+    }
+    for (Field field : fields) {
+      field.setAccessible(true);
+      String fieldName = field.getName();
+      Object value = field.get(args);
+      if (hasLogShow) {
+        if (field.isAnnotationPresent(LogShow.class)) {
+          jsonObject.put(fieldName, value);
+        }
+      } else {
+        if (!field.isAnnotationPresent(LogIgnore.class)) {
+          jsonObject.put(fieldName, value);
+        }
+      }
+    }
+    return jsonObject;
   }
 
   protected abstract String getRpcId();
