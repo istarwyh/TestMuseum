@@ -8,7 +8,7 @@ INIT_MONEY = 5
 # 每轮交锋的金钱基数
 PER_HUMAN_COST_BASE = 10
 # 每个人一生中与他人交锋的次数
-MILESTONE_TIMES = 1000
+MILESTONE_TIMES = 12
 # 每轮交锋后，产生的鸽派指数变化量
 PIGEON_SCORE_PER_ROUND = 0.01
 # 如果达到双赢时候的奖励

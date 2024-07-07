@@ -30,7 +30,7 @@ class Human(object):
                 human.pigeon_score = max(human.pigeon_score - PIGEON_SCORE_PER_ROUND, 0)
             else:
                 # 如果不是鸽子且付出大于得到，会进一步恶化它合作意愿
-                human.pigeon_score = max(human.pigeon_score - PIGEON_SCORE_PER_ROUND / 100., 0)
+                human.pigeon_score = max(human.pigeon_score - PIGEON_SCORE_PER_ROUND / 10., 0)
         elif got > paid:
             if human.is_pigeon:
                 human.pigeon_score = min(human.pigeon_score + PIGEON_SCORE_PER_ROUND, 1)
