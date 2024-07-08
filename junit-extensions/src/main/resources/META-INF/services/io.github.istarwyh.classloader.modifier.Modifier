@@ -1,0 +1,2 @@
+io.github.istarwyh.classloader.modifier.impl.CannotInitialByLoadingClassErrorModifier
+io.github.istarwyh.classloader.modifier.impl.CannotInitialDueToPrivateConstructorModifier

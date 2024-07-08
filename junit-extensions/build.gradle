@@ -36,13 +36,19 @@ dependencies {
         "org.javassist:javassist:${javassistVersion}",
         "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
         "org.junit.jupiter:junit-jupiter-params:${junitVersion}",
-        "org.jeasy:easy-random-core:${olderEasyRandomVersion}"
+        "org.jeasy:easy-random-core:${olderEasyRandomVersion}",
+        "org.mockito:mockito-core:${olderMockitoJunit5Version}"
     )
 
 
     testImplementation(
         "org.jeasy:easy-random-core:${olderEasyRandomVersion}"
     )
+}
+configurations.configureEach {
+    resolutionStrategy {
+        force "org.mockito:mockito-junit-jupiter:${olderMockitoJunit5Version}"
+    }
 }
 
 ext["signing.keyId"] = findProperty("signing.keyId")

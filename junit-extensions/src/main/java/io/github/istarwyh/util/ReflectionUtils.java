@@ -22,7 +22,7 @@ import sun.misc.Unsafe;
 public class ReflectionUtils {
 
   /**
-   * If you want to set static field, you should call {@link ReflectionUtils#setField(Object, Field,
+   * If you want to set static field, you should call {@link ReflectionUtils#setStaticFieldUsingUnsafe(Field,
    * Object)}
    *
    * @param modifiedObj modifiedObj
@@ -31,7 +31,15 @@ public class ReflectionUtils {
    */
   @SneakyThrows(NoSuchFieldException.class)
   public static void setField(Object modifiedObj, String fieldName, Object value) {
-    Predicate<Field> fieldPredicate = field -> hasFieldProperModifier(modifiedObj, field);
+      setField(modifiedObj, fieldName, value, field -> notStaticField(modifiedObj, field));
+  }
+
+  @SneakyThrows(NoSuchFieldException.class)
+  public static void setStaticField(Object modifiedObj, String fieldName, Object value) {
+      setField(modifiedObj, fieldName, value, field -> Modifier.isStatic(field.getModifiers()));
+  }
+
+  private static void setField(Object modifiedObj, String fieldName, Object value, Predicate<Field> fieldPredicate) throws NoSuchFieldException {
     Field foundField =
             findFieldInHierarchy(modifiedObj, fieldName, fieldPredicate)
                     .orElseThrow(
@@ -112,7 +120,7 @@ public class ReflectionUtils {
     private final String errorMessage;
   }
 
-  private static boolean hasFieldProperModifier(Object object, Field field) {
+  private static boolean notStaticField(Object object, Field field) {
     if (isClass(object)) {
       return Modifier.isStatic(field.getModifiers());
     } else {
@@ -144,7 +152,7 @@ public class ReflectionUtils {
     }
   }
 
-  private static void setStaticFieldUsingUnsafe(Field field, Object value) {
+  public static void setStaticFieldUsingUnsafe(Field field, Object value) {
     Object base = unsafe().staticFieldBase(field);
     long offset = unsafe().staticFieldOffset(field);
     setFieldUsingUnsafe(base, field, offset, value);
@@ -178,8 +186,15 @@ public class ReflectionUtils {
     }
   }
 
+  /**
+   * 使用 Unsafe 类提供的底层方法直接设置对象的字段值,绕过了 Java 语言的访问控制和安全检查。
+   * @param base 要修改字段的对象
+   * @param type 字段的类型,使用基本类型的包装类表示
+   * @param offset 段在对象内存中的偏移量
+   * @param newValue 要设置的新值
+   */
   private static void setFieldUsingUnsafe(
-          Object base, Class<?> type, long offset, Object newValue) {
+      Object base, Class<?> type, long offset, Object newValue) {
     if (type == Integer.TYPE) {
       unsafe().putInt(base, offset, (Integer) newValue);
     } else if (type == Short.TYPE) {

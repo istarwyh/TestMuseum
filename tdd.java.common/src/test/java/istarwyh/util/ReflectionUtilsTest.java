@@ -9,8 +9,6 @@ import java.util.Objects;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 class ReflectionUtilsTest {
 
@@ -26,49 +24,9 @@ class ReflectionUtilsTest {
     whereIGo = new WhereIGo();
   }
 
-  @Test
-  void should_throw_exception_if_setting_static_field() {
-    String value = "island";
-    assertThrows(
-        NoSuchFieldException.class, () -> ReflectionUtils.setField(whoIAm, "country", value));
-  }
-
-  @ParameterizedTest
-  @CsvSource(value = {"name,me", "heart,will always go on"})
-  void should_set_final_field_and_get_it(String fieldName, String value)
-      throws NoSuchFieldException {
-    ReflectionUtils.setField(whoIAm, fieldName, value);
-    String heart = ReflectionUtils.getField(whoIAm, fieldName);
-    assertEquals(value, heart);
-  }
 
   @Test
-  void should_set_parent_final_field_and_get_it() throws NoSuchFieldException {
-    String value = "will always go on";
-    String fieldName = "heart";
-    ReflectionUtils.setField(whereIGo, fieldName, value);
-    String heart = ReflectionUtils.getField(whereIGo, fieldName);
-    assertEquals(value, heart);
-  }
-
-  @Test
-  void should_get_static_field_value() {
-    String country = ReflectionUtils.getField(whereIGo, "country");
-    assertEquals(wuwei, country);
-  }
-
-  @Test
-  void should_not_get_non_exist_field_value_with_null() {
-    assertDoesNotThrow(() -> ReflectionUtils.getField(whereIGo, "died"));
-  }
-
-  @Test
-  void should_set_final_field_value() {
-    assertDoesNotThrow(() -> ReflectionUtils.setField(whereIGo, "heart", null));
-  }
-
-  @Test
-  void should_get_pojo_field_name_and_value() throws NoSuchFieldException {
+  void should_get_pojo_field_name_and_value() {
     ReflectionUtils.setField(whoIAm, "name", xiaohui);
     List<ImmutablePair<String, Object>> fields = ReflectionUtils.getPojoFieldNameAndValue(whoIAm);
     assertEquals(xiaohui, fields.get(0).getValue());

@@ -10,12 +10,14 @@ ext {
     jetbrainsAnnotationVersion = '24.0.1'
     javassistVersion = '3.29.2-GA'
     mockitoJunit5Version = '5.11.0'
+    olderMockitoJunit5Version = '4.11.0'
     fastjson2Version = '2.0.25'
     guavaVersion = '33.0.0-jre'
     mapstructVersion = '1.5.3.Final'
     apacheCommonsLang3Version = '3.13.0'
     easyRandomVersion = '5.0.0'
     olderEasyRandomVersion = '4.3.0'
+
 }
 
 allprojects {

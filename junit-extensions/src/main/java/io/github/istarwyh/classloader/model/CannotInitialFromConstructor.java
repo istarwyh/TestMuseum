@@ -1,5 +1,11 @@
 package io.github.istarwyh.classloader.model;
 
+import lombok.Setter;
+
+/**
+ * @author xiaohui
+ */
+@Setter
 public class CannotInitialFromConstructor {
 
     public String desc;
@@ -9,7 +15,4 @@ public class CannotInitialFromConstructor {
         throw new IllegalAccessException(String.valueOf(desc));
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
 }
