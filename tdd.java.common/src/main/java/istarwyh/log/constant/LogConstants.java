@@ -25,5 +25,5 @@ public interface LogConstants {
      */
     String KV_SEPARATOR = ":";
 
-    String CLASS_METHOD_SEPARATOR = "#";
+    String CLASS_METHOD_SEPARATOR = ".";
 }

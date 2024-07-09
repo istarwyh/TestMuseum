@@ -39,6 +39,8 @@ public abstract class AbstractLogInterceptor {
     MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
     CommLogModel logModel =
         CommLogHolder.get(getClassMethodName(joinPoint, methodSignature), logger);
+    logModel.setRequestMaxPrintLength(getRequestMaxPrintLength(logModel));
+    logModel.setResponseMaxPrintLength(getResponseMaxPrintLength(logModel));
     logModel.setTraceId(getTraceId());
     logModel.setInvokeInfo(getRpcId());
     CommLog commLog = methodSignature.getMethod().getAnnotation(CommLog.class);
@@ -50,6 +52,15 @@ public abstract class AbstractLogInterceptor {
     logModel.setErrorType(methodSignature, result);
     logModel.log();
     return result;
+  }
+
+  protected int getResponseMaxPrintLength(CommLogModel logModel) {
+    return logModel.getResponseMaxPrintLength();
+  }
+
+
+  protected int getRequestMaxPrintLength(CommLogModel logModel) {
+    return logModel.getRequestMaxPrintLength();
   }
 
   @NotNull
@@ -88,7 +99,8 @@ public abstract class AbstractLogInterceptor {
     try {
       return convertJsonObject(args);
     } catch (Throwable throwable) {
-      LoggerFactory.getLogger(AbstractLogInterceptor.class).error("convert args to jsonObject error:",throwable);
+      LoggerFactory.getLogger(AbstractLogInterceptor.class)
+          .error("convert args to jsonObject error:", throwable);
       return args;
     }
   }

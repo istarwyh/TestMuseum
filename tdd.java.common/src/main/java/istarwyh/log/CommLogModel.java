@@ -32,7 +32,9 @@ public class CommLogModel implements Serializable {
   /** 是否需要转义日志内容中的“｜”，防止日志监控全部乱掉 */
   public static boolean ESCAPE_LOG_VERTICAL_LINE = false;
 
-  private int maxLength = 2048;
+  private int requestMaxPrintLength = 2048;
+
+  private int responseMaxPrintLength = 2048;
 
   /** 当前输出日志的方法名称 */
   private String classMethodName;
@@ -95,8 +97,6 @@ public class CommLogModel implements Serializable {
     statisticMap = Maps.newHashMap();
   }
 
-  private CommLogModel() {}
-
   public void setErrorType(MethodSignature methodSignature, Object result) {
     if (!void.class.equals(methodSignature.getReturnType()) && null == result) {
       this.setErrorType(RESULT_NULL);
@@ -111,7 +111,7 @@ public class CommLogModel implements Serializable {
     if (getParamsMap() == null) {
       return "";
     }
-    return StringUtils.substring(JSON.toJSONString(getParamsMap()), 0, maxLength);
+    return StringUtils.substring(JSON.toJSONString(getParamsMap()), 0, getRequestMaxPrintLength());
   }
 
   public CommLogModel addContext(String name, Object value) {
@@ -123,7 +123,7 @@ public class CommLogModel implements Serializable {
     if (getParamsMap() == null) {
       return "";
     }
-    return StringUtils.substring(JSON.toJSONString(getContextMap()), 0, maxLength);
+    return StringUtils.substring(JSON.toJSONString(getContextMap()), 0, getRequestMaxPrintLength());
   }
 
   public String getStat() {
@@ -137,7 +137,7 @@ public class CommLogModel implements Serializable {
     if (returnValue == null) {
       return null;
     }
-    return StringUtils.substring(JSON.toJSONString(returnValue), 0, maxLength);
+    return StringUtils.substring(JSON.toJSONString(returnValue), 0, getResponseMaxPrintLength());
   }
 
   public boolean addStatHitRule(boolean express, String value) {
