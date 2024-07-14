@@ -1,5 +1,6 @@
 version '1.0-SNAPSHOT'
 ext {
+    initSnapshotVersion = '1.0.0-SNAPSHOT'
     istarwyhInitialVersion = '0.2.9'
     jakartaInjectVersion = '2.0.1'
     junitVersion = '5.9.2'
@@ -24,6 +25,7 @@ allprojects {
     group 'istarwyh'
 
     repositories {
+        mavenLocal()
         maven { url "https://maven.aliyun.com/repository/public" }
         maven { url "https://repo.huaweicloud.com/repository/maven" }
         mavenCentral()
@@ -99,6 +101,12 @@ allprojects {
         implementation {
             dependencies.configureEach { dep ->
                 if (dep.getGroup() == 'com.github.istarwyh' && dep.getName() == 'Initial') {
+                    dep.transitive = false
+                }
+            }
+
+            dependencies.configureEach { dep ->
+                if (dep.getGroup() == 'io.github.istarwyh' && dep.getName() == 'junit-extensions') {
                     dep.transitive = false
                 }
             }

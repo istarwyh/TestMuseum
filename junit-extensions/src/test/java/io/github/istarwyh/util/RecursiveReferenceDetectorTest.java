@@ -1,9 +1,10 @@
-package istarwyh.util;
+package io.github.istarwyh.util;
 
-import static istarwyh.junit5.provider.JsonFileArgumentsProviderTest.*;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import io.github.istarwyh.junit5.provider.JsonFileArgumentsProviderTest;
+import io.github.istarwyh.junit5.provider.JsonFileArgumentsProviderTest.RecursionClass;
 import java.util.ArrayList;
 import java.util.List;
 import org.jeasy.random.EasyRandom;
@@ -36,7 +37,7 @@ public class RecursiveReferenceDetectorTest {
 
   @Test
   public void should_not_judge_recursion_2() {
-    Object object = new EasyRandom().nextObject(People.class);
+    Object object = new EasyRandom().nextObject(JsonFileArgumentsProviderTest.People.class);
     boolean res = RecursiveReferenceDetector.hasRecursiveReference(object);
     assertFalse(res);
   }

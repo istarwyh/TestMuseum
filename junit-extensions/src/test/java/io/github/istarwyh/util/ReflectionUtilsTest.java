@@ -2,6 +2,13 @@ package io.github.istarwyh.util;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.lang.reflect.Field;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Objects;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -65,6 +72,34 @@ class ReflectionUtilsTest {
     void should_not_get_non_exist_field_value_with_null() {
         assertDoesNotThrow(() -> ReflectionUtils.getField(whereIGo, "died"));
     }
+
+    @Test
+    void should_get_pojo_field_name_and_value() {
+        io.github.istarwyh.util.ReflectionUtils.setField(whoIAm, "name", xiaohui);
+        List<ImmutablePair<String, Object>> fields = ReflectionUtils.getPojoFieldNameAndValue(whoIAm);
+        assertEquals(xiaohui, fields.get(0).getValue());
+        assertEquals(wuwei, fields.get(1).getValue());
+        assertEquals(died, fields.get(2).getValue());
+    }
+
+    @Test
+    void should_get_pojo_annotation_field_name_and_value() {
+        io.github.istarwyh.util.ReflectionUtils.setField(whoIAm, "name", xiaohui);
+        List<ImmutablePair<String, Object>> fields =
+                ReflectionUtils.getPojoFieldNameAndValue(
+                        whoIAm, it -> it.isAnnotationPresent(MyAnnotation.class));
+        assertEquals(xiaohui, fields.get(0).getValue());
+        assertEquals(1, fields.size());
+    }
+
+    @Test
+    void get_all_settable_valid_fields() {
+        List<Field> allValidFields =
+                ReflectionUtils.getAllSettableFields(SampleClass.class);
+        assertEquals(4, Objects.requireNonNull(allValidFields).size());
+        assertTrue(allValidFields.stream().noneMatch(field -> field.getName().equals("intValue")));
+        assertTrue(allValidFields.stream().noneMatch(field -> field.getName().equals("longValue")));
+    }
    
 
     public static class WhoIAm {
@@ -83,4 +118,20 @@ class ReflectionUtilsTest {
     public enum TestClassEnum {
         WHO_AM_I;
     }
+
+    @Data
+    static class SampleParentClass {
+        private LocalDateTime localDateTimeValue;
+    }
+
+    @Data
+    @EqualsAndHashCode(callSuper = true)
+    static class SampleClass extends SampleParentClass {
+        private static int intValue;
+        public static final long longValue = 1L;
+        private Integer integerValue = 0;
+        private Long longObjectValue;
+        private String stringValue;
+    }
+
 }

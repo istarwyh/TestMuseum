@@ -6,8 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.opentest4j.AssertionFailedError;
 
-import static istarwyh.util.ReflectionUtilsTest.WhereIGo;
-import static istarwyh.util.ReflectionUtilsTest.WhoIAm;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AssertPlusTest {
@@ -15,11 +13,11 @@ class AssertPlusTest {
   private final EasyRandom easyRandom = new EasyRandom();
 
   @Test
-  void should_compare_two_objects_and_find_different_field_values() throws NoSuchFieldException {
+  void should_compare_two_objects_and_find_different_field_values() {
     WhoIAm lele = new WhoIAm();
     WhoIAm dudu = new WhoIAm();
-    ReflectionUtils.setField(lele, "name", "le");
-    ReflectionUtils.setField(dudu, "name", "du");
+    io.github.istarwyh.util.ReflectionUtils.setField(lele, "name", "le");
+    io.github.istarwyh.util.ReflectionUtils.setField(dudu, "name", "du");
     Throwable throwable =
         AssertPlus.assertThrows(Throwable.class, AssertPlus::compareFields, lele, dudu);
     System.out.println(throwable.toString());
@@ -56,4 +54,21 @@ class AssertPlusTest {
   void assertAllFieldsNotNull() {
     assertDoesNotThrow(() -> AssertPlus.assertAllNotNull(new Object()));
   }
+
+  public enum TestClassEnum {
+    WHO_AM_I;
+  }
+
+  public static class WhoIAm {
+
+    @MyAnnotation private String name;
+
+    private static final String country = "wuwei";
+
+    private final String heart = "died";
+
+    private final TestClassEnum type = TestClassEnum.WHO_AM_I;
+  }
+
+  public static class WhereIGo extends WhoIAm {}
 }

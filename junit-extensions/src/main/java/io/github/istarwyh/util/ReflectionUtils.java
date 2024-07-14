@@ -8,7 +8,10 @@ import java.security.PrivilegedAction;
 import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import lombok.*;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import sun.misc.Unsafe;
@@ -22,8 +25,8 @@ import sun.misc.Unsafe;
 public class ReflectionUtils {
 
   /**
-   * If you want to set static field, you should call {@link ReflectionUtils#setStaticFieldUsingUnsafe(Field,
-   * Object)}
+   * If you want to set static field, you should call {@link ReflectionUtils#setStaticField(Object,
+   * String,Object)}
    *
    * @param modifiedObj modifiedObj
    * @param fieldName including final field, not null or static field
@@ -31,25 +34,27 @@ public class ReflectionUtils {
    */
   @SneakyThrows(NoSuchFieldException.class)
   public static void setField(Object modifiedObj, String fieldName, Object value) {
-      setField(modifiedObj, fieldName, value, field -> notStaticField(modifiedObj, field));
+    setField(modifiedObj, fieldName, value, field -> notStaticField(modifiedObj, field));
   }
 
   @SneakyThrows(NoSuchFieldException.class)
   public static void setStaticField(Object modifiedObj, String fieldName, Object value) {
-      setField(modifiedObj, fieldName, value, field -> Modifier.isStatic(field.getModifiers()));
+    setField(modifiedObj, fieldName, value, field -> Modifier.isStatic(field.getModifiers()));
   }
 
-  private static void setField(Object modifiedObj, String fieldName, Object value, Predicate<Field> fieldPredicate) throws NoSuchFieldException {
+  private static void setField(
+      Object modifiedObj, String fieldName, Object value, Predicate<Field> fieldPredicate)
+      throws NoSuchFieldException {
     Field foundField =
-            findFieldInHierarchy(modifiedObj, fieldName, fieldPredicate)
-                    .orElseThrow(
-                            () ->
-                                    new NoSuchFieldException(
-                                            String.format(
-                                                    "No %s field named \"%s\" could be found in the \"%s\" class hierarchy",
-                                                    isClass(modifiedObj) ? "static" : "instance",
-                                                    fieldName,
-                                                    getClassOf(modifiedObj).getName())));
+        findFieldInHierarchy(modifiedObj, fieldName, fieldPredicate)
+            .orElseThrow(
+                () ->
+                    new NoSuchFieldException(
+                        String.format(
+                            "No %s field named \"%s\" could be found in the \"%s\" class hierarchy",
+                            isClass(modifiedObj) ? "static" : "instance",
+                            fieldName,
+                            getClassOf(modifiedObj).getName())));
     setField(modifiedObj, foundField, value);
   }
 
@@ -61,7 +66,7 @@ public class ReflectionUtils {
   @Nullable
   @SneakyThrows({IllegalAccessException.class})
   public static <T> T getFieldWithFilter(
-          Object object, String fieldName, Predicate<Field> fieldPredicate) {
+      Object object, String fieldName, Predicate<Field> fieldPredicate) {
     Field foundField = findFieldInHierarchy(object, fieldName, fieldPredicate).orElse(null);
     if (foundField == null) {
       return null;
@@ -70,21 +75,21 @@ public class ReflectionUtils {
   }
 
   public static Optional<Field> findFieldInHierarchy(
-          Object modifiedObj, String fieldName, @NotNull Predicate<Field> fieldPredicate) {
+      Object modifiedObj, String fieldName, @NotNull Predicate<Field> fieldPredicate) {
     if (modifiedObj == null) {
       throw new IllegalArgumentException("The modifiedObj containing the field cannot be null!");
     }
     Class<?> startClass = getClassOf(modifiedObj);
 
     Optional<Field> optionalField =
-            findFieldByUniqueName(fieldName, startClass).filter(fieldPredicate);
+        findFieldByUniqueName(fieldName, startClass).filter(fieldPredicate);
     optionalField.ifPresent(it -> it.setAccessible(true));
     return optionalField;
   }
 
   public static Optional<Field> findFieldByUniqueName(String fieldName, Class<?> startClass) {
     FieldSearchCriteria criteria =
-            new FieldSearchCriteria(startClass, field -> field.getName().equals(fieldName), fieldName);
+        new FieldSearchCriteria(startClass, field -> field.getName().equals(fieldName), fieldName);
     return findField(criteria);
   }
 
@@ -97,7 +102,7 @@ public class ReflectionUtils {
         if (criteria.getMatcher().apply(field)) {
           if (foundField != null) {
             throw new IllegalStateException(
-                    "Two or more fields matching " + criteria.getErrorMessage() + ".");
+                "Two or more fields matching " + criteria.getErrorMessage() + ".");
           }
           foundField = field;
         }
@@ -112,7 +117,7 @@ public class ReflectionUtils {
 
   @Getter
   @RequiredArgsConstructor
-  public static class FieldSearchCriteria {
+  private static class FieldSearchCriteria {
     private final Class<?> startClass;
 
     private final Function<Field, Boolean> matcher;
@@ -152,7 +157,7 @@ public class ReflectionUtils {
     }
   }
 
-  public static void setStaticFieldUsingUnsafe(Field field, Object value) {
+  private static void setStaticFieldUsingUnsafe(Field field, Object value) {
     Object base = unsafe().staticFieldBase(field);
     long offset = unsafe().staticFieldOffset(field);
     setFieldUsingUnsafe(base, field, offset, value);
@@ -170,17 +175,17 @@ public class ReflectionUtils {
   }
 
   @SneakyThrows
-  @SuppressWarnings({"all","removal"})
+  @SuppressWarnings({"all", "removal"})
   private static void setFieldUsingUnsafe(Object base, Field field, long offset, Object newValue) {
     field.setAccessible(true);
     boolean isFinal = isModifier(field, Modifier.FINAL);
     if (isFinal) {
       AccessController.doPrivileged(
-              (PrivilegedAction<Object>)
-                      () -> {
-                        setFieldUsingUnsafe(base, field.getType(), offset, newValue);
-                        return null;
-                      });
+          (PrivilegedAction<Object>)
+              () -> {
+                setFieldUsingUnsafe(base, field.getType(), offset, newValue);
+                return null;
+              });
     } else {
       field.set(base, newValue);
     }
@@ -188,6 +193,7 @@ public class ReflectionUtils {
 
   /**
    * 使用 Unsafe 类提供的底层方法直接设置对象的字段值,绕过了 Java 语言的访问控制和安全检查。
+   *
    * @param base 要修改字段的对象
    * @param type 字段的类型,使用基本类型的包装类表示
    * @param offset 段在对象内存中的偏移量
@@ -216,6 +222,40 @@ public class ReflectionUtils {
     }
   }
 
+  @NotNull
+  @SuppressWarnings("unchecked")
+  private static <T> Class<T> getClassFromParameterizedType(Type actualTypeArgument) {
+    if (actualTypeArgument instanceof Class) {
+      return (Class<T>) actualTypeArgument;
+    } else {
+      return getClassFromParameterizedType(((ParameterizedType) actualTypeArgument).getRawType());
+    }
+  }
+
+  public static <POJO> List<ImmutablePair<String, Object>> getPojoFieldNameAndValue(POJO pojo) {
+    return getPojoFieldNameAndValue(pojo, any -> true);
+  }
+
+  public static <POJO> List<ImmutablePair<String, Object>> getPojoFieldNameAndValue(
+      POJO pojo, Predicate<Field> fieldPredicate) {
+    List<Field> fields =
+        Arrays.stream(pojo.getClass().getDeclaredFields())
+            .filter(fieldPredicate)
+            .peek(field -> field.setAccessible(true))
+            .collect(Collectors.toList());
+    return fields.stream()
+        .map(
+            field -> {
+              try {
+                Object value = field.get(pojo);
+                return new ImmutablePair<>(field.getName(), value);
+              } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+              }
+            })
+        .collect(Collectors.toList());
+  }
+
   /**
    * find the first generic clazz of the given interface
    *
@@ -225,10 +265,10 @@ public class ReflectionUtils {
    * @param <T> the generic interface generic param,like `Interface Example<T>`
    */
   public static <T> Class<T> getInterfaceFirstGenericClazz(
-          Class<?> originInterface, Class<?> concreteClass) {
+      Class<?> originInterface, Class<?> concreteClass) {
     for (Type type : concreteClass.getGenericInterfaces()) {
       if (type instanceof ParameterizedType
-              && ((ParameterizedType) type)
+          && ((ParameterizedType) type)
               .getRawType()
               .getTypeName()
               .equals(originInterface.getName())) {
@@ -241,14 +281,45 @@ public class ReflectionUtils {
     throw new IllegalArgumentException("Invalid interface");
   }
 
-  @NotNull
-  @SuppressWarnings("unchecked")
-  private static <T> Class<T> getClassFromParameterizedType(Type actualTypeArgument) {
-    if (actualTypeArgument instanceof Class) {
-      return (Class<T>) actualTypeArgument;
-    } else {
-      return getClassFromParameterizedType(((ParameterizedType) actualTypeArgument).getRawType());
-    }
+  /**
+   * parseGenericTypesFromSignature
+   *
+   * @param str method signature like
+   *     "(Listarwyh/junit5/provider/model/TestCase<Ljava/lang/String;Ljava/lang/String;>;)V"
+   * @return (Class)
+   */
+  @SneakyThrows(ClassNotFoundException.class)
+  public static Pair<Class<?>, Class<?>> parseGenericTypesFromSignature(String str) {
+    int firstIndex = str.indexOf("<L") + 2;
+    int lastIndex = str.lastIndexOf(">;");
+    String[] classes = str.substring(firstIndex, lastIndex).split(";L");
+    Class<?> firstClass = Class.forName(classes[0].replace('/', '.'));
+    Class<?> secondClass = Class.forName(classes[1].replace('/', '.'));
+    return Pair.of(firstClass, secondClass);
   }
 
+  /**
+   * We added an explicit type parameter Class<?> to the iterate method. This resolves the nested
+   * wildcard types.
+   *
+   * @param clazz any type parameter
+   * @return the valid fields of the class
+   */
+  public static List<Field> getAllSettableFields(Class<?> clazz) {
+    List<Field> fields = new ArrayList<>();
+    Class<?> currentClass = clazz;
+    while (currentClass != null) {
+      fields.addAll(
+          Arrays.stream(currentClass.getDeclaredFields())
+              .filter(field -> !Modifier.isStatic(field.getModifiers()))
+              .filter(field -> !Modifier.isFinal(field.getModifiers()))
+              .filter(field -> !Modifier.isAbstract(field.getModifiers()))
+              .filter(field -> !Modifier.isNative(field.getModifiers()))
+              .filter(field -> !Modifier.isTransient(field.getModifiers()))
+              .filter(field -> !field.getType().isInterface())
+              .collect(Collectors.toList()));
+      currentClass = currentClass.getSuperclass();
+    }
+    return fields;
+  }
 }

@@ -238,7 +238,7 @@ public class JsonFileArgumentsProvider
   private static void setNullIfRecursive(Object object, Field it) {
     Object filedObj = ReflectionUtils.getField(object, it.getName());
     if (RecursiveReferenceDetector.hasRecursiveReference(filedObj)) {
-      ReflectionUtils.setField(object, it, null);
+      io.github.istarwyh.util.ReflectionUtils.setField(object, it, null);
     } else {
       setNullIfRecursive(filedObj);
     }

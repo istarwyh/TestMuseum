@@ -7,6 +7,13 @@ plugins {
     id 'com.github.breadmoirai.github-release' version '2.2.12'
 }
 
+ext["signing.keyId"] = findProperty("signing.keyId")
+ext["signing.password"] = findProperty("signing.password")
+ext["signing.secretKeyRingFile"] = findProperty("signing.secretKeyRingFile")
+ext["ossrhUsername"] = findProperty("ossrhUsername")
+ext["ossrhPassword"] = findProperty("ossrhPassword")
+ext["repoSourceCodeUrl"] = 'https://github.com/istarwyh/TestMuseum'
+
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(8)
@@ -20,14 +27,14 @@ tasks.withType(JavaCompile).configureEach {
 
 group = 'io.github.istarwyh'
 //archivesName = 'junit-extensions'
-version = '1.0-SNAPSHOT'
+version = rootProject.ext.initSnapshotVersion
 description = 'A JUnit extension library'
 
 // 希望gradle jar 可以同时把 pom.xml 生成到 jar中，但是这个好像不行
 shadowJar {
     archiveBaseName.set('junit-extensions')
     archiveClassifier.set('')
-    archiveVersion.set('1.0-SNAPSHOT')
+    archiveVersion.set('1.0.0-SNAPSHOT')
 }
 
 
@@ -51,12 +58,7 @@ configurations.configureEach {
     }
 }
 
-ext["signing.keyId"] = findProperty("signing.keyId")
-ext["signing.password"] = findProperty("signing.password")
-ext["signing.secretKeyRingFile"] = findProperty("signing.secretKeyRingFile")
-ext["ossrhUsername"] = findProperty("ossrhUsername")
-ext["ossrhPassword"] = findProperty("ossrhPassword")
-ext["repoSourceCodeUrl"] = 'https://github.com/istarwyh/TestMuseum'
+
 
 // 2024年6月1日,maven publish 因为暂停申请了 ossrh 的账号,目前都改手动上传了:
 // If you are not currently publishing artifacts to Maven Central on an oss.sonatype.org host,

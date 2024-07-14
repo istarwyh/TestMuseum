@@ -46,7 +46,7 @@ public class AnnotationUtil {
                             throw new UnsupportedOperationException("Field type: " + fieldValue.getClass().getSimpleName() +
                                     " is not supported by " + getCurrentMethodName());
                         }
-                        setField(object, foundedField, scaledValue);
+                        io.github.istarwyh.util.ReflectionUtils.setField(object, foundedField, scaledValue);
                     } catch (NoSuchFieldException | IllegalAccessException e) {
                         throw new RuntimeException(e);
                     }

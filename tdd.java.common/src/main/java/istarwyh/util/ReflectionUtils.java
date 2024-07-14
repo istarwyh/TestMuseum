@@ -15,11 +15,8 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import lombok.SneakyThrows;
-import org.apache.commons.lang3.tuple.ImmutablePair;
-import org.apache.commons.lang3.tuple.Pair;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import sun.misc.Unsafe;
 
 /**
  * This class is changed from WhileBox in PowerMock. The class can set instance field,including
@@ -56,30 +53,6 @@ public class ReflectionUtils {
     // 当构造方法为 private 时，需要设置可访问
     constructor.setAccessible(true);
     return constructor.newInstance();
-  }
-
-  /**
-   * If you want to set static field, you should call {@link ReflectionUtils#setField(Object, Field,
-   * Object)}
-   *
-   * @param modifiedObj modifiedObj
-   * @param fieldName including final field, not null or static field
-   * @param value value
-   */
-  @SneakyThrows(NoSuchFieldException.class)
-  public static void setField(Object modifiedObj, String fieldName, Object value) {
-    Predicate<Field> fieldPredicate = field -> hasFieldProperModifier(modifiedObj, field);
-    Field foundField =
-        findFieldInHierarchy(modifiedObj, fieldName, fieldPredicate)
-            .orElseThrow(
-                () ->
-                    new NoSuchFieldException(
-                        String.format(
-                            "No %s field named \"%s\" could be found in the \"%s\" class hierarchy",
-                            isClass(modifiedObj) ? "static" : "instance",
-                            fieldName,
-                            getClassOf(modifiedObj).getName())));
-    setField(modifiedObj, foundField, value);
   }
 
   @Nullable
@@ -119,12 +92,6 @@ public class ReflectionUtils {
     return findField(criteria);
   }
 
-  public static Optional<Field> findFieldByUniqueType(Type fieldType, Class<?> startClass) {
-    FieldSearchCriteria criteria =
-        new FieldSearchCriteria(
-            startClass, field -> field.getGenericType().equals(fieldType), fieldType.getTypeName());
-    return findField(criteria);
-  }
 
   private static Optional<Field> findField(FieldSearchCriteria criteria) {
     Field foundField = null;
@@ -151,13 +118,6 @@ public class ReflectionUtils {
   public record FieldSearchCriteria(
       Class<?> startClass, Function<Field, Boolean> matcher, String errorMessage) {}
 
-  private static boolean hasFieldProperModifier(Object object, Field field) {
-    if (isClass(object)) {
-      return Modifier.isStatic(field.getModifiers());
-    } else {
-      return !Modifier.isStatic(field.getModifiers());
-    }
-  }
 
   private static Class<?> getClassOf(@NotNull Object object) {
     Class<?> type;
@@ -172,22 +132,8 @@ public class ReflectionUtils {
   private static boolean isClass(Object object) {
     return object instanceof Class<?>;
   }
+  
 
-  public static void setField(Object object, Field foundField, Object value) {
-    boolean isStatic = isModifier(foundField, Modifier.STATIC);
-    Unsafe unsafe = unsafe();
-    if (isStatic) {
-      setStaticFieldUsingUnsafe(foundField, value);
-    } else {
-      setFieldUsingUnsafe(object, foundField, unsafe.objectFieldOffset(foundField), value);
-    }
-  }
-
-  private static void setStaticFieldUsingUnsafe(Field field, Object value) {
-    Object base = unsafe().staticFieldBase(field);
-    long offset = unsafe().staticFieldOffset(field);
-    setFieldUsingUnsafe(base, field, offset, value);
-  }
 
   /**
    * judge whether modifier the field belongs to
@@ -305,29 +251,6 @@ public class ReflectionUtils {
     }
   }
 
-  public static <POJO> List<ImmutablePair<String, Object>> getPojoFieldNameAndValue(POJO pojo) {
-    return getPojoFieldNameAndValue(pojo, any -> true);
-  }
-
-  public static <POJO> List<ImmutablePair<String, Object>> getPojoFieldNameAndValue(
-      POJO pojo, Predicate<Field> fieldPredicate) {
-    List<Field> fields =
-        Arrays.stream(pojo.getClass().getDeclaredFields())
-            .filter(fieldPredicate)
-            .peek(field -> field.setAccessible(true))
-            .toList();
-    return fields.stream()
-        .map(
-            field -> {
-              try {
-                Object value = field.get(pojo);
-                return new ImmutablePair<>(field.getName(), value);
-              } catch (IllegalAccessException e) {
-                throw new RuntimeException(e);
-              }
-            })
-        .collect(Collectors.toList());
-  }
 
   @NotNull
   public static List<Field> getAllFields(Class<?> clazz, Predicate<Class<?>> filterClazz) {
@@ -373,39 +296,5 @@ public class ReflectionUtils {
     }
   }
 
-  /**
-   * parseGenericTypesFromSignature
-   *
-   * @param str method signature like
-   *     "(Listarwyh/junit5/provider/model/TestCase<Ljava/lang/String;Ljava/lang/String;>;)V"
-   * @return (Class)
-   */
-  @SneakyThrows(ClassNotFoundException.class)
-  public static Pair<Class<?>, Class<?>> parseGenericTypesFromSignature(String str) {
-    int firstIndex = str.indexOf("<L") + 2;
-    int lastIndex = str.lastIndexOf(">;");
-    String[] classes = str.substring(firstIndex, lastIndex).split(";L");
-    Class<?> firstClass = Class.forName(classes[0].replace('/', '.'));
-    Class<?> secondClass = Class.forName(classes[1].replace('/', '.'));
-    return Pair.of(firstClass, secondClass);
-  }
-
-  /**
-   * We added an explicit type parameter Class<?> to the iterate method. This resolves the nested
-   * wildcard types.
-   *
-   * @param clazz any type parameter
-   * @return the valid fields of the class
-   */
-  public static List<Field> getAllSettableFields(Class<?> clazz) {
-    return Stream.<Class<?>>iterate(clazz, Objects::nonNull, Class::getSuperclass)
-        .flatMap(c -> Arrays.stream(c.getDeclaredFields()))
-        .filter(field -> !Modifier.isStatic(field.getModifiers()))
-        .filter(field -> !Modifier.isFinal(field.getModifiers()))
-        .filter(field -> !Modifier.isAbstract(field.getModifiers()))
-        .filter(field -> !Modifier.isNative(field.getModifiers()))
-        .filter(field -> !Modifier.isTransient(field.getModifiers()))
-        .filter(field -> !field.getType().isInterface())
-        .collect(Collectors.toList());
-  }
+  
 }
