@@ -26,9 +26,9 @@ public class CommLogHolder {
     }
   }
 
-  public static CommLogModel get(String classMethodName, Logger logger) {
+  public static CommLogModel getIfAbsentThenPut(String classMethodName, Logger logger) {
     if (classMethodName == null) {
-      return get();
+      return getIfAbsentThenPut();
     }
     CommLogModel logModel = HOLDER.get().get(classMethodName);
     if (logModel == null) {
@@ -38,7 +38,7 @@ public class CommLogHolder {
     return logModel;
   }
 
-  public static CommLogModel get() {
+  public static CommLogModel getIfAbsentThenPut() {
     StackTraceElement[] stackTrace = new Exception().getStackTrace();
     StackTraceElement stackTraceElement = getStackTraceElement(stackTrace);
     String fileName = stackTraceElement.getFileName();

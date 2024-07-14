@@ -38,15 +38,17 @@ public abstract class AbstractLogInterceptor {
   public Object buildToCommLog(ProceedingJoinPoint joinPoint, Logger logger) {
     MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
     CommLogModel logModel =
-        CommLogHolder.get(getClassMethodName(joinPoint, methodSignature), logger);
+        CommLogHolder.getIfAbsentThenPut(getClassMethodName(joinPoint, methodSignature), logger);
     logModel.setRequestMaxPrintLength(getRequestMaxPrintLength(logModel));
     logModel.setResponseMaxPrintLength(getResponseMaxPrintLength(logModel));
     logModel.setTraceId(getTraceId());
     logModel.setInvokeInfo(getRpcId());
     CommLog commLog = methodSignature.getMethod().getAnnotation(CommLog.class);
     addLogModelParam(logModel, joinPoint, commLog);
-    Object result = proceedResultMaybeLogError(joinPoint, logModel);
-    // 根据业务具体的Result 类型获取信息 补全 errorCode errorMsg 和 errorType
+    Object result =
+        commLog.catchException()
+            ? proceedResultNotThrow(joinPoint, logModel)
+            : proceedResultMayThrow(joinPoint, logModel);
     postCustomResult(result, logModel);
     logModel.setReturnValue(result);
     logModel.setErrorType(methodSignature, result);
@@ -57,7 +59,6 @@ public abstract class AbstractLogInterceptor {
   protected int getResponseMaxPrintLength(CommLogModel logModel) {
     return logModel.getResponseMaxPrintLength();
   }
-
 
   protected int getRequestMaxPrintLength(CommLogModel logModel) {
     return logModel.getRequestMaxPrintLength();
@@ -136,12 +137,26 @@ public abstract class AbstractLogInterceptor {
 
   protected abstract String getTraceId();
 
-  private Object proceedResultMaybeLogError(ProceedingJoinPoint joinPoint, CommLogModel logModel) {
+  private Object proceedResultNotThrow(ProceedingJoinPoint joinPoint, CommLogModel logModel) {
     Object result;
     try {
       result = joinPoint.proceed();
     } catch (Throwable e) {
       postThrowableResult(e, logModel);
+      return logModel.getReturnValue();
+    } finally {
+      CommLogHolder.clear(logModel.getClassMethodName());
+    }
+    return result;
+  }
+
+  private Object proceedResultMayThrow(ProceedingJoinPoint joinPoint, CommLogModel logModel) {
+    Object result;
+    try {
+      result = joinPoint.proceed();
+    } catch (Throwable e) {
+      postThrowableResult(e, logModel);
+      logModel.setReturnValue(null);
       logModel.log();
       throw new RuntimeException(e);
     } finally {
@@ -167,6 +182,6 @@ public abstract class AbstractLogInterceptor {
   abstract void postCustomResult(Object result, CommLogModel logModel);
 
   private static boolean ifPrint(CommLog commLog) {
-    return commLog != null && commLog.print();
+    return commLog != null;
   }
 }
