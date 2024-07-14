@@ -59,7 +59,7 @@ public static final int VALUE = 42;
 ```
 
 然而,在某些测试场景下,我们可能需要修改这些特殊字段的值,以便于对代码进行隔离测试。 使用 Unsafe 类提供的 putXXX 方法,如 putInt、putObject 等,可以直接修改对象内存中的字段值,而无需经过 Java 语言层面的检查和限制。
-这样即使是 final 或 static final 字段,也可以被修改。以及我们还可以设置父类的任意字段。具体操作如下：
+这样即使是 static final 字段,也可以被修改。以及我们还可以设置父类的任意字段。具体操作如下：
 ```java
 @Test
 void should_set_static_field() {
