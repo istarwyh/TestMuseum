@@ -107,11 +107,8 @@ public class CommLogModel implements Serializable {
     this.errorType = errorType.name();
   }
 
-  public String getParams() {
-    if (getParamsMap() == null) {
-      return "";
-    }
-    return StringUtils.substring(JSON.toJSONString(getParamsMap()), 0, getRequestMaxPrintLength());
+  public String getParamsStr() {
+    return StringUtils.substring(safelyToString(getParamsMap()), 0, getRequestMaxPrintLength());
   }
 
   public CommLogModel addContext(String name, Object value) {
@@ -119,25 +116,27 @@ public class CommLogModel implements Serializable {
     return this;
   }
 
-  public String getContext() {
-    if (getParamsMap() == null) {
-      return "";
-    }
-    return StringUtils.substring(JSON.toJSONString(getContextMap()), 0, getRequestMaxPrintLength());
+  public String getContextStr() {
+    return StringUtils.substring(safelyToString(getContextMap()), 0, getRequestMaxPrintLength());
   }
 
-  public String getStat() {
-    if (getStatisticMap() == null) {
-      return "";
-    }
-    return JSON.toJSONString(getStatisticMap());
+  public String getStatisticStr() {
+    return safelyToString(getStatisticMap());
   }
 
   public String getReturnValueStr() {
-    if (returnValue == null) {
+    return StringUtils.substring(safelyToString(getReturnValue()), 0, getResponseMaxPrintLength());
+  }
+
+  private String safelyToString(Object object) {
+    if (object == null) {
       return null;
     }
-    return StringUtils.substring(JSON.toJSONString(returnValue), 0, getResponseMaxPrintLength());
+    try {
+      return JSON.toJSONString(object);
+    } catch (Throwable ignore) {
+      return object.toString();
+    }
   }
 
   public boolean addStatHitRule(boolean express, String value) {
@@ -177,10 +176,10 @@ public class CommLogModel implements Serializable {
         .append(getTraceId())
         .append(getInvokeInfo())
         .append(escapeVerticalLine(getOperatorInfo()))
-        .append(escapeVerticalLine(getParams()))
-        .append(escapeVerticalLine(getContext()))
+        .append(escapeVerticalLine(getParamsStr()))
+        .append(escapeVerticalLine(getContextStr()))
         .append(escapeVerticalLine(getReturnValueStr()))
-        .append(getStatisticMap())
+        .append(getStatisticStr())
         .append(getCount())
         .append(getRt())
         .append(getErrorCode())
