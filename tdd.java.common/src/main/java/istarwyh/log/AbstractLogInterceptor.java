@@ -140,7 +140,10 @@ public abstract class AbstractLogInterceptor {
   private Object proceedResultNotThrow(ProceedingJoinPoint joinPoint, CommLogModel logModel) {
     Object result;
     try {
+      long startTime = System.currentTimeMillis();
+      logModel.setStartTime(startTime);
       result = joinPoint.proceed();
+      logModel.setRt(System.currentTimeMillis() - startTime);
     } catch (Throwable e) {
       postThrowableResult(e, logModel);
       return logModel.getReturnValue();
@@ -153,7 +156,10 @@ public abstract class AbstractLogInterceptor {
   private Object proceedResultMayThrow(ProceedingJoinPoint joinPoint, CommLogModel logModel) {
     Object result;
     try {
+      long startTime = System.currentTimeMillis();
+      logModel.setStartTime(startTime);
       result = joinPoint.proceed();
+      logModel.setRt(System.currentTimeMillis() - startTime);
     } catch (Throwable e) {
       postThrowableResult(e, logModel);
       logModel.setReturnValue(null);

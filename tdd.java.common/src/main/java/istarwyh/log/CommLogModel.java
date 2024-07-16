@@ -88,7 +88,6 @@ public class CommLogModel implements Serializable {
 
   public CommLogModel(String classMethodName, Logger logger) {
     this.classMethodName = classMethodName;
-    this.startTime = System.currentTimeMillis();
     this.logger = logger;
     this.loggerMethod = logger::info;
 
