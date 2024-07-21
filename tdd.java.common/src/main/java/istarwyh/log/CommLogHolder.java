@@ -2,8 +2,8 @@ package istarwyh.log;
 
 import static istarwyh.log.constant.LogConstants.CLASS_METHOD_SEPARATOR;
 
-import com.google.common.collect.Maps;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,9 +16,14 @@ public class CommLogHolder {
   private static final ThreadLocal<Map<String, CommLogModel>> HOLDER = new ThreadLocal<>();
   private static final Logger logger = LoggerFactory.getLogger(CommLogHolder.class);
 
+  /**
+   * 假设每个线程中大约包含 32 个类 + 方法
+   * @param classMethodName 类 + 方法名称
+   * @param commLogModel 日志对象模型
+   */
   public static void put(String classMethodName, CommLogModel commLogModel) {
     if (null == HOLDER.get()) {
-      Map<String, CommLogModel> map = Maps.newConcurrentMap();
+      Map<String, CommLogModel> map = new ConcurrentHashMap<>(32);
       map.put(classMethodName, commLogModel);
       HOLDER.set(map);
     } else {

@@ -1,5 +1,6 @@
 package istarwyh.log;
 
+import istarwyh.log.annotation.CommLog;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -13,42 +14,41 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 @Order(1)
-public class TestMuseumLogInterceptor extends AbstractLogInterceptor{
+public class TestMuseumLogInterceptor extends AbstractLogInterceptor {
 
-    @Override
-    protected String getRpcId() {
-        return null;
+  @Override
+  protected String getRpcId() {
+    return null;
+  }
+
+  @Override
+  protected String getTraceId() {
+    return null;
+  }
+
+  @Override
+  void postThrowableResult(Throwable e, CommLogModel logModel) {}
+
+  @Override
+  void postCustomResult(Object result, CommLogModel logModel) {}
+
+  @Around("execution(* istarwyh.handler.*.*(..))")
+  public Object aroundHandler(ProceedingJoinPoint joinPoint) throws Throwable {
+    CommLog commLog = findCommLog(joinPoint);
+    if (commLog == null) {
+      return joinPoint.proceed();
     }
 
-    @Override
-    protected  String getTraceId() {
-        return null;
+    return logWith(joinPoint, commLog, LoggerFactory.getLogger("FACADE"));
+  }
+
+  @Around(
+      "@within(istarwyh.log.annotation.CommLog) || @annotation(istarwyh.log.annotation.CommLog)")
+  public Object aroundCommLog(ProceedingJoinPoint joinPoint) throws Throwable {
+    CommLog commLog = findCommLog(joinPoint);
+    if (commLog == null) {
+      return joinPoint.proceed();
     }
-
-    @Override
-    void postThrowableResult(Throwable e, CommLogModel logModel) {
-
-    }
-
-    @Override
-    void postCustomResult(Object result, CommLogModel logModel) {
-
-    }
-
-    @Around("execution(* istarwyh.handler.*.*(..))")
-    public Object aroundHandler(ProceedingJoinPoint joinPoint) throws Throwable {
-        if(ignoreCommLog(joinPoint)){
-            return joinPoint.proceed();
-        }
-        return buildToCommLog(joinPoint, LoggerFactory.getLogger("HANDLER"));
-    }
-
-    @Around("@within(istarwyh.log.annotation.CommLog) || @annotation(istarwyh.log.annotation.CommLog)")
-    public Object aroundCommLog(ProceedingJoinPoint joinPoint) throws Throwable {
-        if(ignoreCommLog(joinPoint)){
-            return joinPoint.proceed();
-        }
-
-        return buildToCommLog(joinPoint, LoggerFactory.getLogger("COMMLOG"));
-    }
+    return logWith(joinPoint, commLog);
+  }
 }

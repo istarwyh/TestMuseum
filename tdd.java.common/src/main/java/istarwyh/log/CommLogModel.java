@@ -18,7 +18,6 @@ import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 
 /**
@@ -96,8 +95,8 @@ public class CommLogModel implements Serializable {
     statisticMap = Maps.newHashMap();
   }
 
-  public void setErrorType(MethodSignature methodSignature, Object result) {
-    if (!void.class.equals(methodSignature.getReturnType()) && null == result) {
+  public void setErrorType(Class returnType, Object result) {
+    if (!void.class.equals(returnType) && null == result) {
       this.setErrorType(RESULT_NULL);
     }
   }

@@ -9,6 +9,7 @@ import istarwyh.log.annotation.LogShow;
 import istarwyh.util.TypeUtils;
 import java.lang.reflect.Field;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.reflect.CodeSignature;
@@ -23,35 +24,49 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  */
 public abstract class AbstractLogInterceptor {
 
-  protected boolean ignoreCommLog(ProceedingJoinPoint joinPoint) {
-    boolean print;
+  protected CommLog findCommLog(ProceedingJoinPoint joinPoint) {
     MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
     CommLog commLog = methodSignature.getMethod().getAnnotation(CommLog.class);
-    print = ifPrint(commLog);
-    if (!print) {
-      commLog = joinPoint.getTarget().getClass().getAnnotation(CommLog.class);
-      print = ifPrint(commLog);
+    if (commLog != null) {
+      return commLog;
     }
-    return !print;
+    return joinPoint.getTarget().getClass().getAnnotation(CommLog.class);
   }
 
-  public Object buildToCommLog(ProceedingJoinPoint joinPoint, Logger logger) {
+  /**
+   * 通过 {@link ProceedingJoinPoint} 和 {@link CommLog} 打印日志 <br>
+   * 其中 {@link Logger} 通过 {@link CommLog} 指定
+   */
+  public Object logWith(ProceedingJoinPoint joinPoint, CommLog commLog) {
+    Logger logger = LoggerFactory.getLogger(commLog.loggerName());
+    return logWith(joinPoint, commLog, logger);
+  }
+
+  /**
+   * 通过 {@link ProceedingJoinPoint}、{@link CommLog}和{@link Logger}打印日志 <br>
+   * 其中 {@link Logger} 通过 {@link CommLog} 指定
+   */
+  public Object logWith(ProceedingJoinPoint joinPoint, CommLog commLog, Logger logger) {
     MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+    String classSimpleName = joinPoint.getTarget().getClass().getSimpleName();
+    String methodName = methodSignature.getMethod().getName();
+    String[] ignoreParams = commLog.ignoreParams();
+    boolean notThrow = commLog.notThrow();
+
     CommLogModel logModel =
-        CommLogHolder.getIfAbsentThenPut(getClassMethodName(joinPoint, methodSignature), logger);
+        CommLogHolder.getIfAbsentThenPut(getClassMethodName(classSimpleName, methodName), logger);
     logModel.setRequestMaxPrintLength(getRequestMaxPrintLength(logModel));
     logModel.setResponseMaxPrintLength(getResponseMaxPrintLength(logModel));
     logModel.setTraceId(getTraceId());
     logModel.setInvokeInfo(getRpcId());
-    CommLog commLog = methodSignature.getMethod().getAnnotation(CommLog.class);
-    addLogModelParam(logModel, joinPoint, commLog);
+    addLogModelParam(logModel, joinPoint, ignoreParams);
     Object result =
-        commLog.catchException()
+        notThrow
             ? proceedResultNotThrow(joinPoint, logModel)
             : proceedResultMayThrow(joinPoint, logModel);
     postCustomResult(result, logModel);
     logModel.setReturnValue(result);
-    logModel.setErrorType(methodSignature, result);
+    logModel.setErrorType(methodSignature.getReturnType(), result);
     logModel.log();
     return result;
   }
@@ -65,23 +80,21 @@ public abstract class AbstractLogInterceptor {
   }
 
   @NotNull
-  private static String getClassMethodName(
-      ProceedingJoinPoint joinPoint, MethodSignature methodSignature) {
-    return joinPoint.getTarget().getClass().getSimpleName()
-        + CLASS_METHOD_SEPARATOR
-        + methodSignature.getMethod().getName();
+  private static String getClassMethodName(String classSimpleName, String methodName) {
+    return classSimpleName + CLASS_METHOD_SEPARATOR + methodName;
   }
 
   private static void addLogModelParam(
-      CommLogModel logModel, ProceedingJoinPoint joinPoint, CommLog commLog) {
+      CommLogModel logModel, ProceedingJoinPoint joinPoint, String[] ignoreParams) {
     String[] parameterNames = ((CodeSignature) joinPoint.getSignature()).getParameterNames();
-
     Object[] args = joinPoint.getArgs();
+    List<String> ignoreParamList = Arrays.asList(ignoreParams);
+
     if (parameterNames.length == args.length) {
       for (int i = 0; i < parameterNames.length; i++) {
         if (Objects.nonNull(args[i])) {
           String parameterName = parameterNames[i];
-          if (commLog != null && Arrays.asList(commLog.ignoreParams()).contains(parameterName)) {
+          if (ignoreParamList.contains(parameterName)) {
             continue;
           }
           logModel.addParam(parameterName, handleArg(args[i]));
@@ -186,8 +199,4 @@ public abstract class AbstractLogInterceptor {
    * @param logModel {@link CommLogModel}
    */
   abstract void postCustomResult(Object result, CommLogModel logModel);
-
-  private static boolean ifPrint(CommLog commLog) {
-    return commLog != null;
-  }
 }
