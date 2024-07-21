@@ -1,0 +1,14 @@
+# config.toml
+[BASE_INFO]
+# The app name will be applied to all processes including agent service integration.
+appname = 'essay-master'
+
+[CORE_PACKAGE]
+# Perform a full component scan and registration for all the paths under this list.
+default = ['essay-master.app.core']
+# Further information is omitted here.
+
+[SUB_CONFIG_PATH]
+# Custom key file path, use to save your own secret key like open ai or sth else. REMEMBER TO ADD IT TO .gitignore.
+custom_key_path = './custom_key.toml'
+# Further information is omitted here.
