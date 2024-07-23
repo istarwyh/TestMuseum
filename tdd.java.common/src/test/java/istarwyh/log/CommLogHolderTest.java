@@ -34,8 +34,9 @@ class CommLogHolderTest {
   void getIfAbsentThenPutDummy() {
     CommLogModel res =
             CommLogHolder.getIfAbsentThenPut(
-                    "CommLogHolderTest.dummyMethod", LoggerFactory.getLogger("C COMMLOG"));
+                    (String) null, LoggerFactory.getLogger("C COMMLOG"));
     res.log();
     assertEquals("C COMMLOG", res.getLogger().getName());
+    assertEquals("CommLogHolderTest.getIfAbsentThenPutDummy", res.getClassMethodName());
   }
 }
