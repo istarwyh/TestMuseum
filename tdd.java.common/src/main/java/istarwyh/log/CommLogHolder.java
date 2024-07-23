@@ -18,6 +18,7 @@ public class CommLogHolder {
 
   /**
    * 假设每个线程中大约包含 32 个类 + 方法
+   *
    * @param classMethodName 类 + 方法名称
    * @param commLogModel 日志对象模型
    */
@@ -33,7 +34,7 @@ public class CommLogHolder {
 
   public static CommLogModel getIfAbsentThenPut(String classMethodName, Logger logger) {
     if (classMethodName == null) {
-      return getIfAbsentThenPut();
+      return getIfAbsentThenPut(logger);
     }
     CommLogModel logModel = HOLDER.get().get(classMethodName);
     if (logModel == null) {
@@ -44,12 +45,16 @@ public class CommLogHolder {
   }
 
   public static CommLogModel getIfAbsentThenPut() {
+    return getIfAbsentThenPut(logger);
+  }
+
+  public static CommLogModel getIfAbsentThenPut(Logger logger) {
     StackTraceElement[] stackTrace = new Exception().getStackTrace();
     StackTraceElement stackTraceElement = getStackTraceElement(stackTrace);
     String fileName = stackTraceElement.getFileName();
     String methodName = stackTraceElement.getMethodName();
     if (fileName == null) {
-      return buildDummyCommLogModel(methodName);
+      return buildDummyCommLogModel(methodName, logger);
     }
     String classMethod = fileName.split("\\.")[0] + CLASS_METHOD_SEPARATOR + methodName;
     if (HOLDER.get() == null || HOLDER.get().get(classMethod) == null) {
@@ -59,7 +64,7 @@ public class CommLogHolder {
   }
 
   @NotNull
-  private static CommLogModel buildDummyCommLogModel(String methodName) {
+  private static CommLogModel buildDummyCommLogModel(String methodName, Logger logger) {
     String lackClassMethodName = "DummyLogClass" + CLASS_METHOD_SEPARATOR + methodName;
     CommLogModel logModel = new CommLogModel(lackClassMethodName, logger);
     CommLogHolder.put(lackClassMethodName, logModel);
