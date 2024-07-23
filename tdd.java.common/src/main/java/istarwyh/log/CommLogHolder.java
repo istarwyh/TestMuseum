@@ -14,7 +14,6 @@ import org.slf4j.LoggerFactory;
 public class CommLogHolder {
 
   private static final ThreadLocal<Map<String, CommLogModel>> HOLDER = new ThreadLocal<>();
-  private static final Logger logger = LoggerFactory.getLogger(CommLogHolder.class);
 
   /**
    * 假设每个线程中大约包含 32 个类 + 方法
@@ -36,16 +35,12 @@ public class CommLogHolder {
     if (classMethodName == null) {
       return getIfAbsentThenPut(logger);
     }
-    CommLogModel logModel = HOLDER.get().get(classMethodName);
-    if (logModel == null) {
-      logModel = new CommLogModel(classMethodName, logger);
-    }
-    CommLogHolder.put(classMethodName, logModel);
-    return logModel;
+    absentThenPut(classMethodName, logger);
+    return HOLDER.get().get(classMethodName);
   }
 
-  public static CommLogModel getIfAbsentThenPut() {
-    return getIfAbsentThenPut(logger);
+  public static CommLogModel getCommLog() {
+    return getIfAbsentThenPut(LoggerFactory.getLogger("COMMLOG"));
   }
 
   public static CommLogModel getIfAbsentThenPut(Logger logger) {
@@ -57,10 +52,14 @@ public class CommLogHolder {
       return buildDummyCommLogModel(methodName, logger);
     }
     String classMethod = fileName.split("\\.")[0] + CLASS_METHOD_SEPARATOR + methodName;
+    absentThenPut(classMethod, logger);
+    return HOLDER.get().get(classMethod);
+  }
+
+  private static void absentThenPut(String classMethod, Logger logger) {
     if (HOLDER.get() == null || HOLDER.get().get(classMethod) == null) {
       CommLogHolder.put(classMethod, new CommLogModel(classMethod, logger));
     }
-    return HOLDER.get().get(classMethod);
   }
 
   @NotNull
