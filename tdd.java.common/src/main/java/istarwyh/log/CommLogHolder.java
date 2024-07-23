@@ -33,18 +33,24 @@ public class CommLogHolder {
 
   public static CommLogModel getIfAbsentThenPut(String classMethodName, Logger logger) {
     if (classMethodName == null) {
-      return getIfAbsentThenPut(logger);
+      StackTraceElement[] stackTrace = new Exception().getStackTrace();
+      return getIfAbsentThenPut(stackTrace, logger);
     }
     absentThenPut(classMethodName, logger);
     return HOLDER.get().get(classMethodName);
   }
 
   public static CommLogModel getCommLog() {
-    return getIfAbsentThenPut(LoggerFactory.getLogger("COMMLOG"));
+    StackTraceElement[] stackTrace = new Exception().getStackTrace();
+    return getIfAbsentThenPut(stackTrace, LoggerFactory.getLogger("COMMLOG"));
   }
 
-  public static CommLogModel getIfAbsentThenPut(Logger logger) {
+  public static CommLogModel getCustomLog(Logger logger) {
     StackTraceElement[] stackTrace = new Exception().getStackTrace();
+    return getIfAbsentThenPut(stackTrace, logger);
+  }
+
+  public static CommLogModel getIfAbsentThenPut(StackTraceElement[] stackTrace, Logger logger) {
     StackTraceElement stackTraceElement = getStackTraceElement(stackTrace);
     String fileName = stackTraceElement.getFileName();
     String methodName = stackTraceElement.getMethodName();

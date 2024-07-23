@@ -11,14 +11,14 @@ class CommLogHolderTest {
   void getIfAbsentThenPut() {
     CommLogModel res = CommLogHolder.getCommLog();
     res.log();
-    assertEquals("COMMLOG", res.getLogger().getName());
+    assertEquals("B COMMLOG", res.getLogger().getName());
   }
 
   @Test
-  void getIfAbsentThenPutSpecifyLogger() {
-    CommLogHolder.getIfAbsentThenPut(LoggerFactory.getLogger("A COMMLOG"))
-        .addContext("测试", "mytest")
-        .log();
+  void getCustomLogTest() {
+    CommLogModel aCommlog = CommLogHolder.getCustomLog(LoggerFactory.getLogger("A COMMLOG"));
+    aCommlog.addContext("测试", "mytest").log();
+    assertEquals("CommLogHolderTest.getCustomLogTest", aCommlog.getClassMethodName());
   }
 
   @Test
