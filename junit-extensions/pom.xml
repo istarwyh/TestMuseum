@@ -4,7 +4,7 @@
 
     <groupId>io.github.istarwyh</groupId>
     <artifactId>junit-extensions</artifactId>
-    <version>0.0.3_noneautotype</version>
+    <version>0.0.4-MINOR</version>
     <packaging>jar</packaging>
 
     <name>JUnit Extensions</name>
