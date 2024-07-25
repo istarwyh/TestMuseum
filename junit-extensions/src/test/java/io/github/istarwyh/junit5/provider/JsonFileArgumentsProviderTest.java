@@ -2,7 +2,8 @@ package io.github.istarwyh.junit5.provider;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.alibaba.fastjson2.TypeReference;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import io.github.istarwyh.junit5.annotation.JsonFileSource;
 import io.github.istarwyh.junit5.provider.model.TestCase;
 import java.util.List;
@@ -64,7 +65,8 @@ public class JsonFileArgumentsProviderTest {
 
     @JsonFileSource(resources = {"list.json"})
     void should_parse_String_input(String testCase) {
-        List<People> peopleList = new TypeReference<List<People>>() {}.parseObject(testCase);
+        TypeReference<List<People>> typeReference = new TypeReference<List<People>>() {};
+        List<People> peopleList = JSON.parseObject(testCase,typeReference);
         assertEquals("lele", peopleList.get(0).name);
         assertEquals("02", peopleList.get(1).id);
     }

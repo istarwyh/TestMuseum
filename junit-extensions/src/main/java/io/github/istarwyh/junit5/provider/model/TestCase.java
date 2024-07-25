@@ -1,8 +1,9 @@
 package io.github.istarwyh.junit5.provider.model;
 
 
-import com.alibaba.fastjson2.JSON;
-import com.alibaba.fastjson2.TypeReference;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
