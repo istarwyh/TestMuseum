@@ -4,7 +4,7 @@
 
     <groupId>io.github.istarwyh</groupId>
     <artifactId>junit-extensions</artifactId>
-    <version>0.0.3-MAJOR</version>
+    <version>0.0.3_noneautotype</version>
     <packaging>jar</packaging>
 
     <name>JUnit Extensions</name>
@@ -234,10 +234,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.alibaba.fastjson2</groupId>
-            <artifactId>fastjson2</artifactId>
-            <version>2.0.25</version>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.83_noneautotype</version>
         </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

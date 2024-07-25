@@ -251,6 +251,8 @@ public class CommLogModel implements Serializable {
         || BIZ_WARN.name().equals(getErrorType())
         || BIZ_PROCESSING.name().equals(getErrorType())) {
       this.loggerMethod = logger::warn;
+    } else {
+      this.loggerMethod = logger::info;
     }
     loggerMethod.accept(toString());
   }

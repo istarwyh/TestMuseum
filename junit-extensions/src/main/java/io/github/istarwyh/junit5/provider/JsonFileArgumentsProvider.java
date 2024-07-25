@@ -4,8 +4,8 @@ import static java.util.Arrays.copyOf;
 import static java.util.Arrays.stream;
 import static java.util.concurrent.CompletableFuture.*;
 
-import com.alibaba.fastjson2.JSON;
-import com.alibaba.fastjson2.JSONReader;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.parser.Feature;
 import io.github.istarwyh.junit5.annotation.JsonFileSource;
 import io.github.istarwyh.util.RecursiveReferenceDetector;
 import io.github.istarwyh.util.ReflectionUtils;
@@ -31,20 +31,23 @@ import org.junit.platform.commons.util.Preconditions;
 
 /**
  * Provides a way to supply arguments to parameterized tests in JUnit 5 by reading JSON files
- * specified by the {@link JsonFileSource} annotation. This class implements the {@link ArgumentsProvider}
- * interface, which is part of the JUnit Jupiter Params API, and the {@link AnnotationConsumer} interface
- * to consume the {@link JsonFileSource} annotations.
+ * specified by the {@link JsonFileSource} annotation. This class implements the {@link
+ * ArgumentsProvider} interface, which is part of the JUnit Jupiter Params API, and the {@link
+ * AnnotationConsumer} interface to consume the {@link JsonFileSource} annotations.
  *
- * <p>The {@code JsonFileArgumentsProvider} is responsible for locating the JSON files specified in the
- * annotation, reading their contents, and converting them into objects of the type expected by the
- * test method parameters. It supports both simple and generic types, including handling of recursive
- * type references by setting them to {@code null} to prevent infinite loops during JSON parsing.
+ * <p>The {@code JsonFileArgumentsProvider} is responsible for locating the JSON files specified in
+ * the annotation, reading their contents, and converting them into objects of the type expected by
+ * the test method parameters. It supports both simple and generic types, including handling of
+ * recursive type references by setting them to {@code null} to prevent infinite loops during JSON
+ * parsing.
  *
  * <p>Usage of this class requires the {@code @JsonFileSource} annotation to be present on the test
- * method with one or more JSON file resources specified. The class will then read each file, deserialize
- * the JSON content into the required parameter type, and provide it as arguments to the parameterized test.
+ * method with one or more JSON file resources specified. The class will then read each file,
+ * deserialize the JSON content into the required parameter type, and provide it as arguments to the
+ * parameterized test.
  *
  * <p>Example usage:
+ *
  * <pre>{@code
  * @ParameterizedTest
  * @JsonFileSource(resources = "yourTestData.json")
@@ -55,13 +58,14 @@ import org.junit.platform.commons.util.Preconditions;
  * }</pre>
  *
  * Detailed example usage can be seen in the {@code JsonFileArgumentsProviderTest}.
- * <p>Note that this class relies on the {@link JSON} library for JSON processing
- * and uses the {@link EasyRandom} library for generating random values for object
- * instantiation when needed. It also makes use of {@link SneakyThrows} to bypass checked
+ *
+ * <p>Note that this class relies on the {@link JSON} instead of {@code com.google.gson.Gson}
+ * library for JSON processing and uses the {@link EasyRandom} library for generating random values
+ * for object instantiation when needed. It also makes use of {@link SneakyThrows} to bypass checked
  * exceptions, which should be used cautiously as it may hide potentially recoverable errors.
  *
- * <p>This class is part of a suite of extensions that enhance JUnit 5's parameterized testing capabilities,
- * allowing for more flexible and data-driven test cases.
+ * <p>This class is part of a suite of extensions that enhance JUnit 5's parameterized testing
+ * capabilities, allowing for more flexible and data-driven test cases.
  *
  * @author xiaohui
  * @see ArgumentsProvider
@@ -96,18 +100,24 @@ public class JsonFileArgumentsProvider
   }
 
   private Object valueOfType(InputStream inputStream) {
-    try (JSONReader reader = JSONReader.of(inputStream, getCharset())) {
-      return reader.read(testMethodParameterClazz);
+    try {
+      Charset charset = getCharset();
+      return JSON.parseObject(
+          inputStream,
+          charset,
+          testMethodParameterClazz,
+          Feature.SupportAutoType,
+          Feature.OrderedField);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
     }
   }
 
-  /**
-   * Compatible with GBK charset due to JSON not supporting GBK charset
-   */
+  /** Compatible with GBK charset due to JSON not supporting GBK charset */
   @NotNull
   private static Charset getCharset() {
     Charset charset = Charset.defaultCharset();
-    return charset.name().equals("GBK") ? StandardCharsets.UTF_8 : charset;
+    return "GBK".equals(charset.name()) ? StandardCharsets.UTF_8 : charset;
   }
 
   @Override

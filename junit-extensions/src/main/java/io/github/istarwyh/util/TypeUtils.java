@@ -1,7 +1,6 @@
 package io.github.istarwyh.util;
 
-import com.alibaba.fastjson2.JSONArray;
-import com.alibaba.fastjson2.JSONObject;
+import com.alibaba.fastjson.JSON;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -29,7 +28,7 @@ public class TypeUtils {
 
 
     public static boolean isJsonType(Object value) {
-        return value instanceof JSONObject || value instanceof JSONArray;
+        return value instanceof JSON;
     }
 
 }
