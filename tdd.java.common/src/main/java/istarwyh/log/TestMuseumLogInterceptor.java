@@ -42,8 +42,7 @@ public class TestMuseumLogInterceptor extends AbstractLogInterceptor {
     return logWith(joinPoint, commLog, LoggerFactory.getLogger("FACADE"));
   }
 
-  @Around(
-      "@within(istarwyh.log.annotation.CommLog) || @annotation(istarwyh.log.annotation.CommLog)")
+  @Around("@within(istarwyh.log.annotation.CommLog) || @annotation(istarwyh.log.annotation.CommLog)")
   public Object aroundCommLog(ProceedingJoinPoint joinPoint) throws Throwable {
     CommLog commLog = findCommLog(joinPoint);
     if (commLog == null) {

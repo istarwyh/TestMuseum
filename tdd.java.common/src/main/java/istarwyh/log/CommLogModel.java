@@ -5,6 +5,7 @@ import static istarwyh.log.constant.LogConstants.CN_LOG_TYPE_SEPARATOR;
 import static istarwyh.log.constant.LogConstants.LOG_TYPE_SEPARATOR;
 
 import com.alibaba.fastjson2.JSON;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import istarwyh.log.annotation.NotPrintTrace;
 import istarwyh.log.constant.CommLogErrorType;
@@ -65,6 +66,9 @@ public class CommLogModel implements Serializable {
   /** 上下文内容，例如中间变量，方便排查问题 */
   private Map<String, Object> contextMap;
 
+  /** 上下文内容，例如中间变量，方便排查问题 */
+  private List<Object> contextList;
+
   /** 返回值内容 */
   private Object returnValue;
 
@@ -93,6 +97,7 @@ public class CommLogModel implements Serializable {
     contextMap = Maps.newHashMap();
     paramsMap = Maps.newHashMap();
     statisticMap = Maps.newHashMap();
+    contextList = Lists.newArrayList();
   }
 
   public void setErrorType(Class returnType, Object result) {
@@ -102,7 +107,11 @@ public class CommLogModel implements Serializable {
   }
 
   public void setErrorType(CommLogErrorType errorType) {
-    this.errorType = errorType.name();
+    this.setErrorType(errorType.toString());
+  }
+
+  public void setErrorType(String errorTypeName) {
+    this.errorType = errorTypeName;
   }
 
   public String getParamsStr() {
@@ -110,12 +119,28 @@ public class CommLogModel implements Serializable {
   }
 
   public CommLogModel addContext(String name, Object value) {
-    contextMap.put(name, value);
+    if (name == null) {
+      return this;
+    }
+    if (value == null) {
+      addContext(name);
+    } else {
+      contextMap.put(name, value);
+    }
+    return this;
+  }
+
+  public CommLogModel addContext(Object obj) {
+    contextList.add(obj);
     return this;
   }
 
   public String getContextStr() {
     return StringUtils.substring(safelyToString(getContextMap()), 0, getRequestMaxPrintLength());
+  }
+
+  public String getContextListStr() {
+    return StringUtils.substring(safelyToString(getContextList()), 0, getRequestMaxPrintLength());
   }
 
   public String getStatisticStr() {
@@ -206,6 +231,10 @@ public class CommLogModel implements Serializable {
     this.errorMsg = out.toString();
   }
 
+  public void setErrorMsg(String errorMsg) {
+    this.errorMsg = errorMsg;
+  }
+
   private String getStackTraceByLevel(Throwable throwable, int level) {
     StringBuilder sb = new StringBuilder("\n").append(throwable);
     int start = 0;
@@ -221,6 +250,9 @@ public class CommLogModel implements Serializable {
   public Long getRt() {
     if (rt != null) {
       return rt;
+    }
+    if (Long.valueOf(0).equals(startTime)) {
+      return null;
     }
     long endTime = System.currentTimeMillis();
     return endTime - startTime;
@@ -247,7 +279,6 @@ public class CommLogModel implements Serializable {
     if (getErrorCode() != null || getErrorMsg() != null) {
       this.loggerMethod = logger::error;
     } else if (RESULT_NULL.name().equals(getErrorType())
-        || BIZ_IGNORE.name().equals(getErrorType())
         || BIZ_WARN.name().equals(getErrorType())
         || BIZ_PROCESSING.name().equals(getErrorType())) {
       this.loggerMethod = logger::warn;

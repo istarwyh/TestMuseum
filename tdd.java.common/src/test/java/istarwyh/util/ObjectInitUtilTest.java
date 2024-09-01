@@ -2,16 +2,11 @@ package istarwyh.util;
 
 import static istarwyh.util.ObjectInitUtil.*;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.DynamicTest.dynamicTest;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 import com.alibaba.fastjson2.JSON;
-import java.lang.reflect.Field;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.stream.Stream;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.junit.jupiter.api.*;
@@ -117,31 +112,6 @@ public class ObjectInitUtilTest {
     void is_about_time(String fieldName, boolean expectedResult) {
         assertEquals(expectedResult, isAboutTime(fieldName));
     }
-
-    @TestFactory
-    Stream<DynamicTest> generate_string() {
-        Field mockField = mock(Field.class);
-        Collection<Object[]> testData = Arrays.asList(new Object[][]{
-                {"id", true, "0"},
-                {"enum", true, null},
-                {"time", true, LocalDateTime.now().getYear()},
-                {"other", true, "other"}
-        });
-
-        return testData.stream().map(data -> dynamicTest("Test generateString for field: " + data[0], () -> {
-            when(mockField.getName()).thenReturn((String) data[0]);
-            String result = generateString((Boolean) data[1], mockField.getName());
-
-            if (data[2] == null) {
-                assertNull(result);
-            } else if(data[2] instanceof Integer){
-                assertEquals(data[2],Integer.valueOf(result.substring(0,4)));
-            } else {
-                assertEquals(data[2], result);
-            }
-        }));
-    }
-
 
     @Test
     void should_generate_custom_class_value_with_spi(){

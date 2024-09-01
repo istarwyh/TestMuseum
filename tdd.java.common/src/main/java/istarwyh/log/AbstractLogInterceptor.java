@@ -1,6 +1,8 @@
 package istarwyh.log;
 
 import static istarwyh.log.constant.LogConstants.CLASS_METHOD_SEPARATOR;
+import static java.util.Arrays.stream;
+import static java.util.stream.Collectors.toList;
 
 import com.alibaba.fastjson2.JSONObject;
 import istarwyh.log.annotation.CommLog;
@@ -8,6 +10,7 @@ import istarwyh.log.annotation.LogIgnore;
 import istarwyh.log.annotation.LogShow;
 import istarwyh.util.TypeUtils;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -20,7 +23,18 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 /**
- * @author mac {@link EnableAspectJAutoProxy}
+ * @author mac {@link EnableAspectJAutoProxy} 使用示例:
+ *     <pre>{@code
+ *  @Around("@within(istarwyh.log.annotation.CommLog) || @annotation(istarwyh.log.annotation.CommLog)")
+ *  public Object aroundCommLog(ProceedingJoinPoint joinPoint) throws Throwable {
+ *     CommLog commLog = findCommLog(joinPoint);
+ *     if (commLog == null) {
+ *       return joinPoint.proceed();
+ *     }
+ *     return logWith(joinPoint, commLog);
+ * }
+ *
+ * }</pre>
  */
 public abstract class AbstractLogInterceptor {
 
@@ -67,8 +81,12 @@ public abstract class AbstractLogInterceptor {
     postCustomResult(result, logModel);
     logModel.setReturnValue(result);
     logModel.setErrorType(methodSignature.getReturnType(), result);
-    logModel.log();
+    log(logModel);
     return result;
+  }
+
+  protected void log(CommLogModel logModel) {
+    logModel.log();
   }
 
   protected int getResponseMaxPrintLength(CommLogModel logModel) {
@@ -103,6 +121,13 @@ public abstract class AbstractLogInterceptor {
     }
   }
 
+  /**
+   * 遍历对象的所有字段，如果有 {@link LogShow} 注解,只加入这些字段; 如果没有 {@link LogShow} 注解，则忽略带有 {@link LogIgnore}
+   * 注解的字段，其他字段全部加入到 JSONObject 中
+   *
+   * @param args 传入的方法参数
+   * @return 处理后的方法参数
+   */
   private static Object handleArg(Object args) {
     if (args == null) {
       return new JSONObject();
@@ -122,7 +147,7 @@ public abstract class AbstractLogInterceptor {
   private static Object convertJsonObject(Object args) throws IllegalAccessException {
     JSONObject jsonObject = new JSONObject();
     boolean hasLogShow = false;
-    Field[] fields = args.getClass().getDeclaredFields();
+    List<Field> fields = getAllDeclaredFields(args.getClass());
     for (Field field : fields) {
       if (field.isAnnotationPresent(LogShow.class)) {
         hasLogShow = true;
@@ -144,6 +169,17 @@ public abstract class AbstractLogInterceptor {
       }
     }
     return jsonObject;
+  }
+
+  @NotNull
+  private static List<Field> getAllDeclaredFields(Class<?> clazz) {
+    List<Field> fields = new ArrayList<>();
+    for (Class<?> currentClass = clazz;
+        currentClass != null && !currentClass.equals(Object.class);
+        currentClass = currentClass.getSuperclass()) {
+      fields.addAll(stream(currentClass.getDeclaredFields()).collect(toList()));
+    }
+    return fields;
   }
 
   protected abstract String getRpcId();
@@ -176,7 +212,7 @@ public abstract class AbstractLogInterceptor {
     } catch (Throwable e) {
       postThrowableResult(e, logModel);
       logModel.setReturnValue(null);
-      logModel.log();
+      log(logModel);
       throw new RuntimeException(e);
     } finally {
       CommLogHolder.clear(logModel.getClassMethodName());
