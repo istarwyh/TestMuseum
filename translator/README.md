@@ -40,6 +40,9 @@ https://mp.weixin.qq.com/s/9afMIY-WF-1LuSSxAO4Utw
 ### PDF解析
 https://github.com/opendatalab/PDF-Extract-Kit
 
+### PDF表格提取工具
+https://github.com/conjuncts/gmft
+
 ## Reference
 - 翻译图书: https://github.com/yihong0618/bilingual_book_maker
 - 翻译论文: https://github.com/binary-husky/gpt_academic
