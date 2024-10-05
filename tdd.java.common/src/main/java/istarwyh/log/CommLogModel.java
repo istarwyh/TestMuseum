@@ -94,13 +94,22 @@ public class CommLogModel implements Serializable {
     this.logger = logger;
     this.loggerMethod = logger::info;
 
+    initContent();
+  }
+
+  private void initContent() {
     contextMap = Maps.newHashMap();
     paramsMap = Maps.newHashMap();
     statisticMap = Maps.newHashMap();
     contextList = Lists.newArrayList();
   }
 
-  public void setErrorType(Class returnType, Object result) {
+  public CommLogModel clear() {
+    initContent();
+    return this;
+  }
+
+  public void setErrorType(Class<?> returnType, Object result) {
     if (!void.class.equals(returnType) && null == result) {
       this.setErrorType(RESULT_NULL);
     }
