@@ -12,6 +12,8 @@ dependencies {
             "org.springframework:spring-aop:5.3.25",
             "org.springframework.boot:spring-boot:3.2.0",
             "org.aspectj:aspectjweaver:1.9.22",
+            "org.quartz-scheduler:quartz:2.3.2",
+
 
 //            内部依赖
             "io.github.istarwyh:junit-extensions:${initSnapshotVersion}"
@@ -21,4 +23,5 @@ dependencies {
             "org.jeasy:easy-random-core:${easyRandomVersion}"
     )
 }
+
 

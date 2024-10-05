@@ -24,6 +24,9 @@ public abstract class AbstractHandler<OutPut> {
      */
     public abstract OutPut execute();
 
+    /**
+     * 好的构造方式是输入 类似于 "handler1,[handler2,handler3],handler4" 这样的DSL来编排责任树
+     */
     @SafeVarargs
     @NotNull
     public final AbstractHandler<OutPut> constructHandlerTreeByPreOrder(AbstractHandler<OutPut>... abstractHandlers){
