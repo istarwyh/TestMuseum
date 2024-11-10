@@ -89,6 +89,8 @@ public class CommLogModel implements Serializable {
 
   private Consumer<String> loggerMethod;
 
+  private String loggerLevel;
+
   public CommLogModel(String classMethodName, Logger logger) {
     this.classMethodName = classMethodName;
     this.logger = logger;
@@ -184,7 +186,7 @@ public class CommLogModel implements Serializable {
     return express;
   }
 
-  private String escapeVerticalLine(String str) {
+  protected String escapeVerticalLine(String str) {
     if (!ESCAPE_LOG_VERTICAL_LINE) {
       return str;
     }
@@ -194,7 +196,7 @@ public class CommLogModel implements Serializable {
     return str.replaceAll("\\|", CN_LOG_TYPE_SEPARATOR);
   }
 
-  private static final ToStringStyle CUSTOM_PRINT_STYLE =
+  protected static final ToStringStyle CUSTOM_PRINT_STYLE =
       new ToStringStyle() {
         {
           this.setContentStart("");
@@ -292,15 +294,22 @@ public class CommLogModel implements Serializable {
   }
 
   public void log() {
+    initLoggerMethod();
+    loggerMethod.accept(toString());
+  }
+
+  private void initLoggerMethod() {
     if (getErrorCode() != null || getErrorMsg() != null) {
       this.loggerMethod = logger::error;
+      this.loggerLevel = "ERROR";
     } else if (RESULT_NULL.name().equals(getErrorType())
         || BIZ_WARN.name().equals(getErrorType())
         || BIZ_PROCESSING.name().equals(getErrorType())) {
       this.loggerMethod = logger::warn;
+      this.loggerLevel = "WARN";
     } else {
       this.loggerMethod = logger::info;
+      this.loggerLevel = "INFO";
     }
-    loggerMethod.accept(toString());
   }
 }
