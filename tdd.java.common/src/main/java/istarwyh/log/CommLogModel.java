@@ -83,7 +83,7 @@ public class CommLogModel implements Serializable {
   private String stat;
 
   /** 统计/分析信息，内容格式各个业务自己定义 */
-  private Map<String, String> statisticMap;
+  private List<String> statisticList;
 
   private Logger logger;
 
@@ -100,7 +100,7 @@ public class CommLogModel implements Serializable {
   private void initContent() {
     contextMap = Maps.newHashMap();
     paramsMap = Maps.newHashMap();
-    statisticMap = Maps.newHashMap();
+    statisticList = Lists.newArrayList();
     contextList = Lists.newArrayList();
   }
 
@@ -153,7 +153,7 @@ public class CommLogModel implements Serializable {
   }
 
   public String getStatisticStr() {
-    return safelyToString(getStatisticMap());
+    return safelyToString(getStatisticList());
   }
 
   public String getReturnValueStr() {
@@ -171,9 +171,15 @@ public class CommLogModel implements Serializable {
     }
   }
 
-  public boolean addStatHitRule(boolean express, String value) {
+  public boolean hitRule(boolean express, Object value) {
     if (express) {
-      statisticMap.put("hitRule", value);
+      if (value instanceof String) {
+        statisticList.add((String) value);
+      } else {
+        if (value != null) {
+          statisticList.add(value.toString());
+        }
+      }
     }
     return express;
   }
@@ -204,6 +210,7 @@ public class CommLogModel implements Serializable {
   @Override
   public String toString() {
     return new ToStringBuilder(null, CUSTOM_PRINT_STYLE)
+        .append(getBizType())
         .append(getClassMethodName())
         .append(getTraceId())
         .append(getInvokeInfo())
